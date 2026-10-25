@@ -14,7 +14,7 @@ set -euo pipefail
 
 OAH_DIR="$HOME/.oah"
 MCP_DIR="$OAH_DIR/mcp"
-MCP_REPO="https://raw.githubusercontent.com/DureClaw/dureclaw/main"
+MCP_REPO="https://raw.githubusercontent.com/dureclaw/dureclaw/main"
 
 # ─── 인자 파싱 ────────────────────────────────────────────────────────────────
 

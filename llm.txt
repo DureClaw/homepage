@@ -22,8 +22,8 @@ DureClaw는 Claude Code 네이티브 플러그인 + Phoenix(Elixir) WebSocket �
 ## 문서·데모 / Docs & demo
 - [기술 백서 / Technical Whitepaper (한국어·English PDF)](https://dureclaw.baryon.ai/how/)
 - [dure-factory — 분산 엣지 × 제조 MES 데모](https://dureclaw.baryon.ai/use-cases/)
-- [GitHub 조직 (all repos)](https://github.com/DureClaw/dureclaw)
-- [버스 코어 / dureclaw](https://github.com/DureClaw/dureclaw)
+- [GitHub 조직 (all repos)](https://github.com/dureclaw/dureclaw)
+- [버스 코어 / dureclaw](https://github.com/dureclaw/dureclaw)
 
 ## 자주 묻는 질문 / FAQ
 - **무엇인가?** 흩어진 머신을 한 버스로 묶는 멀티머신 AI 오케스트레이션. 새 시스템으로 갈아엎지 않고 기존 인프라 위에 얹는다.

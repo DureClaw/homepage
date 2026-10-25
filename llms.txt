@@ -29,15 +29,15 @@ DureClaw는 Claude Code 네이티브 플러그인 + Phoenix(Elixir) WebSocket �
 ## 문서·데모 / Docs & demo
 - [기술 백서 / Technical Whitepaper (한국어·English PDF)](https://dureclaw.baryon.ai/how/)
 - [dure-factory — 분산 엣지 × 제조 MES 데모](https://dureclaw.baryon.ai/use-cases/)
-- [GitHub 조직 (all repos)](https://github.com/DureClaw/dureclaw)
-- [버스 코어 / dureclaw](https://github.com/DureClaw/dureclaw)
+- [GitHub 조직 (all repos)](https://github.com/dureclaw/dureclaw)
+- [버스 코어 / dureclaw](https://github.com/dureclaw/dureclaw)
 
 ## 자주 묻는 질문 / FAQ
 - **무엇인가?** 흩어진 머신을 한 버스로 묶는 멀티머신 AI 오케스트레이션. 새 시스템으로 갈아엎지 않고 기존 인프라 위에 얹는다.
 - **누구를 위한 것인가?** 여러 머신(엣지·GPU·PC)을 가진 개발자/팀, 제조 현장(데이터 수집→분석→자동화→AX).
 - **왜 keyless인가?** 모든 노드에 키를 심는 비용·보안 부담을 없애고, 저사양·무인증 머신도 즉시 합류시키기 위해.
 - **설치는?** `bash <(curl -fsSL https://dureclaw.baryon.ai/install)` — 플러그인·서버·MCP 자동 등록, 약 3분.
-- **어느 에이전트에서든?** 공개 패키지 [DureClaw/dureclaw](https://github.com/DureClaw/dureclaw) — Agent Skills(SKILL.md) + MCP 서버 + 플러그인. Claude Code `/plugin marketplace add DureClaw/dureclaw`, Gemini CLI `gemini extensions install https://github.com/DureClaw/dureclaw`, 스킬만 `npx skills add DureClaw/dureclaw`.
+- **어느 에이전트에서든?** 공개 패키지 [dureclaw/dureclaw](https://github.com/dureclaw/dureclaw) — Agent Skills(SKILL.md) + MCP 서버 + 플러그인. Claude Code `/plugin marketplace add dureclaw/dureclaw`, Gemini CLI `gemini extensions install https://github.com/dureclaw/dureclaw`, 스킬만 `npx skills add dureclaw/dureclaw`.
 
 ## 원칙 / Principles
 데이터는 엣지 · 두뇌는 분산 · 학습은 닫힌 루프 · 결정은 사람.
