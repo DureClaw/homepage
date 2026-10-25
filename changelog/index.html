@@ -114,7 +114,19 @@
     <div class="cl-grid">
 
       <div class="cl-card">
-        <div class="cl-card-ver">v0.5.1 <span class="cl-badge">latest</span></div>
+        <div class="cl-card-ver">v0.5.2 <span class="cl-badge">latest</span></div>
+        <div class="cl-card-date">2026-10-26</div>
+        <ul class="cl-items">
+          <li><span class="cl-tag feat">feature</span><b>Headscale 자체 사설망(VPN) 선택 옵션</b> — 공식 Tailscale SaaS와 오픈소스 Headscale 컨트롤 서버를 선택적으로 구성. 외부 계정 및 클라우드 서비스 없이 완전한 자체 망 운영 가능</li>
+          <li><span class="cl-tag feat">feature</span><b>서버 대화형 네트워크 선택 메뉴 & CLI 플래그</b> — <code>setup-server.sh</code> 실행 시 Tailscale vs Headscale vs LAN 전용 3지선다 대화형 선택 및 <code>--headscale</code> / <code>--tailscale</code> / <code>--no-vpn</code> 옵션 지원</li>
+          <li><span class="cl-tag feat">feature</span><b>워커 노드 간편 합류</b> — <code>setup-agent.sh</code>에서 Headscale 연결 코드(<code>JOIN=dcj1:...</code>) 대화형 입력 지원 및 Windows <code>setup-agent.ps1</code>에 <code>-Join</code> 파라미터 추가</li>
+          <li><span class="cl-tag feat">feature</span><b><code>oah mesh</code> 통합 CLI</b> — 사설망 상태 확인(<code>status</code>), 제어 서버 제어(<code>start</code>/<code>stop</code>), 연결 코드 발급(<code>join-code</code>), 노드 목록(<code>nodes</code>), 프로필 간편 전환(<code>switch</code>) 지원</li>
+          <li><span class="cl-tag feat">feature</span><b>Mac & Windows GUI 트레이 사설망 상태 개선</b> — 공식 Tailscale과 Headscale 자체 망 연결 상태를 실시간으로 구분해 트레이 메뉴 및 알림에 표시</li>
+        </ul>
+      </div>
+
+      <div class="cl-card">
+        <div class="cl-card-ver">v0.5.1</div>
         <div class="cl-card-date">2026-10-26</div>
         <ul class="cl-items">
           <li><span class="cl-tag feat">feature</span><b>개인판 무료</b>(1인·서버 포함 2대) — dureclaw + webclaw + deskclaw 통합 설치(Mac·Windows), 서버 앱 메뉴에서 데스크톱 손·브라우저 손 바로 연결</li>

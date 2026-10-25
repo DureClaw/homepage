@@ -64,12 +64,12 @@
   <line x1="60" y1="42" x2="400" y2="42" stroke="#ffffff" stroke-width="0.5" opacity="0.2"/>
   <line x1="560" y1="42" x2="900" y2="42" stroke="#ffffff" stroke-width="0.5" opacity="0.2"/>
 
-  <!-- ═══ L0: Tailscale Layer ═══ -->
+  <!-- ═══ L0: Tailscale / Headscale Layer ═══ -->
   <rect x="30" y="580" width="900" height="44" rx="4" fill="#0d1829" stroke="#5b8cff" stroke-width="1" opacity="0.8"/>
   <text x="50" y="596" fill="#5b8cff" font-size="9" font-weight="700" letter-spacing="2">L0</text>
-  <text x="72" y="596" fill="#5b8cff" font-size="9" letter-spacing="1">TAILSCALE</text>
+  <text x="72" y="596" fill="#5b8cff" font-size="9" letter-spacing="1">TAILSCALE · HEADSCALE</text>
   <text x="480" y="600" text-anchor="middle" fill="#8ab4ff" font-size="10" letter-spacing="1">E2E 암호화 메쉬 네트워크 — 100.x.x.x</text>
-  <text x="480" y="614" text-anchor="middle" fill="#5b8cff" font-size="9" opacity="0.7">WireGuard-based · Zero-config · Cross-NAT</text>
+  <text x="480" y="614" text-anchor="middle" fill="#5b8cff" font-size="9" opacity="0.7">WireGuard-based · Zero-config · Tailscale SaaS or Headscale Self-hosted</text>
 
   <!-- ═══ L1: Phoenix Channel (center bus) ═══ -->
   <rect x="300" y="310" width="360" height="120" rx="6" fill="url(#nasGrad)" stroke="#00d9ff" stroke-width="1.5"/>
@@ -281,7 +281,7 @@
   <text x="70" y="539" fill="#8ab4cc" font-size="8">Server broadcast (→ all agents)</text>
 
   <line x1="44" y1="550" x2="64" y2="550" stroke="#5b8cff" stroke-width="1" stroke-dasharray="3,2"/>
-  <text x="70" y="554" fill="#8ab4cc" font-size="8">Tailscale (L0 transport)</text>
+  <text x="70" y="554" fill="#8ab4cc" font-size="8">Tailscale / Headscale (L0 transport)</text>
 
   <text x="280" y="554" text-anchor="end" fill="#2a3a4a" font-size="7">github.com/baryonlabs/open-agent-harness</text>
 </svg>

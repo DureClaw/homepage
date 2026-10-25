@@ -195,7 +195,7 @@
           <div class="t-bar"><span class="t-dot" style="background:#ff5f57"></span><span class="t-dot" style="background:#febc2e"></span><span class="t-dot" style="background:#28c840"></span></div>
           <div><span class="t-prompt">$ </span><span class="t-cmd">bash &lt;(curl -fsSL https://dureclaw.baryon.ai/server)</span></div>
           <div><span class="t-ok">✅ darwin-arm64 바이너리 다운로드 완료</span></div>
-          <div><span class="t-ok">✅ Tailscale 연결됨: 100.x.x.x</span></div>
+          <div><span class="t-ok">✅ 사설망(Tailscale / Headscale) 연결됨: 100.x.x.x</span></div>
           <div><span class="t-ok">→ 서버 시작 · ws://100.x.x.x:4000</span></div>
         </div>
         <div class="platform-status" style="margin-top:8px"><span class="dot"></span>완전 지원 · 권장 환경</div>
@@ -291,7 +291,7 @@
         <div class="term">
           <div class="t-bar"><span class="t-dot" style="background:#ff5f57"></span><span class="t-dot" style="background:#febc2e"></span><span class="t-dot" style="background:#28c840"></span></div>
           <div><span class="t-dim">① Setup.exe 실행 (관리자 권한 불필요)</span></div>
-          <div><span class="t-dim">② 서버 주소 — 비우면 oah.local · Tailscale 자동 탐색</span></div>
+          <div><span class="t-dim">② 서버 주소 — 비우면 oah.local · 사설망(Tailscale · Headscale) 자동 탐색</span></div>
           <div><span class="t-ok">✅ 트레이 상주 · 로그인 시 자동 연결</span></div>
           <div><span class="t-ok">→ builder@DESKTOP-WIN 연결 완료</span></div>
         </div>
@@ -329,7 +329,7 @@
     </div>
     <p style="color:var(--text2);font-size:15.5px;margin-bottom:20px;max-width:640px;">
       새 머신에서 아래 명령어를 실행하면 설치·설정·연결이 자동 처리된다.
-      <code>서버IP</code>는 Tailscale IP(100.x.x.x) 또는 LAN IP로 교체하거나,
+      <code>서버IP</code>는 사설망(Tailscale · Headscale) IP(100.x.x.x) 또는 LAN IP로 교체하거나(자체 사설망은 <code>JOIN=dcj1:...</code> 지원),
       <strong style="color:var(--cyan)">"워커 추가해줘"</strong>라고 Claude에게 말하면 자동으로 채워준다.
     </p>
     <div class="oneliner-block">
