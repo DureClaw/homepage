@@ -487,6 +487,20 @@ main + .lb-bg + footer, main ~ footer { margin-top: 0; }
 .uc-media.light figcaption { color: var(--ink-3); }
 @media (max-width: 960px) { .uc-card { grid-template-columns: 1fr; } }
 
+/* width/height 속성(CLS 방지)을 단 이미지가 CSS 폭에 맞춰 비율대로 줄도록 — 특이도 0 이라 개별 규칙이 우선 */
+:where(img[width][height]) { max-width: 100%; height: auto; }
+
+/* 그림으로 보는 활용 사례 */
+.uc-visuals { display: grid; gap: clamp(28px, 3vw, 40px); }
+.uc-visual { margin: 0; background: #fff; border: 1px solid var(--line); border-radius: var(--radius); overflow: hidden; }
+.uc-visual a { display: block; }
+.uc-visual img { width: 100%; height: auto; display: block; }
+.uc-visual figcaption { padding: clamp(18px, 2.2vw, 28px); display: grid; gap: 10px; border-top: 1px solid var(--line); }
+.uc-visual h3 { margin: 0; font-size: clamp(19px, 1.9vw, 24px); line-height: 1.35; }
+.uc-visual p { margin: 0; color: var(--ink-2); line-height: 1.75; }
+.uc-visual ol { margin: 0; padding-left: 22px; color: var(--ink-2); line-height: 1.75; display: grid; gap: 4px; }
+.uc-visual ol b { color: var(--ink); }
+
 /* 필요한 구성 */
 .kit { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 240px), 1fr)); gap: 14px; }
 .kit > div { background: #fff; border: 1px solid var(--line); border-radius: var(--radius-sm); padding: 18px 20px; display: grid; gap: 6px; align-content: start; }

@@ -46,6 +46,41 @@
 
 <link rel="stylesheet" href="/assets/site.css"/>
 <link rel="stylesheet" href="/assets/design.css"/>
+<script type="application/ld+json">
+{
+ "@context": "https://schema.org",
+ "@type": "BreadcrumbList",
+ "itemListElement": [
+  {
+   "@type": "ListItem",
+   "position": 1,
+   "name": "DureClaw",
+   "item": "https://dureclaw.baryon.ai/"
+  },
+  {
+   "@type": "ListItem",
+   "position": 2,
+   "name": "활용 사례",
+   "item": "https://dureclaw.baryon.ai/use-cases/"
+  },
+  {
+   "@type": "ListItem",
+   "position": 3,
+   "name": "IoT·현장",
+   "item": "https://dureclaw.baryon.ai/use-cases/iot/"
+  }
+ ]
+}
+</script>
+<!-- PostHog (방문 분석) -->
+<script>
+    !function(t,e){var o,n,p,r;e.__SV||(window.posthog && window.posthog.__loaded)||(window.posthog=e,e._i=[],e.init=function(i,s,a){function g(t,e){var o=e.split(".");2==o.length&&(t=t[o[0]],e=o[1]),t[e]=function(){t.push([e].concat(Array.prototype.slice.call(arguments,0)))}}p||((p=t.createElement("script")).type="text/javascript",p.crossOrigin="anonymous",p.async=!0,p.src=s.api_host.replace(".i.posthog.com","-assets.i.posthog.com")+"/static/array.js",p.onerror=function(){p=null},(r=t.getElementsByTagName("script")[0]).parentNode.insertBefore(p,r));var u=e;for(void 0!==a?u=e[a]=[]:a="posthog",u.people=u.people||[],Object.defineProperty(u,"toString",{configurable:!0,enumerable:!0,writable:!0,value:function(t){var e="posthog";return"posthog"!==a&&(e+="."+a),t||(e+=" (stub)"),e}}),Object.defineProperty(u.people,"toString",{configurable:!0,enumerable:!0,writable:!0,value:function(){return u.toString(1)+".people (stub)"}}),o="Zc Kc Xc Yc ih init Rh Ah Ih Eh Lh zu Ph Nh $h Uh Wh Vh Gh Qh Zh capture getExtension Fh dr Yh calculateEventProperties Kh register register_once register_for_session unregister unregister_for_session sd Th td getFeatureFlag getFeatureFlagPayload getFeatureFlagResult getAllFeatureFlags isFeatureEnabled reloadFeatureFlags updateFlags updateEarlyAccessFeatureEnrollment getEarlyAccessFeatures on onFeatureFlags onSurveysLoaded onSessionId getSurveys getActiveMatchingSurveys onActiveMatchingSurveysChanged renderSurvey displaySurvey cancelPendingSurvey canRenderSurvey canRenderSurveyAsync rd identify setPersonProperties unsetPersonProperties group resetGroups setPersonPropertiesForFlags resetPersonPropertiesForFlags setGroupPropertiesForFlags resetGroupPropertiesForFlags reset od shutdown setIdentity clearIdentity get_distinct_id getGroups get_session_id get_session_replay_url alias set_config startSessionRecording stopSessionRecording sessionRecordingStarted captureException addExceptionStep captureLog startExceptionAutocapture stopExceptionAutocapture loadToolbar get_property getSessionProperty ed Bh createPersonProfile setInternalOrTestUser nd oh sh opt_in_capturing opt_out_capturing rh has_opted_in_capturing has_opted_out_capturing get_explicit_consent_status is_capturing clear_opt_in_out_capturing qh debug Hu Os getPageViewId captureTraceFeedback captureTraceMetric wh".split(" "),n=0;n<o.length;n++)g(u,o[n]);e._i.push([i,s,a])},e.__SV=1)}(document,window.posthog||[]);
+    posthog.init('phc_zqdSWCCk6ozgZkBKc2ba3jDBhe6YKoSqCrupk9PMWjma', {
+        api_host: 'https://us.i.posthog.com',
+        defaults: '2026-05-30',
+        person_profiles: 'identified_only', // or 'always' to create profiles for anonymous users as well
+    })
+</script>
 </head>
 <body>
 <nav>
@@ -112,7 +147,7 @@
           
           
         </div>
-        <figure class="uc-media"><img src="/demo/mes-fanout.gif" alt="불량 보고가 여러 노드로 퍼졌다가 마스터 제안으로 모이는 실제 화면" loading="lazy"/><figcaption>실제 시스템 캡처 — 불량 fan-out → 노드 fan-in → 마스터 제안</figcaption></figure>
+        <figure class="uc-media"><img width="1960" height="943" src="/demo/mes-fanout.gif" alt="불량 보고가 여러 노드로 퍼졌다가 마스터 제안으로 모이는 실제 화면" loading="lazy"/><figcaption>실제 시스템 캡처 — 불량 fan-out → 노드 fan-in → 마스터 제안</figcaption></figure>
       </article>
       <article class="uc-card">
         <div class="uc-main">
@@ -123,7 +158,7 @@
           
           
         </div>
-        <figure class="uc-media"><img src="/demo/decision-freeze.gif" alt="승인된 규칙이 동결되어 AI 호출 없이 재사용되는 실제 화면" loading="lazy"/><figcaption>실제 시스템 캡처 — 승인 → 규칙 동결 → 2µs 재사용</figcaption></figure>
+        <figure class="uc-media"><img width="1960" height="943" src="/demo/decision-freeze.gif" alt="승인된 규칙이 동결되어 AI 호출 없이 재사용되는 실제 화면" loading="lazy"/><figcaption>실제 시스템 캡처 — 승인 → 규칙 동결 → 2µs 재사용</figcaption></figure>
       </article>
       <article class="uc-card no-media scenario">
         <div class="uc-main">
@@ -153,7 +188,7 @@
     <div class="section-head"><span class="eyebrow">다른 대상 보기</span></div>
     <div class="audience-grid others">
       <a class="aud" href="/use-cases/org/">
-        <div class="aud-art"><img src="/images/uc-org.webp" alt="사무실과 공장 현장의 컴퓨터들을 크랩 로봇들이 함께 운영하는 그림" loading="lazy"/></div>
+        <div class="aud-art"><img width="1400" height="933" src="/images/uc-org.webp" alt="사무실과 공장 현장의 컴퓨터들을 크랩 로봇들이 함께 운영하는 그림" loading="lazy"/></div>
         <div class="aud-body">
           <span class="aud-k">회사·조직</span>
           <h3>쓰던 ERP·라이선스 PC·사내망 그대로 AI 자동화</h3>
@@ -162,7 +197,7 @@
         </div>
       </a>
       <a class="aud" href="/use-cases/dev/">
-        <div class="aud-art"><img src="/images/uc-dev.webp" alt="MacBook에서 Windows, Linux 서버, GPU 워크스테이션으로 빌드 카드가 날아가는 그림" loading="lazy"/></div>
+        <div class="aud-art"><img width="1400" height="933" src="/images/uc-dev.webp" alt="MacBook에서 Windows, Linux 서버, GPU 워크스테이션으로 빌드 카드가 날아가는 그림" loading="lazy"/></div>
         <div class="aud-body">
           <span class="aud-k">개발자</span>
           <h3>Mac 한 대로 Windows·Linux·GPU 서버 지휘</h3>
@@ -171,7 +206,7 @@
         </div>
       </a>
       <a class="aud" href="/use-cases/research/">
-        <div class="aud-art"><img src="/images/uc-research.webp" alt="연구실에서 GPU 서버의 모델 비교, 과제 수집, 플레이북 검토와 승인을 하는 그림" loading="lazy"/></div>
+        <div class="aud-art"><img width="1400" height="933" src="/images/uc-research.webp" alt="연구실에서 GPU 서버의 모델 비교, 과제 수집, 플레이북 검토와 승인을 하는 그림" loading="lazy"/></div>
         <div class="aud-body">
           <span class="aud-k">연구·교육</span>
           <h3>측정·비교 실험과 수업 자료 준비</h3>

@@ -1,69 +1,112 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
   <url>
     <loc>https://dureclaw.baryon.ai/</loc>
-    <lastmod>2026-10-07</lastmod>
+    <lastmod>2026-10-25</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
+    <image:image><image:loc>https://dureclaw.baryon.ai/images/concept.webp</image:loc></image:image>
+    <image:image><image:loc>https://dureclaw.baryon.ai/images/step1-server.webp</image:loc></image:image>
+    <image:image><image:loc>https://dureclaw.baryon.ai/images/step2-connect.webp</image:loc></image:image>
+    <image:image><image:loc>https://dureclaw.baryon.ai/images/step3-talk.webp</image:loc></image:image>
+    <image:image><image:loc>https://dureclaw.baryon.ai/images/before-after.webp</image:loc></image:image>
+    <image:image><image:loc>https://dureclaw.baryon.ai/images/keyless.webp</image:loc></image:image>
+    <image:image><image:loc>https://dureclaw.baryon.ai/images/uc-org.webp</image:loc></image:image>
+    <image:image><image:loc>https://dureclaw.baryon.ai/images/uc-dev.webp</image:loc></image:image>
+    <image:image><image:loc>https://dureclaw.baryon.ai/images/uc-iot.webp</image:loc></image:image>
+    <image:image><image:loc>https://dureclaw.baryon.ai/images/uc-research.webp</image:loc></image:image>
   </url>
   <url>
     <loc>https://dureclaw.baryon.ai/start/</loc>
-    <lastmod>2026-10-07</lastmod>
+    <lastmod>2026-10-25</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://dureclaw.baryon.ai/use-cases/</loc>
-    <lastmod>2026-10-07</lastmod>
+    <lastmod>2026-10-25</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
+    <image:image><image:loc>https://dureclaw.baryon.ai/images/uc-org.webp</image:loc></image:image>
+    <image:image><image:loc>https://dureclaw.baryon.ai/images/uc-dev.webp</image:loc></image:image>
+    <image:image><image:loc>https://dureclaw.baryon.ai/images/uc-iot.webp</image:loc></image:image>
+    <image:image><image:loc>https://dureclaw.baryon.ai/images/uc-research.webp</image:loc></image:image>
+    <image:image><image:loc>https://dureclaw.baryon.ai/images/uc-multiplatform-build.webp</image:loc></image:image>
+    <image:image><image:loc>https://dureclaw.baryon.ai/images/uc-ecommerce-chrome.webp</image:loc></image:image>
+    <image:image><image:loc>https://dureclaw.baryon.ai/images/uc-chrome-team.webp</image:loc></image:image>
   </url>
   <url>
     <loc>https://dureclaw.baryon.ai/use-cases/org/</loc>
-    <lastmod>2026-10-07</lastmod>
-    <changefreq>weekly</changefreq>
+    <lastmod>2026-10-25</lastmod>
+    <changefreq>monthly</changefreq>
     <priority>0.8</priority>
+    <image:image><image:loc>https://dureclaw.baryon.ai/images/uc-org.webp</image:loc></image:image>
+    <image:image><image:loc>https://dureclaw.baryon.ai/images/uc-ecommerce-chrome.webp</image:loc></image:image>
+    <image:image><image:loc>https://dureclaw.baryon.ai/images/uc-chrome-team.webp</image:loc></image:image>
+    <image:image><image:loc>https://dureclaw.baryon.ai/demo/deskclaw-rpa.gif</image:loc></image:image>
+    <image:image><image:loc>https://dureclaw.baryon.ai/images/uc-dev.webp</image:loc></image:image>
+    <image:image><image:loc>https://dureclaw.baryon.ai/images/uc-iot.webp</image:loc></image:image>
+    <image:image><image:loc>https://dureclaw.baryon.ai/images/uc-research.webp</image:loc></image:image>
   </url>
   <url>
     <loc>https://dureclaw.baryon.ai/use-cases/dev/</loc>
-    <lastmod>2026-10-07</lastmod>
-    <changefreq>weekly</changefreq>
+    <lastmod>2026-10-25</lastmod>
+    <changefreq>monthly</changefreq>
     <priority>0.8</priority>
+    <image:image><image:loc>https://dureclaw.baryon.ai/images/uc-dev.webp</image:loc></image:image>
+    <image:image><image:loc>https://dureclaw.baryon.ai/images/uc-multiplatform-build.webp</image:loc></image:image>
+    <image:image><image:loc>https://dureclaw.baryon.ai/screenshots/dureclaw-dashboard-demo.gif</image:loc></image:image>
+    <image:image><image:loc>https://dureclaw.baryon.ai/images/uc-org.webp</image:loc></image:image>
+    <image:image><image:loc>https://dureclaw.baryon.ai/images/uc-iot.webp</image:loc></image:image>
+    <image:image><image:loc>https://dureclaw.baryon.ai/images/uc-research.webp</image:loc></image:image>
   </url>
   <url>
     <loc>https://dureclaw.baryon.ai/use-cases/iot/</loc>
-    <lastmod>2026-10-07</lastmod>
-    <changefreq>weekly</changefreq>
+    <lastmod>2026-10-25</lastmod>
+    <changefreq>monthly</changefreq>
     <priority>0.8</priority>
+    <image:image><image:loc>https://dureclaw.baryon.ai/images/uc-iot.webp</image:loc></image:image>
+    <image:image><image:loc>https://dureclaw.baryon.ai/demo/mes-fanout.gif</image:loc></image:image>
+    <image:image><image:loc>https://dureclaw.baryon.ai/demo/decision-freeze.gif</image:loc></image:image>
+    <image:image><image:loc>https://dureclaw.baryon.ai/images/uc-org.webp</image:loc></image:image>
+    <image:image><image:loc>https://dureclaw.baryon.ai/images/uc-dev.webp</image:loc></image:image>
+    <image:image><image:loc>https://dureclaw.baryon.ai/images/uc-research.webp</image:loc></image:image>
   </url>
   <url>
     <loc>https://dureclaw.baryon.ai/use-cases/research/</loc>
-    <lastmod>2026-10-07</lastmod>
-    <changefreq>weekly</changefreq>
+    <lastmod>2026-10-25</lastmod>
+    <changefreq>monthly</changefreq>
     <priority>0.8</priority>
+    <image:image><image:loc>https://dureclaw.baryon.ai/images/uc-research.webp</image:loc></image:image>
+    <image:image><image:loc>https://dureclaw.baryon.ai/images/uc-org.webp</image:loc></image:image>
+    <image:image><image:loc>https://dureclaw.baryon.ai/images/uc-dev.webp</image:loc></image:image>
+    <image:image><image:loc>https://dureclaw.baryon.ai/images/uc-iot.webp</image:loc></image:image>
   </url>
   <url>
     <loc>https://dureclaw.baryon.ai/how/</loc>
-    <lastmod>2026-10-07</lastmod>
-    <changefreq>weekly</changefreq>
+    <lastmod>2026-10-25</lastmod>
+    <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://dureclaw.baryon.ai/showcase/</loc>
-    <lastmod>2026-10-07</lastmod>
-    <changefreq>weekly</changefreq>
+    <lastmod>2026-10-25</lastmod>
+    <changefreq>monthly</changefreq>
     <priority>0.7</priority>
+    <image:image><image:loc>https://dureclaw.baryon.ai/demo/mes-fanout.gif</image:loc></image:image>
+    <image:image><image:loc>https://dureclaw.baryon.ai/demo/decision-freeze.gif</image:loc></image:image>
+    <image:image><image:loc>https://dureclaw.baryon.ai/demo/deskclaw-rpa.gif</image:loc></image:image>
   </url>
   <url>
     <loc>https://dureclaw.baryon.ai/developers/</loc>
-    <lastmod>2026-10-07</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
+    <lastmod>2026-10-25</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
   </url>
   <url>
     <loc>https://dureclaw.baryon.ai/changelog/</loc>
-    <lastmod>2026-10-07</lastmod>
+    <lastmod>2026-10-25</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
+    <priority>0.6</priority>
   </url>
 </urlset>

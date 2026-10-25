@@ -29,16 +29,16 @@
 <meta property="og:url" content="https://dureclaw.baryon.ai/use-cases/dev/"/>
 <meta property="og:title" content="개발자 활용 사례 — DureClaw"/>
 <meta property="og:description" content="DureClaw 활용 사례 — 개발자: Windows 빌드, Linux 서버, GPU 학습기를 각각 접속해 다루지 않아도 됩니다. Claude에게 말하면 맞는 컴퓨터가 동시에 일합니다."/>
-<meta property="og:image" content="https://dureclaw.baryon.ai/screenshots/hero-banner.jpg"/>
-<meta property="og:image:width" content="1400"/>
-<meta property="og:image:height" content="594"/>
-<meta property="og:image:alt" content="DureClaw Cooperative — Unified AI Robotics Ecosystem"/>
+<meta property="og:image" content="https://dureclaw.baryon.ai/images/uc-multiplatform-build.jpg"/>
+<meta property="og:image:width" content="1200"/>
+<meta property="og:image:height" content="800"/>
+<meta property="og:image:alt" content="혼자 만들어도, 컴퓨터는 팀으로 — DureClaw 멀티플랫폼 빌드"/>
 
 <!-- ── Twitter ── -->
 <meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:title" content="개발자 활용 사례 — DureClaw"/>
 <meta name="twitter:description" content="DureClaw 활용 사례 — 개발자: Windows 빌드, Linux 서버, GPU 학습기를 각각 접속해 다루지 않아도 됩니다. Claude에게 말하면 맞는 컴퓨터가 동시에 일합니다."/>
-<meta name="twitter:image" content="https://dureclaw.baryon.ai/screenshots/hero-banner.jpg"/>
+<meta name="twitter:image" content="https://dureclaw.baryon.ai/images/uc-multiplatform-build.jpg"/>
 
 <!-- ── AI / LLM crawlers (GEO/AEO) ── -->
 <link rel="alternate" type="text/markdown" title="llms.txt" href="/llms.txt"/>
@@ -46,6 +46,41 @@
 
 <link rel="stylesheet" href="/assets/site.css"/>
 <link rel="stylesheet" href="/assets/design.css"/>
+<script type="application/ld+json">
+{
+ "@context": "https://schema.org",
+ "@type": "BreadcrumbList",
+ "itemListElement": [
+  {
+   "@type": "ListItem",
+   "position": 1,
+   "name": "DureClaw",
+   "item": "https://dureclaw.baryon.ai/"
+  },
+  {
+   "@type": "ListItem",
+   "position": 2,
+   "name": "활용 사례",
+   "item": "https://dureclaw.baryon.ai/use-cases/"
+  },
+  {
+   "@type": "ListItem",
+   "position": 3,
+   "name": "개발자",
+   "item": "https://dureclaw.baryon.ai/use-cases/dev/"
+  }
+ ]
+}
+</script>
+<!-- PostHog (방문 분석) -->
+<script>
+    !function(t,e){var o,n,p,r;e.__SV||(window.posthog && window.posthog.__loaded)||(window.posthog=e,e._i=[],e.init=function(i,s,a){function g(t,e){var o=e.split(".");2==o.length&&(t=t[o[0]],e=o[1]),t[e]=function(){t.push([e].concat(Array.prototype.slice.call(arguments,0)))}}p||((p=t.createElement("script")).type="text/javascript",p.crossOrigin="anonymous",p.async=!0,p.src=s.api_host.replace(".i.posthog.com","-assets.i.posthog.com")+"/static/array.js",p.onerror=function(){p=null},(r=t.getElementsByTagName("script")[0]).parentNode.insertBefore(p,r));var u=e;for(void 0!==a?u=e[a]=[]:a="posthog",u.people=u.people||[],Object.defineProperty(u,"toString",{configurable:!0,enumerable:!0,writable:!0,value:function(t){var e="posthog";return"posthog"!==a&&(e+="."+a),t||(e+=" (stub)"),e}}),Object.defineProperty(u.people,"toString",{configurable:!0,enumerable:!0,writable:!0,value:function(){return u.toString(1)+".people (stub)"}}),o="Zc Kc Xc Yc ih init Rh Ah Ih Eh Lh zu Ph Nh $h Uh Wh Vh Gh Qh Zh capture getExtension Fh dr Yh calculateEventProperties Kh register register_once register_for_session unregister unregister_for_session sd Th td getFeatureFlag getFeatureFlagPayload getFeatureFlagResult getAllFeatureFlags isFeatureEnabled reloadFeatureFlags updateFlags updateEarlyAccessFeatureEnrollment getEarlyAccessFeatures on onFeatureFlags onSurveysLoaded onSessionId getSurveys getActiveMatchingSurveys onActiveMatchingSurveysChanged renderSurvey displaySurvey cancelPendingSurvey canRenderSurvey canRenderSurveyAsync rd identify setPersonProperties unsetPersonProperties group resetGroups setPersonPropertiesForFlags resetPersonPropertiesForFlags setGroupPropertiesForFlags resetGroupPropertiesForFlags reset od shutdown setIdentity clearIdentity get_distinct_id getGroups get_session_id get_session_replay_url alias set_config startSessionRecording stopSessionRecording sessionRecordingStarted captureException addExceptionStep captureLog startExceptionAutocapture stopExceptionAutocapture loadToolbar get_property getSessionProperty ed Bh createPersonProfile setInternalOrTestUser nd oh sh opt_in_capturing opt_out_capturing rh has_opted_in_capturing has_opted_out_capturing get_explicit_consent_status is_capturing clear_opt_in_out_capturing qh debug Hu Os getPageViewId captureTraceFeedback captureTraceMetric wh".split(" "),n=0;n<o.length;n++)g(u,o[n]);e._i.push([i,s,a])},e.__SV=1)}(document,window.posthog||[]);
+    posthog.init('phc_zqdSWCCk6ozgZkBKc2ba3jDBhe6YKoSqCrupk9PMWjma', {
+        api_host: 'https://us.i.posthog.com',
+        defaults: '2026-05-30',
+        person_profiles: 'identified_only', // or 'always' to create profiles for anonymous users as well
+    })
+</script>
 </head>
 <body>
 <nav>
@@ -81,6 +116,22 @@
   <div class="wrap">
     <div class="section-head"><span class="eyebrow">개발자</span><h2 class="h2">이런 고민이 있다면</h2></div>
     <ul class="pains"><li><strong>빌드 환경마다 접속해야 한다</strong><span>Windows 빌드, Linux 배포, GPU 실험을 위해 창을 여러 개 띄워 SSH로 오갑니다.</span></li><li><strong>서버는 놀고 있다</strong><span>Claude Code는 Mac에서만 일하고, 성능 좋은 서버는 대부분 쉬고 있습니다.</span></li><li><strong>OS마다 명령이 다르다</strong><span>셸·경로·인코딩 차이 때문에 스크립트를 OS별로 따로 관리합니다.</span></li></ul>
+  </div>
+</section>
+
+<section class="band" id="visual">
+  <div class="wrap">
+    <div class="section-head"><span class="eyebrow">한눈에 보기</span><h2 class="h2">흩어진 컴퓨터가 한 팀으로 일하는 모습</h2></div>
+    <div class="uc-visuals">
+      <figure class="uc-visual">
+        <a href="/images/uc-multiplatform-build.webp" target="_blank" rel="noopener" aria-label="혼자 만들어도, 컴퓨터는 팀으로 — 원본 크기로 보기"><img src="/images/uc-multiplatform-build.webp" width="1600" height="1067" alt="집 Windows PC, 스튜디오 Linux PC, 연구실 라즈베리파이, GPU 워크스테이션이 DureClaw로 연결되어 앱 빌드·백엔드 테스트·장치 테스트·GPU 작업을 동시에 처리하고, 결과가 한 화면에 모이는 그림" loading="lazy" decoding="async"/></a>
+        <figcaption>
+          <h3>혼자 만들어도, 컴퓨터는 팀으로</h3>
+          <p>혼자 앱을 만들어도 집·작업실·연구실에 흩어진 컴퓨터가 한 팀처럼 움직입니다. Claude Code에 한 번 말하면 DureClaw가 일을 나눠 각 컴퓨터로 보내고, 결과를 한곳에 모읍니다.</p>
+          <ol><li><b>나누기</b> — "Windows 빌드, Linux 백엔드 테스트, 라즈베리파이 장치 테스트, GPU 모델 처리"를 한 번에 지시</li><li><b>동시 실행</b> — 각 컴퓨터가 사설망(Tailscale 등)으로 안전하게 연결되어 같은 시간에 일합니다</li><li><b>결과 모으기</b> — 완료 표시가 한 화면에 차례로 모입니다. 이미 가진 장비를 그대로 씁니다</li></ol>
+        </figcaption>
+      </figure>
+    </div>
   </div>
 </section>
 
@@ -123,7 +174,7 @@
           
           <p class="source">출처 — <a href="/how/">README — 실제 팀</a> · 에이전트 테스트 로그</p>
         </div>
-        <figure class="uc-media"><img src="/screenshots/dureclaw-dashboard-demo.gif" alt="여러 에이전트가 동시에 작업을 받아 처리하는 대시보드 화면" loading="lazy"/><figcaption>대시보드 — 여러 노드가 동시에 작업을 처리</figcaption></figure>
+        <figure class="uc-media"><img width="1731" height="710" src="/screenshots/dureclaw-dashboard-demo.gif" alt="여러 에이전트가 동시에 작업을 받아 처리하는 대시보드 화면" loading="lazy"/><figcaption>대시보드 — 여러 노드가 동시에 작업을 처리</figcaption></figure>
       </article>
       <article class="uc-card no-media scenario">
         <div class="uc-main">
@@ -153,7 +204,7 @@
     <div class="section-head"><span class="eyebrow">다른 대상 보기</span></div>
     <div class="audience-grid others">
       <a class="aud" href="/use-cases/org/">
-        <div class="aud-art"><img src="/images/uc-org.webp" alt="사무실과 공장 현장의 컴퓨터들을 크랩 로봇들이 함께 운영하는 그림" loading="lazy"/></div>
+        <div class="aud-art"><img width="1400" height="933" src="/images/uc-org.webp" alt="사무실과 공장 현장의 컴퓨터들을 크랩 로봇들이 함께 운영하는 그림" loading="lazy"/></div>
         <div class="aud-body">
           <span class="aud-k">회사·조직</span>
           <h3>쓰던 ERP·라이선스 PC·사내망 그대로 AI 자동화</h3>
@@ -162,7 +213,7 @@
         </div>
       </a>
       <a class="aud" href="/use-cases/iot/">
-        <div class="aud-art"><img src="/images/uc-iot.webp" alt="라즈베리파이와 센서, 신호등, 컨베이어를 크랩 로봇들이 지켜보는 공장 현장 그림" loading="lazy"/></div>
+        <div class="aud-art"><img width="1400" height="933" src="/images/uc-iot.webp" alt="라즈베리파이와 센서, 신호등, 컨베이어를 크랩 로봇들이 지켜보는 공장 현장 그림" loading="lazy"/></div>
         <div class="aud-body">
           <span class="aud-k">IoT·현장</span>
           <h3>센서·신호등·생산 라인에서 즉시 판단</h3>
@@ -171,7 +222,7 @@
         </div>
       </a>
       <a class="aud" href="/use-cases/research/">
-        <div class="aud-art"><img src="/images/uc-research.webp" alt="연구실에서 GPU 서버의 모델 비교, 과제 수집, 플레이북 검토와 승인을 하는 그림" loading="lazy"/></div>
+        <div class="aud-art"><img width="1400" height="933" src="/images/uc-research.webp" alt="연구실에서 GPU 서버의 모델 비교, 과제 수집, 플레이북 검토와 승인을 하는 그림" loading="lazy"/></div>
         <div class="aud-body">
           <span class="aud-k">연구·교육</span>
           <h3>측정·비교 실험과 수업 자료 준비</h3>
