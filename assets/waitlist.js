@@ -18,9 +18,12 @@
 
     const envs = [...form.querySelectorAll('input[name=env]:checked')].map((i) => i.value);
     btn.disabled = true; say('보내는 중…');
+    const ctrl = new AbortController();
+    const timer = setTimeout(() => ctrl.abort(), 20000);  // 응답이 없으면 20초 뒤 실패 처리
     try {
       const res = await fetch(API, {
         method: 'POST',
+        signal: ctrl.signal,
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
           form_id: FORM_ID,
@@ -38,6 +41,7 @@
       });
       const out = await res.json().catch(() => ({}));
       if (!res.ok || out.success === false) throw new Error(out.error || res.status);
+      say('');
       form.reset();
       form.hidden = true;
       document.getElementById('wl-done').hidden = false;
@@ -46,6 +50,7 @@
       say('전송하지 못했습니다. 잠시 후 다시 시도하거나 admin@baryon.ai 로 메일 주세요.', 'error');
       try { window.posthog && posthog.capture('waitlist_failed', { error: String(err) }); } catch (_) {}
     } finally {
+      clearTimeout(timer);
       btn.disabled = false;
     }
   });

@@ -546,6 +546,7 @@ main + .lb-bg + footer, main ~ footer { margin-top: 0; }
 .wl-hp { position: absolute; left: -9999px; width: 1px; height: 1px; opacity: 0; }
 .wl-status { margin: 0; font-size: 14px; color: var(--ink-3); min-height: 1.2em; }
 .wl-status[data-kind="error"] { color: #b42318; }
+.wl-form[hidden], .wl-done[hidden] { display: none; }
 .wl-done h3 { margin: 0; }
 @media (max-width: 900px) { .wl { grid-template-columns: 1fr; } .wl-row { grid-template-columns: 1fr; } }
 
