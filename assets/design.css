@@ -548,3 +548,25 @@ main + .lb-bg + footer, main ~ footer { margin-top: 0; }
 .wl-status[data-kind="error"] { color: #b42318; }
 .wl-done h3 { margin: 0; }
 @media (max-width: 900px) { .wl { grid-template-columns: 1fr; } .wl-row { grid-template-columns: 1fr; } }
+
+/* ═══ 홈: 브라우저·데스크톱 손 (webclaw · deskclaw) ═══════════════════════ */
+.claws { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: clamp(16px, 1.8vw, 24px); }
+@media (max-width: 920px) { .claws { grid-template-columns: 1fr; } }
+.claw { background: #fff; border: 1px solid var(--line); border-radius: var(--radius); overflow: hidden; display: grid; grid-template-rows: auto 1fr; }
+.claw-media { position: relative; aspect-ratio: 16 / 9; background: var(--paper-2); border-bottom: 1px solid var(--line); display: grid; place-items: center; overflow: hidden; }
+.claw-media img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.claw-media.dark { background: var(--night); }
+/* 세로로 긴 실제 시연 GIF 를 잘리지 않게 틀 안에 통째로 */
+.claw-media.dark img { position: absolute; inset: 4% 0; width: 100%; height: 92%; object-fit: contain; }
+.claw-tag { position: absolute; left: 14px; top: 14px; font-size: 14px; font-weight: 700; color: #fff; background: rgba(228, 87, 46, .92); border-radius: 999px; padding: 3px 12px; }
+.claw-body { padding: clamp(22px, 2.4vw, 32px); display: grid; gap: 12px; align-content: start; }
+.claw-top { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 10px; }
+.claw-top h3 { font-size: clamp(22px, 0.9vw + 16px, 27px); font-weight: 800; letter-spacing: -0.035em; line-height: 1.25; }
+.claw-top h3 span { font-size: .62em; font-weight: 650; color: var(--ink-3); letter-spacing: -0.01em; margin-left: 6px; }
+.claw-chip { font-size: 14px; font-weight: 650; color: var(--ink-2); background: var(--paper-2); border: 1px solid var(--line); border-radius: 999px; padding: 3px 12px; }
+.claw-one { font-size: 17px; color: var(--ink); font-weight: 550; line-height: 1.65; }
+.claw .checks { margin: 6px 0 4px; gap: 12px; }
+.claw .checks li { font-size: 15.5px; }
+.claw .checks li strong { font-size: 16px; }
+.claw-links { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 12px 16px; margin-top: 4px; }
+.claw-links .btn { min-height: 44px; font-size: 15px; padding: 0 18px; }
