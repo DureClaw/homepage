@@ -536,13 +536,14 @@ main + .lb-bg + footer, main ~ footer { margin-top: 0; }
 .wl-row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
 .wl-field { display: grid; gap: 6px; font-size: 15px; font-weight: 600; color: var(--ink-2); border: 0; margin: 0; padding: 0; min-width: 0; }
 .wl-field b { color: var(--accent); }
-.wl-field input, .wl-field textarea { font: inherit; font-weight: 400; color: var(--ink); background: var(--paper); border: 1px solid var(--line-2); border-radius: var(--radius-sm); padding: 11px 13px; width: 100%; box-sizing: border-box; }
-.wl-field input:focus, .wl-field textarea:focus { outline: 2px solid var(--accent); outline-offset: 1px; border-color: transparent; }
+.wl-field input, .wl-field textarea, .wl-field select { font: inherit; font-weight: 400; color: var(--ink); background: var(--paper); border: 1px solid var(--line-2); border-radius: var(--radius-sm); padding: 11px 13px; width: 100%; box-sizing: border-box; }
+.wl-field input:focus, .wl-field textarea:focus, .wl-field select:focus { outline: 2px solid var(--accent); outline-offset: 1px; border-color: transparent; }
 .wl-envs { display: flex; flex-wrap: wrap; gap: 8px 16px; }
 .wl-envs legend { margin-bottom: 6px; }
-.wl-envs label { display: inline-flex; gap: 6px; align-items: center; font-weight: 500; }
+.wl-envs label { display: inline-flex; gap: 6px; align-items: center; font-weight: 500; white-space: nowrap; }
 .wl-agree { display: flex; gap: 8px; align-items: flex-start; font-size: 13.5px; color: var(--ink-3); line-height: 1.6; }
 .wl-agree input { margin-top: 3px; }
+.wl-agree b { color: var(--ink-2); font-weight: 600; }
 .wl-hp { position: absolute; left: -9999px; width: 1px; height: 1px; opacity: 0; }
 .wl-status { margin: 0; font-size: 14px; color: var(--ink-3); min-height: 1.2em; }
 .wl-status[data-kind="error"] { color: #b42318; }
