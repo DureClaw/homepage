@@ -529,3 +529,22 @@ main + .lb-bg + footer, main ~ footer { margin-top: 0; }
 .case-group span { font-size: 14px; font-weight: 700; color: var(--ink-3); background: var(--paper); border: 1px solid var(--line); border-radius: 999px; padding: 1px 10px; }
 /* 세로로 긴 시연 화면(예: RPA 계산기)이 카드를 늘리지 않게 높이 상한 */
 .uc-media img { max-height: 440px; width: auto; max-width: 100%; margin-inline: auto; object-fit: contain; }
+
+/* 웨이팅리스트 */
+.wl { display: grid; grid-template-columns: 1fr 1.1fr; gap: clamp(28px, 4vw, 56px); align-items: start; }
+.wl-form, .wl-done { background: #fff; border: 1px solid var(--line); border-radius: var(--radius); padding: clamp(20px, 2.4vw, 32px); display: grid; gap: 16px; }
+.wl-row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+.wl-field { display: grid; gap: 6px; font-size: 15px; font-weight: 600; color: var(--ink-2); border: 0; margin: 0; padding: 0; min-width: 0; }
+.wl-field b { color: var(--accent); }
+.wl-field input, .wl-field textarea { font: inherit; font-weight: 400; color: var(--ink); background: var(--paper); border: 1px solid var(--line-2); border-radius: var(--radius-sm); padding: 11px 13px; width: 100%; box-sizing: border-box; }
+.wl-field input:focus, .wl-field textarea:focus { outline: 2px solid var(--accent); outline-offset: 1px; border-color: transparent; }
+.wl-envs { display: flex; flex-wrap: wrap; gap: 8px 16px; }
+.wl-envs legend { margin-bottom: 6px; }
+.wl-envs label { display: inline-flex; gap: 6px; align-items: center; font-weight: 500; }
+.wl-agree { display: flex; gap: 8px; align-items: flex-start; font-size: 13.5px; color: var(--ink-3); line-height: 1.6; }
+.wl-agree input { margin-top: 3px; }
+.wl-hp { position: absolute; left: -9999px; width: 1px; height: 1px; opacity: 0; }
+.wl-status { margin: 0; font-size: 14px; color: var(--ink-3); min-height: 1.2em; }
+.wl-status[data-kind="error"] { color: #b42318; }
+.wl-done h3 { margin: 0; }
+@media (max-width: 900px) { .wl { grid-template-columns: 1fr; } .wl-row { grid-template-columns: 1fr; } }
