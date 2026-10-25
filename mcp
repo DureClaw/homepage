@@ -14,7 +14,7 @@ set -euo pipefail
 
 OAH_DIR="$HOME/.oah"
 MCP_DIR="$OAH_DIR/mcp"
-MCP_REPO="https://raw.githubusercontent.com/DureClaw/dureclaw-mcp/main"
+MCP_REPO="https://raw.githubusercontent.com/DureClaw/dureclaw/main"
 
 # ─── 인자 파싱 ────────────────────────────────────────────────────────────────
 
@@ -70,7 +70,7 @@ else
   # 원격 다운로드
   echo "📥 oah-mcp 다운로드 중..."
   mkdir -p "$MCP_DIR"
-  curl -fsSL "$MCP_REPO/src/index.ts" -o "$MCP_DIR/index.ts"
+  curl -fsSL "$MCP_REPO/mcp/src/index.ts" -o "$MCP_DIR/index.ts"
   # package.json + 의존성
   cat > "$MCP_DIR/package.json" <<'JSON'
 {
