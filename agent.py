@@ -11,6 +11,12 @@ Phoenix 5-tuple protocol: [join_ref, ref, topic, event, payload]
   WK            Work Key (없으면 자동 발견)
   PROJECT_DIR   작업 디렉토리 (기본: $HOME)
   AGENT_BACKEND AI 백엔드 강제 지정 (claude|pi|opencode|aider|zeroclaw|auto)
+  OAH_SECRET    인증 토큰 (있으면 WS ?token= 으로 전달)
+  METRICS_INTERVAL  metrics.update 주기(초, 기본 30)
+
+센서값 보내기 (docs/SPEC_control-panel.md §4):
+  agent.send_telemetry([{"metric": "distance_cm", "value": 42.1, "unit": "cm"}])
+  또는 PhoenixAgent(wk, local_loop=my_coro) — 연결될 때마다 my_coro(agent) 를 함께 돌린다.
 """
 
 import asyncio
@@ -49,6 +55,9 @@ except ImportError:
 
 # ─── 설정 ─────────────────────────────────────────────────────────────────────
 
+# 루트 VERSION 파일과 같은 값 (릴리스 때 함께 올린다)
+VERSION = "0.5.1"
+
 HOSTNAME = socket.gethostname().split(".")[0]
 
 # PHOENIX env (setup-agent.sh에서 설정) 또는 STATE_SERVER (JS daemon 호환)
@@ -69,6 +78,9 @@ AGENT_BACKEND = os.environ.get("AGENT_BACKEND") or "auto"
 # needed — ideal for armv6 Pi Zero, which can't run pi locally).
 BRAIN_URL = os.environ.get("BRAIN_URL") or ""
 BRAIN_TOKEN = os.environ.get("BRAIN_TOKEN") or ""
+
+TOKEN = os.environ.get("OAH_SECRET") or ""
+METRICS_INTERVAL = int(os.environ.get("METRICS_INTERVAL") or 30)  # seconds
 
 HEARTBEAT_INTERVAL = 30   # seconds
 MAX_RECONNECT_DELAY = 30  # seconds
@@ -112,10 +124,13 @@ def next_ref() -> str:
     _ref_counter += 1
     return str(_ref_counter)
 
+def _auth() -> dict:
+    return {"Authorization": f"Bearer {TOKEN}"} if TOKEN else {}
+
 def http_get(path: str, timeout: int = 5):
     url = f"{HTTP_BASE}{path}"
     try:
-        req = Request(url, headers={"Accept": "application/json"})
+        req = Request(url, headers={"Accept": "application/json", **_auth()})
         with urlopen(req, timeout=timeout) as resp:
             return json.loads(resp.read().decode())
     except Exception:
@@ -128,6 +143,7 @@ def http_post(path: str, body: dict | None = None, timeout: int = 5):
         req = Request(url, data=data, headers={
             "Content-Type": "application/json",
             "Accept": "application/json",
+            **_auth(),
         }, method="POST")
         with urlopen(req, timeout=timeout) as resp:
             return json.loads(resp.read().decode())
@@ -158,6 +174,93 @@ async def discover_work_key() -> str:
 
     raise RuntimeError("Work Key를 찾을 수 없습니다. PHOENIX 서버에 Work Key가 없거나 오케스트레이터가 아직 시작하지 않았습니다.")
 
+# ─── 기기 지표 (SPEC_control-panel §6) ─────────────────────────────────────────
+
+def _iso_now() -> str:
+    return time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime())
+
+def _read(path: str) -> str:
+    try:
+        with open(path) as f:
+            return f.read()
+    except OSError:
+        return ""
+
+def _cpu_ticks():
+    """/proc/stat 첫 줄 → (idle, total). 리눅스가 아니면 None."""
+    line = _read("/proc/stat").split("\n", 1)[0]
+    if not line.startswith("cpu "):
+        return None
+    vals = [int(x) for x in line.split()[1:]]
+    idle = vals[3] + (vals[4] if len(vals) > 4 else 0)  # idle + iowait
+    return idle, sum(vals[:8])
+
+_last_cpu = _cpu_ticks()
+
+def cpu_pct():
+    global _last_cpu
+    now = _cpu_ticks()
+    prev, _last_cpu = _last_cpu, now
+    if not now or not prev or now[1] <= prev[1]:
+        return None
+    d_total = now[1] - prev[1]
+    d_idle = now[0] - prev[0]
+    return round(max(0.0, min(100.0, (1 - d_idle / d_total) * 100)), 1)
+
+def temp_c():
+    """SoC 온도: /sys/class/thermal → vcgencmd 순. 없으면 None."""
+    raw = _read("/sys/class/thermal/thermal_zone0/temp").strip()
+    if raw.isdigit() and int(raw) > 0:
+        return round(int(raw) / 1000, 1)
+    try:
+        out = subprocess.run(["vcgencmd", "measure_temp"], capture_output=True,
+                             text=True, timeout=3).stdout
+        m = re.search(r"temp=([\d.]+)", out)
+        return float(m.group(1)) if m else None
+    except (OSError, subprocess.SubprocessError):
+        return None
+
+def disk_usage():
+    try:
+        st = os.statvfs(PROJECT_DIR)
+    except (OSError, AttributeError):
+        return None
+    total = st.f_blocks * st.f_frsize
+    avail = st.f_bavail * st.f_frsize
+    gb = lambda b: round(b / 1024 ** 3, 1)
+    return {"total_gb": gb(total), "used_gb": gb(total - avail)}
+
+def ram_usage():
+    mem = _read("/proc/meminfo")
+    def kb(key):
+        m = re.search(rf"{key}:\s+(\d+)", mem)
+        return int(m.group(1)) if m else 0
+    total, avail = kb("MemTotal"), kb("MemAvailable")
+    if not total:
+        return None
+    return {"total_mb": round(total / 1024), "used_mb": round((total - avail) / 1024)}
+
+def uptime_s():
+    raw = _read("/proc/uptime").split()
+    return int(float(raw[0])) if raw else None
+
+def collect_metrics() -> dict:
+    m = {
+        "ts": int(time.time() * 1000),
+        "cpu_pct": cpu_pct(),
+        "disk": disk_usage(),
+        "uptime_s": uptime_s(),
+        "temp_c": temp_c(),
+    }
+    try:
+        m["load1"] = round(os.getloadavg()[0], 2)
+    except (OSError, AttributeError):
+        m["load1"] = None
+    ram = ram_usage()
+    if ram:
+        m["ram"] = ram
+    return m
+
 # ─── 실행 중인 태스크 추적 ─────────────────────────────────────────────────────
 
 active_tasks: dict[str, asyncio.subprocess.Process] = {}  # task_id → process
@@ -165,13 +268,42 @@ active_tasks: dict[str, asyncio.subprocess.Process] = {}  # task_id → process
 # ─── Phoenix 채널 클라이언트 ──────────────────────────────────────────────────
 
 class PhoenixAgent:
-    def __init__(self, work_key: str):
+    def __init__(self, work_key: str, local_loop=None):
+        """local_loop: 선택. `async def loop(agent)` — 연결될 때마다 함께 돌린다
+        (센서 읽기 → agent.send_telemetry(...) 같은 기기 로컬 루프용)."""
         self.work_key = work_key
         self.topic = f"work:{work_key}"
         self.join_ref = "1"
         self.ws = None
         self._heartbeat_task: asyncio.Task | None = None
+        self._bg_tasks: list[asyncio.Task] = []
         self._send_lock = asyncio.Lock()
+        self.local_loop = local_loop
+
+    async def send_telemetry(self, points: list[dict]):
+        """센서값 전송 (SPEC §4): points = [{"metric","value","unit"[, "ts"]}]. ts 없으면 지금."""
+        pts = []
+        for p in points:
+            if not isinstance(p, dict) or "metric" not in p or "value" not in p:
+                continue
+            q = dict(p)
+            q.setdefault("ts", _iso_now())
+            pts.append(q)
+        if pts and self.ws:
+            await self.send_event("telemetry", {"points": pts})
+
+    async def metrics_loop(self):
+        """30초마다 metrics.update (JS daemon 과 같은 모양)."""
+        await asyncio.sleep(5)
+        while True:
+            if self.ws:
+                try:
+                    await self.send_event("metrics.update", {
+                        "agent": NAME, "machine": HOSTNAME, "metrics": collect_metrics(),
+                    })
+                except Exception as e:
+                    print(f"[metrics] send error: {e}")
+            await asyncio.sleep(METRICS_INTERVAL)
 
     async def send(self, msg: list):
         async with self._send_lock:
@@ -188,10 +320,13 @@ class PhoenixAgent:
         msg = [ref, ref, self.topic, "phx_join", {
             "agent_name": NAME,
             "role": ROLE,
-            "machine": "rpi-zero-w",
+            "machine": HOSTNAME,
             "capabilities": ["python3", "shell"] + (
                 [DETECTED_BACKEND] if DETECTED_BACKEND != "none" else []
             ),
+            "version": VERSION,
+            "os": platform.system().lower(),
+            "arch": platform.machine(),
         }]
         await self.send(msg)
         print(f"[daemon] sent phx_join → {self.topic}")
@@ -394,7 +529,7 @@ class PhoenixAgent:
 
     async def run(self):
         delay = 1
-        ws_url = f"{WS_BASE}/socket/websocket?vsn=2.0.0"
+        ws_url = f"{WS_BASE}/socket/websocket?vsn=2.0.0" + (f"&token={TOKEN}" if TOKEN else "")
 
         while True:
             try:
@@ -406,6 +541,9 @@ class PhoenixAgent:
                     await self.join()
 
                     self._heartbeat_task = asyncio.create_task(self.heartbeat_loop())
+                    self._bg_tasks = [asyncio.create_task(self.metrics_loop())]
+                    if self.local_loop:
+                        self._bg_tasks.append(asyncio.create_task(self.local_loop(self)))
 
                     async for raw in ws:
                         await self.handle_message(raw)
@@ -418,6 +556,9 @@ class PhoenixAgent:
                 if self._heartbeat_task:
                     self._heartbeat_task.cancel()
                     self._heartbeat_task = None
+                for t in self._bg_tasks:
+                    t.cancel()
+                self._bg_tasks = []
                 self.ws = None
 
             print(f"[daemon] reconnect in {delay}s...")

@@ -51,8 +51,9 @@ if ($env:JOIN) {
 }
 
 # ── Discover server (zero-config) ─────────────────────────────────────────────
-# No $PHOENIX given → auto-find: (1) mDNS oah.local on the LAN,
-# (2) scan online Tailscale peers for one running DureClaw on :4000.
+# No $PHOENIX given → find every DureClaw server reachable from here (this PC + online
+# Tailscale peers' :4000). Exactly one → use it. Several → ask which one (servers are
+# told apart by /api/health server_name). None → last resort: oah.local on the LAN.
 
 function Test-OahServer($base) {
     try {
@@ -62,35 +63,51 @@ function Test-OahServer($base) {
     return $null
 }
 
-# (1) LAN — mDNS oah.local
 if (-not $Phoenix) {
-    Write-Host "-> discovering: trying oah.local (LAN mDNS)..."
-    $r = Test-OahServer "http://oah.local:4000"
-    if ($r) { $Phoenix = "ws://oah.local:4000"; Write-Host "-> found oah.local (v$($r.version))" }
-}
-
-# (2) Tailscale — scan online peers' :4000 (broadcast can't cross WireGuard, so we probe)
-if (-not $Phoenix) {
+    $cands = @(@{ ip = "127.0.0.1"; name = "this PC" })
     $tsExe = (Get-Command tailscale -ErrorAction SilentlyContinue).Source
     if (-not $tsExe -and (Test-Path "C:\Program Files\Tailscale\tailscale.exe")) {
         $tsExe = "C:\Program Files\Tailscale\tailscale.exe"
     }
     if ($tsExe) {
-        Write-Host "-> discovering: scanning Tailscale peers..."
         try {
             $status = (& $tsExe status --json 2>$null | Out-String) | ConvertFrom-Json
-            $ips = @()
             foreach ($p in $status.Peer.PSObject.Properties.Value) {
                 if ($p.Online -and $p.TailscaleIPs) {
                     $v4 = $p.TailscaleIPs | Where-Object { $_ -like "100.*" } | Select-Object -First 1
-                    if ($v4) { $ips += @{ ip = $v4; name = $p.HostName } }
+                    if ($v4) { $cands += @{ ip = $v4; name = $p.HostName } }
                 }
             }
-            foreach ($e in $ips) {
-                $r = Test-OahServer "http://$($e.ip):4000"
-                if ($r) { $Phoenix = "ws://$($e.ip):4000"; Write-Host "-> found DureClaw on $($e.name) ($($e.ip), v$($r.version))"; break }
-            }
         } catch {}
+    }
+    Write-Host "-> discovering: probing $($cands.Count) candidate(s) for a DureClaw server..."
+    $found = @(); $seen = @{}
+    foreach ($c in $cands) {
+        $r = Test-OahServer "http://$($c.ip):4000"
+        if (-not $r) { continue }
+        $id = if ($r.server_id) { $r.server_id } else { $c.ip }
+        if ($seen.ContainsKey($id)) { continue }
+        $seen[$id] = $true
+        $label = if ($r.server_name) { $r.server_name } else { $c.name }
+        $found += @{ url = "ws://$($c.ip):4000"; label = "$label [$($c.ip) v$($r.version)]" }
+    }
+    if ($found.Count -eq 1) {
+        $Phoenix = $found[0].url; Write-Host "-> found $($found[0].label)"
+    } elseif ($found.Count -gt 1) {
+        Write-Host "-> found $($found.Count) servers:"
+        for ($i = 0; $i -lt $found.Count; $i++) { Write-Host ("   [{0}] {1}" -f ($i + 1), $found[$i].label) }
+        $pick = $null
+        try { if ([Environment]::UserInteractive -and $Host.UI.RawUI) { $pick = Read-Host "Connect to which server? (number)" } } catch {}
+        if ($pick -match '^\d+$' -and [int]$pick -ge 1 -and [int]$pick -le $found.Count) {
+            $Phoenix = $found[[int]$pick - 1].url
+        } else {
+            Write-Host "Several servers found - not picking one automatically. Choose and re-run:"
+            foreach ($f in $found) { Write-Host "  `$env:PHOENIX=`"$($f.url)`"   # $($f.label)" }
+            exit 1
+        }
+    } else {
+        $r = Test-OahServer "http://oah.local:4000"
+        if ($r) { $Phoenix = "ws://oah.local:4000"; Write-Host "-> found oah.local on the LAN (v$($r.version))" }
     }
 }
 

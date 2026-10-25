@@ -89,6 +89,7 @@
         <a href="/developers/">개발자</a>
         <a href="/changelog/" class="active">Changelog</a>
         <a href="/how/">문서</a>
+        <a href="/pricing/">요금</a>
         <a href="/#waitlist">대기 신청</a>
       </div>
       <a href="https://github.com/dureclaw/dureclaw" class="nav-gh" target="_blank">GitHub ↗</a>
@@ -113,7 +114,23 @@
     <div class="cl-grid">
 
       <div class="cl-card">
-        <div class="cl-card-ver">v0.5.0 <span class="cl-badge">latest</span></div>
+        <div class="cl-card-ver">v0.5.1 <span class="cl-badge">latest</span></div>
+        <div class="cl-card-date">2026-10-26</div>
+        <ul class="cl-items">
+          <li><span class="cl-tag feat">feature</span><b>개인판 무료</b>(1인·서버 포함 2대) — dureclaw + webclaw + deskclaw 통합 설치(Mac·Windows), 서버 앱 메뉴에서 데스크톱 손·브라우저 손 바로 연결</li>
+          <li><span class="cl-tag feat">feature</span><b>엔터프라이즈</b> — 3대 이상 동시 병렬·조직 사용, 문의 후 별도 빌드 전달 · <a href="/pricing/">요금</a> · <a href="/terms/">이용약관</a></li>
+          <li><span class="cl-tag sec">security</span>같은 컴퓨터 신뢰를 브라우저 교차 출처·DNS 리바인딩에서 차단, 노드 토큰의 지시·승인·이름 위장·남의 메일함 꺼내기 차단, 비밀값 상수 시간 비교, plug_crypto 2.2.1</li>
+          <li><span class="cl-tag fix">fix</span>방송된 메일함 메시지를 받는 사람만 실행, 제어판 보내기 권한 오류(master_required) 해결, AI 답변에 "실제 실행 아님" 표시</li>
+          <li><span class="cl-tag feat">feature</span><b>Windows 서버 설치 프로그램</b> — 트레이 앱 · 제어판(기기·보내기·결과·소통 로그·승인·기기 추가) · 알림 · 업데이트, 관리자 권한 불필요</li>
+          <li><span class="cl-tag feat">feature</span>제어판 — 여러 기기에 한 번에 보내기, 꺼진 기기는 보관 후 전달, 결과 한 화면, 소통 로그 Markdown·CSV 내보내기</li>
+          <li><span class="cl-tag feat">feature</span>서버 고유 이름·ID (<code>/api/health</code> 의 <code>server_id</code>·<code>server_name</code>) — 사설망에 서버가 여럿일 때 구분</li>
+          <li><span class="cl-tag fix">fix</span>제어판 화면이 붙을 때 “노드 접속” 알림이 뜨던 문제 (관찰자 접속은 알리지 않음)</li>
+          <li><span class="cl-tag fix">fix</span>서버 첫 화면(<code>/</code>)을 사용자용 제어판으로 — 운영자 대시보드는 <code>/dashboard</code></li>
+        </ul>
+      </div>
+
+      <div class="cl-card">
+        <div class="cl-card-ver">v0.5.0</div>
         <div class="cl-card-date">2026-06-16</div>
         <ul class="cl-items">
           <li><span class="cl-tag feat">feature</span>5단계 학습 루프 — 관측→종합→목적화→지식화→<b>학습·선택</b> (승인이 아니라 사람이 학습)</li>
@@ -185,7 +202,7 @@
   <div class="container">
     <div class="footer-inner">
       <div class="footer-left">
-        <strong>DureClaw (두레클로)</strong> · MIT License · Seungwoo Hong (홍승우)
+        <strong>DureClaw (두레클로)</strong> · 개인판 무료 · 엔터프라이즈 문의 · <a href="/terms/">이용약관</a> · Seungwoo Hong (홍승우)
       </div>
       <div class="footer-links">
         <a href="https://github.com/dureclaw/dureclaw" target="_blank">GitHub</a>

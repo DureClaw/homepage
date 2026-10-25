@@ -31,6 +31,7 @@
           form_id: FORM_ID,
           // 키를 한글로 보내야 알림 메일에 한글 항목명으로 보인다. 빈 칸도 '-' 로 남겨 항목이 빠지지 않게 한다.
           data: {
+            '구분': v('kind') === '-' ? '웨이팅리스트' : v('kind'),   // 엔터프라이즈 문의 페이지는 숨은 kind 값을 보낸다
             email,                    // 'email'·'name' 키는 서비스가 '이메일'·'이름'으로 표시하고 회신 주소로 쓴다
             name: v('name'),
             '전화번호': v('phone'),
@@ -54,7 +55,7 @@
       form.reset();
       form.hidden = true;
       document.getElementById('wl-done').hidden = false;
-      try { window.posthog && posthog.capture('waitlist_submitted', { environments: envs, newsletter: form.newsletter.checked }); } catch (_) {}
+      try { window.posthog && posthog.capture(form.elements.kind ? 'enterprise_inquiry_submitted' : 'waitlist_submitted', { environments: envs, newsletter: form.newsletter.checked }); } catch (_) {}
     } catch (err) {
       say('전송하지 못했습니다. 잠시 후 다시 시도하거나 admin@baryon.ai 로 메일 주세요.', 'error');
       try { window.posthog && posthog.capture('waitlist_failed', { error: String(err) }); } catch (_) {}

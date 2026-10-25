@@ -54,7 +54,7 @@
   "operatingSystem": "macOS, Windows, Linux, Raspberry Pi",
   "url": "https://dureclaw.baryon.ai/",
   "image": "https://dureclaw.baryon.ai/screenshots/hero-banner.jpg",
-  "description": "분산 디바이스를 하나의 협력 AI 크루로 묶는 오픈소스 시스템. 마스터(Claude)가 두뇌, 각 노드(claw)가 물리·브라우저·데스크톱의 손이 된다. keyless 엣지 + 결정 동결(LLM as compiler).",
+  "description": "분산 디바이스를 하나의 협력 AI 크루로 묶는 시스템 (개인판 무료: 1인·서버 포함 2대). 마스터(Claude)가 두뇌, 각 노드(claw)가 물리·브라우저·데스크톱의 손이 된다. keyless 엣지 + 결정 동결(LLM as compiler).",
   "softwareVersion": "0.4.0",
   "isAccessibleForFree": true,
   "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
@@ -75,7 +75,7 @@
     {
       "@type": "Question",
       "name": "DureClaw가 무엇인가요?",
-      "acceptedAnswer": { "@type": "Answer", "text": "DureClaw는 흩어진 여러 머신(Mac·GPU 서버·Linux·Windows·라즈베리파이)을 하나의 실시간 협력 버스(Phoenix WebSocket)로 묶어 협력 AI 크루로 만드는 오픈소스 시스템입니다. Claude Code 네이티브 플러그인으로 제공되며, 한 줄 설치로 멀티머신 AI 팀을 구성합니다. 마스터(Claude)가 두뇌 역할로 추론·제안하고, 각 노드(claw)가 서로 다른 손이 됩니다." }
+      "acceptedAnswer": { "@type": "Answer", "text": "DureClaw는 흩어진 여러 머신(Mac·GPU 서버·Linux·Windows·라즈베리파이)을 하나의 실시간 협력 버스(Phoenix WebSocket)로 묶어 협력 AI 크루로 만드는 시스템입니다. 개인판은 1인·서버 포함 2대까지 무료이고, 3대 이상은 엔터프라이즈 문의입니다. Claude Code 네이티브 플러그인으로 제공되며, 한 줄 설치로 멀티머신 AI 팀을 구성합니다. 마스터(Claude)가 두뇌 역할로 추론·제안하고, 각 노드(claw)가 서로 다른 손이 됩니다." }
     },
     {
       "@type": "Question",
@@ -127,6 +127,7 @@
         <a href="/showcase/">데모</a>
         <a href="/developers/">개발자</a>
         <a href="/changelog/">Changelog</a>
+        <a href="/pricing/">요금</a>
         <a href="/#waitlist">대기 신청</a>
       </div>
       <a href="https://github.com/dureclaw/dureclaw" class="nav-gh" target="_blank">GitHub ↗</a>
@@ -140,7 +141,7 @@
 <header class="h-hero">
   <div class="wrap h-hero-grid">
     <div>
-      <span class="h-badge rise"><b>v0.4.6</b> Claude Code 네이티브 · 오픈소스</span>
+      <span class="h-badge rise"><b>v0.5.1</b> Claude Code 네이티브 · 개인판 무료</span>
       <h1 class="h-title rise d1">내 모든 컴퓨터가<br/><em>하나의 AI 팀</em>으로</h1>
       <p class="h-sub rise d2">Mac에서 Claude에게 말하세요. 연결된 컴퓨터들이 작업을 나눠 동시에 처리합니다.</p>
       <div class="h-actions rise d3">
@@ -165,14 +166,15 @@
   <div class="wrap">
     <div class="section-head">
       <span class="eyebrow">설치</span>
-      <h2 class="h2">Mac 한 대에 서버를, 나머지는 <span class="serif">teammates</span>로</h2>
+      <h2 class="h2">한 대에 서버를, 나머지는 <span class="serif">teammates</span>로</h2>
     </div>
     <div class="install-grid" id="download">
       <div class="i-card primary">
-        <div class="i-step">① 본부 · MAC</div>
-        <div class="i-title"><span class="ico">🍎</span>서버 앱 설치</div>
-        <p class="i-desc">팀을 지휘할 Mac에 설치하세요. 실행하면 메뉴 막대에서 서버가 시작됩니다.</p>
-        <a class="btn btn-accent" href="https://github.com/DureClaw/homepage/releases/latest/download/DureClaw-Server-mac-arm64.dmg" download>Mac용 다운로드 <span class="sub">Apple Silicon</span></a>
+        <div class="i-step">① 본부 · MAC 또는 WINDOWS</div>
+        <div class="i-title"><span class="ico">🧭</span>서버 앱 설치</div>
+        <p class="i-desc">팀을 지휘할 컴퓨터 한 대에 설치하세요. 실행하면 메뉴 막대(Mac)·트레이(Windows)에서 서버가 시작되고, 제어판에서 기기·작업·소통 로그를 봅니다.</p>
+        <a class="btn btn-accent" href="https://github.com/DureClaw/homepage/releases/latest/download/DureClaw-Server-mac-arm64.dmg" download>Mac용 서버 <span class="sub">Apple Silicon</span></a>
+        <a class="btn btn-accent" href="https://github.com/DureClaw/homepage/releases/latest/download/DureClaw-Server-Setup.exe" download style="margin-top:8px">Windows용 서버 <span class="sub">x64</span></a>
       </div>
       <div class="i-card">
         <div class="i-step">② 팀원 · WINDOWS</div>
@@ -183,13 +185,14 @@
       <div class="i-card">
         <div class="i-step">② 팀원 · LINUX · 라즈베리파이 · MAC</div>
         <div class="i-title"><span class="ico">🐧</span>한 줄 명령</div>
-        <p class="i-desc">터미널에 명령어를 붙여 넣으세요. 서버 주소는 Mac 앱의 ‘노드 연결 주소 복사’에서 확인하세요.</p>
+        <p class="i-desc">터미널에 명령어를 붙여 넣으세요. 서버 주소는 서버 앱의 ‘노드 연결 주소 복사’에서 확인하세요.</p>
         <div class="cmd">
           <code><span class="k">PHOENIX</span>=ws://서버주소:4000 bash &lt;(curl -fsSL https://dureclaw.baryon.ai/agent)</code>
           <button class="copy-btn" onclick="copyCmd(this, 'PHOENIX=ws://서버주소:4000 bash <(curl -fsSL https://dureclaw.baryon.ai/agent)')">복사</button>
         </div>
       </div>
     </div>
+    <p class="install-alt"><b>개인판 무료</b> — 1인·서버 포함 2대까지, dureclaw·webclaw·deskclaw 한 번에. 3대 이상 동시 병렬·조직 사용은 <a href="/enterprise/">엔터프라이즈 문의</a> · <a href="/pricing/">요금 보기 →</a></p>
     <p class="install-alt">터미널이 편하다면 Mac 서버도 한 줄로 — <code>bash &lt;(curl -fsSL https://dureclaw.baryon.ai/install)</code> · <a href="/start/">플랫폼별 자세한 설치 →</a></p>
   </div>
 </section>
@@ -498,7 +501,7 @@
 <footer>
   <div class="container">
     <div class="footer-inner">
-      <div class="footer-left"><strong>DureClaw (두레클로)</strong> · MIT License · Seungwoo Hong (홍승우)</div>
+      <div class="footer-left"><strong>DureClaw (두레클로)</strong> · 개인판 무료 · 엔터프라이즈 문의 · <a href="/terms/">이용약관</a> · Seungwoo Hong (홍승우)</div>
       <div class="footer-links">
         <a href="https://github.com/dureclaw/dureclaw" target="_blank">GitHub</a>
         <a href="/how/">방법론</a>

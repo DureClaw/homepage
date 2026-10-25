@@ -24,17 +24,35 @@ NAME="${NAME:-${ROLE}@$(hostname -s 2>/dev/null || hostname)}"
 # ─── Tailscale 피어 TUI ────────────────────────────────────────────────────────
 
 _ts_online_peers() {
+  # 온라인 피어 중 실제로 DureClaw 서버(:4000/api/health)가 응답하는 것만 — 서버 이름으로 구분
   local ts
   ts=$(command -v tailscale 2>/dev/null) || return
   "$ts" status --json 2>/dev/null \
     | python3 -c "
-import sys, json
+import sys, json, urllib.request
+from concurrent.futures import ThreadPoolExecutor
 data = json.load(sys.stdin)
+peers = [('이 컴퓨터', '127.0.0.1')]
 for v in (data.get('Peer') or {}).values():
-    if v.get('Online'):
-        ips = v.get('TailscaleIPs', [])
-        ip = ips[0] if ips else ''
-        print(v.get('HostName','?') + '  [' + ip + ']|ws://' + ip + ':4000')
+    ips = [i for i in v.get('TailscaleIPs', []) if '.' in i]
+    if v.get('Online') and ips:
+        peers.append((v.get('HostName', '?'), ips[0]))
+def probe(p):
+    try:
+        with urllib.request.urlopen('http://%s:4000/api/health' % p[1], timeout=2) as r:
+            h = json.load(r)
+        return (p, h) if h.get('ok') else None
+    except Exception:
+        return None
+seen = set()
+with ThreadPoolExecutor(16) as ex:
+    for res in ex.map(probe, peers):
+        if not res: continue
+        (host, ip), h = res
+        sid = h.get('server_id') or ip
+        if sid in seen: continue
+        seen.add(sid)
+        print('%s  [%s · v%s]|ws://%s:4000' % (h.get('server_name') or host, ip, h.get('version', '?'), ip))
 " 2>/dev/null
 }
 
@@ -43,6 +61,12 @@ _ts_tui() {
   local lines=()
   while read -r line; do lines+=("$line"); done < <(_ts_online_peers)
   [[ ${#lines[@]} -eq 0 ]] && return 1
+  if [[ ${#lines[@]} -eq 1 ]]; then
+    PHOENIX="${lines[0]#*|}"
+    echo "→ 서버 발견: ${lines[0]%%|*}"
+    return 0
+  fi
+  echo "→ 서버 ${#lines[@]}대 발견 — 연결할 서버를 고르세요"
   # 대화형 터미널이 없으면(완전 headless) 픽커 불가 → 호출부가 안내 메시지로 폴백.
   [[ -r /dev/tty ]] || return 1
 
@@ -191,16 +215,17 @@ if [[ -n "${JOIN:-}" ]]; then
 fi
 
 if [[ -z "$PHOENIX" ]]; then
-  if curl -sf --max-time 3 "http://oah.local:4000/api/health" > /dev/null 2>&1; then
-    PHOENIX="ws://oah.local:4000"
-    echo "→ oah.local 연결됨"
-  elif command -v tailscale &>/dev/null && tailscale ip -4 &>/dev/null 2>&1; then
-    # Tailscale 있고 연결됨 → TUI로 서버 선택
+  # 서버가 여럿일 수 있으므로 첫 응답에 붙지 않는다: Tailscale 의 서버를 모두 찾고 1대면 자동, 여럿이면 선택.
+  # oah.local(LAN mDNS)은 Tailscale 이 없을 때만 — 이 이름은 서버를 구분하지 못한다.
+  if command -v tailscale &>/dev/null && tailscale ip -4 &>/dev/null 2>&1; then
     if ! _ts_tui; then
       echo "서버를 찾을 수 없습니다. 직접 지정:"
       echo "  PHOENIX=ws://<서버IP>:4000 bash <(curl -fsSL $OAH_BASE/setup-agent.sh)"
       exit 1
     fi
+  elif curl -sf --max-time 3 "http://oah.local:4000/api/health" > /dev/null 2>&1; then
+    PHOENIX="ws://oah.local:4000"
+    echo "→ oah.local 연결됨 (같은 LAN)"
   else
     # Tailscale 없거나 미연결 → 자동 설치 유도
     _ensure_tailscale_agent
