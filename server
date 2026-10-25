@@ -1,0 +1,401 @@
+#!/usr/bin/env bash
+# setup-server.sh — DureClaw Phoenix 서버 1줄 설치 + 시작
+#
+# 원라인 설치 (Elixir 불필요 — Docker 또는 사전빌드 바이너리 사용):
+#   bash <(curl -fsSL https://dureclaw.baryon.ai/server)
+#
+# 환경변수:
+#   PORT             리슨 포트 (기본: 4000)
+#   HOST             리슨 주소 (기본: 0.0.0.0)
+#   OAH_DATA_DIR     데이터 저장 경로 (기본: $HOME/.oah-server/data)
+#   OAH_INSTALL_DIR  설치 경로      (기본: $HOME/.oah-server)
+#   USE_DOCKER       docker 강제 사용 (기본: auto)
+#
+# 자체 사설망 (공식 Tailscale 계정 대신 오픈소스 Headscale 을 이 서버에서 운영):
+#   MESH=1                       자체 망 구성 + 서버도 합류 + 노드 연결 코드 출력
+#   MESH_URL=http://IP:8080      사내망·폐쇄망 모드 제어 서버 주소 (기본: 이 서버의 LAN IP:8080)
+#   MESH_PUBLIC_DERP=1           인터넷 허용 시 Tailscale 공개 중계 추가 (NAT 너머 연결)
+#   MESH_DOMAIN=mesh.example.com MESH_EMAIL=ops@example.com
+#                                지점 간 모드 (HTTPS 자동 인증서 + 내장 중계, 443·3478/UDP 개방 필요)
+#   MESH_FORCE=1                 이 서버가 이미 다른 Tailscale 망에 있어도 자체 망으로 옮김
+#
+# 실행 우선순위: 사전빌드 바이너리 → Docker → Elixir 소스빌드
+
+set -euo pipefail
+
+SITE="https://dureclaw.baryon.ai"
+GITHUB_RELEASE="https://github.com/DureClaw/homepage/releases/latest/download"
+OAH_BASE="https://open-agent-harness.baryon.ai"   # legacy fallback
+DOCKER_IMAGE="ghcr.io/dureclaw/dureclaw:latest"
+PORT="${PORT:-4000}"
+HOST="${HOST:-0.0.0.0}"
+INSTALL_DIR="${OAH_INSTALL_DIR:-$HOME/.oah-server}"
+DATA_DIR="${OAH_DATA_DIR:-$INSTALL_DIR/data}"
+USE_DOCKER="${USE_DOCKER:-auto}"
+CONTAINER_NAME="dureclaw-server"
+# DAEMON=1: 백그라운드 데몬으로 실행 (install.sh에서 사용)
+DAEMON="${DAEMON:-0}"
+
+OS=$(uname -s | tr '[:upper:]' '[:lower:]')
+ARCH=$(uname -m)
+case "$ARCH" in
+  x86_64)        ARCH="x86_64" ;;
+  aarch64|arm64) ARCH="arm64" ;;
+  *)
+    echo "ERROR: 지원하지 않는 아키텍처: $ARCH"
+    exit 1 ;;
+esac
+
+TARBALL="oah-server-${OS}-${ARCH}.tar.gz"
+TARBALL_URL="$GITHUB_RELEASE/$TARBALL"
+TARBALL_URL_LEGACY="$OAH_BASE/$TARBALL"
+EXE="$INSTALL_DIR/bin/harness_server"
+
+echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
+echo " DureClaw Phoenix Server"
+echo " Platform: ${OS}-${ARCH}    (uname: $(uname -sm))"
+echo " Tarball : $TARBALL"
+echo " Port    : $PORT"
+echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
+
+# ─── Tailscale 자동 설치 ──────────────────────────────────────────────────────
+
+_install_tailscale() {
+  if [[ "$OS" == "darwin" ]]; then
+    if command -v brew &>/dev/null; then
+      echo "→ brew로 Tailscale 설치 중..."
+      brew install --cask tailscale
+      open -a Tailscale 2>/dev/null || true
+      echo ""
+      echo " ★ 메뉴바의 Tailscale 아이콘을 클릭해 로그인하세요."
+      echo "   로그인 완료 후 Enter를 누르세요..."
+      read -r
+    else
+      echo " → Mac App Store에서 Tailscale을 설치하세요:"
+      echo "   https://apps.apple.com/app/tailscale/id1475387142"
+      open "https://apps.apple.com/app/tailscale/id1475387142" 2>/dev/null || true
+      echo ""
+      echo "   설치 및 로그인 완료 후 Enter를 누르세요..."
+      read -r
+    fi
+  else
+    # Linux: 공식 설치 스크립트 (Ubuntu/Debian/Fedora/CentOS/Arch 등 지원)
+    echo "→ Tailscale 설치 중... (sudo 권한 필요)"
+    curl -fsSL https://tailscale.com/install.sh | sh
+    echo ""
+    echo "→ Tailscale 연결 중 (브라우저에서 인증하세요)..."
+    if command -v sudo &>/dev/null; then
+      sudo tailscale up
+    else
+      tailscale up
+    fi
+  fi
+}
+
+_ensure_tailscale() {
+  # 이미 연결되어 있으면 패스
+  if command -v tailscale &>/dev/null; then
+    local ts_ip
+    ts_ip=$(tailscale ip -4 2>/dev/null || echo "")
+    if [[ -n "$ts_ip" ]]; then
+      echo "✅ Tailscale 연결됨: $ts_ip"
+      return 0
+    fi
+  fi
+
+  echo ""
+  echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
+  echo " Tailscale 미연결"
+  echo " 원격 머신에서 에이전트를 연결하려면 Tailscale이 필요합니다."
+  echo " (같은 LAN 내에서만 사용하면 건너뛸 수 있습니다)"
+  echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
+  echo ""
+
+  # 비대화형 환경(CI, pipe) 이면 자동 건너뜀
+  if [[ ! -t 0 ]]; then
+    echo "⚠ 비대화형 환경 — Tailscale 설치를 건너뜁니다."
+    return 0
+  fi
+
+  read -rp " 지금 Tailscale을 설치·연결하시겠습니까? [Y/n] " yn
+  [[ "${yn:-Y}" =~ ^[Nn] ]] && {
+    echo " → Tailscale 없이 계속합니다. (LAN 주소로만 연결 가능)"
+    return 0
+  }
+
+  _install_tailscale
+
+  local ts_ip
+  ts_ip=$(tailscale ip -4 2>/dev/null || echo "")
+  if [[ -n "$ts_ip" ]]; then
+    echo "✅ Tailscale 연결 완료: $ts_ip"
+  else
+    echo "⚠ Tailscale IP를 아직 가져올 수 없습니다. 인증 후 자동으로 할당됩니다."
+  fi
+}
+
+# ─── 자체 사설망 (Headscale) ─────────────────────────────────────────────────
+
+MESH="${MESH:-0}"
+MESH_DIR="${MESH_DIR:-$HOME/.dureclaw/mesh}"
+MESH_BUS_IP=""
+
+_mesh_sh() {
+  # 저장소에서 실행하면 옆의 mesh.sh, 아니면 내려받아 MESH_DIR 에 보관 (이후 mesh.sh join-code 로 재사용)
+  local here; here="$(cd "$(dirname "${BASH_SOURCE[0]}")" 2>/dev/null && pwd || true)"
+  if [[ -n "$here" && -f "$here/mesh.sh" ]]; then bash "$here/mesh.sh" "$@"; return; fi
+  if [[ ! -f "$MESH_DIR/mesh.sh" ]]; then
+    mkdir -p "$MESH_DIR"
+    curl -fsSL https://dureclaw.baryon.ai/mesh -o "$MESH_DIR/mesh.sh"
+    chmod +x "$MESH_DIR/mesh.sh"
+  fi
+  bash "$MESH_DIR/mesh.sh" "$@"
+}
+
+_lan_ip() {
+  ipconfig getifaddr en0 2>/dev/null || hostname -I 2>/dev/null | awk '{print $1}' || true
+}
+
+_setup_mesh() {
+  echo ""
+  echo "━━━ 자체 사설망(Headscale) 구성 ━━━"
+  export MESH_DIR
+  _mesh_sh install
+  if [[ ! -f "$MESH_DIR/config.yaml" ]]; then
+    if [[ -n "${MESH_DOMAIN:-}" ]]; then
+      _mesh_sh init --domain "$MESH_DOMAIN" --email "${MESH_EMAIL:?MESH_DOMAIN 에는 MESH_EMAIL 이 필요합니다}"
+    else
+      local url="${MESH_URL:-}"
+      if [[ -z "$url" ]]; then
+        local ip; ip="$(_lan_ip)"
+        [[ -n "$ip" ]] || { echo "ERROR: LAN IP 를 찾지 못했습니다. MESH_URL=http://<서버IP>:8080 으로 지정하세요."; exit 1; }
+        url="http://$ip:8080"
+      fi
+      local extra=()
+      [[ "${MESH_PUBLIC_DERP:-0}" == "1" ]] && extra+=(--public-derp)
+      _mesh_sh init --url "$url" "${extra[@]}"
+    fi
+  fi
+  _mesh_sh start
+
+  # 서버 자신도 자체 망에 합류 — 노드는 사설망 주소(100.64/10)로 버스에 붙고 키 없이 자동 승인된다
+  local join=()
+  [[ "${MESH_FORCE:-0}" == "1" ]] && join+=(--force)
+  _mesh_sh join "$(_mesh_sh join-code --ttl 10m)" --hostname "dureclaw-server" "${join[@]}"
+  MESH_BUS_IP="$(tailscale ip -4 2>/dev/null | head -1)"
+  # 버스가 사설망 주소로 들어오는 접속을 받도록 모든 인터페이스에 바인드
+  export OAH_BIND_IP="${OAH_BIND_IP:-0.0.0.0}"
+  echo "✅ 자체 망 준비 — 서버 사설망 IP: $MESH_BUS_IP"
+}
+
+if [[ "$MESH" == "1" ]]; then
+  _setup_mesh
+else
+  _ensure_tailscale
+fi
+
+# ─── 주소 안내 헬퍼 ───────────────────────────────────────────────────────────
+
+_print_connect_info() {
+  TAILSCALE_IP=$(tailscale ip -4 2>/dev/null || echo "")
+  TAILSCALE_HOST=$(tailscale status --json 2>/dev/null \
+    | python3 -c "import sys,json; d=json.load(sys.stdin); print(d.get('Self',{}).get('DNSName','').rstrip('.'))" 2>/dev/null || echo "")
+  LAN_IP=$(ipconfig getifaddr en0 2>/dev/null \
+    || hostname -I 2>/dev/null | awk '{print $1}' || echo "")
+  local AGENT_URL="$SITE/agent"
+
+  echo ""
+  if [[ "$MESH" == "1" ]]; then
+    local code
+    code="$(_mesh_sh join-code --ttl 24h --reusable --bus "ws://$MESH_BUS_IP:$PORT")"
+    echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
+    echo " ★ 자체 사설망 — 노드 연결 코드 (24시간 유효 · 여러 대 사용 가능)"
+    echo ""
+    echo "   $code"
+    echo ""
+    echo "   Linux·Mac·라즈베리파이:"
+    echo "     JOIN=$code \\"
+    echo "       bash <(curl -fsSL https://dureclaw.baryon.ai/agent)"
+    echo ""
+    echo "   새 코드 발급: bash $MESH_DIR/mesh.sh join-code --bus ws://$MESH_BUS_IP:$PORT [--ttl 1h]"
+    echo "   합류한 노드: bash $MESH_DIR/mesh.sh nodes"
+    echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
+    echo ""
+    return
+  fi
+  if [[ -n "$TAILSCALE_IP" ]]; then
+    echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
+    echo " ★ Tailscale 사설망 감지 — 원격 에이전트 연결 주소:"
+    echo ""
+    [[ -n "$TAILSCALE_HOST" ]] && \
+    echo "   PHOENIX=ws://$TAILSCALE_HOST:$PORT \\"
+    echo "   PHOENIX=ws://$TAILSCALE_IP:$PORT \\"
+    echo "     bash <(curl -fsSL $AGENT_URL)"
+    echo ""
+    echo " → Tailscale 없는 머신은 먼저: https://tailscale.com/download"
+    echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
+  else
+    echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
+    echo " 서버 시작! 에이전트 접속 명령:"
+    [[ -n "$LAN_IP" ]] && \
+    echo "  [LAN]   PHOENIX=ws://$LAN_IP:$PORT bash <(curl -fsSL $AGENT_URL)"
+    echo "  [로컬]  PHOENIX=ws://127.0.0.1:$PORT bash <(curl -fsSL $AGENT_URL)"
+    echo ""
+    echo " 원격 연결을 원하면: https://tailscale.com (무료, 100대)"
+    echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
+  fi
+  echo ""
+}
+
+# ─── Docker 실행 ─────────────────────────────────────────────────────────────
+
+_docker_run() {
+  echo "→ Docker로 DureClaw 서버 시작..."
+  mkdir -p "$DATA_DIR"
+
+  # 기존 컨테이너 정리
+  docker rm -f "$CONTAINER_NAME" 2>/dev/null || true
+
+  # 이미지 pull (없으면). 실패 시 호출자가 폴백할 수 있도록 1을 반환.
+  if ! docker image inspect "$DOCKER_IMAGE" &>/dev/null; then
+    if ! docker pull "$DOCKER_IMAGE" 2>&1; then
+      echo "⚠ Docker 이미지($DOCKER_IMAGE) 가져오기 실패 — 다음 단계로 폴백합니다"
+      return 1
+    fi
+  fi
+
+  _print_connect_info
+
+  echo "→ 컨테이너 시작: $CONTAINER_NAME"
+  exec docker run --rm \
+    --name "$CONTAINER_NAME" \
+    -p "${PORT}:4000" \
+    -v "$DATA_DIR:/data" \
+    -e PORT=4000 \
+    -e HOST=0.0.0.0 \
+    -e OAH_DATA_DIR=/data \
+    "$DOCKER_IMAGE"
+}
+
+# ─── 소스 빌드 (last resort) ─────────────────────────────────────────────────
+
+_source_build() {
+  command -v elixir &>/dev/null || {
+    echo ""
+    echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
+    echo " 이 플랫폼에 사용할 수 있는 사전빌드 바이너리·Docker 이미지가 없습니다."
+    echo ""
+    echo " 해결 방법 (택 1):"
+    echo ""
+    echo " 1) GitHub Releases에서 본인 OS/arch tarball 직접 다운로드:"
+    echo "      https://github.com/DureClaw/homepage/releases"
+    echo ""
+    echo " 2) Docker 설치 후 다시 실행:"
+    echo "      https://docs.docker.com/get-docker/"
+    echo "      curl -fsSL $SITE/server | USE_DOCKER=1 bash"
+    echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
+    exit 1
+  }
+  local SCRIPT_DIR
+  SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+  local SERVER_DIR=""
+  if [[ -d "$SCRIPT_DIR/../packages/phoenix-server" ]]; then
+    SERVER_DIR="$(cd "$SCRIPT_DIR/../packages/phoenix-server" && pwd)"
+  else
+    # 서버 소스는 비공개 — curl-bash 일회성 실행에서는 소스 빌드 불가
+    echo "ERROR: 이 플랫폼용 사전빌드 바이너리가 없습니다."
+    echo "       $GITHUB_RELEASE 에서 지원 플랫폼을 확인하거나 Docker 로 실행하세요:"
+    echo "       curl -fsSL $SITE/server | USE_DOCKER=1 bash"
+    exit 1
+  fi
+  cd "$SERVER_DIR"
+  mix local.hex --force --quiet
+  mix local.rebar --force --quiet
+  MIX_ENV=prod mix deps.get --quiet
+  MIX_ENV=prod mix release harness_server --overwrite --quiet
+  INSTALL_DIR="$SERVER_DIR/_build/prod/rel/harness_server"
+  EXE="$INSTALL_DIR/bin/harness_server"
+  echo "✅ 소스 빌드 완료"
+}
+
+# ─── 1. Docker 강제 모드 ─────────────────────────────────────────────────────
+
+if [[ "$USE_DOCKER" == "1" || "$USE_DOCKER" == "true" ]]; then
+  command -v docker &>/dev/null || { echo "ERROR: Docker가 없습니다. https://docs.docker.com/get-docker/"; exit 1; }
+  _docker_run
+fi
+
+# ─── 2. 사전 빌드 바이너리 다운로드 (GitHub Releases) ───────────────────────────
+
+_download_binary() {
+  local URL="$1"
+  echo "→ 서버 다운로드 중... ($TARBALL)"
+  mkdir -p "$INSTALL_DIR"
+  curl -fsSL --location "$URL" | tar -xz -C "$INSTALL_DIR" --strip-components=1
+  chmod +x "$EXE"
+  echo "✅ 설치 완료"
+}
+
+# GitHub Releases 우선, 레거시 fallback
+AVAILABLE_URL=""
+if curl -sf --max-time 8 -I -L "$TARBALL_URL" 2>/dev/null | grep -q "200"; then
+  AVAILABLE_URL="$TARBALL_URL"
+elif curl -sf --max-time 5 -I "$TARBALL_URL_LEGACY" 2>/dev/null | grep -q "200"; then
+  AVAILABLE_URL="$TARBALL_URL_LEGACY"
+fi
+
+if [[ -n "$AVAILABLE_URL" ]]; then
+  if [[ ! -x "$EXE" ]]; then
+    _download_binary "$AVAILABLE_URL"
+  else
+    REMOTE_SIZE=$(curl -sfI --max-time 5 -L "$AVAILABLE_URL" | grep -i content-length | tail -1 | awk '{print $2}' | tr -d '\r' || echo "")
+    LOCAL_SIZE=$(du -sk "$INSTALL_DIR" 2>/dev/null | awk '{print $1 * 1024}' || echo "0")
+    if [[ -n "$REMOTE_SIZE" && "$REMOTE_SIZE" -gt "$((LOCAL_SIZE + 2000000))" ]]; then
+      echo "→ 새 버전 업데이트 중..."
+      _download_binary "$AVAILABLE_URL"
+    else
+      echo "✅ 최신 버전 ($EXE)"
+    fi
+  fi
+
+# ─── 3. Docker fallback (Elixir 없을 때) ────────────────────────────────────
+
+elif command -v docker &>/dev/null && [[ "$USE_DOCKER" != "0" ]]; then
+  echo "⚠ ${OS}-${ARCH} 사전 빌드 없음 → Docker로 시작합니다... (Elixir 불필요)"
+  echo "  (해당 플랫폼 tarball이 GitHub Releases에 없습니다: $TARBALL)"
+  if ! _docker_run; then
+    echo "→ Docker 폴백 → 소스 빌드 시도..."
+    _source_build
+  fi
+
+# ─── 4. Elixir 소스빌드 (마지막 수단) ──────────────────────────────────────
+
+else
+  echo "⚠ ${OS}-${ARCH} 사전 빌드 없음 — 소스 빌드 시도..."
+  echo "  (해당 플랫폼 tarball이 GitHub Releases에 없습니다: $TARBALL)"
+  _source_build
+fi
+
+# ─── 데이터 디렉토리 + 주소 안내 + 실행 (바이너리 경로) ─────────────────────
+
+mkdir -p "$DATA_DIR"
+
+# DAEMON 모드: 백그라운드로 실행 (install.sh에서 사용)
+# 일반 모드: 포그라운드 (기본 동작)
+if [[ "$DAEMON" == "1" ]]; then
+  echo "→ 백그라운드 데몬으로 시작..."
+  export PORT="$PORT" HOST="$HOST" OAH_DATA_DIR="$DATA_DIR"
+  export RELEASE_TMP="$INSTALL_DIR/tmp"
+  mkdir -p "$RELEASE_TMP"
+  "$EXE" daemon
+  sleep 2
+  echo "✅ 서버 백그라운드 실행 중 (http://localhost:$PORT)"
+  _print_connect_info
+else
+  _print_connect_info
+  exec env \
+    PORT="$PORT" \
+    HOST="$HOST" \
+    OAH_DATA_DIR="$DATA_DIR" \
+    "$EXE" start
+fi
