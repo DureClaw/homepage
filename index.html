@@ -279,6 +279,117 @@
         </div>
       </article>
     </div>
+
+    <!-- Embedded & Edge Claws Ecosystem -->
+    <div class="edge-claws-wrap">
+      <div class="edge-claws-head">
+        <span class="eyebrow">오픈 엣지 에코시스템</span>
+        <h3 style="font-size:clamp(22px, 1.8vw, 32px); font-weight:800; letter-spacing:-0.035em; color:var(--ink); margin:0;">임베디드·엣지 장비를 위한 다양한 claw 연동</h3>
+        <p class="lede" style="font-size:16px; margin:0;">브라우저(webclaw)와 데스크톱(deskclaw)뿐만 아니라, 라즈베리파이·IoT 보드·공장 엣지 게이트웨이 등 초경량 임베디드 장비에서도 단일 바이너리로 구동되는 다양한 언어 기반의 오픈 에이전트와 완벽히 호환됩니다. 마스터 AI의 지시를 받아 현장의 손발이 됩니다.</p>
+      </div>
+
+      <div class="edge-claws-grid">
+        <!-- edgeclaw -->
+        <div class="edge-card hl">
+          <div class="edge-card-top">
+            <div class="edge-card-title">
+              <span class="edge-card-name">edgeclaw</span>
+            </div>
+            <div class="edge-badges">
+              <span class="edge-badge go">Go</span>
+              <span class="edge-badge" style="background:#fee2e2; color:#b91c1c; border:1px solid #fca5a5;">DureClaw Native</span>
+            </div>
+          </div>
+          <div class="edge-card-role">공식 네이티브 엣지 에이전트</div>
+          <p class="edge-desc">The DureClaw-native edge agent — one static Go binary, every OS/CPU. Bus-first, keyless LLM, local hands.</p>
+          <ul class="edge-points">
+            <li>외부 런타임 없는 단일 정적 Go 바이너리 (ARM, x86, MIPS)</li>
+            <li>디바이스 내 API 키 보관 불필요 (Keyless LLM 마스터 두뇌 분리)</li>
+            <li>중앙 DureClaw 버스와 초저지연 WebSocket 채널 상시 연결</li>
+          </ul>
+        </div>
+
+        <!-- zeroclaw -->
+        <div class="edge-card">
+          <div class="edge-card-top">
+            <div class="edge-card-title">
+              <span class="edge-card-name">zeroclaw</span>
+            </div>
+            <div class="edge-badges">
+              <span class="edge-badge rust">Rust 🦀</span>
+              <span class="edge-badge star">5.0k ★</span>
+            </div>
+          </div>
+          <div class="edge-card-role">초고속 자율 어시스턴트 인프라</div>
+          <p class="edge-desc">Fast, small, and fully autonomous AI personal assistant infrastructure, any OS, any platform — deploy anywhere, swap anything.</p>
+          <ul class="edge-points">
+            <li>Rust 기반 무결성 메모리 관리 및 극단적 저지연 실행</li>
+            <li>자원 제약이 엄격한 현장 임베디드 리눅스 보드 최적화</li>
+            <li>모듈형 아키텍처로 도구와 환경을 즉시 교체 가능</li>
+          </ul>
+        </div>
+
+        <!-- nullclaw -->
+        <div class="edge-card">
+          <div class="edge-card-top">
+            <div class="edge-card-title">
+              <span class="edge-card-name">nullclaw</span>
+            </div>
+            <div class="edge-badges">
+              <span class="edge-badge zig">Zig</span>
+              <span class="edge-badge star">945 ★</span>
+            </div>
+          </div>
+          <div class="edge-card-role">초소형 자율 에이전트 인프라</div>
+          <p class="edge-desc">Fastest, smallest, and fully autonomous AI assistant infrastructure written in Zig.</p>
+          <ul class="edge-points">
+            <li>C/C++ libc 의존성 없는 극도로 컴팩트한 Zig 네이티브 바이너리</li>
+            <li>수 메가바이트 이하의 극소 메모리 풋프린트 보장</li>
+            <li>마이크로 임베디드 시스템 및 베어메탈 엣지 친화적</li>
+          </ul>
+        </div>
+
+        <!-- picoclaw -->
+        <div class="edge-card">
+          <div class="edge-card-top">
+            <div class="edge-card-title">
+              <span class="edge-card-name">picoclaw</span>
+            </div>
+            <div class="edge-badges">
+              <span class="edge-badge go">Go</span>
+              <span class="edge-badge star">Micro Agent</span>
+            </div>
+          </div>
+          <div class="edge-card-role">초소형 신속 배포 에이전트</div>
+          <p class="edge-desc">Tiny, Fast, and Deployable anywhere — automate the mundane, unleash your creativity.</p>
+          <ul class="edge-points">
+            <li>수 초 안에 다운로드하고 즉시 구동되는 컴팩트 Go 바이너리</li>
+            <li>반복적인 설비 계측, 로그 모니터링, 단발성 태스크 위임에 최적화</li>
+            <li>네트워크 순단 시 Store & Forward 복구 지원</li>
+          </ul>
+        </div>
+
+        <!-- nanobot -->
+        <div class="edge-card">
+          <div class="edge-card-top">
+            <div class="edge-card-title">
+              <span class="edge-card-name">nanobot</span>
+            </div>
+            <div class="edge-badges">
+              <span class="edge-badge python">Python</span>
+              <span class="edge-badge star">8.7k ★</span>
+            </div>
+          </div>
+          <div class="edge-card-role">경량 도구·워크플로우 에이전트</div>
+          <p class="edge-desc">Lightweight, open-source AI agent for your tools, chats, and workflows.</p>
+          <ul class="edge-points">
+            <li>방대한 파이썬 라이브러리 및 현장 데이터 처리 스크립트 직결</li>
+            <li>채팅·툴킷 연동으로 복합 워크플로우를 유연하게 구성</li>
+            <li>AI 모델 추론 결과와 현장 센서 데이터 파이프라인 중계</li>
+          </ul>
+        </div>
+      </div>
+    </div>
   </div>
 </section>
 
