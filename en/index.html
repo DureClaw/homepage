@@ -1,0 +1,770 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>DureClaw — Turn All Your Machines into a Unified AI Crew</title>
+<meta name="description" content="Orchestrate distributed devices into a single collaborative AI crew. Claude acts as the central brain while edgeclaw (OS/physical), webclaw (browser), and deskclaw (desktop GUI) execute as autonomous hands. Keyless edge + Decision Freezing (LLM as compiler). Native Claude Code plugin, one-line install."/>
+
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css"/>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet"/>
+
+<!-- ── SEO / canonical / icons ── -->
+<link rel="canonical" href="https://dureclaw.baryon.ai/en/"/>
+<link rel="alternate" hreflang="ko" href="https://dureclaw.baryon.ai/"/>
+<link rel="alternate" hreflang="en" href="https://dureclaw.baryon.ai/en/"/>
+<link rel="alternate" hreflang="x-default" href="https://dureclaw.baryon.ai/"/>
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1"/>
+<meta name="author" content="DureClaw · Baryon Labs"/>
+<meta name="keywords" content="DureClaw, distributed AI agents, multi-agent orchestration, Claude Code plugin, edgeclaw, webclaw, deskclaw, keyless edge, LLM as compiler, Decision Freezing, RPA, GPIO, Raspberry Pi, multi-machine AI, distributed AI agents, fleet coordination"/>
+<meta name="theme-color" content="#0284c7"/>
+<link rel="icon" href="/favicon.svg" type="image/svg+xml"/>
+<link rel="icon" href="/favicon-256.png" sizes="256x256" type="image/png"/>
+<link rel="apple-touch-icon" href="/favicon-256.png"/>
+<link rel="sitemap" type="application/xml" href="/sitemap.xml"/>
+
+<!-- ── Open Graph ── -->
+<meta property="og:type" content="website"/>
+<meta property="og:site_name" content="DureClaw"/>
+<meta property="og:locale" content="en_US"/>
+<meta property="og:url" content="https://dureclaw.baryon.ai/en/"/>
+<meta property="og:title" content="DureClaw — Turn All Your Machines into a Unified AI Crew"/>
+<meta property="og:description" content="Orchestrate distributed devices into a single collaborative AI crew. Claude acts as the central brain while edgeclaw (OS/physical), webclaw (browser), and deskclaw (desktop GUI) execute as autonomous hands. Keyless edge + Decision Freezing (LLM as compiler). Native Claude Code plugin, one-line install."/>
+<meta property="og:image" content="https://dureclaw.baryon.ai/screenshots/hero-banner.jpg"/>
+<meta property="og:image:width" content="1400"/>
+<meta property="og:image:height" content="594"/>
+<meta property="og:image:alt" content="DureClaw Cooperative — Unified AI Robotics Ecosystem"/>
+
+<!-- ── Twitter ── -->
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:title" content="DureClaw — Turn All Your Machines into a Unified AI Crew"/>
+<meta name="twitter:description" content="Central brain with autonomous execution hands: edgeclaw, webclaw, and deskclaw. Keyless edge + Decision Freezing (LLM as compiler). Native Claude Code plugin, one-line install."/>
+<meta name="twitter:image" content="https://dureclaw.baryon.ai/screenshots/hero-banner.jpg"/>
+
+<!-- ── AI / LLM crawlers (GEO/AEO) ── -->
+<link rel="alternate" type="text/markdown" title="llms.txt" href="/llms.txt"/>
+<link rel="alternate" type="text/markdown" title="llms-full.txt" href="/llms-full.txt"/>
+
+<!-- ── Unified Schema.org JSON-LD: Organization, SoftwareApplication & FAQPage (AEO/GEO) ── -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "https://dureclaw.baryon.ai/#organization",
+      "name": "Baryon Labs",
+      "alternateName": "바리온랩스 (Baryon Labs)",
+      "url": "https://baryon.ai",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://dureclaw.baryon.ai/favicon-256.png",
+        "width": 256,
+        "height": 256
+      },
+      "sameAs": [
+        "https://github.com/DureClaw",
+        "https://github.com/DureClaw/dureclaw",
+        "https://www.npmjs.com/package/@dureclaw/mcp"
+      ]
+    },
+    {
+      "@type": "SoftwareApplication",
+      "@id": "https://dureclaw.baryon.ai/#software",
+      "name": "DureClaw",
+      "alternateName": ["DureClaw Multi-Agent Bus", "두레클로"],
+      "applicationCategory": "DeveloperApplication",
+      "operatingSystem": "macOS, Windows, Linux, Raspberry Pi OS (armv6/arm64), Industrial IPC, Docker",
+      "url": "https://dureclaw.baryon.ai/",
+      "image": "https://dureclaw.baryon.ai/screenshots/hero-banner.jpg",
+      "softwareVersion": "0.5.4",
+      "isAccessibleForFree": true,
+      "description": "An orchestration system that unites distributed devices (Mac, Windows, Linux, Raspberry Pi) into a single real-time collaborative AI crew. Claude serves as the reasoning brain, while 5 specialized edge agents (claws) directly control physical OS environments, browsers, and desktop GUIs. Featuring keyless edge nodes and Decision Freezing (LLM as compiler) to eliminate 90%+ of LLM token costs and deliver microsecond-tier deterministic replays.",
+      "featureList": [
+        "One Brain, Many Hands Architecture (central reasoning master, distributed edge workers)",
+        "Keyless Edge (zero LLM API keys required on edge nodes; delegated from master)",
+        "Decision Freezing (compiles human-approved judgments into deterministic rules; zero-token µs-speed execution)",
+        "Phoenix Channel WebSocket 5-tuple JSON ultra-low latency real-time bus",
+        "Air-gapped private network support (Headscale/Tailscale) and strict shell isolation (shell: off)",
+        "Native Claude Code plugin and Model Context Protocol (MCP) integration"
+      ],
+      "author": {
+        "@id": "https://dureclaw.baryon.ai/#organization"
+      },
+      "publisher": {
+        "@id": "https://dureclaw.baryon.ai/#organization"
+      },
+      "offers": [
+        {
+          "@type": "Offer",
+          "name": "Personal Edition (Free)",
+          "price": "0",
+          "priceCurrency": "USD",
+          "description": "Free forever for individual developers and researchers, supporting up to 2 nodes (including server) with zero feature or time limitations"
+        },
+        {
+          "@type": "Offer",
+          "name": "Enterprise License",
+          "priceSpecification": {
+            "@type": "PriceSpecification",
+            "price": "Contact",
+            "priceCurrency": "USD"
+          },
+          "description": "Scalable parallel clusters with 3+ nodes, team/organization accounts, on-premise air-gapped private deployment, and dedicated SLA tech support"
+        }
+      ],
+      "sameAs": [
+        "https://github.com/DureClaw/dureclaw",
+        "https://www.npmjs.com/package/@dureclaw/mcp",
+        "https://registry.modelcontextprotocol.io"
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://dureclaw.baryon.ai/#faq",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What is DureClaw?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "DureClaw is a distributed multi-agent orchestration system that unifies heterogeneous machines (Mac, GPU servers, Linux, Windows, Raspberry Pi) via an ultra-low latency real-time communication bus (Phoenix WebSocket) into a collaborative AI team. A central master (such as Claude Code) serves as the 'Brain' for reasoning and task delegation, while edge agents ('claws') act as 'Hands' executing local OS commands, browser manipulation, desktop GUI automation, and hardware GPIO/sensor control. It deploys in seconds via a one-line curl script without complex network setup or open inbound ports."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What is DureClaw's pricing model and what is included in the Free Personal Edition?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "DureClaw is free forever for individual developers and researchers supporting up to 2 nodes (including the host server). The Free Personal Edition includes the full core engine, MCP tool integrations, and Decision Freezing with no feature restrictions. For orchestrating parallel clusters with 3 or more machines, or deploying inside enterprise air-gapped corporate intranets, commercial enterprise licensing and dedicated technical support are available."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How does Decision Freezing (LLM as compiler) work?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Decision Freezing compiles reasoning paths and decisions approved once by humans or the master LLM into deterministic rules and native execution macros. When recurring or similar tasks arise, edge nodes execute them locally and deterministically without re-querying cloud LLM APIs. This slashes token consumption to zero, cutting API costs by over 90% and accelerating execution from 4–6 seconds down to 36.7 µs (~40,000x faster)."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What are the 5 types of edge agents supported by DureClaw?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "DureClaw provides a 5-tier edge agent ecosystem: 1) edgeclaw: a single static Go binary for OS-level and physical control (Windows/Mac/Linux/RPi Zero, shell commands, GPIO and sensor automation), 2) webclaw: a Chrome MV3 extension-based browser agent (DOM manipulation, web scraping, unrestricted CORS execution), 3) deskclaw: native Windows/macOS desktop GUI agent (screen capture, mouse/keyboard automation, RPA Record & Replay), 4) picoclaw: ultra-lightweight Go bridge adapter, and 5) nanobot: lightweight Python embedded agent adapter."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How is security guaranteed in on-premise and air-gapped environments?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "DureClaw is designed from the ground up for on-premise, zero-trust, air-gapped deployments with zero cloud exposure. Servers bind strictly to private overlay networks (such as Headscale/Tailscale 100.64.0.0/10) rather than public IPs. Edge nodes never store LLM API keys, preventing credential leakage via keyless delegation. Furthermore, node-level policy governance (~/.oah/policy.json) enforces strict isolation: total shell disablement (shell: off), sandboxed working directory enforcement (workdir_only: true), blocking access to sensitive paths (.ssh, .aws, .env), and requiring mandatory approval for shell meta-characters."
+          }
+        }
+      ]
+    }
+  ]
+}
+</script>
+
+
+<link rel="stylesheet" href="/assets/site.css"/>
+<link rel="stylesheet" href="/assets/design.css"/>
+<!-- PostHog (Analytics) -->
+<script>
+    !function(t,e){var o,n,p,r;e.__SV||(window.posthog && window.posthog.__loaded)||(window.posthog=e,e._i=[],e.init=function(i,s,a){function g(t,e){var o=e.split(".");2==o.length&&(t=t[o[0]],e=o[1]),t[e]=function(){t.push([e].concat(Array.prototype.slice.call(arguments,0)))}}p||((p=t.createElement("script")).type="text/javascript",p.crossOrigin="anonymous",p.async=!0,p.src=s.api_host.replace(".i.posthog.com","-assets.i.posthog.com")+"/static/array.js",p.onerror=function(){p=null},(r=t.getElementsByTagName("script")[0]).parentNode.insertBefore(p,r));var u=e;for(void 0!==a?u=e[a]=[]:a="posthog",u.people=u.people||[],Object.defineProperty(u,"toString",{configurable:!0,enumerable:!0,writable:!0,value:function(t){var e="posthog";return"posthog"!==a&&(e+="."+a),t||(e+=" (stub)"),e}}),Object.defineProperty(u.people,"toString",{configurable:!0,enumerable:!0,writable:!0,value:function(){return u.toString(1)+".people (stub)"}}),o="Zc Kc Xc Yc ih init Rh Ah Ih Eh Lh zu Ph Nh $h Uh Wh Vh Gh Qh Zh capture getExtension Fh dr Yh calculateEventProperties Kh register register_once register_for_session unregister unregister_for_session sd Th td getFeatureFlag getFeatureFlagPayload getFeatureFlagResult getAllFeatureFlags isFeatureEnabled reloadFeatureFlags updateFlags updateEarlyAccessFeatureEnrollment getEarlyAccessFeatures on onFeatureFlags onSurveysLoaded onSessionId getSurveys getActiveMatchingSurveys onActiveMatchingSurveysChanged renderSurvey displaySurvey cancelPendingSurvey canRenderSurvey canRenderSurveyAsync rd identify setPersonProperties unsetPersonProperties group resetGroups setPersonPropertiesForFlags resetPersonPropertiesForFlags setGroupPropertiesForFlags resetGroupPropertiesForFlags reset od shutdown setIdentity clearIdentity get_distinct_id getGroups get_session_id get_session_replay_url alias set_config startSessionRecording stopSessionRecording sessionRecordingStarted captureException addExceptionStep captureLog startExceptionAutocapture stopExceptionAutocapture loadToolbar get_property getSessionProperty ed Bh createPersonProfile setInternalOrTestUser nd oh sh opt_in_capturing opt_out_capturing rh has_opted_in_capturing has_opted_out_capturing get_explicit_consent_status is_capturing clear_opt_in_out_capturing qh debug Hu Os getPageViewId captureTraceFeedback captureTraceMetric wh".split(" "),n=0;n<o.length;n++)g(u,o[n]);e._i.push([i,s,a])},e.__SV=1)}(document,window.posthog||[]);
+    posthog.init('phc_zqdSWCCk6ozgZkBKc2ba3jDBhe6YKoSqCrupk9PMWjma', {
+        api_host: 'https://us.i.posthog.com',
+        defaults: '2026-05-30',
+        person_profiles: 'identified_only', // or 'always' to create profiles for anonymous users as well
+    })
+</script>
+</head>
+<body>
+
+<nav>
+  <div class="container">
+    <div class="nav-inner">
+      <a href="/" class="nav-logo">Dure<span>Claw</span></a>
+      <div class="nav-links">
+        <a href="#what">How it works</a>
+        <a href="#claws">Dual Agents</a>
+        <a href="#edge-claws">Edge Fleet</a>
+        <a href="/how/">Architecture</a>
+        <a href="/developers/">Docs</a>
+        <a href="/pricing/">Enterprise</a>
+        <a href="/#waitlist">Inquiry · Waitlist</a>
+      </div>
+      <a href="https://github.com/dureclaw/dureclaw" class="nav-gh" target="_blank">GitHub ↗</a>
+      <div class="lang-switch" role="group" aria-label="Language selection">
+        <button type="button" class="lang-btn" data-lang="ko" title="한국어">KO</button>
+        <span class="lang-sep">|</span>
+        <button type="button" class="lang-btn active" data-lang="en" title="English">EN</button>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<main>
+
+<!-- HERO -->
+<header class="h-hero">
+  <div class="wrap h-hero-grid">
+    <div>
+      <span class="h-badge rise"><b>v0.5.4 Available</b> — Local-First Agent Infrastructure · Free Personal Edition</span>
+      <h1 class="h-title rise d1">Turn All Your Machines<br/>into <em>a Single AI Team</em></h1>
+      <p class="h-sub rise d2">Prompt Claude on your Mac. Connected machines distribute and execute tasks in parallel across your fleet.</p>
+      <div class="h-actions rise d3">
+        <a class="btn btn-primary" href="#install">Get Started Free</a>
+        <a class="btn btn-ghost" href="#waitlist">Request Early Access</a>
+        <a class="btn btn-ghost" href="/how/">View Tech Specs</a>
+      </div>
+      <p class="h-note rise d4">DureClaw — Bringing the spirit of <a href="https://en.wikipedia.org/wiki/Dure" target="_blank">Dure (traditional cooperative labor)</a> to AI agents</p>
+    </div>
+    <div class="h-art rise d2">
+      <img src="/images/concept.webp" width="1400" height="933" alt="A central leader robot on a Mac delegating tasks to robots on Windows PCs, Linux servers, Raspberry Pis, and GPU workstations"/>
+    </div>
+  </div>
+  <div class="wrap">
+    <div class="h-chips" aria-label="Supported Environments">
+      <span><img src="/assets/apple.svg" width="14" height="14" alt="macOS"/>macOS</span>
+      <span><img src="/assets/windows.svg" width="13" height="13" alt="Windows"/>Windows</span>
+      <span><img src="/assets/linux.svg" width="14" height="14" alt="Linux"/>Linux</span>
+      <span><img src="/assets/raspberrypi.svg" width="13" height="14" alt="Raspberry Pi"/>Raspberry Pi</span>
+      <span><img src="/assets/nvidia.svg" width="16" height="13" alt="GPU Server"/>GPU Server</span>
+      <span><img src="/assets/claude.svg" width="14" height="14" alt="Claude Code"/>Claude Code</span>
+      <span><img src="/assets/tailscale.svg" width="15" height="15" alt="Tailscale"/>Tailscale</span>
+      <span><img src="/assets/headscale.svg" width="22" height="11" alt="Headscale"/>Headscale</span>
+    </div>
+  </div>
+</header>
+
+<!-- INSTALL -->
+<section class="band" id="install">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow">Installation</span>
+      <h2 class="h2">One server to orchestrate, the rest as <span class="serif">teammates</span></h2>
+    </div>
+    <div class="install-grid" id="download">
+      <div class="i-card primary">
+        <div class="i-step">① HQ · macOS or Windows</div>
+        <div class="i-title"><span class="ico">🧭</span>Server App & All-in-One Setup</div>
+        <p class="i-desc">Install on the primary machine orchestrating your crew. The Windows unified installer supports a <b>Personal All-in-One (1 Server + 1 Node)</b> configuration, bootstrapping the server and local execution hands (webclaw, deskclaw, remote MCP) out of the box.</p>
+        <a class="btn btn-accent" href="https://github.com/DureClaw/homepage/releases/latest/download/DureClaw-Server-mac-arm64.dmg" download>Server for Mac <span class="sub">Apple Silicon</span></a>
+        <a class="btn btn-accent" href="https://github.com/DureClaw/homepage/releases/latest/download/DureClaw-Setup.exe" download style="margin-top:8px">Windows Unified Installer <span class="sub">All-in-One · Server · Node</span></a>
+      </div>
+      <div class="i-card">
+        <div class="i-step">② Teammate · Windows</div>
+        <div class="i-title"><span class="ico">🪟</span>Node-Only Setup</div>
+        <p class="i-desc">For dedicated Windows worker PCs joining an existing server. Leaving the address blank enables auto-discovery, with automatic reconnect on login.</p>
+        <a class="btn btn-primary" href="https://github.com/DureClaw/homepage/releases/latest/download/DureClaw-Setup.exe" download>Install Node for Windows <span class="sub">DureClaw-Setup</span></a>
+      </div>
+      <div class="i-card">
+        <div class="i-step">② Teammate · Linux · Raspberry Pi · macOS</div>
+        <div class="i-title"><span class="ico">🐧</span>One-Line Terminal Command</div>
+        <p class="i-desc">Paste this command into your terminal. Retrieve your server address from "Copy Node Connection URL" inside the server app.</p>
+        <div class="cmd">
+          <code><span class="k">PHOENIX</span>=ws://SERVER_IP:4000 bash &lt;(curl -fsSL https://dureclaw.baryon.ai/agent)</code>
+          <button class="copy-btn" onclick="copyCmd(this, 'PHOENIX=ws://SERVER_IP:4000 bash <(curl -fsSL https://dureclaw.baryon.ai/agent)')">Copy</button>
+        </div>
+      </div>
+    </div>
+    <p class="install-alt"><b>Free Personal Edition</b> — Up to 2 machines (server included) for solo developers, bundling dureclaw, webclaw, deskclaw, and remote MCP (SSE). 📱 Connect <b>Orca Mobile</b> to monitor and control PC workflows directly from your smartphone. For 3+ parallel machines or team deployments: <a href="/pricing/">Compare Enterprise Features →</a></p>
+    <p class="install-alt">Prefer the command line? Deploy the Mac server in one line — <code>bash &lt;(curl -fsSL https://dureclaw.baryon.ai/install)</code> · <a href="/start/">Detailed OS Installation Guides →</a></p>
+  </div>
+</section>
+
+<!-- WHAT -->
+<section class="band" id="what">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow">What is DureClaw?</span>
+      <h2 class="h2">Unite multiple computers into a cohesive team.<br/>Divided into three simple roles.</h2>
+    </div>
+    <div class="roles">
+      <div class="role">
+        <span class="role-k">the brain</span>
+        <h3>🧠 The Brain</h3>
+        <p>Claude Code running on your primary Mac or workstation. Reasons through complex tasks and plans execution across nodes.</p>
+      </div>
+      <div class="role">
+        <span class="role-k">the hands</span>
+        <h3>🤲 The Hands</h3>
+        <p>Lightweight edge agents installed on each machine. Execute assigned tasks locally and stream results back.</p>
+      </div>
+      <div class="role">
+        <span class="role-k">the bus</span>
+        <h3>🚌 The Bus</h3>
+        <p>The server application running on your primary host. Bridges the brain and execution hands in real time.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CLAWS: Browser & Desktop Hands -->
+<section class="band tint" id="claws">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow">Autonomous Execution Nodes</span>
+      <h2 class="h2">Browsers and Desktops Join the Crew</h2>
+      <p class="lede">Beyond shell commands, your AI crew gains two specialized execution hands: webclaw automates browser interactions directly in your active session, while deskclaw controls GUI applications without APIs.</p>
+    </div>
+    <div class="claws">
+      <article class="claw">
+        <div class="claw-media">
+          <img src="/images/uc-webclaw-ui.webp" width="1376" height="768" alt="webclaw AI Chrome side panel UI inspecting, extracting, and automating webpage elements in real time" loading="lazy"/>
+        </div>
+        <div class="claw-body">
+          <div class="claw-top"><h3>webclaw <span>Browser Hand</span></h3><span class="claw-chip">Chrome Extension</span></div>
+          <p class="claw-one">Automate web tasks using your active Chrome profile with existing logins preserved.</p>
+          <ul class="checks">
+            <li><span><strong>Preserves Active Logins</strong>Read pages, click buttons, fill forms, and download files without exposing passwords or copying session cookies.</span></li>
+            <li><span><strong>Per-Tab Contextual Chat</strong>Interact with any active browser tab via the Chrome side panel to delegate live tasks conversationally.</span></li>
+            <li><span><strong>Human-in-the-Loop Safety</strong>Configure domain blocklists and approval thresholds. High-risk actions like payments or deletions require explicit one-click confirmation, while credentials never touch logs.</span></li>
+            <li><span><strong>Multi-Browser Fleet Coordination</strong>Chrome extensions across multiple machines connect to the bus simultaneously, dispatching concurrent tasks with a single command.</span></li>
+          </ul>
+          <div class="claw-links">
+            <a class="text-link" href="/use-cases/org/#cases">Multi-Machine Chrome E-Commerce Case Study →</a>
+            <a class="btn btn-ghost" href="#waitlist">Request Early Access</a>
+          </div>
+        </div>
+      </article>
+      <article class="claw">
+        <div class="claw-media">
+          <img src="/images/uc-deskclaw-ui.webp" width="1376" height="768" alt="deskclaw AI floating toolbar perceiving screen coordinates and UI elements to automate mouse clicks and keyboard input over native desktop apps" loading="lazy"/>
+        </div>
+        <div class="claw-body">
+          <div class="claw-top"><h3>deskclaw <span>Desktop Hand</span></h3><span class="claw-chip">Windows · macOS</span></div>
+          <p class="claw-one">Sees the screen, clicks, and types. Automate legacy software and tools without public APIs.</p>
+          <ul class="checks">
+            <li><span><strong>Vision-Guided OS Interaction</strong>Takes screenshots, clicks coordinates, types keystrokes, triggers shortcuts, and launches applications just like a human operator.</span></li>
+            <li><span><strong>Record Once, Replay Infinitely</strong>Replays recorded interaction flows deterministically without making redundant LLM API calls.</span></li>
+            <li><span><strong>Automates API-less Workflows</strong>Operate legacy industrial MES, enterprise ERPs, and internal proprietary software with visual-only interfaces.</span></li>
+            <li><span><strong>Zero-Dependency Lightweight Binary</strong>Leverages native OS APIs with zero runtime dependencies or external framework installations required.</span></li>
+          </ul>
+          <div class="claw-links">
+            <a class="text-link" href="/use-cases/org/#cases">On-Premise Desktop Automation Case Study →</a>
+            <a class="btn btn-ghost" href="#waitlist">Request Early Access</a>
+          </div>
+        </div>
+      </article>
+    </div>
+
+    <!-- Embedded & Edge Claws Ecosystem -->
+    <div class="edge-claws-wrap" id="edge-claws">
+      <div class="edge-claws-head">
+        <span class="eyebrow">Open Edge Ecosystem</span>
+        <h3 style="font-size:clamp(22px, 1.8vw, 32px); font-weight:800; letter-spacing:-0.035em; color:var(--ink); margin:0;">Extensible Claw Integrations for Embedded & Edge Devices</h3>
+        <p class="lede" style="font-size:16px; margin:0;">Beyond webclaw and deskclaw, DureClaw seamlessly integrates with open-source edge agents written in diverse languages. From Raspberry Pis and IoT development boards to factory edge gateways, single-binary agents act as autonomous field hands executing directives from the master AI.</p>
+      </div>
+
+      <div class="edge-claws-grid">
+        <!-- edgeclaw -->
+        <div class="edge-card hl">
+          <div class="edge-card-top">
+            <div class="edge-card-title">
+              <img class="edge-icon" src="/images/icons/edgeclaw.webp" width="46" height="46" alt="edgeclaw icon" loading="lazy"/>
+              <span class="edge-card-name">edgeclaw</span>
+            </div>
+            <div class="edge-badges">
+              <span class="edge-badge go">Go</span>
+              <span class="edge-badge" style="background:#fee2e2; color:#b91c1c; border:1px solid #fca5a5;">DureClaw Native</span>
+            </div>
+          </div>
+          <div class="edge-card-role">Official Native Edge Agent</div>
+          <p class="edge-desc">The DureClaw-native edge agent — one static Go binary, every OS/CPU. Bus-first, keyless LLM, local hands.</p>
+          <ul class="edge-points">
+            <li>Single static Go binary with zero external runtime dependencies (ARM, x86, MIPS)</li>
+            <li>No API keys stored on edge devices (Keyless LLM architecture with isolated master brain)</li>
+            <li>Persistent, ultra-low-latency WebSocket channel connected to the central DureClaw bus</li>
+          </ul>
+        </div>
+
+        <!-- zeroclaw -->
+        <div class="edge-card">
+          <div class="edge-card-top">
+            <div class="edge-card-title">
+              <img class="edge-icon" src="/images/icons/zeroclaw.webp" width="46" height="46" alt="zeroclaw icon" loading="lazy"/>
+              <span class="edge-card-name">zeroclaw</span>
+            </div>
+            <div class="edge-badges">
+              <span class="edge-badge rust">Rust 🦀</span>
+              <span class="edge-badge star">5.0k ★</span>
+            </div>
+          </div>
+          <div class="edge-card-role">Hyper-Fast Autonomous Assistant Infrastructure</div>
+          <p class="edge-desc">Fast, small, and fully autonomous AI personal assistant infrastructure, any OS, any platform — deploy anywhere, swap anything.</p>
+          <ul class="edge-points">
+            <li>Rust memory safety guarantees and extreme low-latency execution</li>
+            <li>Optimized for strictly resource-constrained industrial embedded Linux boards</li>
+            <li>Modular architecture for instantaneous hot-swapping of tools and environments</li>
+          </ul>
+        </div>
+
+        <!-- nullclaw -->
+        <div class="edge-card">
+          <div class="edge-card-top">
+            <div class="edge-card-title">
+              <img class="edge-icon" src="/images/icons/nullclaw.webp" width="46" height="46" alt="nullclaw icon" loading="lazy"/>
+              <span class="edge-card-name">nullclaw</span>
+            </div>
+            <div class="edge-badges">
+              <span class="edge-badge zig">Zig</span>
+              <span class="edge-badge star">945 ★</span>
+            </div>
+          </div>
+          <div class="edge-card-role">Ultra-Minimal Autonomous Agent Infrastructure</div>
+          <p class="edge-desc">Fastest, smallest, and fully autonomous AI assistant infrastructure written in Zig.</p>
+          <ul class="edge-points">
+            <li>Ultra-compact Zig-native binary with zero C/C++ libc dependencies</li>
+            <li>Guaranteed sub-megabyte minimal memory footprint</li>
+            <li>Tailored for micro-embedded systems and bare-metal edge deployments</li>
+          </ul>
+        </div>
+
+        <!-- picoclaw -->
+        <div class="edge-card">
+          <div class="edge-card-top">
+            <div class="edge-card-title">
+              <img class="edge-icon" src="/images/icons/picoclaw.webp" width="46" height="46" alt="picoclaw icon" loading="lazy"/>
+              <span class="edge-card-name">picoclaw</span>
+            </div>
+            <div class="edge-badges">
+              <span class="edge-badge go">Go</span>
+              <span class="edge-badge star">Micro Agent</span>
+            </div>
+          </div>
+          <div class="edge-card-role">Ultra-Compact Rapid-Deployment Agent</div>
+          <p class="edge-desc">Tiny, Fast, and Deployable anywhere — automate the mundane, unleash your creativity.</p>
+          <ul class="edge-points">
+            <li>Compact Go binary under 10MB — downloads in seconds, executes instantly</li>
+            <li>Optimized for repetitive telemetry collection, continuous monitoring, and quick task delegation</li>
+            <li>Built-in Store & Forward recovery during intermittent network partitions</li>
+          </ul>
+        </div>
+
+        <!-- nanobot -->
+        <div class="edge-card">
+          <div class="edge-card-top">
+            <div class="edge-card-title">
+              <img class="edge-icon" src="/images/icons/nanobot.webp" width="46" height="46" alt="nanobot icon" loading="lazy"/>
+              <span class="edge-card-name">nanobot</span>
+            </div>
+            <div class="edge-badges">
+              <span class="edge-badge python">Python</span>
+              <span class="edge-badge star">8.7k ★</span>
+            </div>
+          </div>
+          <div class="edge-card-role">Lightweight Tool & Workflow Agent</div>
+          <p class="edge-desc">Lightweight, open-source AI agent for your tools, chats, and workflows.</p>
+          <ul class="edge-points">
+            <li>Direct plug-and-play integration with rich Python libraries and local data processing scripts</li>
+            <li>Composable multi-step workflows bridging chats, toolkits, and automation</li>
+            <li>Real-time telemetry pipeline bridging LLM inference results and physical edge sensors</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- REMOTE MCP & ORCA MOBILE -->
+<section class="band" id="mobile-control">
+  <div class="wrap split">
+    <div>
+      <span class="eyebrow">Remote MCP · Orca Mobile Integration</span>
+      <h2 class="h2">Speak from your phone.<br/>Your PCs act instantly.</h2>
+      <p class="lede">With native Remote MCP (Server-Sent Events) standards support, control your home and office Windows/Mac workstations with natural language directly from your smartphone via Orca Mobile — wherever you are.</p>
+      <ul class="checks">
+        <li><span><strong>Natural Voice & Text Prompts from Mobile</strong>Speak naturally from your phone: &ldquo;Summarize today&rsquo;s meetings on my office PC,&rdquo; or &ldquo;Show me a live screenshot of my Windows workstation.&rdquo;</span></li>
+        <li><span><strong>Native Remote MCP (SSE) Standard</strong>An embedded Server-Sent Events Remote MCP server runs on port 4001, providing secure direct communication from anywhere without third-party relay servers.</span></li>
+        <li><span><strong>Push Notifications & Real-Time Approval Loops</strong>When webclaw executes checkouts or submissions, or deskclaw performs critical UI actions, instant push notifications arrive on your phone for one-tap verification.</span></li>
+      </ul>
+      <a class="text-link" href="/how/#how-it-works">Remote MCP & Bus Protocol Specifications →</a>
+    </div>
+    <div class="split-art" style="background:var(--bg2);border:1px solid var(--border);border-radius:16px;padding:28px 24px;box-shadow:0 12px 32px rgba(0,0,0,.04)">
+      <div style="font-family:var(--font-mono, monospace);font-size:12.5px;color:var(--cyan);margin-bottom:12px">📱 ORCA MOBILE ↔ REMOTE MCP (SSE)</div>
+      <div style="background:#fff;border:1px solid var(--line);border-radius:10px;padding:16px;margin-bottom:12px;box-shadow:0 2px 6px rgba(0,0,0,.02)">
+        <div style="font-size:13px;font-weight:700;color:var(--ink);margin-bottom:4px">User (Smartphone)</div>
+        <div style="font-size:14px;color:var(--ink-2)">&ldquo;Enter this week&rsquo;s purchase orders into the ERP on my office PC and send me the Excel summary.&rdquo;</div>
+      </div>
+      <div style="text-align:center;color:var(--ink-3);font-size:16px;margin:8px 0">↓ Remote MCP (<code style="font-size:12px;background:rgba(2,132,199,.1);color:var(--cyan);padding:2px 6px;border-radius:4px">/sse</code>)</div>
+      <div style="background:#fff;border:1px solid var(--line);border-radius:10px;padding:16px;box-shadow:0 2px 6px rgba(0,0,0,.02)">
+        <div style="font-size:13px;font-weight:700;color:var(--ink);margin-bottom:4px">DureClaw Windows PC (1 Server + 1 Node)</div>
+        <div style="font-size:13.5px;color:var(--ink-2);line-height:1.6">
+          ✅ <b>deskclaw</b> automatically completed ERP purchase order entry<br/>
+          📊 Excel summary generated (Push notification received in real time)
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STEPS -->
+<section class="band" id="steps">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow">Get Started</span>
+      <h2 class="h2">Assemble Your Fleet in 3 Steps</h2>
+    </div>
+    <div class="steps">
+      <article class="step">
+        <div class="step-art"><img src="/images/step1-server.webp" width="720" height="720" alt="Illustration of launching the server app on a Mac with a single click" loading="lazy"/></div>
+        <div class="step-body">
+          <span class="step-no"></span>
+          <h3>Install Server App on Mac</h3>
+          <p>Download and launch the application. Once the icon appears in your menu bar, your coordination bus is live.</p>
+        </div>
+      </article>
+      <article class="step">
+        <div class="step-art"><img src="/images/step2-connect.webp" width="720" height="720" alt="Illustration of a Windows PC and Raspberry Pi securely connected with encrypted lines" loading="lazy"/></div>
+        <div class="step-body">
+          <span class="step-no"></span>
+          <h3>Connect Your Other Machines</h3>
+          <p>Run the installer on Windows, or a single-line command on Linux and Raspberry Pi. Within your mesh network (Tailscale or Headscale), nodes are keylessly auto-admitted.</p>
+          <div style="display:flex;align-items:center;gap:8px;margin-top:12px;flex-wrap:wrap">
+            <span style="display:inline-flex;align-items:center;gap:6px;font-size:13px;font-weight:600;color:var(--ink-2);background:#fff;padding:5px 12px;border-radius:999px;border:1px solid var(--line);box-shadow:0 1px 2px rgba(0,0,0,.04)">
+              <img src="/assets/tailscale.svg" width="15" height="15" alt="Tailscale"/> Tailscale
+            </span>
+            <span style="display:inline-flex;align-items:center;gap:6px;font-size:13px;font-weight:600;color:var(--ink-2);background:#fff;padding:5px 12px;border-radius:999px;border:1px solid var(--line);box-shadow:0 1px 2px rgba(0,0,0,.04)">
+              <img src="/assets/headscale.svg" width="22" height="11" alt="Headscale"/> Headscale
+            </span>
+          </div>
+        </div>
+      </article>
+      <article class="step">
+        <div class="step-art"><img src="/images/step3-talk.webp" width="720" height="720" alt="Illustration of typing a prompt on a laptop, dispatching task cards across machines, and receiving completed results" loading="lazy"/></div>
+        <div class="step-body">
+          <span class="step-no"></span>
+          <h3>Prompt Claude (or Any Master AI)</h3>
+          <p>&ldquo;Build on Windows and run end-to-end integration tests on the Raspberry Pi.&rdquo; Work distribution, execution, and aggregation happen autonomously.</p>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- WHY (SSH) -->
+<section class="band" id="why">
+  <div class="wrap split">
+    <div class="split-art"><img src="/images/before-after.webp" width="1200" height="800" alt="Illustration contrasting tangled cables and security warnings with robots cleanly connected via a unified bus" loading="lazy"/></div>
+    <div>
+      <span class="eyebrow">Why Not Traditional SSH?</span>
+      <h2 class="h2">Stop logging in manually.<br/>Start delegating across your fleet.</h2>
+      <p class="lede">While SSH requires establishing fragile inbound remote shells, DureClaw dispatches tasks asynchronously across heterogeneous machines via an outbound agentic bus.</p>
+      <ul class="checks">
+        <li><span><strong>Zero Open Inbound Ports</strong>Worker nodes initiate outbound WebSocket connections — zero port forwarding, DMZs, or static public IPs required.</span></li>
+        <li><span><strong>Uniform Multi-OS Abstraction</strong>Dispatch uniform commands and receive structured JSON results across Windows, Linux, macOS, and micro-embedded devices without OS friction.</span></li>
+        <li><span><strong>Parallel Fleet Execution</strong>Distribute concurrent jobs across dozens of machines simultaneously from a single master prompt.</span></li>
+      </ul>
+      <a class="text-link" href="/how/#vs-ssh">View Benchmark Comparison →</a>
+    </div>
+  </div>
+</section>
+
+<!-- SAFE -->
+<section class="band" id="safe">
+  <div class="wrap split flip">
+    <div class="split-art"><img src="/images/keyless.webp" width="1200" height="800" alt="Illustration of the master API key kept secure in a vault while worker robots receive isolated badges" loading="lazy"/></div>
+    <div>
+      <span class="eyebrow">Enterprise-Grade Security</span>
+      <h2 class="h2">Secret Keys Stay Safe<br/>in a Single Vault</h2>
+      <p class="lede">Never distribute production API keys or credentials to worker nodes. DureClaw issues revocable, least-privilege tokens per device.</p>
+      <ul class="checks">
+        <li><span><strong>Per-Device Admission Tokens</strong>When a node requests to join, an isolated token is provisioned. Revoke individual access instantly without rotating cluster-wide secrets.</span></li>
+        <li><span><strong>Automated Tailnet Admission</strong>Nodes on your private mesh network (Tailscale or Headscale) authenticate zero-touch; unexpected external connections require explicit operator approval.
+          <span style="display:flex;align-items:center;gap:8px;margin-top:8px;flex-wrap:wrap">
+            <span style="display:inline-flex;align-items:center;gap:6px;font-size:12.5px;color:var(--ink-2);background:#fff;padding:3px 10px;border-radius:6px;border:1px solid var(--line);box-shadow:0 1px 2px rgba(0,0,0,.03)">
+              <img src="/assets/tailscale.svg" width="13" height="13" alt="Tailscale"/> Tailscale
+            </span>
+            <span style="display:inline-flex;align-items:center;gap:6px;font-size:12.5px;color:var(--ink-2);background:#fff;padding:3px 10px;border-radius:6px;border:1px solid var(--line);box-shadow:0 1px 2px rgba(0,0,0,.03)">
+              <img src="/assets/headscale.svg" width="20" height="10" alt="Headscale"/> Headscale
+            </span>
+          </span>
+        </span></li>
+        <li><span><strong>Single-Directional Dispatch</strong>Edge worker nodes only execute assigned work and report telemetry back. They cannot orchestrate other nodes, preventing lateral privilege escalation.</span></li>
+      </ul>
+      <a class="text-link" href="/how/#how-it-works">Explore Keyless Architecture →</a>
+    </div>
+  </div>
+</section>
+
+<!-- FOR WHO -->
+<section class="band tint" id="for-who">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow">Real-World Use Cases</span>
+      <h2 class="h2">Built for Scale.<br/>Proven in Production.</h2>
+      <p class="lede">From air-gapped enterprise intranets to industrial IoT production floors and academic research clusters — backed by empirical production benchmarks.</p>
+    </div>
+    <div class="audience-grid">
+      <a class="aud" href="/use-cases/org/">
+        <div class="aud-art"><img width="1400" height="933" src="/images/uc-org.webp" alt="Illustration of crab robots operating office and factory computers together" loading="lazy"/></div>
+        <div class="aud-body">
+          <span class="aud-k">Zero-Leakage Enterprise Workflow</span>
+          <h3>Automate Legacy ERPs, Licensed Workstations & Air-Gapped Intranets</h3>
+          <p class="metric-mini"><b>5/5</b>Windows remote automation workflows succeeded with zero extra firewall config</p>
+          <span class="go">View Case Study</span>
+        </div>
+      </a>
+      <a class="aud" href="/use-cases/dev/">
+        <div class="aud-art"><img width="1400" height="933" src="/images/uc-dev.webp" alt="Illustration of build cards dispatching from a MacBook to Windows, Linux servers, and GPU workstations" loading="lazy"/></div>
+        <div class="aud-body">
+          <span class="aud-k">Fleet-Wide Automated Testing</span>
+          <h3>Orchestrate Windows, Linux & GPU Build Fleets from a Single Mac</h3>
+          <p class="metric-mini"><b>0.61s</b>Concurrent fleet response across 5 heterogeneous machines</p>
+          <span class="go">View Case Study</span>
+        </div>
+      </a>
+      <a class="aud" href="/use-cases/iot/">
+        <div class="aud-art"><img width="1400" height="933" src="/images/uc-iot.webp" alt="Illustration of crab robots monitoring Raspberry Pis, industrial sensors, signal towers, and conveyor lines" loading="lazy"/></div>
+        <div class="aud-body">
+          <span class="aud-k">Smart Factory OT Interlock</span>
+          <h3>Instant Edge Decisions for Sensor Lines & Signal Towers</h3>
+          <p class="metric-mini"><b>36.7µs</b>Frozen edge decision execution without cloud tokens</p>
+          <span class="go">View Case Study</span>
+        </div>
+      </a>
+      <a class="aud" href="/use-cases/research/">
+        <div class="aud-art"><img width="1400" height="933" src="/images/uc-research.webp" alt="Illustration of GPU model benchmarking, automated data collection, and playbook review in a research lab" loading="lazy"/></div>
+        <div class="aud-body">
+          <span class="aud-k">Air-Gapped Financial / Research Lab</span>
+          <h3>Accelerate Benchmark Experiments & Secure Model Evaluations</h3>
+          <p class="metric-mini"><b>143,136×</b>Speedup in local decision evaluation vs cloud roundtrips</p>
+          <span class="go">View Case Study</span>
+        </div>
+      </a>
+    </div>
+    <p class="install-alt"><a href="/use-cases/">View All Real-World Case Studies →</a></p>
+  </div>
+</section>
+
+<!-- WAITLIST -->
+<section class="band tint" id="waitlist">
+  <div class="wrap">
+    <div class="wl">
+      <div class="wl-copy">
+        <span class="eyebrow">Enterprise Inquiries & Updates</span>
+        <h2 class="h2">Get Early Access and Enterprise Updates</h2>
+        <p class="lede">Windows Server app, automated push updates, enterprise team plans, and more — receive early access invites as they roll out. Tell us about your fleet requirements to prioritize your onboarding.</p>
+      </div>
+      <form id="waitlist-form" class="wl-form" novalidate>
+        <label class="wl-field"><span>Work Email <b>*</b></span><input type="email" name="email" required autocomplete="email" placeholder="you@company.com"/></label>
+        <label class="wl-field"><span>Number of Devices</span>
+          <select name="devices"><option value="">Select fleet size</option><option>1–2 devices</option><option>3–5 devices</option><option>6–20 devices</option><option>21+ devices</option></select>
+        </label>
+        <div class="wl-row">
+          <label class="wl-field"><span>Name</span><input type="text" name="name" autocomplete="name" placeholder="Alex Kim"/></label>
+          <label class="wl-field"><span>Phone Number</span><input type="tel" name="phone" autocomplete="tel" inputmode="tel" placeholder="+1 (555) 000-0000"/></label>
+        </div>
+        <div class="wl-row">
+          <label class="wl-field"><span>Organization / Company</span><input type="text" name="org" autocomplete="organization" placeholder="Company, University, or Lab"/></label>
+          <label class="wl-field"><span>Job Title / Role</span><input type="text" name="role" autocomplete="organization-title" placeholder="e.g. Lead Engineer, DevOps Architect, Researcher"/></label>
+        </div>
+        <fieldset class="wl-field wl-envs full"><legend>Target Environments</legend>
+          <label><input type="checkbox" name="env" value="Mac"/> Mac</label>
+          <label><input type="checkbox" name="env" value="Windows"/> Windows</label>
+          <label><input type="checkbox" name="env" value="Linux"/> Linux</label>
+          <label><input type="checkbox" name="env" value="Raspberry Pi"/> Raspberry Pi</label>
+          <label><input type="checkbox" name="env" value="Browser (Chrome)"/> Browser (Chrome)</label>
+        </fieldset>
+        <label class="wl-field"><span>Intended Use Case</span><textarea name="usecase" rows="2" placeholder="e.g. Simultaneously scrape order status across 3 portals across 5 Windows workstations"></textarea></label>
+        <label class="wl-field"><span>Questions or Enterprise Inquiries</span><textarea name="question" rows="2" placeholder="Ask about deployment architecture, security compliance, pricing, or on-prem setup"></textarea></label>
+        <input type="text" name="website" class="wl-hp" tabindex="-1" autocomplete="off" aria-hidden="true"/>
+        <label class="wl-agree"><input type="checkbox" name="agree" required/> <span><b>(Required)</b> I consent to the collection and use of my email, name, phone number, organization, role, and inquiry details for processing this request and response. (Retained until purpose fulfillment or deletion request · Contact: admin@baryon.ai)</span></label>
+        <label class="wl-agree"><input type="checkbox" name="newsletter"/> <span><b>(Optional)</b> Subscribe to product release notes, technical whitepapers, and feature updates. Unsubscribe anytime.</span></label>
+        <button class="btn btn-accent" type="submit">Submit Inquiry & Join Waitlist</button>
+        <p id="wl-status" class="wl-status" role="status" aria-live="polite"></p>
+      </form>
+      <div id="wl-done" class="wl-done" hidden>
+        <h3>Thank you for reaching out 🙌</h3>
+        <p>We will contact you via email shortly. To get started right away, check our <a href="/start/">Quickstart Installation Guide</a>.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CLOSING -->
+<section class="band" id="get-started">
+  <div class="wrap">
+    <div class="closing">
+      <div>
+        <h2>Start with a Single Mac Today</h2>
+        <p>Launch the server app in seconds, then connect your idle machines one by one to build your autonomous fleet.</p>
+      </div>
+      <div class="acts">
+        <a class="btn btn-primary" href="https://github.com/DureClaw/homepage/releases/latest/download/DureClaw-Server-mac-arm64.dmg" download>Download for macOS</a>
+        <a class="btn btn-ghost" href="https://github.com/dureclaw/dureclaw" target="_blank">GitHub ↗</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- lightbox -->
+<div class="lb-bg" id="lb" onclick="closeLB()">
+  <img class="lb-img" id="lb-img" src="" alt=""/>
+</div>
+
+<footer>
+  <div class="container">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <div class="footer-logo"><strong>DureClaw</strong></div>
+        <p class="footer-tagline">Turn every idle computer into an AI teammate — Local-First Agentic Bus</p>
+      </div>
+      <div class="footer-nav-groups">
+        <div class="footer-col">
+          <div class="footer-col-title">DureClaw</div>
+          <a href="/start/">Quickstart</a>
+          <a href="/how/">Architecture & Protocol</a>
+          <a href="/pricing/">Pricing & Plans</a>
+          <a href="/terms/">Terms of Service</a>
+          <a href="https://github.com/DureClaw/dureclaw/issues" target="_blank" rel="noopener">Issues & Templates ↗</a>
+        </div>
+        <div class="footer-col">
+          <div class="footer-col-title">Baryon Labs</div>
+          <a href="https://baryon.ai/about.html" target="_blank" rel="noopener">About Us ↗</a>
+          <a href="https://baryon.ai/service.html" target="_blank" rel="noopener">Enterprise AX Consulting ↗</a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="footer-company-info">
+        <span><strong>Baryon Labs, Inc.</strong></span>
+        <span class="sep">·</span>
+        <span>CEO: Seungwoo Hong</span>
+        <span class="sep">·</span>
+        <span>Seoul, Korea</span>
+        <span class="sep">·</span>
+        <span>Inquiries: <a href="mailto:hello@baryon.ai">hello@baryon.ai</a></span>
+      </div>
+      <div class="footer-copy">© 2026 Baryon Labs. All rights reserved.</div>
+    </div>
+  </div>
+</footer>
+
+<script src="/assets/site.js"></script>
+<script src="/assets/i18n.js"></script>
+<script>
+// Redirect legacy single-page anchor links (/#install, etc.) to new subpages
+(function () {
+  var moved = {
+    "platforms": "start", "add-agent": "start", "example": "start",
+    "how-it-works": "how", "vs-ssh": "how", "layers": "how", "ecosystem": "how", "architecture": "how",
+    "screenshots": "showcase", "demo": "showcase", "hardware": "showcase",
+    "events": "developers", "api": "developers", "changelog": "changelog"
+  };
+  var h = location.hash.slice(1);
+  if (moved[h]) location.replace("/" + moved[h] + "/#" + h);
+})();
+</script>
+<script src="/assets/waitlist.js" defer></script>
+</body>
+</html>

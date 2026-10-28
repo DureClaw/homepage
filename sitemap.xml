@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
-  <!-- 메인 랜딩 페이지 -->
+  <!-- 메인 랜딩 페이지 (KO) -->
   <url>
     <loc>https://dureclaw.baryon.ai/</loc>
     <lastmod>2026-10-28</lastmod>
@@ -16,6 +16,19 @@
     <image:image><image:loc>https://dureclaw.baryon.ai/images/uc-dev.webp</image:loc></image:image>
     <image:image><image:loc>https://dureclaw.baryon.ai/images/uc-iot.webp</image:loc></image:image>
     <image:image><image:loc>https://dureclaw.baryon.ai/images/uc-research.webp</image:loc></image:image>
+  </url>
+  <!-- Global English Landing Page (EN) -->
+  <url>
+    <loc>https://dureclaw.baryon.ai/en/</loc>
+    <lastmod>2026-10-28</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>1.0</priority>
+    <image:image><image:loc>https://dureclaw.baryon.ai/images/concept.webp</image:loc></image:image>
+    <image:image><image:loc>https://dureclaw.baryon.ai/images/step1-server.webp</image:loc></image:image>
+    <image:image><image:loc>https://dureclaw.baryon.ai/images/step2-connect.webp</image:loc></image:image>
+    <image:image><image:loc>https://dureclaw.baryon.ai/images/step3-talk.webp</image:loc></image:image>
+    <image:image><image:loc>https://dureclaw.baryon.ai/images/before-after.webp</image:loc></image:image>
+    <image:image><image:loc>https://dureclaw.baryon.ai/images/keyless.webp</image:loc></image:image>
   </url>
   
   <!-- 핵심 기능 및 온보딩 -->
