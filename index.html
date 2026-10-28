@@ -42,60 +42,127 @@
 
 <!-- ── AI / LLM crawlers (GEO/AEO) ── -->
 <link rel="alternate" type="text/markdown" title="llms.txt" href="/llms.txt"/>
+<link rel="alternate" type="text/markdown" title="llms-full.txt" href="/llms-full.txt"/>
 
-<!-- ── Structured data: SoftwareApplication ── -->
+<!-- ── Unified Schema.org JSON-LD: Organization, SoftwareApplication & FAQPage (AEO/GEO) ── -->
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
-  "@type": "SoftwareApplication",
-  "name": "DureClaw",
-  "alternateName": "두레클로",
-  "applicationCategory": "DeveloperApplication",
-  "operatingSystem": "macOS, Windows, Linux, Raspberry Pi",
-  "url": "https://dureclaw.baryon.ai/",
-  "image": "https://dureclaw.baryon.ai/screenshots/hero-banner.jpg",
-  "description": "분산 디바이스를 하나의 협력 AI 크루로 묶는 시스템 (개인판 무료: 1인·서버 포함 2대). 마스터(Claude)가 두뇌, 각 노드(claw)가 물리·브라우저·데스크톱의 손이 된다. keyless 엣지 + 결정 동결(LLM as compiler).",
-  "softwareVersion": "0.4.0",
-  "isAccessibleForFree": true,
-  "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
-  "author": { "@type": "Organization", "name": "Baryon Labs", "url": "https://baryon.ai" },
-  "sameAs": [
-    "https://github.com/dureclaw/dureclaw",
-    "https://github.com/dureclaw/dureclaw"
-  ]
-}
-</script>
-
-<!-- ── Structured data: FAQPage (AEO/GEO — answer-engine ready) ── -->
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  "mainEntity": [
+  "@graph": [
     {
-      "@type": "Question",
-      "name": "DureClaw가 무엇인가요?",
-      "acceptedAnswer": { "@type": "Answer", "text": "DureClaw는 흩어진 여러 머신(Mac·GPU 서버·Linux·Windows·라즈베리파이)을 하나의 실시간 협력 버스(Phoenix WebSocket)로 묶어 협력 AI 크루로 만드는 시스템입니다. 개인판은 1인·서버 포함 2대까지 무료이고, 3대 이상은 엔터프라이즈 문의입니다. Claude Code 네이티브 플러그인으로 제공되며, 한 줄 설치로 멀티머신 AI 팀을 구성합니다. 마스터(Claude)가 두뇌 역할로 추론·제안하고, 각 노드(claw)가 서로 다른 손이 됩니다." }
+      "@type": "Organization",
+      "@id": "https://dureclaw.baryon.ai/#organization",
+      "name": "바리온랩스 (Baryon Labs)",
+      "alternateName": "Baryon Labs",
+      "url": "https://baryon.ai",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://dureclaw.baryon.ai/favicon-256.png",
+        "width": 256,
+        "height": 256
+      },
+      "sameAs": [
+        "https://github.com/DureClaw",
+        "https://github.com/DureClaw/dureclaw",
+        "https://www.npmjs.com/package/@dureclaw/mcp"
+      ]
     },
     {
-      "@type": "Question",
-      "name": "어떤 환경과 노드를 지원하나요?",
-      "acceptedAnswer": { "@type": "Answer", "text": "세 가지 네이티브 노드가 있습니다. edgeclaw는 OS·물리 노드로 단일 정적 Go 바이너리이며 Windows·macOS·Linux·라즈베리파이(armv6)·riscv64 등 모든 OS/CPU에서 동작하고 GPIO·LED·부저·릴레이·신호탑까지 구동합니다. webclaw는 브라우저 노드(Chrome MV3 확장)입니다. deskclaw는 데스크톱 GUI 노드(Windows·macOS)로 스크린샷·클릭·타이핑과 RPA record→replay를 지원합니다. 추가로 picoclaw·nanobot·zeroclaw·nullclaw 어댑터로 기존 도구를 합류시킬 수 있습니다." }
+      "@type": "SoftwareApplication",
+      "@id": "https://dureclaw.baryon.ai/#software",
+      "name": "DureClaw",
+      "alternateName": ["두레클로", "DureClaw Multi-Agent Bus"],
+      "applicationCategory": "DeveloperApplication",
+      "operatingSystem": "macOS, Windows, Linux, Raspberry Pi OS (armv6/arm64), Industrial IPC, Docker",
+      "url": "https://dureclaw.baryon.ai/",
+      "image": "https://dureclaw.baryon.ai/screenshots/hero-banner.jpg",
+      "softwareVersion": "0.5.4",
+      "isAccessibleForFree": true,
+      "description": "분산 디바이스(Mac·Windows·Linux·라즈베리파이)를 하나의 실시간 협력 AI 크루로 묶는 오케스트레이션 시스템. 마스터(Claude)가 두뇌 역할을 수행하고, 5종의 엣지 에이전트(claw)가 물리·브라우저·데스크톱 GUI를 직접 제어합니다. keyless 엣지 및 결정 동결(Decision Freezing)을 통해 LLM 호출 비용 90% 이상 절감과 마이크로초 단위 재실행을 보장합니다.",
+      "featureList": [
+        "One Brain, Many Hands Architecture (마스터 추론, 워커 실행)",
+        "Keyless Edge (엣지 노드 모델 API 키 불필요, 중앙 마스터 위임)",
+        "Decision Freezing (인간 승인 판단을 규칙으로 동결, 무토큰/µs 단위 재실행)",
+        "Phoenix Channel WebSocket 5-tuple JSON 기반 초저지연 실시간 버스",
+        "온프레미스 폐쇄망(Headscale/Tailscale) 지원 및 셸 격리(shell: off) 정책",
+        "Claude Code 네이티브 플러그인 및 MCP(Model Context Protocol) 지원"
+      ],
+      "author": {
+        "@id": "https://dureclaw.baryon.ai/#organization"
+      },
+      "publisher": {
+        "@id": "https://dureclaw.baryon.ai/#organization"
+      },
+      "offers": [
+        {
+          "@type": "Offer",
+          "name": "개인판 (Personal Free)",
+          "price": "0",
+          "priceCurrency": "KRW",
+          "description": "1인 사용자 기준 서버 포함 최대 2대 노드까지 기간 및 기능 제한 없이 평생 무료 지원"
+        },
+        {
+          "@type": "Offer",
+          "name": "엔터프라이즈 라이선스 (Enterprise)",
+          "priceSpecification": {
+            "@type": "PriceSpecification",
+            "price": "Contact",
+            "priceCurrency": "KRW"
+          },
+          "description": "3대 이상 대규모 병렬 노드, 팀/조직 계정, 온프레미스 사설망 폐쇄 구축 및 전용 기술 지원"
+        }
+      ],
+      "sameAs": [
+        "https://github.com/DureClaw/dureclaw",
+        "https://www.npmjs.com/package/@dureclaw/mcp",
+        "https://registry.modelcontextprotocol.io"
+      ]
     },
     {
-      "@type": "Question",
-      "name": "keyless 엣지란 무엇인가요?",
-      "acceptedAnswer": { "@type": "Answer", "text": "엣지 노드가 모델 API 키를 갖지 않는다는 뜻입니다. 자연어 작업이 오면 노드는 프롬프트를 마스터 브레인에 위임하고 결과만 받습니다. 비용·키·레이트리밋은 마스터 한 곳이 흡수하므로, 저사양·무인증 머신도 즉시 합류할 수 있고 키 유출면이 줄어듭니다." }
-    },
-    {
-      "@type": "Question",
-      "name": "결정 동결(LLM as compiler)이란 무엇인가요?",
-      "acceptedAnswer": { "@type": "Answer", "text": "사람이 한 번 승인한 판단을 결정론적 룰이나 매크로로 '동결'하여, 같은 문제는 다음부터 LLM 호출 없이 마이크로초 단위로 재사용하는 닫힌 학습 루프입니다. 제조 라인에서는 스킬 캐시 룰로, 데스크톱에서는 deskclaw RPA 매크로로 구현됩니다. LLM을 런타임 의존성이 아니라 컴파일러로 사용합니다." }
-    },
-    {
-      "@type": "Question",
-      "name": "어떻게 설치하나요?",
-      "acceptedAnswer": { "@type": "Answer", "text": "한 줄로 설치합니다: bash <(curl -fsSL https://dureclaw.baryon.ai/install) — Claude Code 플러그인, Phoenix 서버, MCP 등록까지 자동 처리됩니다. 워커 머신은 출력된 한 줄 명령을 실행하면 연결됩니다. 약 3분이면 멀티머신 AI 팀이 완성됩니다." }
+      "@type": "FAQPage",
+      "@id": "https://dureclaw.baryon.ai/#faq",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "DureClaw(두레클로)란 무엇인가요?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "DureClaw는 흩어져 있는 여러 머신(Mac, GPU 서버, Linux, Windows, 라즈베리파이)을 하나의 실시간 협력 버스(Phoenix WebSocket)로 묶어 다기종 AI 팀으로 운영하는 분산 멀티에이전트 오케스트레이션 시스템입니다. 마스터(Claude Code 등)가 '두뇌'로서 추론과 작업 분배를 담당하고, 각 노드 에이전트(claw)가 '손'이 되어 로컬 OS 명령, 브라우저 조작, 데스크톱 GUI 제어, 하드웨어 센서 제어를 대행합니다. 복잡한 네트워크 설정이나 인바운드 포트 개방 없이 한 줄 스크립트(curl)로 즉시 구축 가능합니다."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "DureClaw의 요금 정책과 개인판 무료 범위는 어떻게 되나요?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "DureClaw는 개인 개발자와 연구자를 위해 1인·서버 포함 최대 2대 노드까지 영구 무료로 제공됩니다. 개인판에서도 핵심 엔진, MCP 도구 연동, 결정 동결(Decision Freezing) 기능이 제한 없이 제공됩니다. 머신 3대 이상을 동시에 병렬 클러스터로 운영하거나 기업·조직 환경에서 대규모 온프레미스 폐쇄망을 구축하고자 할 때는 엔터프라이즈 라이선스 계약을 통해 도입할 수 있습니다."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "결정 동결(Decision Freezing / LLM as compiler)의 작동 원리는 무엇인가요?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "결정 동결은 사람 또는 마스터 LLM이 최초 1회 승인한 추론과 판단 과정을 결정론적 규칙(Deterministic Rules)이나 네이티브 매크로 코드로 컴파일하여 캐싱하는 기술입니다. 동일하거나 유사한 작업이 재발생할 경우 LLM API를 다시 호출하지 않고 엣지 노드에서 로컬 규칙으로 즉시 실행됩니다. 이를 통해 API 토큰 소비를 0으로 줄여 90% 이상의 비용을 절감하며, 실측 기준 4~6초 걸리던 AI 판단을 36.7µs(약 4만 배 가속) 수준의 초저지연으로 처리합니다."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "DureClaw가 지원하는 엣지 에이전트 5종은 무엇인가요?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "DureClaw는 다양한 환경을 커버하기 위해 5종의 에이전트 생태계를 제공합니다: 1) edgeclaw: 단일 정적 Go 바이너리로 구동되는 OS·물리 제어 노드(Windows/Mac/Linux/RPi Zero 등, 셸 명령 및 GPIO·센서 구동), 2) webclaw: Chrome MV3 확장 프로그램 기반의 상시 웹 브라우저 노드(DOM 제어, 웹 스크래핑, CORS 무제한 실행), 3) deskclaw: Windows/macOS 네이티브 데스크톱 GUI 노드(화면 캡처, 마우스/키보드 자동화, RPA Record & Replay), 4) picoclaw: 초경량 Go 브리지 어댑터, 5) nanobot: 파이썬 환경 임베디드를 지원하는 경량 에이전트 어댑터입니다."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "온프레미스 및 사설망 환경에서의 보안성은 어떻게 보장되나요?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "DureClaw는 외부 클라우드 노출 없는 완전 온프레미스 및 폐쇄망 구축을 기본 지원합니다. 공용 IP 바인딩 대신 사설망(Headscale/Tailscale 등 100.64.0.0/10 대역)에만 서버를 바인딩할 수 있으며, 엣지 노드에는 LLM API 키를 저장하지 않는 Keyless 위임 방식을 적용해 자격증명 유출을 원천 차단합니다. 또한 엣지 노드 정책 파일(~/.oah/policy.json)을 통해 셸 실행 전면 차단(shell: off), 작업 디렉토리 강제 격리(workdir_only: true), 민감 경로(.ssh, .aws, .env) 접근 차단, 셸 체이닝 메타문자 승인 강제 등 엔터프라이즈 보안 거버넌스를 완벽히 충족합니다."
+          }
+        }
+      ]
     }
   ]
 }
@@ -676,6 +743,7 @@
 </footer>
 
 <script src="/assets/site.js"></script>
+<script src="/assets/i18n.js"></script>
 <script>
 // 예전 한 페이지 시절의 앵커 링크(/#install 등)를 옮겨간 서브 페이지로 보낸다
 (function () {

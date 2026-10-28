@@ -36,4 +36,6 @@ User-agent: cohere-ai
 Allow: /
 
 Sitemap: https://dureclaw.baryon.ai/sitemap.xml
-# LLM 친화 요약: https://dureclaw.baryon.ai/llms.txt
+# LLM 친화 요약 및 전체 명세 (llms.txt standard)
+# https://dureclaw.baryon.ai/llms.txt
+# https://dureclaw.baryon.ai/llms-full.txt

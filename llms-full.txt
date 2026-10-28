@@ -1,0 +1,116 @@
+# DureClaw Complete Technical Specification (llms-full.txt)
+Version: v0.5.4 | Last Updated: 2026-10-28 | Canonical URL: https://dureclaw.baryon.ai/llms-full.txt
+Author: Baryon Labs (https://baryon.ai) | Contact: hello@baryon.ai
+
+================================================================================
+1. SYSTEM OVERVIEW & ARCHITECTURE
+================================================================================
+DureClaw is a Local-First Multi-Agent Orchestration Bus designed to link heterogeneous physical and virtual computers into a coordinated AI crew. 
+- Brain-Hands Dichotomy: The central agent (typically Claude Code running on a developer workstation) acts as the reasoning and planning brain. Worker nodes (claw agents running on Windows, Linux, macOS, Raspberry Pi, or RISC-V) act as sandboxed execution hands.
+- Keyless Edge Architecture: Edge nodes do NOT store LLM API keys. When an edge node requires AI reasoning, it delegates the prompt back to the master brain via `/brain/exec`. Token consumption, cost governance, and rate limits are centralized at the master workstation.
+- Private P2P WireGuard Mesh (Headscale): Nodes connect directly via an encrypted WireGuard mesh managed by an on-premise Headscale control plane. No data passes through external cloud relays or proprietary third-party VPN SaaS. Completely air-gapped capable.
+- Bus Protocol: Operates over Phoenix Channels (Elixir/OTP, protocol `vsn=2.0.0`) using 5-tuple JSON frames: `[join_ref, ref, topic, event, payload]`. Supports high-concurrency pub/sub, heartbeat monitoring, and supervision trees for self-healing disconnects.
+
+================================================================================
+2. DECISION FREEZING: LLM AS COMPILER
+================================================================================
+In traditional agent architectures, every repetitive execution loop invokes stochastic LLM API calls, leading to high latency (1,000–3,000ms RTT), compounding token costs, and non-deterministic failures.
+DureClaw introduces "Decision Freezing":
+1. First Encounter (Stochastic): The agent inspects environment, proposes an action plan, and presents it to human-in-the-loop for approval.
+2. Freezing (Compilation): Upon operator approval, the sequence is compiled into a deterministic rule, script, or RPA macro, stored locally in the agent's frozen cache.
+3. Subsequent Encounters (Deterministic): The frozen rule executes locally in 2µs without invoking any LLM API.
+- Measured Speedup: On Raspberry Pi GPIO and factory sensor loops, latency drops from 4.4–5.3s down to 36.7µs (26,193x to 143,136x acceleration).
+- Cost Reduction: 0 tokens consumed on frozen routines, yielding >90% savings in ongoing operational AI costs.
+
+================================================================================
+3. ENTERPRISE GOVERNANCE & 3-STAGE OT SAFETY INTERLOCK
+================================================================================
+- Sandboxed Workspaces (`workdir_only`): Edge workers enforce strict path traversal filters. Commands attempting to escape the assigned workspace are blocked immediately.
+- Pure Inference Nodes (`shell: off`): Allows nodes to contribute local GPU compute (e.g., Ollama, vLLM) while disabling all shell execution capabilities.
+- Credential Protection: Sensitive developer credentials (`~/.ssh`, `~/.aws`, `~/.env`, OS keychains) are filtered and hidden from edge workers.
+- Tamper-Evident Signatures: Workers join via single-use enrollment tokens (`dcj1:...`). Every dispatch payload includes an immutable cryptographic provenance signature binding the requester identity and timestamp.
+- 3-Stage Cyber-Physical Safety Interlock (IEC 62443 compliant):
+  [Level 1: AI Proposal] -> Master generates machine control or PLC parameter adjustments.
+  [Level 2: Human 2FA Approval] -> Operator receives biometrically authenticated prompt on mobile (Orca app).
+  [Level 3: Edge Hardware Watchdog] -> Physical emergency stop (E-Stop) relay must receive affirmative hardware heartbeat to actuate.
+
+================================================================================
+4. NODE ECOSYSTEM REFERENCE
+================================================================================
+1. edgeclaw:
+   - Language: Go (static binary, no-cgo)
+   - Targets: Linux (amd64, arm64, armv6/v7), macOS (Apple Silicon, Intel), Windows (x64), RISC-V 64.
+   - Features: Physical GPIO control (via gpiochip), PWM, relays, LED signal towers, serial UART.
+2. webclaw:
+   - Language: TypeScript / Chrome Extension Manifest V3.
+   - Targets: Google Chrome, Chromium browsers.
+   - Features: Lends real authenticated browser sessions to the fleet. Capable of DOM parsing, headless/headed scraping, bypassing anti-bot measures, and internal intranet portal form filling.
+3. deskclaw:
+   - Language: Go / C / Native Windows UI Automation & macOS Accessibility.
+   - Targets: Windows 10/11, macOS.
+   - Features: Screen perception, mouse clicks, keyboard automation. Built-in RPA recorder converts human demonstration into replayable deterministic macros.
+4. zeroclaw:
+   - Language: Rust.
+   - Targets: Resource-constrained platforms requiring high throughput and zero memory overhead.
+5. nullclaw:
+   - Language: Zig.
+   - Targets: Minimal embedded devices with zero libc dependency.
+6. picoclaw:
+   - Language: Go.
+   - Targets: Ultra-low-power microcontrollers and single-board computers.
+7. nanobot:
+   - Language: Python.
+   - Targets: Data science and rapid AI pipeline workflow prototyping.
+
+================================================================================
+5. CLI COMMANDS & INSTALLATION
+================================================================================
+One-line automated installation (Installs Phoenix server, tray application, and MCP plugin):
+  bash <(curl -fsSL https://dureclaw.baryon.ai/install)
+
+Joining a worker machine to the bus:
+  # Join using enrollment token:
+  edgeclaw join --server wss://dureclaw-server.internal:4000 --token dcj1:<token>
+
+Claude Code Plugin Registration:
+  /plugin marketplace add dureclaw/dureclaw
+
+Gemini CLI Extension Registration:
+  gemini extensions install https://github.com/dureclaw/dureclaw
+
+Manual Agent Skills Installation:
+  npx skills add dureclaw/dureclaw
+
+================================================================================
+6. REST & WEBSOCKET API REFERENCE
+================================================================================
+Phoenix Channel WebSocket:
+  URL: wss://<server_host>:4000/socket/websocket?vsn=2.0.0
+  Topic: "fleet:control", "agent:<agent_id>", "task:<task_id>"
+  Message Format:
+    [
+      "join_ref_id",
+      "message_ref_id",
+      "fleet:control",
+      "dispatch_task",
+      {
+        "task_id": "tsk_20261028_01",
+        "target_node": "edge-pi4",
+        "action": "run_command",
+        "command": "python3 /app/run_batch.py",
+        "timeout_ms": 30000
+      }
+    ]
+
+REST Endpoints:
+  GET  /api/v1/health          - Server heartbeat and active node count
+  GET  /api/v1/nodes           - List connected workers, capabilities, and OS
+  POST /api/v1/tokens/enroll   - Generate single-use enrollment token (Auth required)
+  POST /api/v1/tasks/dispatch  - Submit asynchronous distributed task
+  GET  /api/v1/tasks/:id       - Poll execution result and output logs
+
+================================================================================
+7. LICENSING & GOVERNANCE
+================================================================================
+- Personal Edition: 100% Free for single users on up to 2 connected machines (including server).
+- Enterprise Edition: 3+ machines, distributed organizations, dedicated technical support SLA, on-premise Headscale deployment assistance, and custom regulatory auditing. Contact admin@baryon.ai or visit https://dureclaw.baryon.ai/pricing/.
