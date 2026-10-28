@@ -591,7 +591,8 @@ main + .lb-bg + footer, main ~ footer { margin-top: 0; }
 }
 .edge-card.hl { border-color: var(--accent); background: linear-gradient(to bottom, #ffffff, #fffaf7); box-shadow: 0 4px 16px rgba(228, 87, 46, 0.08); }
 .edge-card-top { display: flex; align-items: center; justify-content: space-between; gap: 10px; flex-wrap: wrap; }
-.edge-card-title { display: flex; align-items: center; gap: 8px; }
+.edge-card-title { display: flex; align-items: center; gap: 12px; }
+.edge-icon { width: 46px; height: 46px; border-radius: 10px; flex-shrink: 0; box-shadow: 0 4px 12px rgba(23, 22, 15, 0.12); object-fit: cover; border: 1px solid rgba(0,0,0,0.06); }
 .edge-card-name { font-family: var(--font-mono, monospace); font-size: 19px; font-weight: 750; color: var(--ink); }
 .edge-badges { display: flex; align-items: center; gap: 6px; }
 .edge-badge { font-size: 12px; font-weight: 700; padding: 3px 8px; border-radius: 6px; letter-spacing: -0.01em; }
