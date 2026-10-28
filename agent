@@ -196,22 +196,58 @@ PHOENIX="${1:-${PHOENIX:-}}"
 # ─── 자체 사설망 합류 (서버가 발급한 노드 연결 코드) ──────────────────────────
 #   JOIN=dcj1:... bash <(curl -fsSL https://dureclaw.baryon.ai/agent)
 #   MESH_FORCE=1 : 이미 다른 Tailscale 망에 있어도 자체 망으로 옮김
-if [[ -n "${JOIN:-}" ]]; then
+_do_join() {
+  [[ -z "${JOIN:-}" ]] && return 0
   echo "→ 자체 사설망에 합류합니다 (노드 연결 코드)"
-  _here="$(cd "$(dirname "${BASH_SOURCE[0]}")" 2>/dev/null && pwd || true)"
+  local _here; _here="$(cd "$(dirname "${BASH_SOURCE[0]}")" 2>/dev/null && pwd || true)"
+  local MESH_SH=""
   if [[ -n "$_here" && -f "$_here/mesh.sh" ]]; then
     MESH_SH="$_here/mesh.sh"
   else
     MESH_SH="$(mktemp)"
     curl -fsSL "$OAH_BASE/mesh" -o "$MESH_SH"
   fi
-  _mesh_args=()
+  local _mesh_args=()
   [[ "${MESH_FORCE:-0}" == "1" ]] && _mesh_args+=(--force)
-  JOIN_OUT="$(bash "$MESH_SH" join "$JOIN" "${_mesh_args[@]}")" || { echo "FAILED: 자체 망 합류 실패"; exit 1; }
+  local JOIN_OUT; JOIN_OUT="$(bash "$MESH_SH" join "$JOIN" "${_mesh_args[@]}")" || { echo "FAILED: 자체 망 합류 실패"; exit 1; }
   if [[ -z "$PHOENIX" ]]; then
     PHOENIX="$(sed -n 's/^PHOENIX=//p' <<<"$JOIN_OUT")"
     [[ -n "$PHOENIX" ]] && echo "→ 버스 주소(코드에서): $PHOENIX"
   fi
+}
+
+_choose_network_or_server() {
+  echo ""
+  echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
+  echo " 서버 연결 방식 선택"
+  echo " 원격 서버에 접속하려면 사설망(Tailscale/Headscale)이 필요합니다."
+  echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
+  echo "  1) Tailscale 로그인 / 설치 (공식 클라우드 망)"
+  echo "  2) Headscale 자체 사설망 합류 (노드 연결 코드 dcj1:... 입력)"
+  echo "  3) 직접 서버 주소(LAN IP 또는 ws://...:4000) 입력"
+  echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
+  local a_choice=""
+  read -rp " 선택 [1/2/3, 기본: 1]: " a_choice
+  case "${a_choice:-1}" in
+    2)
+      local join_code=""
+      read -rp " 노드 연결 코드 (dcj1:...): " join_code
+      if [[ -n "$join_code" ]]; then
+        JOIN="$join_code"
+        _do_join
+      fi
+      ;;
+    3)
+      read -rp " 서버 주소 입력 (예: ws://192.168.1.10:4000): " PHOENIX
+      ;;
+    1|*)
+      _ensure_tailscale_agent
+      ;;
+  esac
+}
+
+if [[ -n "${JOIN:-}" ]]; then
+  _do_join
 fi
 
 if [[ -z "$PHOENIX" ]]; then
@@ -227,11 +263,15 @@ if [[ -z "$PHOENIX" ]]; then
     PHOENIX="ws://oah.local:4000"
     echo "→ oah.local 연결됨 (같은 LAN)"
   else
-    # Tailscale 없거나 미연결 → 자동 설치 유도
-    _ensure_tailscale_agent
+    # Tailscale 없거나 미연결 → 대화형이면 선택지 제공, 비대화형이면 기존 흐름
+    if [[ -t 0 ]]; then
+      _choose_network_or_server
+    else
+      _ensure_tailscale_agent
+    fi
 
     # 설치 후 재시도
-    if command -v tailscale &>/dev/null && tailscale ip -4 &>/dev/null 2>&1; then
+    if [[ -z "$PHOENIX" ]] && command -v tailscale &>/dev/null && tailscale ip -4 &>/dev/null 2>&1; then
       _ts_tui || true
     fi
 
@@ -512,7 +552,11 @@ CFG
 fi
 
 BINARY_NAME="oah-agent-${OS}-${ARCH}"
-GH_RELEASE_URL="https://github.com/DureClaw/homepage/releases/latest/download/$BINARY_NAME"
+if [[ -n "${DURECLAW_VERSION:-}" ]]; then
+  GH_RELEASE_URL="https://github.com/DureClaw/homepage/releases/download/v${DURECLAW_VERSION#v}/$BINARY_NAME"
+else
+  GH_RELEASE_URL="https://github.com/DureClaw/homepage/releases/latest/download/$BINARY_NAME"
+fi
 BINARY_URL="$GH_RELEASE_URL"
 
 _download_agent() {
@@ -524,6 +568,8 @@ if [[ ! -f "$EXE" ]]; then
   echo "→ 에이전트 다운로드 중... ($BINARY_NAME)"
   _download_agent "$BINARY_URL" "$EXE" \
     || { echo "⚠ GitHub Releases 실패, CDN 시도 중..."; _download_agent "$OAH_BASE/$BINARY_NAME" "$EXE"; }
+elif [[ "${DURECLAW_AUTO_UPDATE:-1}" == "0" ]]; then
+  echo "→ DURECLAW_AUTO_UPDATE=0 (버전 고정 모드: 자동 업데이트 건너뜀)"
 else
   REMOTE_ETAG=$(curl -sfI --max-time 5 -L "$BINARY_URL" | grep -i etag | awk '{print $2}' | tr -d '\r"')
   CACHED_ETAG=$(cat "${EXE}.etag" 2>/dev/null || true)

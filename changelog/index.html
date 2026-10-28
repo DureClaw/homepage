@@ -114,7 +114,29 @@
     <div class="cl-grid">
 
       <div class="cl-card">
-        <div class="cl-card-ver">v0.5.2 <span class="cl-badge">latest</span></div>
+        <div class="cl-card-ver">v0.5.4 <span class="cl-badge">latest</span></div>
+        <div class="cl-card-date">2026-10-27</div>
+        <ul class="cl-items">
+          <li><span class="cl-tag fix">fix</span><b>사설망(Headscale·Tailscale) 연결 감지 안정화</b> — 서버 앱이 상태를 확인할 때 Tailscale GUI가 꺼져 있으면 상태 조회 프로세스가 앱으로 다시 떠 멈추던 문제를 고쳤습니다. 이제 사설망 주소(<code>100.64/10</code>)를 인터페이스에서 직접 읽어, Headscale·ngrok 구성에서도 연결 상태와 피어 수를 정확히 표시합니다(Mac·Windows)</li>
+          <li><span class="cl-tag fix">fix</span><b>트레이 상태 갱신</b> — 메뉴를 열 때마다 최신 사설망 상태를 다시 확인합니다. 백그라운드 절전(App Nap)으로 주기 확인이 밀려도 "꺼짐"으로 굳지 않습니다(Mac)</li>
+        </ul>
+      </div>
+
+      <div class="cl-card">
+        <div class="cl-card-ver">v0.5.3</div>
+        <div class="cl-card-date">2026-10-27</div>
+        <ul class="cl-items">
+          <li><span class="cl-tag sec">security</span><b>엔터프라이즈 작업 격리 및 순수 AI 노드 모드 지원</b> — <code>~/.oah/policy.json</code>에 <code>shell: "off"</code> 설정 시 셸 실행을 전면 거부하고 순수 AI 작업만 수행하는 전용 노드 지원, <code>workdir_only: true</code>로 작업 디렉토리 외부 쓰기 및 상위 경로 탈출(<code>../</code>) 원천 차단</li>
+          <li><span class="cl-tag sec">security</span><b>민감 시스템 자격증명 보호 &amp; 셸 메타문자 승인 강제</b> — <code>.ssh</code>, <code>.aws</code>, <code>.env</code>, 키체인 등 민감 경로 접근 차단, <code>;</code>, <code>&amp;&amp;</code>, <code>|</code>, <code>$()</code> 등 셸 체이닝 메타문자 포함 시 관리자 승인 대기 강제</li>
+          <li><span class="cl-tag sec">security</span><b>작업 컴퓨터 Claude Code 로컬 권한 설정 준수</b> — 백엔드 실행 시 <code>--dangerously-skip-permissions</code> 플래그를 기본 제거하여 로컬 위험 명령 확인 설정이 그대로 적용되도록 개선</li>
+          <li><span class="cl-tag sec">security</span><b>네트워크 바인드 최소화 및 인증 강화</b> — 서버 기본 바인딩을 공용 LAN(0.0.0.0) 대신 사설망 IP(Headscale/Tailscale)로 한정, 서버 비밀키 부재 시 마스터 권한 승격 취약점 차단</li>
+          <li><span class="cl-tag sec">security</span><b>마스터 비밀키 전달 제거 &amp; 키 없는 노드 승인제</b> — 설치 완료 시 마스터 비밀키 출력을 제거하고, 작업 노드는 키 없이 접속 신청 후 승인을 받아 고유 토큰으로 연결되도록 개선</li>
+          <li><span class="cl-tag feat">feature</span><b>기업 장비용 버전 고정 및 자동 업데이트 제어</b> — <code>DURECLAW_AUTO_UPDATE=0</code> 지원으로 임의 업데이트 방지, <code>DURECLAW_VERSION</code>으로 지정된 릴리즈 태그 버전 핀 고정 지원, MCP 릴리즈 태그 연동</li>
+        </ul>
+      </div>
+
+      <div class="cl-card">
+        <div class="cl-card-ver">v0.5.2</div>
         <div class="cl-card-date">2026-10-26</div>
         <ul class="cl-items">
           <li><span class="cl-tag feat">feature</span><b>Headscale 자체 사설망(VPN) 선택 옵션</b> — 공식 Tailscale SaaS와 오픈소스 Headscale 컨트롤 서버를 선택적으로 구성. 외부 계정 및 클라우드 서비스 없이 완전한 자체 망 운영 가능</li>
