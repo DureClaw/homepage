@@ -90,7 +90,7 @@
         <a href="/changelog/">Changelog</a>
         <a href="/how/">문서</a>
         <a href="/pricing/" class="active">엔터프라이즈</a>
-        <a href="/#waitlist">대기 신청</a>
+        <a href="/#waitlist">도입 문의 · 소식</a>
       </div>
       <a href="https://github.com/dureclaw/dureclaw" class="nav-gh" target="_blank">GitHub ↗</a>
     </div>
@@ -109,6 +109,9 @@
 <p>3대 이상 동시 병렬·조직 사용은 엔터프라이즈 라이선스로 제공합니다. 엔터프라이즈 빌드는 공개 다운로드가 없고, <b>문의 후 별도로 전달</b>합니다. 아래 양식을 보내 주시면 admin@baryon.ai 에서 회신드립니다.</p>
 <form id="waitlist-form" class="wl-form" novalidate>
         <label class="wl-field"><span>이메일 <b>*</b></span><input type="email" name="email" required autocomplete="email" placeholder="you@example.com"/></label>
+        <label class="wl-field"><span>연결할 기기 수</span>
+          <select name="devices"><option value="">선택 안 함</option><option>3~5대</option><option>6~20대</option><option>21대 이상</option></select>
+        </label>
         <div class="wl-row">
           <label class="wl-field"><span>이름</span><input type="text" name="name" autocomplete="name" placeholder="홍길동"/></label>
           <label class="wl-field"><span>전화번호</span><input type="tel" name="phone" autocomplete="tel" inputmode="tel" placeholder="010-0000-0000"/></label>
@@ -117,18 +120,15 @@
           <label class="wl-field"><span>소속</span><input type="text" name="org" autocomplete="organization" placeholder="회사·학교·팀"/></label>
           <label class="wl-field"><span>직책·역할</span><input type="text" name="role" autocomplete="organization-title" placeholder="예: 개발팀장, 연구원"/></label>
         </div>
-        <fieldset class="wl-field wl-envs"><legend>쓰려는 환경</legend>
+        <fieldset class="wl-field wl-envs full"><legend>쓰려는 환경</legend>
           <label><input type="checkbox" name="env" value="Mac"/> Mac</label>
           <label><input type="checkbox" name="env" value="Windows"/> Windows</label>
           <label><input type="checkbox" name="env" value="Linux"/> Linux</label>
           <label><input type="checkbox" name="env" value="라즈베리파이"/> 라즈베리파이</label>
           <label><input type="checkbox" name="env" value="브라우저(Chrome)"/> 브라우저(Chrome)</label>
         </fieldset>
-        <label class="wl-field"><span>연결할 기기 수</span>
-          <select name="devices"><option value="">선택 안 함</option><option>3~5대</option><option>6~20대</option><option>21대 이상</option></select>
-        </label>
-        <label class="wl-field"><span>맡기고 싶은 일</span><textarea name="usecase" rows="3" placeholder="예: 쇼핑몰 3곳 주문 확인을 PC 여러 대에서 동시에"></textarea></label>
-        <label class="wl-field"><span>문의·질문</span><textarea name="question" rows="3" placeholder="필요한 대수·사용자 수, 도입 시기, 보안 요구사항 등을 적어 주세요"></textarea></label>
+        <label class="wl-field"><span>맡기고 싶은 일</span><textarea name="usecase" rows="2" placeholder="예: 쇼핑몰 3곳 주문 확인을 PC 여러 대에서 동시에"></textarea></label>
+        <label class="wl-field"><span>문의·질문</span><textarea name="question" rows="2" placeholder="필요한 대수·사용자 수, 도입 시기, 보안 요구사항 등을 적어 주세요"></textarea></label>
         <input type="hidden" name="kind" value="엔터프라이즈 문의"/>
         <input type="text" name="website" class="wl-hp" tabindex="-1" autocomplete="off" aria-hidden="true"/>
         <label class="wl-agree"><input type="checkbox" name="agree" required/> <span><b>(필수)</b> 신청 처리와 문의 답변을 위해 이메일·이름·전화번호·소속·직책·입력 내용을 수집·이용하는 데 동의합니다. (보관: 안내 종료 또는 삭제 요청 시까지 · 문의 admin@baryon.ai)</span></label>

@@ -556,18 +556,21 @@ main + .lb-bg + footer, main ~ footer { margin-top: 0; }
 /* 세로로 긴 시연 화면(예: RPA 계산기)이 카드를 늘리지 않게 높이 상한 */
 .uc-media img { max-height: 440px; width: auto; max-width: 100%; margin-inline: auto; object-fit: contain; }
 
-/* 웨이팅리스트 */
-.wl { display: grid; grid-template-columns: 1fr 1.1fr; gap: clamp(28px, 4vw, 56px); align-items: start; }
-.wl-form, .wl-done { background: #fff; border: 1px solid var(--line); border-radius: var(--radius); padding: clamp(20px, 2.4vw, 32px); display: grid; gap: 16px; }
-.wl-row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
-.wl-field { display: grid; gap: 6px; font-size: 15px; font-weight: 600; color: var(--ink-2); border: 0; margin: 0; padding: 0; min-width: 0; }
+/* 웨이팅리스트 / 도입 문의 */
+.wl { display: grid; grid-template-columns: 1fr 2fr; gap: clamp(32px, 4.5vw, 64px); align-items: start; }
+.wl-copy { position: sticky; top: 96px; }
+.wl-form, .wl-done { background: #fff; border: 1px solid var(--line); border-radius: var(--radius); padding: clamp(24px, 2.8vw, 36px); display: grid; grid-template-columns: 1fr 1fr; gap: 14px 18px; }
+.wl-field.full, .wl-envs, .wl-agree, .wl-form button, .wl-status, .wl-hp { grid-column: 1 / -1; }
+.wl-row { display: contents; }
+.wl-field { display: grid; gap: 6px; font-size: 14.5px; font-weight: 600; color: var(--ink-2); border: 0; margin: 0; padding: 0; min-width: 0; }
 .wl-field b { color: var(--accent); }
-.wl-field input, .wl-field textarea, .wl-field select { font: inherit; font-weight: 400; color: var(--ink); background: var(--paper); border: 1px solid var(--line-2); border-radius: var(--radius-sm); padding: 11px 13px; width: 100%; box-sizing: border-box; }
+.wl-field input, .wl-field textarea, .wl-field select { font: inherit; font-weight: 400; color: var(--ink); background: var(--paper); border: 1px solid var(--line-2); border-radius: var(--radius-sm); padding: 10px 12px; width: 100%; box-sizing: border-box; }
+.wl-field textarea { resize: vertical; min-height: 64px; }
 .wl-field input:focus, .wl-field textarea:focus, .wl-field select:focus { outline: 2px solid var(--accent); outline-offset: 1px; border-color: transparent; }
 .wl-envs { display: flex; flex-wrap: wrap; gap: 8px 16px; }
 .wl-envs legend { margin-bottom: 6px; }
 .wl-envs label { display: inline-flex; gap: 6px; align-items: center; font-weight: 500; white-space: nowrap; }
-.wl-agree { display: flex; gap: 8px; align-items: flex-start; font-size: 13.5px; color: var(--ink-3); line-height: 1.6; }
+.wl-agree { display: flex; gap: 8px; align-items: flex-start; font-size: 13px; color: var(--ink-3); line-height: 1.55; }
 .wl-agree input { margin-top: 3px; }
 .wl-agree b { color: var(--ink-2); font-weight: 600; }
 .wl-hp { position: absolute; left: -9999px; width: 1px; height: 1px; opacity: 0; }
@@ -575,7 +578,14 @@ main + .lb-bg + footer, main ~ footer { margin-top: 0; }
 .wl-status[data-kind="error"] { color: #b42318; }
 .wl-form[hidden], .wl-done[hidden] { display: none; }
 .wl-done h3 { margin: 0; }
-@media (max-width: 900px) { .wl { grid-template-columns: 1fr; } .wl-row { grid-template-columns: 1fr; } }
+@media (max-width: 960px) {
+  .wl { grid-template-columns: 1fr; gap: 28px; }
+  .wl-copy { position: static; }
+}
+@media (max-width: 640px) {
+  .wl-form { grid-template-columns: 1fr; }
+  .wl-field, .wl-row { grid-column: auto; }
+}
 
 /* ═══ 홈: 브라우저·데스크톱 손 (webclaw · deskclaw) ═══════════════════════ */
 .claws { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: clamp(16px, 1.8vw, 24px); }

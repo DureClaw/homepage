@@ -128,7 +128,7 @@
         <a href="/developers/">개발자</a>
         <a href="/changelog/">Changelog</a>
         <a href="/pricing/">엔터프라이즈</a>
-        <a href="/#waitlist">대기 신청</a>
+        <a href="/#waitlist">도입 문의 · 소식</a>
       </div>
       <a href="https://github.com/dureclaw/dureclaw" class="nav-gh" target="_blank">GitHub ↗</a>
     </div>
@@ -574,12 +574,15 @@
   <div class="wrap">
     <div class="wl">
       <div class="wl-copy">
-        <span class="eyebrow">웨이팅리스트</span>
+        <span class="eyebrow">도입 문의 · 출시 소식</span>
         <h2 class="h2">새 기능과 정식 출시 소식을 먼저 받아보세요</h2>
         <p class="lede">Windows 서버 앱, 알림·자동 업데이트, 팀 플랜까지 — 준비되는 대로 이메일로 알려드립니다. 어떤 일을 맡기고 싶은지 적어 주시면 우선 지원 대상을 정하는 데 참고합니다.</p>
       </div>
       <form id="waitlist-form" class="wl-form" novalidate>
         <label class="wl-field"><span>이메일 <b>*</b></span><input type="email" name="email" required autocomplete="email" placeholder="you@example.com"/></label>
+        <label class="wl-field"><span>연결할 기기 수</span>
+          <select name="devices"><option value="">선택 안 함</option><option>1~2대</option><option>3~5대</option><option>6~20대</option><option>21대 이상</option></select>
+        </label>
         <div class="wl-row">
           <label class="wl-field"><span>이름</span><input type="text" name="name" autocomplete="name" placeholder="홍길동"/></label>
           <label class="wl-field"><span>전화번호</span><input type="tel" name="phone" autocomplete="tel" inputmode="tel" placeholder="010-0000-0000"/></label>
@@ -588,22 +591,19 @@
           <label class="wl-field"><span>소속</span><input type="text" name="org" autocomplete="organization" placeholder="회사·학교·팀"/></label>
           <label class="wl-field"><span>직책·역할</span><input type="text" name="role" autocomplete="organization-title" placeholder="예: 개발팀장, 연구원"/></label>
         </div>
-        <fieldset class="wl-field wl-envs"><legend>쓰려는 환경</legend>
+        <fieldset class="wl-field wl-envs full"><legend>쓰려는 환경</legend>
           <label><input type="checkbox" name="env" value="Mac"/> Mac</label>
           <label><input type="checkbox" name="env" value="Windows"/> Windows</label>
           <label><input type="checkbox" name="env" value="Linux"/> Linux</label>
           <label><input type="checkbox" name="env" value="라즈베리파이"/> 라즈베리파이</label>
           <label><input type="checkbox" name="env" value="브라우저(Chrome)"/> 브라우저(Chrome)</label>
         </fieldset>
-        <label class="wl-field"><span>연결할 기기 수</span>
-          <select name="devices"><option value="">선택 안 함</option><option>1~2대</option><option>3~5대</option><option>6~20대</option><option>21대 이상</option></select>
-        </label>
-        <label class="wl-field"><span>맡기고 싶은 일</span><textarea name="usecase" rows="3" placeholder="예: 쇼핑몰 3곳 주문 확인을 PC 여러 대에서 동시에"></textarea></label>
-        <label class="wl-field"><span>문의·질문</span><textarea name="question" rows="3" placeholder="도입·보안·가격 등 궁금한 점을 적어 주세요"></textarea></label>
+        <label class="wl-field"><span>맡기고 싶은 일</span><textarea name="usecase" rows="2" placeholder="예: 쇼핑몰 3곳 주문 확인을 PC 여러 대에서 동시에"></textarea></label>
+        <label class="wl-field"><span>문의·질문</span><textarea name="question" rows="2" placeholder="도입·보안·가격 등 궁금한 점을 적어 주세요"></textarea></label>
         <input type="text" name="website" class="wl-hp" tabindex="-1" autocomplete="off" aria-hidden="true"/>
         <label class="wl-agree"><input type="checkbox" name="agree" required/> <span><b>(필수)</b> 신청 처리와 문의 답변을 위해 이메일·이름·전화번호·소속·직책·입력 내용을 수집·이용하는 데 동의합니다. (보관: 안내 종료 또는 삭제 요청 시까지 · 문의 admin@baryon.ai)</span></label>
         <label class="wl-agree"><input type="checkbox" name="newsletter"/> <span><b>(선택)</b> 새 기능·출시 소식 등 뉴스레터를 이메일로 받겠습니다. 언제든 수신을 거부할 수 있습니다.</span></label>
-        <button class="btn btn-accent" type="submit">웨이팅리스트 신청</button>
+        <button class="btn btn-accent" type="submit">도입 문의 · 소식 신청</button>
         <p id="wl-status" class="wl-status" role="status" aria-live="polite"></p>
       </form>
       <div id="wl-done" class="wl-done" hidden>
