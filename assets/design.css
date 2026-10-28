@@ -324,9 +324,33 @@ nav {
 @media (max-width: 860px) { .closing { grid-template-columns: 1fr; } }
 
 /* footer */
-footer { border-top: 1px solid var(--line); padding: 40px 0; margin-top: var(--section); }
+footer { border-top: 1px solid var(--line); padding: 48px 0 36px; margin-top: var(--section); color: var(--ink-2); font-size: 14.5px; }
+.footer-top { display: flex; justify-content: space-between; align-items: flex-start; gap: 32px; padding-bottom: 32px; border-bottom: 1px solid var(--line); flex-wrap: wrap; }
+.footer-brand { max-width: 380px; }
+.footer-logo { font-size: 17px; color: var(--ink); margin-bottom: 8px; font-weight: 700; letter-spacing: -0.02em; }
+.footer-tagline { font-size: 14px; color: var(--ink-2); line-height: 1.6; margin: 0; }
+.footer-nav-groups { display: flex; gap: 48px; flex-wrap: wrap; }
+.footer-col { display: flex; flex-direction: column; gap: 8px; min-width: 120px; }
+.footer-col-title { font-size: 12.5px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; color: var(--ink); margin-bottom: 4px; }
+.footer-col a { color: var(--ink-2); text-decoration: none; font-size: 14px; transition: color .15s ease; }
+.footer-col a:hover { color: var(--accent); }
+.footer-bottom { display: flex; justify-content: space-between; align-items: center; gap: 20px; padding-top: 24px; font-size: 13.5px; flex-wrap: wrap; }
+.footer-company-info { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; color: var(--ink-2); }
+.footer-company-info strong { color: var(--ink); font-weight: 600; }
+.footer-company-info a { color: var(--ink); text-decoration: underline; text-underline-offset: 3px; }
+.footer-company-info a:hover { color: var(--accent); }
+.footer-company-info .sep { color: var(--line); }
+.footer-copy { color: var(--ink-2); font-size: 13px; opacity: 0.85; }
+
+/* 기존 .footer-inner 호환 */
 .footer-left, .footer-links a { font-size: 14.5px; }
 .footer-links a { color: var(--ink-2); }
+
+@media (max-width: 768px) {
+  .footer-top { flex-direction: column; gap: 28px; }
+  .footer-nav-groups { width: 100%; justify-content: space-between; gap: 24px; }
+  .footer-bottom { flex-direction: column; align-items: flex-start; gap: 12px; }
+}
 
 /* entrance */
 @media (prefers-reduced-motion: no-preference) {
