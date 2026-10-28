@@ -56,6 +56,7 @@
       form.hidden = true;
       document.getElementById('wl-done').hidden = false;
       try { window.posthog && posthog.capture(form.elements.kind ? 'enterprise_inquiry_submitted' : 'waitlist_submitted', { environments: envs, newsletter: form.newsletter.checked }); } catch (_) {}
+      try { window.gtag && gtag('event', 'generate_lead', { event_category: 'inquiry', event_label: form.elements.kind ? 'enterprise' : 'waitlist' }); } catch (_) {}
     } catch (err) {
       say('전송하지 못했습니다. 잠시 후 다시 시도하거나 admin@baryon.ai 로 메일 주세요.', 'error');
       try { window.posthog && posthog.capture('waitlist_failed', { error: String(err) }); } catch (_) {}
