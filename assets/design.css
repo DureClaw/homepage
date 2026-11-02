@@ -164,6 +164,8 @@ nav {
 .btn-ghost { background: transparent; color: var(--ink); border-color: var(--line-2); }
 .btn-ghost:hover { border-color: var(--ink); }
 .btn .sub { font-weight: 500; font-size: 14px; opacity: .7; }
+/* 다운로드 버튼의 작은 버전 표시 (scripts/stamp_downloads.py 가 넣는다) */
+.btn .dl-ver, .dl-btn .dl-ver { font-family: var(--font-mono, ui-monospace, monospace); font-weight: 500; font-size: 11px; opacity: .6; letter-spacing: 0; white-space: nowrap; margin-left: 2px; }
 .btn svg { width: 18px; height: 18px; flex: none; }
 /* 예전 클래스 호환 */
 .dl-btn { min-height: 48px; border-radius: 999px; font-family: var(--font-sans); font-size: 15.5px; padding: 0 22px; background: var(--ink); border: 0; color: var(--paper); }
