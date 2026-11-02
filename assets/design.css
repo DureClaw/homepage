@@ -264,6 +264,14 @@ nav {
 .install-alt { margin-top: 22px; font-size: 15px; color: var(--ink-3); }
 .install-alt code { font-size: 14px; }
 .install-alt a { color: var(--ink-2); font-weight: 600; text-underline-offset: 3px; }
+/* 설치 후 화면 — 실제 스크린샷 두 장 */
+.shots { margin-top: clamp(28px, 3vw, 40px); }
+.shots-h { font-size: var(--fs-h3); font-weight: 700; color: var(--ink); margin-bottom: 14px; }
+.shots-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 340px), 1fr)); gap: clamp(14px, 1.6vw, 22px); }
+.shots figure { margin: 0; background: var(--paper-2); border: 1px solid var(--line); border-radius: 14px; overflow: hidden; }
+.shots img { display: block; width: 100%; height: auto; border-bottom: 1px solid var(--line); }
+.shots figcaption { padding: 12px 16px 14px; font-size: var(--fs-small); color: var(--ink-2); line-height: 1.6; }
+.shots figcaption b { color: var(--ink); }
 
 /* roles */
 .roles { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); border: 1px solid var(--line); border-radius: var(--radius); background: #fff; overflow: hidden; }
