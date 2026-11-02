@@ -228,6 +228,10 @@ nav {
   .h-hero-grid { grid-template-columns: 1fr; }
   .h-art { order: -1; max-width: 560px; margin-inline: auto; }
 }
+/* 휴대폰: 그림을 줄여 제목·버튼이 첫 화면에 들어오게 */
+@media (max-width: 680px) {
+  .h-art { max-width: 300px; }
+}
 
 /* install cards */
 .install-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 320px), 1fr)); gap: clamp(14px, 1.6vw, 22px); }
