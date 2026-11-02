@@ -35,6 +35,24 @@ USE_DOCKER="${USE_DOCKER:-auto}"
 CONTAINER_NAME="dureclaw-server"
 # DAEMON=1: 백그라운드 데몬으로 실행 (install.sh에서 사용)
 DAEMON="${DAEMON:-0}"
+NO_VPN="${NO_VPN:-0}"
+MESH="${MESH:-}"
+
+# CLI 옵션 파싱 (--mesh, --headscale, --tailscale, --no-vpn 등)
+while [[ $# -gt 0 ]]; do
+  case "$1" in
+    --mesh|--headscale)
+      MESH=1; shift ;;
+    --tailscale)
+      MESH=0; shift ;;
+    --no-vpn|--no-mesh|--lan-only)
+      NO_VPN=1; shift ;;
+    --port)
+      PORT="$2"; shift 2 ;;
+    *)
+      shift ;;
+  esac
+done
 
 OS=$(uname -s | tr '[:upper:]' '[:lower:]')
 ARCH=$(uname -m)
@@ -183,16 +201,77 @@ _setup_mesh() {
   [[ "${MESH_FORCE:-0}" == "1" ]] && join+=(--force)
   _mesh_sh join "$(_mesh_sh join-code --ttl 10m)" --hostname "dureclaw-server" "${join[@]}"
   MESH_BUS_IP="$(tailscale ip -4 2>/dev/null | head -1)"
-  # 버스가 사설망 주소로 들어오는 접속을 받도록 모든 인터페이스에 바인드
-  export OAH_BIND_IP="${OAH_BIND_IP:-0.0.0.0}"
-  echo "✅ 자체 망 준비 — 서버 사설망 IP: $MESH_BUS_IP"
+  # 사내 LAN 전체 노출을 막기 위해 기본적으로 사설망 IP(또는 지정된 IP)에 바인드
+  if [[ -n "$MESH_BUS_IP" && "${OAH_ALLOW_ALL_INTERFACES:-0}" != "1" ]]; then
+    export OAH_BIND_IP="${OAH_BIND_IP:-$MESH_BUS_IP}"
+  else
+    export OAH_BIND_IP="${OAH_BIND_IP:-0.0.0.0}"
+  fi
+  echo "✅ 자체 망 준비 — 서버 바인드 IP: ${OAH_BIND_IP} (사설망 IP: ${MESH_BUS_IP:-없음})"
 }
 
-if [[ "$MESH" == "1" ]]; then
-  _setup_mesh
-else
-  _ensure_tailscale
-fi
+_configure_network() {
+  if [[ "$NO_VPN" == "1" ]]; then
+    echo "→ 사설망 설정을 건너뜁니다 (--no-vpn, LAN/로컬 모드)."
+    return 0
+  fi
+
+  # 이미 MESH=1 로 명시된 경우 바로 Headscale 구성
+  if [[ "$MESH" == "1" ]]; then
+    _setup_mesh
+    return 0
+  fi
+
+  # 이미 사설망(Tailscale 또는 Headscale) 연결되어 있는 경우
+  if command -v tailscale &>/dev/null; then
+    local ts_ip
+    ts_ip=$(tailscale ip -4 2>/dev/null || echo "")
+    if [[ -n "$ts_ip" ]]; then
+      echo "✅ 사설망 연결됨: $ts_ip"
+      return 0
+    fi
+  fi
+
+  # MESH=0 으로 명시된 경우 공식 Tailscale 처리
+  if [[ "$MESH" == "0" ]]; then
+    _ensure_tailscale
+    return 0
+  fi
+
+  # 비대화형 환경(CI, pipe) 이면 자동 건너뜀
+  if [[ ! -t 0 ]]; then
+    echo "⚠ 비대화형 환경 — 사설망 설정을 건너뜁니다. (LAN 주소로만 연결 가능)"
+    return 0
+  fi
+
+  # 대화형 환경: 사용자에게 선택권 제공
+  echo ""
+  echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
+  echo " 사설망(VPN) 구성 방식을 선택하세요"
+  echo " 다른 컴퓨터(원격 에이전트)를 안전하게 연결하려면 사설망이 권장됩니다."
+  echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
+  echo "  1) Tailscale — 공식 클라우드 계정 사용 (무료 100대, 웹 로그인) [기본값]"
+  echo "  2) Headscale — 오픈소스 자체 호스팅 (외부 계정/서버 불필요, 이 머신에서 제어 서버 운영)"
+  echo "  3) 건너뛰기  — 사설망 없이 같은 LAN/로컬 주소로만 연결"
+  echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
+  read -rp " 선택 [1/2/3, 기본: 1]: " net_choice
+  case "${net_choice:-1}" in
+    2)
+      MESH=1
+      _setup_mesh
+      ;;
+    3)
+      echo " → 사설망 없이 계속합니다. (LAN 주소로만 연결 가능)"
+      MESH=0
+      ;;
+    1|*)
+      MESH=0
+      _ensure_tailscale
+      ;;
+  esac
+}
+
+_configure_network
 
 # ─── 주소 안내 헬퍼 ───────────────────────────────────────────────────────────
 

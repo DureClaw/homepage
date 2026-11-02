@@ -1,4 +1,4 @@
-﻿# oah-agent — DureClaw Windows Agent Setup (PowerShell)
+# oah-agent — DureClaw Windows Agent Setup (PowerShell)
 #
 # 사용법 (원라이너):
 #   $env:PHOENIX="ws://192.168.1.10:4000"; $env:ROLE="builder"; iex (irm https://dureclaw.baryon.ai/agent.ps1)
@@ -11,7 +11,8 @@ param(
     [string]$Role    = $(if ($env:ROLE)   { $env:ROLE }   else { "builder" }),
     [string]$Wk      = $env:WK,
     [string]$Name    = $env:NAME,
-    [string]$Dir     = $(if ($env:PROJECT_DIR) { $env:PROJECT_DIR } else { $HOME })
+    [string]$Dir     = $(if ($env:PROJECT_DIR) { $env:PROJECT_DIR } else { $HOME }),
+    [string]$Join    = $env:JOIN
 )
 
 # UTF-8
@@ -30,12 +31,12 @@ New-Item -ItemType Directory -Force -Path $OAH_DIR | Out-Null
 # ── 자체 사설망 합류 (서버가 발급한 노드 연결 코드) ──────────────────────────
 #   $env:JOIN="dcj1:..."; iex (irm https://dureclaw.baryon.ai/agent.ps1)
 #   $env:MESH_FORCE="1" : 이미 다른 Tailscale 망에 있어도 새 프로필로 자체 망에 합류
-if ($env:JOIN) {
+if ($Join) {
     Write-Host "-> joining the self-hosted mesh (node join code)..."
     $mj = "$env:TEMP\dureclaw-mesh-join.ps1"
     Invoke-WebRequest "$OAH_BASE/mesh-join.ps1" -OutFile $mj -UseBasicParsing
     $res = Join-Path $env:USERPROFILE ".dureclaw\mesh\join-result.txt"
-    $mjArgs = "-NoProfile -ExecutionPolicy Bypass -File `"$mj`" -Code `"$env:JOIN`" -ResultFile `"$res`""
+    $mjArgs = "-NoProfile -ExecutionPolicy Bypass -File `"$mj`" -Code `"$Join`" -ResultFile `"$res`""
     if ($env:MESH_FORCE -eq "1") { $mjArgs += " -Force" }
     # Tailscale 설치·제어에는 관리자 권한이 필요 → UAC 확인
     $p = Start-Process powershell.exe -Verb RunAs -Wait -PassThru -ArgumentList $mjArgs
