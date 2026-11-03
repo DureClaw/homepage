@@ -46,7 +46,14 @@
     }
   }
 
-  // 4. Bind language switchers on both KO and EN pages
+  // 4. Bind language switchers on both KO and EN pages.
+  // Every Korean page has an English mirror under /en/ (same path), so switch to the same page.
+  function pathFor(lang) {
+    const koPath = isEnPath ? (pathname.replace(/^\/en(\/|$)/, '/') || '/') : pathname;
+    const target = lang === 'en' ? '/en' + koPath : koPath;
+    return target + window.location.hash;
+  }
+
   function setupLangSwitchers() {
     const currentLang = isEnPath ? 'en' : 'ko';
 
@@ -60,11 +67,7 @@
         e.preventDefault();
         if (btnLang === currentLang) return;
         localStorage.setItem(STORAGE_KEY, btnLang);
-        if (btnLang === 'en') {
-          window.location.href = '/en/';
-        } else {
-          window.location.href = '/';
-        }
+        window.location.href = pathFor(btnLang);
       });
     });
 
@@ -94,11 +97,7 @@
         const target = btn.dataset.lang;
         if (target && target !== currentLang) {
           localStorage.setItem(STORAGE_KEY, target);
-          if (target === 'en') {
-            window.location.href = '/en/';
-          } else {
-            window.location.href = '/';
-          }
+          window.location.href = pathFor(target);
         }
       });
     }

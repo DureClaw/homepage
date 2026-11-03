@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-PBVB7JSPRF"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-PBVB7JSPRF');
+</script>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Developer Use Cases — DureClaw</title>
+<meta name="description" content="DureClaw use cases — developers: no more connecting to your Windows build box, Linux server and GPU trainer one by one. Tell Claude, and the right computers work at the same time."/>
+
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css"/>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet"/>
+
+<!-- ── SEO / canonical / icons ── -->
+<link rel="canonical" href="https://dureclaw.baryon.ai/en/use-cases/dev/"/>
+<link rel="alternate" hreflang="ko" href="https://dureclaw.baryon.ai/use-cases/dev/"/>
+<link rel="alternate" hreflang="en" href="https://dureclaw.baryon.ai/en/use-cases/dev/"/>
+<link rel="alternate" hreflang="x-default" href="https://dureclaw.baryon.ai/use-cases/dev/"/>
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1"/>
+<meta name="author" content="DureClaw · Baryon Labs"/>
+<meta name="keywords" content="DureClaw, distributed AI agents, multi-agent orchestration, Claude Code plugin, edgeclaw, webclaw, deskclaw, keyless edge, LLM as compiler, Decision Freezing, RPA, GPIO, Raspberry Pi, multi-machine AI, distributed AI agents"/>
+<meta name="theme-color" content="#0284c7"/>
+<link rel="icon" href="/favicon.svg" type="image/svg+xml"/>
+<link rel="icon" href="/favicon-256.png" sizes="256x256" type="image/png"/>
+<link rel="apple-touch-icon" href="/favicon-256.png"/>
+<link rel="sitemap" type="application/xml" href="/sitemap.xml"/>
+
+<!-- ── Open Graph ── -->
+<meta property="og:type" content="website"/>
+<meta property="og:site_name" content="DureClaw"/>
+<meta property="og:locale" content="en_US"/>
+<meta property="og:url" content="https://dureclaw.baryon.ai/en/use-cases/dev/"/>
+<meta property="og:title" content="Developer Use Cases — DureClaw"/>
+<meta property="og:description" content="DureClaw use cases — developers: no more connecting to your Windows build box, Linux server and GPU trainer one by one. Tell Claude, and the right computers work at the same time."/>
+<meta property="og:image" content="https://dureclaw.baryon.ai/images/uc-multiplatform-build.jpg"/>
+<meta property="og:image:width" content="1200"/>
+<meta property="og:image:height" content="800"/>
+<meta property="og:image:alt" content="You work alone, your computers work as a team — DureClaw multi-platform build"/>
+
+<!-- ── Twitter ── -->
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:title" content="Developer Use Cases — DureClaw"/>
+<meta name="twitter:description" content="DureClaw use cases — developers: no more connecting to your Windows build box, Linux server and GPU trainer one by one. Tell Claude, and the right computers work at the same time."/>
+<meta name="twitter:image" content="https://dureclaw.baryon.ai/images/uc-multiplatform-build.jpg"/>
+
+<!-- ── AI / LLM crawlers (GEO/AEO) ── -->
+<link rel="alternate" type="text/markdown" title="llms.txt" href="/llms.txt"/>
+
+
+<link rel="stylesheet" href="/assets/site.css"/>
+<link rel="stylesheet" href="/assets/design.css"/>
+<script type="application/ld+json">
+{
+ "@context": "https://schema.org",
+ "@type": "BreadcrumbList",
+ "itemListElement": [
+  {
+   "@type": "ListItem",
+   "position": 1,
+   "name": "DureClaw",
+   "item": "https://dureclaw.baryon.ai/en/"
+  },
+  {
+   "@type": "ListItem",
+   "position": 2,
+   "name": "Use Cases",
+   "item": "https://dureclaw.baryon.ai/en/use-cases/"
+  },
+  {
+   "@type": "ListItem",
+   "position": 3,
+   "name": "Developers",
+   "item": "https://dureclaw.baryon.ai/en/use-cases/dev/"
+  }
+ ]
+}
+</script>
+<!-- PostHog (visitor analytics) -->
+<script>
+    !function(t,e){var o,n,p,r;e.__SV||(window.posthog && window.posthog.__loaded)||(window.posthog=e,e._i=[],e.init=function(i,s,a){function g(t,e){var o=e.split(".");2==o.length&&(t=t[o[0]],e=o[1]),t[e]=function(){t.push([e].concat(Array.prototype.slice.call(arguments,0)))}}p||((p=t.createElement("script")).type="text/javascript",p.crossOrigin="anonymous",p.async=!0,p.src=s.api_host.replace(".i.posthog.com","-assets.i.posthog.com")+"/static/array.js",p.onerror=function(){p=null},(r=t.getElementsByTagName("script")[0]).parentNode.insertBefore(p,r));var u=e;for(void 0!==a?u=e[a]=[]:a="posthog",u.people=u.people||[],Object.defineProperty(u,"toString",{configurable:!0,enumerable:!0,writable:!0,value:function(t){var e="posthog";return"posthog"!==a&&(e+="."+a),t||(e+=" (stub)"),e}}),Object.defineProperty(u.people,"toString",{configurable:!0,enumerable:!0,writable:!0,value:function(){return u.toString(1)+".people (stub)"}}),o="Zc Kc Xc Yc ih init Rh Ah Ih Eh Lh zu Ph Nh $h Uh Wh Vh Gh Qh Zh capture getExtension Fh dr Yh calculateEventProperties Kh register register_once register_for_session unregister unregister_for_session sd Th td getFeatureFlag getFeatureFlagPayload getFeatureFlagResult getAllFeatureFlags isFeatureEnabled reloadFeatureFlags updateFlags updateEarlyAccessFeatureEnrollment getEarlyAccessFeatures on onFeatureFlags onSurveysLoaded onSessionId getSurveys getActiveMatchingSurveys onActiveMatchingSurveysChanged renderSurvey displaySurvey cancelPendingSurvey canRenderSurvey canRenderSurveyAsync rd identify setPersonProperties unsetPersonProperties group resetGroups setPersonPropertiesForFlags resetPersonPropertiesForFlags setGroupPropertiesForFlags resetGroupPropertiesForFlags reset od shutdown setIdentity clearIdentity get_distinct_id getGroups get_session_id get_session_replay_url alias set_config startSessionRecording stopSessionRecording sessionRecordingStarted captureException addExceptionStep captureLog startExceptionAutocapture stopExceptionAutocapture loadToolbar get_property getSessionProperty ed Bh createPersonProfile setInternalOrTestUser nd oh sh opt_in_capturing opt_out_capturing rh has_opted_in_capturing has_opted_out_capturing get_explicit_consent_status is_capturing clear_opt_in_out_capturing qh debug Hu Os getPageViewId captureTraceFeedback captureTraceMetric wh".split(" "),n=0;n<o.length;n++)g(u,o[n]);e._i.push([i,s,a])},e.__SV=1)}(document,window.posthog||[]);
+    posthog.init('phc_zqdSWCCk6ozgZkBKc2ba3jDBhe6YKoSqCrupk9PMWjma', {
+        api_host: 'https://us.i.posthog.com',
+        defaults: '2026-05-30',
+        person_profiles: 'identified_only', // or 'always' to create profiles for anonymous users as well
+    })
+</script>
+</head>
+<body>
+<nav>
+  <div class="container">
+    <div class="nav-inner">
+      <a href="/en/" class="nav-logo">Dure<span>Claw</span></a>
+      <div class="nav-links">
+        <a href="/en/start/">Get Started</a>
+        <a href="/en/use-cases/" class="active">Use Cases</a>
+        <a href="/en/how/">How It Works</a>
+        <a href="/en/showcase/">Demo</a>
+        <a href="/en/developers/">Developers</a>
+        <a href="/en/changelog/">Changelog</a>
+        <a href="/en/pricing/">Enterprise</a>
+        <a href="/en/#waitlist">Contact</a>
+      </div>
+      <a href="https://github.com/dureclaw/dureclaw" class="nav-gh" target="_blank">GitHub ↗</a>
+    </div>
+  </div>
+</nav>
+
+<main>
+<header class="uc-hero">
+  <div class="wrap uc-hero-grid">
+    <div>
+      <a class="crumb" href="/en/use-cases/">← Use Cases</a>
+      <h1>Direct every OS<br/>from a single Mac</h1>
+      <p class="lede">No more connecting to your Windows build box, Linux server and GPU trainer one by one. Tell Claude, and the right computers work at the same time.</p>
+    </div>
+    <div class="uc-hero-art"><img src="/images/uc-dev.webp" width="1400" height="933" alt="Build cards flying from a MacBook to Windows, a Linux server and a GPU workstation"/></div>
+  </div>
+</header>
+
+<section class="band" id="pains">
+  <div class="wrap">
+    <div class="section-head"><span class="eyebrow">Developers</span><h2 class="h2">If this sounds familiar</h2></div>
+    <ul class="pains"><li><strong>You log into every build environment</strong><span>For Windows builds, Linux deploys and GPU experiments, you open several windows and hop between them over SSH.</span></li><li><strong>Your servers sit idle</strong><span>Claude Code only works on your Mac, while your powerful servers are mostly resting.</span></li><li><strong>Every OS has different commands</strong><span>Differences in shells, paths and encodings mean you maintain scripts separately for each OS.</span></li></ul>
+  </div>
+</section>
+
+<section class="band" id="visual">
+  <div class="wrap">
+    <div class="section-head"><span class="eyebrow">At a glance</span><h2 class="h2">Scattered computers working as one team</h2></div>
+    <div class="uc-visuals">
+      <figure class="uc-visual">
+        <a href="/images/uc-multiplatform-build.webp" target="_blank" rel="noopener" aria-label="You work alone, your computers work as a team — view full size"><img src="/images/uc-multiplatform-build.webp" width="1600" height="1067" alt="A Windows PC at home, a Linux PC in the studio, a Raspberry Pi in the lab and a GPU workstation connected through DureClaw, handling an app build, backend tests, device tests and GPU jobs at the same time, with results gathered on one screen" loading="lazy" decoding="async"/></a>
+        <figcaption>
+          <h3>You work alone, your computers work as a team</h3>
+          <p>Even if you build an app on your own, the computers scattered across home, studio and lab move like one team. Tell Claude Code once, and DureClaw splits the work, sends it to each computer, and gathers the results in one place.</p>
+          <ol><li><b>Split</b> — Give one instruction: "Windows build, Linux backend tests, Raspberry Pi device tests, GPU model processing"</li><li><b>Run in parallel</b> — Each computer connects securely over a private network (Tailscale, etc.) and works at the same time</li><li><b>Gather results</b> — Completion marks arrive one by one on a single screen. You use the equipment you already have</li></ol>
+        </figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<section class="band tint" id="cases">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow">Cases</span>
+      <h2 class="h2">How it was actually used</h2>
+      <p class="lede">Badges show the level of evidence — <span class="badge measured">Measured</span> <span class="badge real">Real case</span> <span class="badge scenario">Example scenario</span></p>
+    </div>
+    <div class="cases">
+      <article class="uc-card no-media">
+        <div class="uc-main">
+          <div class="uc-top"><span class="badge measured">Measured</span><div class="node-chips"><span>Mac</span><span>Windows 11</span><span>Linux (RTX 4090)</span></div></div>
+          <h3>The same build on Windows and Linux at once</h3>
+          <div class="uc-flow"><div><span class="k">Situation</span><span>A Python program had to be built into a standalone executable for each OS.</span></div><div><span class="k">With DureClaw</span><span>Both OSes got instructions in the same command format, and both finished the build <strong>without a single failure</strong>. SSH port 22 was closed on the Linux server, but that didn't matter, because the node connects out to the server first.</span></div></div>
+          <div class="uc-nums"><div><b>11.5 s</b><span>Windows exe, 7.35MB</span></div><div><b>4.2 s</b><span>Linux executable, 7.11MB</span></div><div><b>0</b><span>failures</span></div></div>
+
+          <p class="source">Source — <a href="/en/how/">DureClaw vs SSH experiment report §7–8</a></p>
+        </div>
+
+      </article>
+      <article class="uc-card no-media">
+        <div class="uc-main">
+          <div class="uc-top"><span class="badge measured">Measured</span><div class="node-chips"><span>MacBook</span><span>Linux · RTX 4090</span></div></div>
+          <h3>From model install to serving on a GPU server in another room</h3>
+          <div class="uc-flow"><div><span class="k">Situation</span><span>Work happened on a MacBook, but the RTX 4090 server was in another room.</span></div><div><span class="k">With DureClaw</span><span>Downloading the model, running it and serving it as an API were all done inside Claude Code, without SSH.</span></div></div>
+          <div class="uc-nums"><div><b>19.9GB</b><span>gemma4:31b installed</span></div><div><b>18</b><span>models in operation</span></div><div><b>~19 tok/s</b><span>gemma4:31b inference</span></div></div>
+
+          <p class="source">Source — <a href="/en/how/">README — real-world remote GPU server operation</a></p>
+        </div>
+
+      </article>
+      <article class="uc-card">
+        <div class="uc-main">
+          <div class="uc-top"><span class="badge measured">Measured</span><div class="node-chips"><span>Pi Zero W</span><span>Windows</span><span>Mac mini M4</span><span>Mac mini Intel</span><span>Linux GPU</span></div></div>
+          <h3>Five very different machines respond as one team</h3>
+          <div class="uc-flow"><div><span class="k">Setup</span><span>A palm-sized Raspberry Pi, a Windows mini PC in a bag, a Mac mini for iOS builds, an Intel Mac for cloud CLIs, and a 24/7 GPU server.</span></div><div><span class="k">Result</span><span>A status check went out and <strong>all five responded at once</strong>.</span></div></div>
+          <div class="uc-nums"><div><b>5/5</b><span>responded at once</span></div><div><b>0.61 s</b><span>total response</span></div></div>
+
+          <p class="source">Source — <a href="/en/how/">README — the real team</a> · agent test logs</p>
+        </div>
+        <figure class="uc-media"><img width="1731" height="710" src="/screenshots/dureclaw-dashboard-demo.gif" alt="Dashboard showing several agents receiving and processing tasks at the same time" loading="lazy"/><figcaption>Dashboard — several nodes processing tasks at once</figcaption></figure>
+      </article>
+      <article class="uc-card no-media scenario">
+        <div class="uc-main">
+          <div class="uc-top"><span class="badge scenario">Example scenario</span><div class="node-chips"><span>Mac</span><span>Builder</span><span>Tester</span></div></div>
+          <h3>Analyze → fix → test → PR, split by role</h3>
+          <div class="uc-flow"><div><span class="k">Idea</span><span>An example pipeline where an analysis node finds the cause, a builder fixes it, a tester verifies it, and a PR gets opened.</span></div><div><span class="k">Key point</span><span>Attach nodes by role (builder, tester) and you can reuse the same flow across many repositories.</span></div></div>
+
+
+          <p class="source">Source — <a href="/en/start/">examples/fix-agent</a></p>
+        </div>
+
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="band" id="kit">
+  <div class="wrap">
+    <div class="section-head"><span class="eyebrow">What you need</span><h2 class="h2">Here's the setup</h2></div>
+    <div class="kit"><div><b>Mac (command)</b><span>Server app + Claude Code.</span></div><div><b>Build machines</b><span>Installer on Windows, a one-line command on Linux.</span></div><div><b>GPU server</b><span>Model training and inference, 24/7 compute.</span></div><div><b>Role names</b><span>Split work by builder · tester · executor.</span></div></div>
+    <p class="install-alt"><a href="/en/start/">Installation guide by platform →</a></p>
+  </div>
+</section>
+
+<section class="band" id="others">
+  <div class="wrap">
+    <div class="section-head"><span class="eyebrow">Other audiences</span></div>
+    <div class="audience-grid others">
+      <a class="aud" href="/en/use-cases/org/">
+        <div class="aud-art"><img width="1400" height="933" src="/images/uc-org.webp" alt="Crab robots jointly running computers in an office and on a factory floor" loading="lazy"/></div>
+        <div class="aud-body">
+          <span class="aud-k">Organizations</span>
+          <h3>AI automation on the ERP, licensed PCs and internal network you already have</h3>
+          <p class="metric-mini"><b>5/5</b>remote Windows tasks succeeded with no extra setup</p>
+          <span class="go">See the cases</span>
+        </div>
+      </a>
+      <a class="aud" href="/en/use-cases/iot/">
+        <div class="aud-art"><img width="1400" height="933" src="/images/uc-iot.webp" alt="A factory floor where crab robots watch over a Raspberry Pi, sensors, a traffic light and a conveyor" loading="lazy"/></div>
+        <div class="aud-body">
+          <span class="aud-k">IoT &amp; Field</span>
+          <h3>Instant decisions at sensors, traffic lights and production lines</h3>
+          <p class="metric-mini"><b>36.7µs</b>edge decision after freezing</p>
+          <span class="go">See the cases</span>
+        </div>
+      </a>
+      <a class="aud" href="/en/use-cases/research/">
+        <div class="aud-art"><img width="1400" height="933" src="/images/uc-research.webp" alt="A lab comparing models on a GPU server, collecting assignments, and reviewing and approving playbooks" loading="lazy"/></div>
+        <div class="aud-body">
+          <span class="aud-k">Research &amp; Education</span>
+          <h3>Measurement and comparison experiments, and preparing class materials</h3>
+          <p class="metric-mini"><b>143,136×</b>max speedup in edge decisions</p>
+          <span class="go">See the cases</span>
+        </div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<section class="band">
+  <div class="wrap">
+    <div class="closing">
+      <div>
+        <h2>Start today with a single Mac</h2>
+        <p>Install the server app, then add your idle computers to the team one at a time.</p>
+      </div>
+      <div class="acts">
+        <a class="btn btn-primary" href="https://github.com/DureClaw/homepage/releases/download/v0.5.5/DureClaw-Server-mac-arm64-0.5.5.dmg" download>Download for Mac <small class="dl-ver">v0.5.5</small></a>
+        <a class="btn btn-ghost" href="/en/start/">Installation Guide</a>
+      </div>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="container">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <div class="footer-logo"><strong>DureClaw</strong></div>
+        <p class="footer-tagline">Turn every idle computer into an AI teammate — Local-First Agentic Bus</p>
+      </div>
+      <div class="footer-nav-groups">
+        <div class="footer-col">
+          <div class="footer-col-title">DureClaw</div>
+          <a href="/en/start/">Quickstart</a>
+          <a href="/en/how/">Architecture &amp; Protocol</a>
+          <a href="/en/pricing/">Pricing &amp; Plans</a>
+          <a href="/en/terms/">Terms of Service</a>
+          <a href="https://github.com/DureClaw/dureclaw/issues" target="_blank" rel="noopener">Issues &amp; Templates ↗</a>
+        </div>
+        <div class="footer-col">
+          <div class="footer-col-title">Baryon Labs</div>
+          <a href="https://baryon.ai/about.html" target="_blank" rel="noopener">About Us ↗</a>
+          <a href="https://baryon.ai/service.html" target="_blank" rel="noopener">Enterprise AX Consulting ↗</a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="footer-company-info">
+        <span><strong>Baryon Labs, Inc.</strong></span>
+        <span class="sep">·</span>
+        <span>CEO: Seungwoo Hong</span>
+        <span class="sep">·</span>
+        <span>Seoul, Korea</span>
+        <span class="sep">·</span>
+        <span>Inquiries: <a href="mailto:hello@baryon.ai">hello@baryon.ai</a></span>
+      </div>
+      <div class="footer-copy">© 2026 Baryon Labs. All rights reserved.</div>
+    </div>
+  </div>
+</footer>
+
+<script src="/assets/site.js"></script>
+<script src="/assets/i18n.js"></script>
+</body>
+</html>

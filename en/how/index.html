@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-PBVB7JSPRF"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-PBVB7JSPRF');
+</script>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>How It Works — DureClaw</title>
+<meta name="description" content="How DureClaw works — one brain, many hands. Keyless edge access, the bus and node layer structure, the edgeclaw, webclaw and deskclaw ecosystem, and how it differs from SSH, explained with real measurements."/>
+
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css"/>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet"/>
+
+<!-- ── SEO / canonical / icons ── -->
+<link rel="canonical" href="https://dureclaw.baryon.ai/en/how/"/>
+<link rel="alternate" hreflang="ko" href="https://dureclaw.baryon.ai/how/"/>
+<link rel="alternate" hreflang="en" href="https://dureclaw.baryon.ai/en/how/"/>
+<link rel="alternate" hreflang="x-default" href="https://dureclaw.baryon.ai/how/"/>
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1"/>
+<meta name="author" content="DureClaw · Baryon Labs"/>
+<meta name="keywords" content="DureClaw, distributed AI agents, multi-agent orchestration, Claude Code plugin, edgeclaw, webclaw, deskclaw, keyless edge, LLM as compiler, Decision Freezing, RPA, GPIO, Raspberry Pi, multi-machine AI, architecture"/>
+<meta name="theme-color" content="#0284c7"/>
+<link rel="icon" href="/favicon.svg" type="image/svg+xml"/>
+<link rel="icon" href="/favicon-256.png" sizes="256x256" type="image/png"/>
+<link rel="apple-touch-icon" href="/favicon-256.png"/>
+<link rel="sitemap" type="application/xml" href="/sitemap.xml"/>
+
+<!-- ── Open Graph ── -->
+<meta property="og:type" content="website"/>
+<meta property="og:site_name" content="DureClaw"/>
+<meta property="og:locale" content="en_US"/>
+<meta property="og:url" content="https://dureclaw.baryon.ai/en/how/"/>
+<meta property="og:title" content="How It Works — DureClaw"/>
+<meta property="og:description" content="How DureClaw works — one brain, many hands. Keyless edge access, the bus and node layer structure, the edgeclaw, webclaw and deskclaw ecosystem, and how it differs from SSH, explained with real measurements."/>
+<meta property="og:image" content="https://dureclaw.baryon.ai/screenshots/hero-banner.jpg"/>
+<meta property="og:image:width" content="1400"/>
+<meta property="og:image:height" content="594"/>
+<meta property="og:image:alt" content="DureClaw Cooperative — Unified AI Robotics Ecosystem"/>
+
+<!-- ── Twitter ── -->
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:title" content="How It Works — DureClaw"/>
+<meta name="twitter:description" content="How DureClaw works — one brain, many hands. Keyless edge access, the bus and node layer structure, the edgeclaw, webclaw and deskclaw ecosystem, and how it differs from SSH, explained with real measurements."/>
+<meta name="twitter:image" content="https://dureclaw.baryon.ai/screenshots/hero-banner.jpg"/>
+
+<!-- ── AI / LLM crawlers (GEO/AEO) ── -->
+<link rel="alternate" type="text/markdown" title="llms.txt" href="/llms.txt"/>
+
+
+<link rel="stylesheet" href="/assets/site.css"/>
+<link rel="stylesheet" href="/assets/design.css"/>
+<script type="application/ld+json">
+{
+ "@context": "https://schema.org",
+ "@type": "BreadcrumbList",
+ "itemListElement": [
+  {
+   "@type": "ListItem",
+   "position": 1,
+   "name": "DureClaw",
+   "item": "https://dureclaw.baryon.ai/en/"
+  },
+  {
+   "@type": "ListItem",
+   "position": 2,
+   "name": "How It Works",
+   "item": "https://dureclaw.baryon.ai/en/how/"
+  }
+ ]
+}
+</script>
+<!-- PostHog (visit analytics) -->
+<script>
+    !function(t,e){var o,n,p,r;e.__SV||(window.posthog && window.posthog.__loaded)||(window.posthog=e,e._i=[],e.init=function(i,s,a){function g(t,e){var o=e.split(".");2==o.length&&(t=t[o[0]],e=o[1]),t[e]=function(){t.push([e].concat(Array.prototype.slice.call(arguments,0)))}}p||((p=t.createElement("script")).type="text/javascript",p.crossOrigin="anonymous",p.async=!0,p.src=s.api_host.replace(".i.posthog.com","-assets.i.posthog.com")+"/static/array.js",p.onerror=function(){p=null},(r=t.getElementsByTagName("script")[0]).parentNode.insertBefore(p,r));var u=e;for(void 0!==a?u=e[a]=[]:a="posthog",u.people=u.people||[],Object.defineProperty(u,"toString",{configurable:!0,enumerable:!0,writable:!0,value:function(t){var e="posthog";return"posthog"!==a&&(e+="."+a),t||(e+=" (stub)"),e}}),Object.defineProperty(u.people,"toString",{configurable:!0,enumerable:!0,writable:!0,value:function(){return u.toString(1)+".people (stub)"}}),o="Zc Kc Xc Yc ih init Rh Ah Ih Eh Lh zu Ph Nh $h Uh Wh Vh Gh Qh Zh capture getExtension Fh dr Yh calculateEventProperties Kh register register_once register_for_session unregister unregister_for_session sd Th td getFeatureFlag getFeatureFlagPayload getFeatureFlagResult getAllFeatureFlags isFeatureEnabled reloadFeatureFlags updateFlags updateEarlyAccessFeatureEnrollment getEarlyAccessFeatures on onFeatureFlags onSurveysLoaded onSessionId getSurveys getActiveMatchingSurveys onActiveMatchingSurveysChanged renderSurvey displaySurvey cancelPendingSurvey canRenderSurvey canRenderSurveyAsync rd identify setPersonProperties unsetPersonProperties group resetGroups setPersonPropertiesForFlags resetPersonPropertiesForFlags setGroupPropertiesForFlags resetGroupPropertiesForFlags reset od shutdown setIdentity clearIdentity get_distinct_id getGroups get_session_id get_session_replay_url alias set_config startSessionRecording stopSessionRecording sessionRecordingStarted captureException addExceptionStep captureLog startExceptionAutocapture stopExceptionAutocapture loadToolbar get_property getSessionProperty ed Bh createPersonProfile setInternalOrTestUser nd oh sh opt_in_capturing opt_out_capturing rh has_opted_in_capturing has_opted_out_capturing get_explicit_consent_status is_capturing clear_opt_in_out_capturing qh debug Hu Os getPageViewId captureTraceFeedback captureTraceMetric wh".split(" "),n=0;n<o.length;n++)g(u,o[n]);e._i.push([i,s,a])},e.__SV=1)}(document,window.posthog||[]);
+    posthog.init('phc_zqdSWCCk6ozgZkBKc2ba3jDBhe6YKoSqCrupk9PMWjma', {
+        api_host: 'https://us.i.posthog.com',
+        defaults: '2026-05-30',
+        person_profiles: 'identified_only', // or 'always' to create profiles for anonymous users as well
+    })
+</script>
+</head>
+<body>
+<nav>
+  <div class="container">
+    <div class="nav-inner">
+      <a href="/en/" class="nav-logo">Dure<span>Claw</span></a>
+      <div class="nav-links">
+        <a href="/en/start/">Get Started</a>
+        <a href="/en/use-cases/">Use Cases</a>
+        <a href="/en/how/" class="active">How It Works</a>
+        <a href="/en/showcase/">Demo</a>
+        <a href="/en/developers/">Developers</a>
+        <a href="/en/changelog/">Changelog</a>
+        <a href="/en/pricing/">Enterprise</a>
+        <a href="/en/#waitlist">Contact</a>
+      </div>
+      <a href="https://github.com/dureclaw/dureclaw" class="nav-gh" target="_blank">GitHub ↗</a>
+    </div>
+  </div>
+</nav>
+
+<header class="page-hero">
+  <div class="container">
+    <a href="/en/" class="crumb">← DureClaw home</a>
+    <h1>How It Works</h1>
+    <p>One brain, many hands — keyless access, layer structure, ecosystem, and how it differs from SSH.</p>
+  </div>
+</header>
+
+<section class="section" id="how-it-works" style="padding-top:0">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-num">→</span>
+      <h2 class="section-title">A full team <em>in 3 minutes</em></h2>
+    </div>
+    <div class="how-row">
+      <div class="how-step">
+        <div class="how-num">STEP 01</div>
+        <div class="how-title">Install in one line</div>
+        <div class="how-desc">The Claude Code plugin, Phoenix server and MCP registration are all handled automatically.</div>
+        <div class="how-code"><span class="dim">bash &lt;(curl -fsSL </span><span class="cyan">dureclaw.baryon.ai/install</span><span class="dim">)</span></div>
+      </div>
+      <div class="how-arrow">→</div>
+      <div class="how-step">
+        <div class="how-num">STEP 02</div>
+        <div class="how-title">Connect worker machines <span style="font-size: 15px;color:var(--green);border:1px solid var(--green);border-radius:20px;padding:1px 7px;vertical-align:middle">keyless</span></div>
+        <div class="how-desc">Run one line on another machine. <strong>No secret required</strong> — when a node asks to join the server, private network (Tailscale · Headscale) peers are approved and issued a token automatically.</div>
+        <div class="how-code"><span class="dim">bash &lt;(curl -fsSL </span><span class="cyan">…/agent</span><span class="dim">)</span><br/><span class="dim" style="opacity:.6"># auto-registers without OAH_SECRET</span></div>
+      </div>
+      <div class="how-arrow">→</div>
+      <div class="how-step">
+        <div class="how-num">STEP 03</div>
+        <div class="how-title">Talk to Claude</div>
+        <div class="how-desc">One slash command in Claude Code. Claude handles everything from building the team to distributing tasks.</div>
+        <div class="how-code"><span class="cyan">/두레팀</span> <span class="dim">or "Set up my team"</span></div>
+      </div>
+    </div>
+
+    <!-- keyless access -->
+    <div style="margin-top:24px;border:1px solid var(--border);border-radius:12px;padding:18px 20px;background:var(--bg2)">
+      <div style="font:700 15px var(--font-sans);color:var(--white)">🔑 Keyless access — no secrets handed out in advance</div>
+      <p style="color:var(--text2);font-size:15.5px;margin:8px 0 14px;max-width:820px">
+        Nodes never need to know a shared secret. A node sends a <strong>join request</strong> to the server, and once approved the server issues a <strong>per-node token</strong>.
+        The master secret is never copied anywhere, and each node’s token can be revoked individually.
+      </p>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:12px">
+        <div style="border:1px solid var(--border);border-radius:10px;padding:12px 14px;background:var(--bg3)">
+          <div style="font:700 15.5px var(--font-sans);color:var(--green)">① Join · auto-approval</div>
+          <div style="color:var(--text2);font-size:15px;margin-top:5px">Node calls <code>POST /api/join</code> → <strong>private network (Tailscale · Headscale) peers are approved instantly</strong> (zero-click). Requests from outside wait for operator approval.</div>
+        </div>
+        <div style="border:1px solid var(--border);border-radius:10px;padding:12px 14px;background:var(--bg3)">
+          <div style="font:700 15.5px var(--font-sans);color:var(--cyan)">② Per-node tokens</div>
+          <div style="color:var(--text2);font-size:15px;margin-top:5px">The server issues a per-node token → the node caches it and reconnects instantly from then on. The master secret is never exposed, and tokens can be revoked individually.</div>
+        </div>
+        <div style="border:1px solid var(--border);border-radius:10px;padding:12px 14px;background:var(--bg3)">
+          <div style="font:700 15.5px var(--font-sans);color:var(--purple)">③ Single commander</div>
+          <div style="color:var(--text2);font-size:15px;margin-top:5px">Workers <strong>only connect, receive and report</strong>. Work orders (dispatch) come from <strong>the master alone</strong> — a worker token cannot issue orders.</div>
+        </div>
+      </div>
+      <div style="margin-top:12px;font-size:15px;color:var(--text3)">Even machines where authentication is awkward, like Windows or an RPi Zero, join as they are. <span style="color:var(--text2)">Keyless hands, one brain.</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="vs-ssh" style="padding-top:0">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-num">→</span>
+      <h2 class="section-title">Why DureClaw <em>instead of SSH</em></h2>
+    </div>
+
+    <div style="border-left:3px solid var(--green);border-radius:8px;padding:14px 18px;margin:0 0 22px;background:var(--bg2)">
+      <div style="font:600 16px/1.5 var(--font-sans);color:var(--white)">
+        SSH exposes <span style="color:var(--red)">"heterogeneous inbound"</span> as is;<br/>
+        DureClaw turns it into <span style="color:var(--green)">"homogeneous outbound + normalized markers"</span>.
+      </div>
+      <div style="color:var(--text2);font-size:15.5px;margin-top:8px">Linux↔Mac are both POSIX, so it is "one key → done". But <strong>the moment Windows joins as a node</strong>, the assumptions SSH relies on break on 5 axes at once — <strong>the more Windows is involved, the bigger the gap.</strong></div>
+    </div>
+
+    <div style="overflow-x:auto">
+    <table style="width:100%;border-collapse:collapse;font-size:15px;min-width:640px">
+      <thead>
+        <tr style="text-align:left;color:var(--text3);border-bottom:1px solid var(--border)">
+          <th style="padding:8px 10px;font-weight:600">Axis</th>
+          <th style="padding:8px 10px;font-weight:600;color:var(--red)">SSH — heterogeneous inbound (on Windows)</th>
+          <th style="padding:8px 10px;font-weight:600;color:var(--green)">DureClaw — homogeneous outbound</th>
+        </tr>
+      </thead>
+      <tbody style="color:var(--text2)">
+        <tr style="border-bottom:1px solid var(--border)"><td style="padding:8px 10px;color:var(--white);font-weight:600">Shell</td><td style="padding:8px 10px">cmd ↔ PowerShell ↔ WSL mixed — quoting and escaping break</td><td style="padding:8px 10px">The <code>[SHELL]</code> daemon picks the right shell per OS</td></tr>
+        <tr style="border-bottom:1px solid var(--border)"><td style="padding:8px 10px;color:var(--white);font-weight:600">Paths</td><td style="padding:8px 10px"><code>C:\…</code> backslashes, drive letters, <code>cd /d</code></td><td style="padding:8px 10px">Paths passed as is; the node resolves them locally</td></tr>
+        <tr style="border-bottom:1px solid var(--border)"><td style="padding:8px 10px;color:var(--white);font-weight:600">Encoding</td><td style="padding:8px 10px">cmd code page → mojibake</td><td style="padding:8px 10px"><code>[WRITE:b64]</code> writes the exact bytes</td></tr>
+        <tr style="border-bottom:1px solid var(--border)"><td style="padding:8px 10px;color:var(--white);font-weight:600">Line endings</td><td style="padding:8px 10px">CRLF ↔ LF — heredocs and scripts break</td><td style="padding:8px 10px">base64 transfer → line endings don’t matter</td></tr>
+        <tr><td style="padding:8px 10px;color:var(--white);font-weight:600">Auth</td><td style="padding:8px 10px">admins need <code>administrators_authorized_keys</code> + non-inherited ACLs + <strong style="color:var(--red)">UAC elevation</strong></td><td style="padding:8px 10px">keyless registration — inbound auth, firewall rules, elevation: <strong style="color:var(--green)">none needed</strong></td></tr>
+      </tbody>
+    </table>
+    </div>
+
+    <div style="margin-top:16px;font-size:15px;color:var(--text3)">
+      Measured experiment: on the same task (Mac→Windows, Python→exe build), DureClaw <strong style="color:var(--green)">finished the exe in 6 steps with zero setup</strong>, while SSH <strong style="color:var(--red)">failed authentication 4 times before any work + hit the UAC wall</strong> and never ran a single line. The difference is not transfer speed but <strong>removing the friction of onboarding, authentication and cross-OS normalization</strong>.
+    </div>
+
+    <div style="margin-top:14px;border-left:3px solid var(--cyan);border-radius:8px;padding:12px 16px;background:var(--bg2)">
+      <div style="font:600 16px var(--font-sans);color:var(--white)">🔄 Resilience · visibility — what SSH lacks</div>
+      <div style="color:var(--text2);font-size:15px;margin-top:6px">
+        <strong>Even when the server restarts or upgrades</strong>, nodes <strong>reconnect automatically</strong> (exponential backoff), and a <strong>real-time dashboard</strong> shows the fleet status.
+        <span style="color:var(--text3)">With SSH, a dropped session means reconnecting by hand, and there is no screen showing "who is alive".</span>
+        <br/>Measured: while improving and deploying this project we restarted the server many times, and every node came back on its own each time.
+      </div>
+    </div>
+
+    <div style="margin-top:14px;font-size:15px;color:var(--text2)">
+      <strong>Even on homogeneous Linux↔Linux</strong>, SSH keeps structural limits — inbound reachability (impossible behind NAT/firewalls) · 1:N fan-out · persistence · fleet visibility · capabilities beyond the shell.
+      One measured case: on the same Linux box, <strong style="color:var(--red)">SSH inbound :22 timed out (couldn’t get in)</strong>, while <strong style="color:var(--green)">DureClaw connected outbound and even built the exe</strong>.
+      <span style="color:var(--text3)">SSH is a transport pipe; DureClaw is a fleet bus — different layers.</span>
+    </div>
+
+    <div style="margin-top:16px">
+      <a href="/en/how/" style="display:inline-block;text-decoration:none;border:1px solid var(--green);border-radius:24px;padding:9px 20px;background:var(--bg2);color:var(--green);font:700 15.5px var(--font-sans)">📄 See the full experiment report — per-task numbers · homogeneous/heterogeneous comparison · structural limits <span style="color:var(--text3)">↗</span></a>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="layers" style="padding-top:0">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-num">→</span>
+      <h2 class="section-title">Where it <em>sits</em> — the L4→L0 vertical stack</h2>
+    </div>
+    <p style="color:var(--text2); margin:-8px 0 22px; max-width:780px">
+      In the Claude Code ecosystem, most meta-factories emit structure/config at <strong>L3</strong> and hand it off to an external runtime.
+      DureClaw not only <strong>generates (L3)</strong> the team, it also owns the <strong>runtime (L1) and physical execution (L0)</strong> the team actually runs on,
+      plus the <strong>self-improvement (L4)</strong> that evaluates outputs and feeds them back — <strong>the only vertical stack</strong> that has it all in one body.
+      <span style="color:var(--text3)">One vertical from self-improvement down to the physical actuator.</span>
+    </p>
+
+    <div style="display:flex; flex-direction:column; gap:10px">
+      <!-- L4 -->
+      <div style="display:flex; gap:14px; align-items:stretch; border:1px solid var(--orange); border-radius:10px; padding:14px 16px; background:var(--bg2)">
+        <div style="flex:0 0 52px; display:flex; flex-direction:column; align-items:center; justify-content:center; border-right:1px solid var(--border); padding-right:12px">
+          <div style="font:800 20px var(--font-sans); color:var(--orange)">L4</div>
+        </div>
+        <div style="flex:1">
+          <div style="font:700 15px var(--font-sans); color:var(--white)">RSI / self-improvement <span style="font-size: 15px; color:var(--orange); border:1px solid var(--orange); border-radius:20px; padding:1px 8px; margin-left:6px">★ unique to DureClaw</span></div>
+          <div style="color:var(--text2); font-size:15px; margin-top:5px">5-stage learning loop (observe→synthesize→set goals→codify knowledge→learn & select) + eval + <strong>Decision Freezing</strong>. Evaluates team outputs, crystallizes them into deterministic skills and feeds them back into L3 patterns — <em>evolving the factory itself</em>. <span style="color:var(--text3)">Recursive self-improvement above the meta-factory.</span></div>
+        </div>
+      </div>
+      <!-- L3 -->
+      <div style="display:flex; gap:14px; align-items:stretch; border:1px solid var(--purple); border-radius:10px; padding:14px 16px; background:var(--bg2)">
+        <div style="flex:0 0 52px; display:flex; flex-direction:column; align-items:center; justify-content:center; border-right:1px solid var(--border); padding-right:12px">
+          <div style="font:800 20px var(--font-sans); color:var(--purple)">L3</div>
+        </div>
+        <div style="flex:1">
+          <div style="font:700 15px var(--font-sans); color:var(--white)">Meta-Factory / Team-Architecture <span style="font-size: 15px; color:var(--text3); margin-left:6px">neighbors: Archon · meta-harness</span></div>
+          <div style="color:var(--text2); font-size:15px; margin-top:5px">Domain sentence → agent team + skills. <code>/dureclaw</code> 6 patterns(Pipeline · Fan-out/in · Expert Pool · Producer-Reviewer · Supervisor · Hierarchical).</div>
+        </div>
+      </div>
+      <!-- L2 -->
+      <div style="display:flex; gap:14px; align-items:stretch; border:1px solid var(--cyan); border-radius:10px; padding:14px 16px; background:var(--bg2)">
+        <div style="flex:0 0 52px; display:flex; flex-direction:column; align-items:center; justify-content:center; border-right:1px solid var(--border); padding-right:12px">
+          <div style="font:800 20px var(--font-sans); color:var(--cyan)">L2</div>
+        </div>
+        <div style="flex:1">
+          <div style="font:700 15px var(--font-sans); color:var(--white)">Cross-Harness Workflow <span style="font-size: 15px; color:var(--text3); margin-left:6px">neighbors: ECC</span></div>
+          <div style="color:var(--text2); font-size:15px; margin-top:5px">Standardized skills, rules and hooks + plugin marketplace loader — common conventions across harnesses.</div>
+        </div>
+      </div>
+      <!-- L1 -->
+      <div style="display:flex; gap:14px; align-items:stretch; border:1px solid var(--green); border-radius:10px; padding:14px 16px; background:var(--bg2)">
+        <div style="flex:0 0 52px; display:flex; flex-direction:column; align-items:center; justify-content:center; border-right:1px solid var(--border); padding-right:12px">
+          <div style="font:800 20px var(--font-sans); color:var(--green)">L1</div>
+        </div>
+        <div style="flex:1">
+          <div style="font:700 15px var(--font-sans); color:var(--white)">Orchestration Runtime <span style="font-size: 15px; color:var(--green); border:1px solid var(--green); border-radius:20px; padding:1px 8px; margin-left:6px">★ unique to DureClaw</span></div>
+          <div style="color:var(--text2); font-size:15px; margin-top:5px">Phoenix Channel bus + MCP + Work Key + DETS persistence + <strong>keyless brain delegation</strong>. The distributed message bus where the team actually runs.</div>
+        </div>
+      </div>
+      <!-- L0 -->
+      <div style="display:flex; gap:14px; align-items:stretch; border:1px solid var(--red); border-radius:10px; padding:14px 16px; background:var(--bg2)">
+        <div style="flex:0 0 52px; display:flex; flex-direction:column; align-items:center; justify-content:center; border-right:1px solid var(--border); padding-right:12px">
+          <div style="font:800 20px var(--font-sans); color:var(--red)">L0</div>
+        </div>
+        <div style="flex:1">
+          <div style="font:700 15px var(--font-sans); color:var(--white)">Physical Execution <span style="font-size: 15px; color:var(--red); border:1px solid var(--red); border-radius:20px; padding:1px 8px; margin-left:6px">★ unique to DureClaw</span></div>
+          <div style="color:var(--text2); font-size:15px; margin-top:5px"><strong>edgeclaw</strong>(shell, GPIO, signal tower, PA) · <strong>webclaw</strong> (browser) · <strong>deskclaw</strong> (GUI). Win, mac, Linux, Pi, riscv — all the way to physical actuators: "approval = physical outcome".</div>
+        </div>
+      </div>
+    </div>
+
+    <div style="margin-top:16px; font-size:15px; color:var(--text3)">
+      Archon builds runtime determinism. DureClaw uses L4 Decision Freezing to <em>push that determinism straight down to the L0 edge</em> — generation, execution and self-improvement in one vertical.
+    </div>
+
+    <!-- clawfit lens -->
+    <div style="margin-top:22px; border:1px solid var(--border); border-radius:10px; padding:16px 18px; background:var(--bg3)">
+      <div style="font:700 16px var(--font-sans); color:var(--white)">🗺 Seen on the clawfit ecosystem map — DureClaw = <span style="color:var(--purple)">L2</span></div>
+      <p style="color:var(--text2); font-size:15px; margin:8px 0 10px; max-width:820px">
+        <a href="https://github.com/hongsw/clawfit" target="_blank" style="color:var(--cyan2); text-decoration:none">clawfit</a>  is a recommendation engine and ecosystem map that classifies <strong>162+ tools in the Claude Code ecosystem into 7 layers (L1–L7)</strong>.
+        By that standard DureClaw is <strong>L2 — Meta wrappers / harnesses / orchestration</strong>: the meta-wrapper/orchestration slot riding on top of an <strong>L1 base runtime</strong> such as Claude Code or pi (neighbors: SuperClaude · Archon · oh-my-*).
+      </p>
+      <p style="color:var(--text2); font-size:15px; margin:0 0 12px; max-width:820px">
+        ⚠️ <strong>The two lenses are orthogonal.</strong> clawfit’s L1–L7 is a <strong>horizontal lens</strong> that sorts by <em>"architectural role, not a maturity ladder"</em> (which slot). The L4→L0 above is a <strong>vertical lens</strong> — it shows <strong>how many layers, from self-improvement (L4) down to physical execution (L0), DureClaw directly owns</strong> while playing that L2 role. Different axes of the same thing.
+      </p>
+      <div style="display:flex; gap:10px; flex-wrap:wrap; font-size:15px">
+        <a href="https://github.com/hongsw/clawfit" target="_blank" style="color:var(--cyan2); text-decoration:none; border:1px solid var(--border); border-radius:20px; padding:3px 12px; background:var(--bg2)">clawfit — ecosystem map ↗</a>
+        <a href="https://github.com/hongsw/clawfit/blob/main/docs/reference-levels.md" target="_blank" style="color:var(--cyan2); text-decoration:none; border:1px solid var(--border); border-radius:20px; padding:3px 12px; background:var(--bg2)">7-layer taxonomy (L1–L7) ↗</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="ecosystem" style="padding-top:0">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-num">→</span>
+      <h2 class="section-title">Ecosystem — <em>one brain, many hands</em></h2>
+    </div>
+    <p style="color:var(--text2); margin:-8px 0 22px; max-width:760px">
+      The master (Claude) is the <strong>brain</strong>; each claw is a <strong>different hand</strong>.
+      Over the same bus and the same keyless delegation, it reaches into the physical world, the browser or the desktop.
+      <span style="color:var(--text3)">One brain, many hands — one bus, one keyless delegation.</span>
+    </p>
+
+    <div style="font:600 13.5px/1 var(--font-mono); color:var(--text3); letter-spacing:.5px; margin:0 0 10px">NATIVE NODES</div>
+    <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(240px,1fr)); gap:12px; margin-bottom:22px">
+      <a href="/en/showcase/" style="display:block; text-decoration:none; border:1px solid var(--border); border-radius:10px; padding:16px; background:var(--bg2)">
+        <div style="font:700 15px var(--font-sans); color:var(--white)">edgeclaw <span style="color:var(--green)">↗</span></div>
+        <div style="color:var(--text2); font-size:15px; margin:6px 0 8px">OS and physical node. A single static Go binary — Win, Mac, Linux, Pi Zero, riscv… shell, sensors, GPIO, LEDs, buzzers, relays, even signal towers (approval = physical outcome).</div>
+        <span style="font-size: 15px; color:var(--green); border:1px solid var(--green); border-radius:20px; padding:2px 8px">go · gpio · cross-platform</span>
+      </a>
+      <a href="/en/showcase/" style="display:block; text-decoration:none; border:1px solid var(--border); border-radius:10px; padding:16px; background:var(--bg2)">
+        <div style="font:700 15px var(--font-sans); color:var(--white)">webclaw <span style="color:var(--cyan)">↗</span></div>
+        <div style="color:var(--text2); font-size:15px; margin:6px 0 8px">Browser node. A Chrome MV3 extension — lends your browser to the fleet (fetch, DOM, CORS-free, always on). Pure JS.</div>
+        <span style="font-size: 15px; color:var(--cyan); border:1px solid var(--cyan); border-radius:20px; padding:2px 8px">chrome-extension · browser</span>
+      </a>
+      <a href="/en/showcase/" style="display:block; text-decoration:none; border:1px solid var(--border); border-radius:10px; padding:16px; background:var(--bg2)">
+        <div style="font:700 15px var(--font-sans); color:var(--white)">deskclaw <span style="color:var(--purple)">↗</span></div>
+        <div style="color:var(--text2); font-size:15px; margin:6px 0 8px">Desktop GUI node. Win/macOS — eyes (screenshots) + hands (click, type, launch apps). <strong>RPA record→replay</strong>: teach it once and it replays without an LLM.</div>
+        <span style="font-size: 15px; color:var(--purple); border:1px solid var(--purple); border-radius:20px; padding:2px 8px">go · desktop · rpa</span>
+      </a>
+    </div>
+
+    <div style="font:600 13.5px/1 var(--font-mono); color:var(--text3); letter-spacing:.5px; margin:0 0 10px">ADAPTERS — bring existing tools into the fleet</div>
+    <div style="border:1px solid var(--border); border-radius:10px; padding:14px 16px; background:var(--bg2); margin-bottom:22px; color:var(--text2); font-size:15px">
+      <a href="https://github.com/DureClaw/picoclaw" target="_blank" style="color:var(--cyan2); text-decoration:none">picoclaw</a>(Go) ·
+      <a href="https://github.com/DureClaw/nanobot" target="_blank" style="color:var(--cyan2); text-decoration:none">nanobot</a>(Py) ·
+      <a href="https://github.com/DureClaw/zeroclaw" target="_blank" style="color:var(--cyan2); text-decoration:none">zeroclaw</a>(Rust) ·
+      <a href="https://github.com/DureClaw/nullclaw" target="_blank" style="color:var(--cyan2); text-decoration:none">nullclaw</a>(Zig)
+      — each repo adds a <code>dureclaw/</code> bridge to join the same bus.
+    </div>
+
+    <div style="font:600 13.5px/1 var(--font-mono); color:var(--text3); letter-spacing:.5px; margin:0 0 10px">DOCS & DEMO</div>
+    <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(240px,1fr)); gap:12px">
+      <a href="/en/how/" style="display:block; text-decoration:none; border:1px solid var(--border); border-radius:10px; padding:16px; background:var(--bg2)">
+        <div style="font:700 15px var(--font-sans); color:var(--white)">📄 whitepaper <span style="color:var(--orange)">↗</span></div>
+        <div style="color:var(--text2); font-size:15px; margin:6px 0 0">Technical whitepaper — architecture, principles, security, case studies. Korean edition / English PDF.</div>
+      </a>
+      <a href="/en/use-cases/" style="display:block; text-decoration:none; border:1px solid var(--border); border-radius:10px; padding:16px; background:var(--bg2)">
+        <div style="font:700 15px var(--font-sans); color:var(--white)">🏭 dure-factory <span style="color:var(--orange)">↗</span></div>
+        <div style="color:var(--text2); font-size:15px; margin:6px 0 0">Distributed edge × manufacturing MES demo — sensing→synthesis→approval→Decision Freezing. DureClaw + Open MES Korea.</div>
+      </a>
+      <a href="https://github.com/hongsw/clawfit" target="_blank" style="display:block; text-decoration:none; border:1px solid var(--border); border-radius:10px; padding:16px; background:var(--bg2)">
+        <div style="font:700 15px var(--font-sans); color:var(--white)">🗺 clawfit <span style="color:var(--cyan)">↗</span></div>
+        <div style="color:var(--text2); font-size:15px; margin:6px 0 0">Claude Code ecosystem map — classifies and recommends 162+ tools across 7 layers (L1–L7). Shows where DureClaw sits (<strong>L2</strong>).</div>
+      </a>
+    </div>
+    <div style="margin-top:14px; font-size:15px; color:var(--text3)">All repos → <a href="https://github.com/dureclaw/dureclaw" target="_blank" style="color:var(--cyan2)">github.com/DureClaw</a></div>
+  </div>
+</section>
+
+<section class="section" id="architecture">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-num">→</span>
+      <h2 class="section-title">System <em>Architecture</em></h2>
+    </div>
+    <div class="arch-ascii">
+<pre><span class="c1">① Claude Code</span> <span class="dim">(orchestrator, MacBook)</span>
+     <span class="dim">/plugin marketplace add dureclaw/dureclaw</span>
+   <span class="arrow">└─</span> MCP <span class="dim">(oah-mcp)</span> <span class="arrow">→</span> Phoenix WebSocket
+
+<span class="c2">② Phoenix Server</span> <span class="dim">(message bus)</span>
+     <span class="dim">bash &lt;(curl -fsSL https://dureclaw.baryon.ai/server)</span>
+   ws://host:4000
+
+<span class="c3">③ oah-agent</span> <span class="dim">(worker, each machine)</span>
+     <span class="dim">PHOENIX=ws://host:4000 ROLE=builder bash &lt;(curl -fsSL https://dureclaw.baryon.ai/agent)</span>
+   <span class="arrow">→</span> WebSocket connect <span class="arrow">→</span> receive task.assign
+   <span class="arrow">→</span> run AI backend <span class="dim">(claude / pi / gemini / aider / codex)</span>
+   <span class="arrow">→</span> return task.result</pre>
+    </div>
+  </div>
+</section>
+
+<div class="lb-bg" id="lb" onclick="closeLB()">
+  <img class="lb-img" id="lb-img" src="" alt=""/>
+</div>
+
+<footer>
+  <div class="container">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <div class="footer-logo"><strong>DureClaw</strong></div>
+        <p class="footer-tagline">Turn every idle computer into an AI teammate — Local-First Agentic Bus</p>
+      </div>
+      <div class="footer-nav-groups">
+        <div class="footer-col">
+          <div class="footer-col-title">DureClaw</div>
+          <a href="/en/start/">Quickstart</a>
+          <a href="/en/how/">Architecture & Protocol</a>
+          <a href="/en/pricing/">Pricing & Plans</a>
+          <a href="/en/terms/">Terms of Service</a>
+          <a href="https://github.com/DureClaw/dureclaw/issues" target="_blank" rel="noopener">Issues & Templates ↗</a>
+        </div>
+        <div class="footer-col">
+          <div class="footer-col-title">Baryon Labs</div>
+          <a href="https://baryon.ai/about.html" target="_blank" rel="noopener">About Us ↗</a>
+          <a href="https://baryon.ai/service.html" target="_blank" rel="noopener">Enterprise AX Consulting ↗</a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="footer-company-info">
+        <span><strong>Baryon Labs, Inc.</strong></span>
+        <span class="sep">·</span>
+        <span>CEO: Seungwoo Hong</span>
+        <span class="sep">·</span>
+        <span>Seoul, Korea</span>
+        <span class="sep">·</span>
+        <span>Inquiries: <a href="mailto:hello@baryon.ai">hello@baryon.ai</a></span>
+      </div>
+      <div class="footer-copy">© 2026 Baryon Labs. All rights reserved.</div>
+    </div>
+  </div>
+</footer>
+
+<script src="/assets/site.js"></script>
+<script src="/assets/i18n.js"></script>
+</body>
+</html>

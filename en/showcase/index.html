@@ -1,0 +1,527 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-PBVB7JSPRF"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-PBVB7JSPRF');
+</script>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Demos & Hardware — DureClaw</title>
+<meta name="description" content="DureClaw demos and hardware examples — dashboard screenshots, real-scenario demos of several computers working at once, and hardware use cases such as Raspberry Pi and other single-board computers."/>
+
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css"/>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet"/>
+
+<!-- ── SEO / canonical / icons ── -->
+<link rel="canonical" href="https://dureclaw.baryon.ai/en/showcase/"/>
+<link rel="alternate" hreflang="ko" href="https://dureclaw.baryon.ai/showcase/"/>
+<link rel="alternate" hreflang="en" href="https://dureclaw.baryon.ai/en/showcase/"/>
+<link rel="alternate" hreflang="x-default" href="https://dureclaw.baryon.ai/showcase/"/>
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1"/>
+<meta name="author" content="DureClaw · Baryon Labs"/>
+<meta name="keywords" content="DureClaw, distributed AI agents, multi-agent orchestration, Claude Code plugin, edgeclaw, webclaw, deskclaw, keyless edge, LLM as compiler, Decision Freezing, RPA, GPIO, Raspberry Pi, multi-machine AI"/>
+<meta name="theme-color" content="#0284c7"/>
+<link rel="icon" href="/favicon.svg" type="image/svg+xml"/>
+<link rel="icon" href="/favicon-256.png" sizes="256x256" type="image/png"/>
+<link rel="apple-touch-icon" href="/favicon-256.png"/>
+<link rel="sitemap" type="application/xml" href="/sitemap.xml"/>
+
+<!-- ── Open Graph ── -->
+<meta property="og:type" content="website"/>
+<meta property="og:site_name" content="DureClaw"/>
+<meta property="og:locale" content="en_US"/>
+<meta property="og:url" content="https://dureclaw.baryon.ai/en/showcase/"/>
+<meta property="og:title" content="Demos & Hardware — DureClaw"/>
+<meta property="og:description" content="DureClaw demos and hardware examples — dashboard screenshots, real-scenario demos of several computers working at once, and hardware use cases such as Raspberry Pi and other single-board computers."/>
+<meta property="og:image" content="https://dureclaw.baryon.ai/screenshots/hero-banner.jpg"/>
+<meta property="og:image:width" content="1400"/>
+<meta property="og:image:height" content="594"/>
+<meta property="og:image:alt" content="DureClaw Cooperative — Unified AI Robotics Ecosystem"/>
+
+<!-- ── Twitter ── -->
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:title" content="Demos & Hardware — DureClaw"/>
+<meta name="twitter:description" content="DureClaw demos and hardware examples — dashboard screenshots, real-scenario demos of several computers working at once, and hardware use cases such as Raspberry Pi and other single-board computers."/>
+<meta name="twitter:image" content="https://dureclaw.baryon.ai/screenshots/hero-banner.jpg"/>
+
+<!-- ── AI / LLM crawlers (GEO/AEO) ── -->
+<link rel="alternate" type="text/markdown" title="llms.txt" href="/llms.txt"/>
+
+
+<link rel="stylesheet" href="/assets/site.css"/>
+<link rel="stylesheet" href="/assets/design.css"/>
+<script type="application/ld+json">
+{
+ "@context": "https://schema.org",
+ "@type": "BreadcrumbList",
+ "itemListElement": [
+  {
+   "@type": "ListItem",
+   "position": 1,
+   "name": "DureClaw",
+   "item": "https://dureclaw.baryon.ai/en/"
+  },
+  {
+   "@type": "ListItem",
+   "position": 2,
+   "name": "Demos & Hardware",
+   "item": "https://dureclaw.baryon.ai/en/showcase/"
+  }
+ ]
+}
+</script>
+<!-- PostHog (visitor analytics) -->
+<script>
+    !function(t,e){var o,n,p,r;e.__SV||(window.posthog && window.posthog.__loaded)||(window.posthog=e,e._i=[],e.init=function(i,s,a){function g(t,e){var o=e.split(".");2==o.length&&(t=t[o[0]],e=o[1]),t[e]=function(){t.push([e].concat(Array.prototype.slice.call(arguments,0)))}}p||((p=t.createElement("script")).type="text/javascript",p.crossOrigin="anonymous",p.async=!0,p.src=s.api_host.replace(".i.posthog.com","-assets.i.posthog.com")+"/static/array.js",p.onerror=function(){p=null},(r=t.getElementsByTagName("script")[0]).parentNode.insertBefore(p,r));var u=e;for(void 0!==a?u=e[a]=[]:a="posthog",u.people=u.people||[],Object.defineProperty(u,"toString",{configurable:!0,enumerable:!0,writable:!0,value:function(t){var e="posthog";return"posthog"!==a&&(e+="."+a),t||(e+=" (stub)"),e}}),Object.defineProperty(u.people,"toString",{configurable:!0,enumerable:!0,writable:!0,value:function(){return u.toString(1)+".people (stub)"}}),o="Zc Kc Xc Yc ih init Rh Ah Ih Eh Lh zu Ph Nh $h Uh Wh Vh Gh Qh Zh capture getExtension Fh dr Yh calculateEventProperties Kh register register_once register_for_session unregister unregister_for_session sd Th td getFeatureFlag getFeatureFlagPayload getFeatureFlagResult getAllFeatureFlags isFeatureEnabled reloadFeatureFlags updateFlags updateEarlyAccessFeatureEnrollment getEarlyAccessFeatures on onFeatureFlags onSurveysLoaded onSessionId getSurveys getActiveMatchingSurveys onActiveMatchingSurveysChanged renderSurvey displaySurvey cancelPendingSurvey canRenderSurvey canRenderSurveyAsync rd identify setPersonProperties unsetPersonProperties group resetGroups setPersonPropertiesForFlags resetPersonPropertiesForFlags setGroupPropertiesForFlags resetGroupPropertiesForFlags reset od shutdown setIdentity clearIdentity get_distinct_id getGroups get_session_id get_session_replay_url alias set_config startSessionRecording stopSessionRecording sessionRecordingStarted captureException addExceptionStep captureLog startExceptionAutocapture stopExceptionAutocapture loadToolbar get_property getSessionProperty ed Bh createPersonProfile setInternalOrTestUser nd oh sh opt_in_capturing opt_out_capturing rh has_opted_in_capturing has_opted_out_capturing get_explicit_consent_status is_capturing clear_opt_in_out_capturing qh debug Hu Os getPageViewId captureTraceFeedback captureTraceMetric wh".split(" "),n=0;n<o.length;n++)g(u,o[n]);e._i.push([i,s,a])},e.__SV=1)}(document,window.posthog||[]);
+    posthog.init('phc_zqdSWCCk6ozgZkBKc2ba3jDBhe6YKoSqCrupk9PMWjma', {
+        api_host: 'https://us.i.posthog.com',
+        defaults: '2026-05-30',
+        person_profiles: 'identified_only', // or 'always' to create profiles for anonymous users as well
+    })
+</script>
+</head>
+<body>
+<nav>
+  <div class="container">
+    <div class="nav-inner">
+      <a href="/en/" class="nav-logo">Dure<span>Claw</span></a>
+      <div class="nav-links">
+        <a href="/en/start/">Get Started</a>
+        <a href="/en/use-cases/">Use Cases</a>
+        <a href="/en/how/">How It Works</a>
+        <a href="/en/showcase/" class="active">Demo</a>
+        <a href="/en/developers/">Developers</a>
+        <a href="/en/changelog/">Changelog</a>
+        <a href="/en/pricing/">Enterprise</a>
+        <a href="/en/#waitlist">Contact</a>
+      </div>
+      <a href="https://github.com/dureclaw/dureclaw" class="nav-gh" target="_blank">GitHub ↗</a>
+    </div>
+  </div>
+</nav>
+
+<header class="page-hero">
+  <div class="container">
+    <a href="/en/" class="crumb">← DureClaw Home</a>
+    <h1>Demos & Hardware</h1>
+    <p>Dashboard screenshots, real-scenario demos, and hardware use cases.</p>
+  </div>
+</header>
+
+<section class="section" id="screenshots">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-num">→</span>
+      <h2 class="section-title"><em>Screenshots</em></h2>
+    </div>
+
+    <!-- GIF demo (featured) -->
+    <img
+      class="ss-featured"
+      src="/screenshots/dureclaw-dashboard-demo.gif"
+      alt="DureClaw dashboard live demo — dispatching tasks to an agent team"
+      loading="lazy"
+    />
+
+    <!-- 3-column screenshots -->
+    <div class="ss-grid">
+
+      <div class="ss-item">
+        <img
+          src="/screenshots/01-dashboard.png"
+          alt="OAH control dashboard — 6 agents online"
+          onclick="openLB(this)"
+          loading="lazy"
+        />
+        <div class="ss-caption">
+          <strong>OAH Control Dashboard</strong>
+          6 agents online · Work Key management · real-time event log
+        </div>
+      </div>
+
+      <div class="ss-item">
+        <img
+          src="/screenshots/02-task-dispatch.png"
+          alt="Task dispatch — choosing builder/tester/orchestrator agents"
+          onclick="openLB(this)"
+          loading="lazy"
+        />
+        <div class="ss-caption">
+          <strong>Task Dispatch</strong>
+          Pick agents → enter Instructions → one send distributes work across the whole team
+        </div>
+      </div>
+
+      <div class="ss-item">
+        <img
+          src="/screenshots/dureclaw-demo.png"
+          alt="Dispatching tasks from Claude Code through DureClaw — terminal"
+          onclick="openLB(this)"
+          loading="lazy"
+        />
+        <div class="ss-caption">
+          <strong>Claude Code Terminal</strong>
+          The orchestrator instructs in natural language → DureClaw runs it on remote agents
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<section class="section" id="demo">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-num">→</span>
+      <h2 class="section-title">Demo <em>Scenario</em></h2>
+    </div>
+
+    <!-- Live demo GIFs (captures of the real system) -->
+    <div style="font:600 13.5px/1 var(--font-mono); color:var(--text3); letter-spacing:.5px; margin:0 0 12px">LIVE DEMO — captures of the real system</div>
+    <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:16px; margin-bottom:28px">
+      <figure style="margin:0; border:1px solid var(--border); border-radius:10px; overflow:hidden; background:var(--bg2)">
+        <img width="1960" height="943" src="/demo/mes-fanout.gif" alt="fan-out → master synthesis" loading="lazy" style="width:100%; display:block; border-bottom:1px solid var(--border)"/>
+        <figcaption style="padding:10px 12px; font-size:15px; color:var(--text2)"><strong style="color:var(--white)">① fan-out → synthesis</strong><br/>Defect fan-out → fan-in from heterogeneous nodes → master SUGGEST (cause, confidence, recommendation).</figcaption>
+      </figure>
+      <figure style="margin:0; border:1px solid var(--border); border-radius:10px; overflow:hidden; background:var(--bg2)">
+        <img width="1960" height="943" src="/demo/decision-freeze.gif" alt="Decision Freezing — LLM as compiler" loading="lazy" style="width:100%; display:block; border-bottom:1px solid var(--border)"/>
+        <figcaption style="padding:10px 12px; font-size:15px; color:var(--text2)"><strong style="color:var(--white)">② Decision Freezing</strong><br/>Approve → freeze the rule → the same pattern is reused with <strong>0 LLM calls in 2µs</strong> (15.6s saved).</figcaption>
+      </figure>
+      <figure style="margin:0; border:1px solid var(--border); border-radius:10px; overflow:hidden; background:var(--bg2)">
+        <img width="320" height="639" src="/demo/deskclaw-rpa.gif" alt="deskclaw RPA record→replay" loading="lazy" style="width:100%; display:block; border-bottom:1px solid var(--border)"/>
+        <figcaption style="padding:10px 12px; font-size:15px; color:var(--text2)"><strong style="color:var(--white)">③ deskclaw RPA</strong><br/>Teach it once (record) → <code>[RUN]</code> replays deterministically, <strong>without an LLM</strong>.</figcaption>
+      </figure>
+    </div>
+
+    <!-- 5-scene storyboard -->
+    <div class="demo-scenes">
+
+      <!-- Scene 1 -->
+      <div class="demo-scene">
+        <div class="demo-scene-shot">
+          <div style="width:100%;height:100%;background:#0b1220;color:#cdd9e5;font:13.5px/1.75 var(--font-mono);padding:14px 12px;display:flex;flex-direction:column;justify-content:center;gap:2px">
+            <div style="color:#64748b"># The problem</div>
+            <div><span style="color:#64748b">$</span> claude</div>
+            <div style="color:#64748b"># one window = one machine</div>
+            <div style="color:#64748b"># GPU, Linux, Pi sit idle</div>
+          </div>
+        </div>
+        <div class="demo-scene-body">
+          <div class="demo-scene-meta">
+            <span class="demo-scene-num">SCENE 01</span>
+            <span class="demo-scene-time">0:00 – 0:15</span>
+          </div>
+          <div class="demo-scene-title">The problem: Claude Code lives in one window</div>
+          <div class="demo-scene-script">
+            <span class="narr">"I'm using Claude Code on my Mac — and the GPU server next to it is just sitting idle."</span><br/><br/>
+            Claude Code is running in the Mac terminal. The server terminal is idle.
+            The hassle of switching between two windows, SSHing in and copy-pasting by hand.
+          </div>
+        </div>
+      </div>
+
+      <!-- Scene 2 -->
+      <div class="demo-scene">
+        <div class="demo-scene-shot">
+          <div style="width:100%;height:100%;background:#0b1220;color:#cdd9e5;font:13.5px/1.75 var(--font-mono);padding:14px 12px;display:flex;flex-direction:column;justify-content:center;gap:2px">
+            <div><span style="color:#64748b">$</span> <span style="color:#38bdf8">bash &lt;(curl -fsSL</span></div>
+            <div style="color:#38bdf8">&nbsp;&nbsp;&nbsp;dureclaw.baryon.ai/install)</div>
+            <div style="color:#34d399; margin-top:4px">✓ Server + MCP + Tailscale</div>
+          </div>
+        </div>
+        <div class="demo-scene-body">
+          <div class="demo-scene-meta">
+            <span class="demo-scene-num">SCENE 02</span>
+            <span class="demo-scene-time">0:15 – 0:45</span>
+          </div>
+          <div class="demo-scene-title">One-line install — server + automatic MCP registration</div>
+          <div class="demo-scene-script">
+            In the Mac terminal: <code>bash &lt;(curl -fsSL dureclaw.baryon.ai/install)</code><br/><br/>
+            <span class="highlight">Handled automatically:</span> start the Phoenix server in the background →
+            generate <code>OAH_SECRET</code> → register the Claude Code MCP →
+            detect the Tailscale IP → print the worker connect command, all in one go.
+          </div>
+        </div>
+      </div>
+
+      <!-- Scene 3 -->
+      <div class="demo-scene">
+        <div class="demo-scene-shot">
+          <div style="width:100%;height:100%;background:#0b1220;color:#cdd9e5;font:13.5px/1.75 var(--font-mono);padding:14px 12px;display:flex;flex-direction:column;justify-content:center;gap:2px">
+            <div><span style="color:#64748b">$</span> <span style="color:#38bdf8">PHOENIX=ws://100.x:4000</span></div>
+            <div style="color:#38bdf8">&nbsp;&nbsp;&nbsp;bash &lt;(…/agent)</div>
+            <div style="color:#34d399; margin-top:4px">✓ builder@server connected</div>
+          </div>
+        </div>
+        <div class="demo-scene-body">
+          <div class="demo-scene-meta">
+            <span class="demo-scene-num">SCENE 03</span>
+            <span class="demo-scene-time">0:45 – 1:05</span>
+          </div>
+          <div class="demo-scene-title">Connect a worker machine in one line</div>
+          <div class="demo-scene-script">
+            In the GPU server terminal, paste the command printed by install.sh:<br/>
+            <code>PHOENIX=ws://100.x.x.x:4000 bash &lt;(curl -fsSL …/agent)</code><br/><br/>
+            <span class="highlight">✅ builder@gpuserver connected</span> message.
+            Confirm the agent is online in the dashboard at <code>http://localhost:4000</code>.
+          </div>
+        </div>
+      </div>
+
+      <!-- Scene 4 -->
+      <div class="demo-scene">
+        <div class="demo-scene-shot">
+          <div style="width:100%;height:100%;background:#0b1220;color:#cdd9e5;font:13.5px/1.75 var(--font-mono);padding:14px 12px;display:flex;flex-direction:column;justify-content:center;gap:2px">
+            <div><span style="color:#64748b">claude ›</span> <span style="color:#a78bfa">/두레팀</span></div>
+            <div style="color:#cdd9e5">"Set up the team"</div>
+            <div style="color:#34d399; margin-top:4px">→ fan-out to N machines</div>
+          </div>
+        </div>
+        <div class="demo-scene-body">
+          <div class="demo-scene-meta">
+            <span class="demo-scene-num">SCENE 04</span>
+            <span class="demo-scene-time">1:05 – 1:25</span>
+          </div>
+          <div class="demo-scene-title">Ask Claude to build the team</div>
+          <div class="demo-scene-script">
+            In the Claude Code terminal, type <code>/두레팀</code><br/><br/>
+            Claude automatically: scans online agents →
+            creates a Work Key → builds the team manifest → assigns roles.<br/><br/>
+            <span class="highlight">Team status output:</span> orchestrator@mac · builder@gpuserver
+          </div>
+        </div>
+      </div>
+
+      <!-- Scene 5 -->
+      <div class="demo-scene">
+        <div class="demo-scene-shot">
+          <img width="1960" height="943" src="/demo/mes-fanout.gif" alt="Two machines at once — fleet fan-out" loading="lazy"/>
+        </div>
+        <div class="demo-scene-body">
+          <div class="demo-scene-meta">
+            <span class="demo-scene-num">SCENE 05</span>
+            <span class="demo-scene-time">1:25 – 2:30</span>
+          </div>
+          <div class="demo-scene-title">Two machines at once — The Magic Moment</div>
+          <div class="demo-scene-script">
+            <span class="narr">"Run the frontend build on the Mac and the backend tests on the server, at the same time."</span><br/><br/>
+            <span class="highlight">Both terminals move at once.</span>
+            Mac: running <code>npm run build</code> ·
+            GPU server: running <code>pytest tests/</code> in parallel.<br/><br/>
+            Claude collects results from both sides and prints a combined report.
+            Total time: <strong style="color:var(--green)">~50% shorter</strong> than running serially.
+          </div>
+        </div>
+      </div>
+
+    </div><!-- /demo-scenes -->
+
+    <p style="margin-top:16px;font-size: 15px;color:var(--text3);text-align:center;letter-spacing:0.5px;">
+      Install → connect a worker → one-line instruction → parallel run · about 2.5 minutes. The <strong style="color:var(--text2)">live demos</strong> above are captures of the real system.
+    </p>
+  </div>
+</section>
+
+<section class="section" id="hardware">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-num">→</span>
+      <h2 class="section-title">Shop-floor <em>Hardware Kits</em></h2>
+    </div>
+    <p style="color:var(--text2); margin:-8px 0 22px; max-width:820px">
+      Recommended kits you can install directly on a real manufacturing line. All are <strong>keyless</strong> (zero keys on the edge; the master is the brain) ·
+      <strong>one-line edgeclaw install</strong> (<code>curl -fsSL .../install.sh | sh</code>). Products are <em>examples</em> and can be replaced with equivalent specs.
+    </p>
+
+    <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(300px,1fr)); gap:14px">
+
+      <div style="border:1px solid var(--border); border-radius:10px; padding:16px; background:var(--bg2)">
+        <div style="font:700 16px var(--font-sans); color:var(--white)">📏 Distance & proximity sensing</div>
+        <div style="color:var(--text2); font-size:15px; margin:7px 0 9px">Raspberry Pi Zero 2 W + HC-SR04 ultrasonic sensor. Detects conveyor position, stock levels, and approach.</div>
+        <div style="margin-bottom:8px"><span style="font-size: 15px;color:var(--green);border:1px solid var(--green);border-radius:20px;padding:2px 8px">edgeclaw · sensor</span></div>
+        <div style="font-size: 15px"><a href="https://www.raspberrypi.com/products/raspberry-pi-zero-2-w/" target="_blank" style="color:var(--cyan2)">Pi Zero 2 W ↗</a> · <a href="https://www.adafruit.com/product/3942" target="_blank" style="color:var(--cyan2)">HC-SR04 ↗</a></div>
+      </div>
+
+      <div style="border:1px solid var(--border); border-radius:10px; padding:16px; background:var(--bg2)">
+        <div style="font:700 16px var(--font-sans); color:var(--white)">🌡 Mold & equipment temperature</div>
+        <div style="color:var(--text2); font-size:15px; margin:7px 0 9px">Raspberry Pi 4/5 + MAX31855 thermocouple amplifier + Type K thermocouple. Injection mold temperature, bearing temperature.</div>
+        <div style="margin-bottom:8px"><span style="font-size: 15px;color:var(--green);border:1px solid var(--green);border-radius:20px;padding:2px 8px">edgeclaw · sensor</span></div>
+        <div style="font-size: 15px"><a href="https://www.raspberrypi.com/products/raspberry-pi-5/" target="_blank" style="color:var(--cyan2)">Pi 5 ↗</a> · <a href="https://www.adafruit.com/product/269" target="_blank" style="color:var(--cyan2)">MAX31855 + thermocouple ↗</a></div>
+      </div>
+
+      <div style="border:1px solid var(--border); border-radius:10px; padding:16px; background:var(--bg2)">
+        <div style="font:700 16px var(--font-sans); color:var(--white)">🚦 Signal tower & andon <span style="color:var(--orange)">(approval = physical)</span></div>
+        <div style="color:var(--text2); font-size:15px; margin:7px 0 9px">Pi + 5V relay module + industrial signal tower (PATLITE) + buzzer. Lights 🔴 and sounds an alarm on approval.</div>
+        <div style="margin-bottom:8px"><span style="font-size: 15px;color:var(--purple);border:1px solid var(--purple);border-radius:20px;padding:2px 8px">edgeclaw · physical-edge</span></div>
+        <div style="font-size: 15px"><a href="https://www.adafruit.com/product/2935" target="_blank" style="color:var(--cyan2)">Relay module ↗</a> · <a href="https://www.patlite.com/product/signal_towers.html" target="_blank" style="color:var(--cyan2)">PATLITE signal tower ↗</a></div>
+      </div>
+
+      <div style="border:1px solid var(--border); border-radius:10px; padding:16px; background:var(--bg2)">
+        <div style="font:700 16px var(--font-sans); color:var(--white)">👁 Vision inspection</div>
+        <div style="color:var(--text2); font-size:15px; margin:7px 0 9px">NVIDIA Jetson Orin Nano + USB industrial camera. Detects surface defects and scratches (vision synthesis on the master).</div>
+        <div style="margin-bottom:8px"><span style="font-size: 15px;color:var(--green);border:1px solid var(--green);border-radius:20px;padding:2px 8px">edgeclaw + master vision</span></div>
+        <div style="font-size: 15px"><a href="https://www.nvidia.com/en-us/autonomous-machines/embedded-systems/jetson-orin/" target="_blank" style="color:var(--cyan2)">Jetson Orin Nano ↗</a> · <a href="https://www.arducam.com/" target="_blank" style="color:var(--cyan2)">Arducam ↗</a></div>
+      </div>
+
+      <div style="border:1px solid var(--border); border-radius:10px; padding:16px; background:var(--bg2)">
+        <div style="font:700 16px var(--font-sans); color:var(--white)">🔌 Field gateway & PLC</div>
+        <div style="color:var(--text2); font-size:15px; margin:7px 0 9px">Industrial fanless IPC (x86) + USB-RS485 (Modbus RTU). Collects serial data from existing PLCs and equipment.</div>
+        <div style="margin-bottom:8px"><span style="font-size: 15px;color:var(--green);border:1px solid var(--green);border-radius:20px;padding:2px 8px">edgeclaw · shell/serial</span></div>
+        <div style="font-size: 15px"><a href="https://www.waveshare.com/usb-to-rs485.htm" target="_blank" style="color:var(--cyan2)">USB-RS485 ↗</a> · <a href="https://www.advantech.com/en/products/embedded-box-pcs" target="_blank" style="color:var(--cyan2)">Advantech IPC ↗</a></div>
+      </div>
+
+      <div style="border:1px solid var(--border); border-radius:10px; padding:16px; background:var(--bg2)">
+        <div style="font:700 16px var(--font-sans); color:var(--white)">🖥 Shop-floor PC GUI automation</div>
+        <div style="color:var(--text2); font-size:15px; margin:7px 0 9px">Existing Windows shop-floor PCs (MES/ERP screens). Reads the screen, clicks and types, and automates repetitive work with RPA.</div>
+        <div style="margin-bottom:8px"><span style="font-size: 15px;color:var(--purple);border:1px solid var(--purple);border-radius:20px;padding:2px 8px">deskclaw · RPA</span></div>
+        <div style="font-size: 15px; color:var(--text3)">Uses existing PCs — zero extra hardware</div>
+      </div>
+
+      <div style="border:1px solid var(--border); border-radius:10px; padding:16px; background:var(--bg2)">
+        <div style="font:700 16px var(--font-sans); color:var(--white)">🔊 Voice announcements (PA)</div>
+        <div style="color:var(--text2); font-size:15px; margin:7px 0 9px">Raspberry Pi + USB sound card + speaker. Voice announcements for joins, defects, and approvals (no header soldering needed).</div>
+        <div style="margin-bottom:8px"><span style="font-size: 15px;color:var(--green);border:1px solid var(--green);border-radius:20px;padding:2px 8px">edgeclaw · audio</span></div>
+        <div style="font-size: 15px; color:var(--text3)">Generic USB audio — WAV embedded in the binary</div>
+      </div>
+
+    </div><!-- /combo grid -->
+
+    <!-- Protocol gateways -->
+    <div style="font:600 13.5px/1 var(--font-mono); color:var(--text3); letter-spacing:.5px; margin:30px 0 10px">FIELDBUS GATEWAYS — bring existing equipment and PLCs onto the bus</div>
+    <p style="color:var(--text2); font-size:15px; margin:0 0 12px; max-width:820px">A gateway normalizes the industrial protocols your equipment speaks, and edgeclaw collects the data. edgeclaw runs next to the gateway (or on an industrial Linux gateway).</p>
+    <div style="overflow-x:auto; border:1px solid var(--border); border-radius:10px">
+    <table style="width:100%; border-collapse:collapse; font-size:15px; min-width:560px">
+      <thead><tr style="background:var(--bg3); text-align:left">
+        <th style="padding:9px 12px; border-bottom:1px solid var(--border); font-family:var(--font-sans)">Protocol / Use</th>
+        <th style="padding:9px 12px; border-bottom:1px solid var(--border); font-family:var(--font-sans)">Typical gateway</th>
+        <th style="padding:9px 12px; border-bottom:1px solid var(--border)">Link</th>
+      </tr></thead>
+      <tbody style="color:var(--text2)">
+        <tr><td style="padding:8px 12px; border-bottom:1px solid var(--border)">Serial (RS-232/422/485) → Ethernet</td><td style="padding:8px 12px; border-bottom:1px solid var(--border)">Moxa NPort 5100</td><td style="padding:8px 12px; border-bottom:1px solid var(--border)"><a href="https://www.moxa.com/en/products/industrial-edge-connectivity/serial-device-servers/general-device-servers/nport-5100-series" target="_blank" style="color:var(--cyan2)">NPort 5100 ↗</a></td></tr>
+        <tr><td style="padding:8px 12px; border-bottom:1px solid var(--border)">Modbus RTU/ASCII ↔ Modbus TCP</td><td style="padding:8px 12px; border-bottom:1px solid var(--border)">Moxa MGate MB3180/3280/3480</td><td style="padding:8px 12px; border-bottom:1px solid var(--border)"><a href="https://www.moxa.com/en/products/industrial-edge-connectivity/protocol-gateways/modbus-tcp-gateways/mgate-mb3180-mb3280-mb3480-series" target="_blank" style="color:var(--cyan2)">MGate MB3000 ↗</a></td></tr>
+        <tr><td style="padding:8px 12px; border-bottom:1px solid var(--border)">Modbus ↔ PROFINET / EtherNet/IP</td><td style="padding:8px 12px; border-bottom:1px solid var(--border)">Moxa MGate 5103</td><td style="padding:8px 12px; border-bottom:1px solid var(--border)"><a href="https://www.moxa.com/en/products/industrial-edge-connectivity/protocol-gateways/profinet-gateways/mgate-5103-series" target="_blank" style="color:var(--cyan2)">MGate 5103 ↗</a></td></tr>
+        <tr><td style="padding:8px 12px; border-bottom:1px solid var(--border)">OPC-UA ↔ Modbus/EtherNet-IP/PROFINET</td><td style="padding:8px 12px; border-bottom:1px solid var(--border)">Advantech EKI-1242IEIMS</td><td style="padding:8px 12px; border-bottom:1px solid var(--border)"><a href="https://www.advantech.com/en-us/products/opc-ua-gateways/sub_38205c82-9338-4a53-8569-23b3fe14328e" target="_blank" style="color:var(--cyan2)">EKI OPC-UA ↗</a></td></tr>
+        <tr><td style="padding:8px 12px; border-bottom:1px solid var(--border)">MQTT / IIoT (Modbus·serial → MQTT)</td><td style="padding:8px 12px; border-bottom:1px solid var(--border)">Moxa ioThinx 4510 · Advantech ADAM-6000</td><td style="padding:8px 12px; border-bottom:1px solid var(--border)"><a href="https://www.moxa.com/en/products/industrial-edge-connectivity/controllers-and-ios/advanced-controllers-and-i-os/iothinx-4510-series" target="_blank" style="color:var(--cyan2)">ioThinx ↗</a> · <a href="https://www.advantech.com/en-us/products/ethernet-i-o-modules-adam-6000/sub_a67f7853-013a-4b50-9b20-01798c56b090" target="_blank" style="color:var(--cyan2)">ADAM-6000 ↗</a></td></tr>
+        <tr><td style="padding:8px 12px; border-bottom:1px solid var(--border)">Multi-fieldbus (PROFIBUS, CC-Link, CANopen, EtherCAT)</td><td style="padding:8px 12px; border-bottom:1px solid var(--border)">HMS Anybus Communicator</td><td style="padding:8px 12px; border-bottom:1px solid var(--border)"><a href="https://www.hms-networks.com/anybus" target="_blank" style="color:var(--cyan2)">Anybus ↗</a></td></tr>
+        <tr><td style="padding:8px 12px; border-bottom:1px solid var(--border)">BACnet (buildings/facilities)</td><td style="padding:8px 12px; border-bottom:1px solid var(--border)">HMS Intesis</td><td style="padding:8px 12px; border-bottom:1px solid var(--border)"><a href="https://www.hms-networks.com/p/inbaceip1k20000-ethernet-ip-bacnet-ip-ms-tp-server-gateway" target="_blank" style="color:var(--cyan2)">Intesis BACnet ↗</a></td></tr>
+        <tr><td style="padding:8px 12px">Linux edge gateway (runs edgeclaw directly)</td><td style="padding:8px 12px">Advantech UNO-2271G V3</td><td style="padding:8px 12px"><a href="https://www.advantech.com/en-us/products/1-2mlj9a/uno-2271g-v3/mod_25219c02-4050-4154-bfce-fe18246c028b" target="_blank" style="color:var(--cyan2)">UNO-2271G ↗</a></td></tr>
+      </tbody>
+    </table>
+    </div>
+
+    <!-- Alternative boards -->
+    <div style="font:600 13.5px/1 var(--font-mono); color:var(--text3); letter-spacing:.5px; margin:30px 0 10px">🧩 Pi is just one example — low-cost boards run the same binary / ALSO RUNS ON</div>
+    <p style="color:var(--text2); font-size:15px; margin:0 0 12px; max-width:860px">edgeclaw is built as a single static Go binary (<strong>arm64, armv7, armv6, riscv64, amd64</strong>) → the boards below install <strong>the edgeclaw release binary as-is</strong>. Includes the Korean-made <strong>Hardkernel ODROID</strong>. (The <a href="https://github.com/DureClaw/picoclaw" target="_blank" style="color:var(--cyan2)">picoclaw</a> adapter is a fork for the Sipeed family.)</p>
+    <div style="overflow-x:auto; border:1px solid var(--border); border-radius:10px">
+    <table style="width:100%; border-collapse:collapse; font-size:15px; min-width:600px">
+      <thead><tr style="background:var(--bg3); text-align:left">
+        <th style="padding:9px 12px; border-bottom:1px solid var(--border); font-family:var(--font-sans)">Board</th>
+        <th style="padding:9px 12px; border-bottom:1px solid var(--border); font-family:var(--font-sans)">Chip / Architecture</th>
+        <th style="padding:9px 12px; border-bottom:1px solid var(--border); font-family:var(--font-sans)">edgeclaw binary</th>
+        <th style="padding:9px 12px; border-bottom:1px solid var(--border)">Link</th>
+      </tr></thead>
+      <tbody style="color:var(--text2)">
+        <tr><td style="padding:8px 12px; border-bottom:1px solid var(--border)">Raspberry Pi Zero 2 W / 4 / 5</td><td style="padding:8px 12px; border-bottom:1px solid var(--border)">arm64 (Zero=armv6)</td><td style="padding:8px 12px; border-bottom:1px solid var(--border)"><a href="https://github.com/DureClaw/homepage/releases/download/edgeclaw-v0.1.1/edgeclaw-linux-arm64" target="_blank" style="color:var(--cyan2)"><code>linux-arm64</code></a> · <a href="https://github.com/DureClaw/homepage/releases/download/edgeclaw-v0.1.1/edgeclaw-linux-armv6" target="_blank" style="color:var(--cyan2)"><code>armv6</code></a></td><td style="padding:8px 12px; border-bottom:1px solid var(--border)"><a href="https://www.raspberrypi.com/products/" target="_blank" style="color:var(--cyan2)">raspberrypi.com ↗</a></td></tr>
+        <tr><td style="padding:8px 12px; border-bottom:1px solid var(--border)">🇰🇷 Hardkernel ODROID-C4 / N2+ / M1S</td><td style="padding:8px 12px; border-bottom:1px solid var(--border)">arm64 (Amlogic/RK)</td><td style="padding:8px 12px; border-bottom:1px solid var(--border)"><a href="https://github.com/DureClaw/homepage/releases/download/edgeclaw-v0.1.1/edgeclaw-linux-arm64" target="_blank" style="color:var(--cyan2)"><code>linux-arm64</code></a></td><td style="padding:8px 12px; border-bottom:1px solid var(--border)"><a href="https://www.hardkernel.com/product-category/odroid-board/" target="_blank" style="color:var(--cyan2)">hardkernel.com ↗</a></td></tr>
+        <tr><td style="padding:8px 12px; border-bottom:1px solid var(--border)">🇰🇷 Hardkernel ODROID-H4</td><td style="padding:8px 12px; border-bottom:1px solid var(--border)">x86_64 (Intel)</td><td style="padding:8px 12px; border-bottom:1px solid var(--border)"><a href="https://github.com/DureClaw/homepage/releases/download/edgeclaw-v0.1.1/edgeclaw-linux-amd64" target="_blank" style="color:var(--cyan2)"><code>linux-amd64</code></a></td><td style="padding:8px 12px; border-bottom:1px solid var(--border)"><a href="https://www.hardkernel.com/product-category/odroid-board/" target="_blank" style="color:var(--cyan2)">hardkernel.com ↗</a></td></tr>
+        <tr><td style="padding:8px 12px; border-bottom:1px solid var(--border)">Sipeed Lichee Pi 4A</td><td style="padding:8px 12px; border-bottom:1px solid var(--border)">RISC-V (TH1520)</td><td style="padding:8px 12px; border-bottom:1px solid var(--border)"><a href="https://github.com/DureClaw/homepage/releases/download/edgeclaw-v0.1.1/edgeclaw-linux-riscv64" target="_blank" style="color:var(--cyan2)"><code>linux-riscv64</code></a></td><td style="padding:8px 12px; border-bottom:1px solid var(--border)"><a href="https://sipeed.com/" target="_blank" style="color:var(--cyan2)">sipeed.com ↗</a></td></tr>
+        <tr><td style="padding:8px 12px; border-bottom:1px solid var(--border)">Sipeed Maix K230</td><td style="padding:8px 12px; border-bottom:1px solid var(--border)">RISC-V (C908) <span style="color:var(--text3)">· K210 is an MCU (no Linux)</span></td><td style="padding:8px 12px; border-bottom:1px solid var(--border)"><a href="https://github.com/DureClaw/homepage/releases/download/edgeclaw-v0.1.1/edgeclaw-linux-riscv64" target="_blank" style="color:var(--cyan2)"><code>linux-riscv64</code></a></td><td style="padding:8px 12px; border-bottom:1px solid var(--border)"><a href="https://wiki.sipeed.com/" target="_blank" style="color:var(--cyan2)">wiki.sipeed ↗</a></td></tr>
+        <tr><td style="padding:8px 12px; border-bottom:1px solid var(--border)">Milk-V Duo / Mars</td><td style="padding:8px 12px; border-bottom:1px solid var(--border)">RISC-V (SG200x/JH7110)</td><td style="padding:8px 12px; border-bottom:1px solid var(--border)"><a href="https://github.com/DureClaw/homepage/releases/download/edgeclaw-v0.1.1/edgeclaw-linux-riscv64" target="_blank" style="color:var(--cyan2)"><code>linux-riscv64</code></a></td><td style="padding:8px 12px; border-bottom:1px solid var(--border)"><a href="https://milkv.io/" target="_blank" style="color:var(--cyan2)">milkv.io ↗</a></td></tr>
+        <tr><td style="padding:8px 12px; border-bottom:1px solid var(--border)">Radxa Rock series</td><td style="padding:8px 12px; border-bottom:1px solid var(--border)">arm64 (RK3588, etc.)</td><td style="padding:8px 12px; border-bottom:1px solid var(--border)"><a href="https://github.com/DureClaw/homepage/releases/download/edgeclaw-v0.1.1/edgeclaw-linux-arm64" target="_blank" style="color:var(--cyan2)"><code>linux-arm64</code></a></td><td style="padding:8px 12px; border-bottom:1px solid var(--border)"><a href="https://radxa.com/" target="_blank" style="color:var(--cyan2)">radxa.com ↗</a></td></tr>
+        <tr><td style="padding:8px 12px; border-bottom:1px solid var(--border)">Orange Pi</td><td style="padding:8px 12px; border-bottom:1px solid var(--border)">arm64 (some RISC-V)</td><td style="padding:8px 12px; border-bottom:1px solid var(--border)"><a href="https://github.com/DureClaw/homepage/releases/download/edgeclaw-v0.1.1/edgeclaw-linux-arm64" target="_blank" style="color:var(--cyan2)"><code>linux-arm64</code></a> · <a href="https://github.com/DureClaw/homepage/releases/download/edgeclaw-v0.1.1/edgeclaw-linux-riscv64" target="_blank" style="color:var(--cyan2)"><code>riscv64</code></a></td><td style="padding:8px 12px; border-bottom:1px solid var(--border)"><a href="http://www.orangepi.org/" target="_blank" style="color:var(--cyan2)">orangepi.org ↗</a></td></tr>
+        <tr><td style="padding:8px 12px; border-bottom:1px solid var(--border)">BeagleBone Black / AI</td><td style="padding:8px 12px; border-bottom:1px solid var(--border)">armv7 / arm64</td><td style="padding:8px 12px; border-bottom:1px solid var(--border)"><a href="https://github.com/DureClaw/homepage/releases/download/edgeclaw-v0.1.1/edgeclaw-linux-armv7" target="_blank" style="color:var(--cyan2)"><code>linux-armv7</code></a> · <a href="https://github.com/DureClaw/homepage/releases/download/edgeclaw-v0.1.1/edgeclaw-linux-arm64" target="_blank" style="color:var(--cyan2)"><code>arm64</code></a></td><td style="padding:8px 12px; border-bottom:1px solid var(--border)"><a href="https://www.beagleboard.org/" target="_blank" style="color:var(--cyan2)">beagleboard.org ↗</a></td></tr>
+        <tr><td style="padding:8px 12px">Luckfox Pico</td><td style="padding:8px 12px">ARM Cortex-A7 (armv7)</td><td style="padding:8px 12px"><a href="https://github.com/DureClaw/homepage/releases/download/edgeclaw-v0.1.1/edgeclaw-linux-armv7" target="_blank" style="color:var(--cyan2)"><code>linux-armv7</code></a></td><td style="padding:8px 12px"><a href="https://www.luckfox.com/" target="_blank" style="color:var(--cyan2)">luckfox.com ↗</a></td></tr>
+      </tbody>
+    </table>
+    </div>
+
+    <!-- Korean products / suppliers -->
+    <div style="font:600 13.5px/1 var(--font-mono); color:var(--text3); letter-spacing:.5px; margin:30px 0 10px">🇰🇷 KOREAN SUPPLIERS</div>
+    <div style="overflow-x:auto; border:1px solid var(--border); border-radius:10px">
+    <table style="width:100%; border-collapse:collapse; font-size:15px; min-width:600px">
+      <thead><tr style="background:var(--bg3); text-align:left">
+        <th style="padding:9px 12px; border-bottom:1px solid var(--border); font-family:var(--font-sans)">Category</th>
+        <th style="padding:9px 12px; border-bottom:1px solid var(--border); font-family:var(--font-sans)">Korean company</th>
+        <th style="padding:9px 12px; border-bottom:1px solid var(--border)">Typical products</th>
+        <th style="padding:9px 12px; border-bottom:1px solid var(--border)">Link</th>
+      </tr></thead>
+      <tbody style="color:var(--text2)">
+        <tr><td style="padding:8px 12px; border-bottom:1px solid var(--border)">Signal towers & tower lamps (PATLITE alternative)</td><td style="padding:8px 12px; border-bottom:1px solid var(--border)">Qlight · KACON</td><td style="padding:8px 12px; border-bottom:1px solid var(--border)">LED tower lamps & indicators (ST/QTC, IO-Link)</td><td style="padding:8px 12px; border-bottom:1px solid var(--border)"><a href="https://www.qlight.com/kr/" target="_blank" style="color:var(--cyan2)">Qlight ↗</a> · <a href="https://www.kacon.co.kr/" target="_blank" style="color:var(--cyan2)">KACON ↗</a></td></tr>
+        <tr><td style="padding:8px 12px; border-bottom:1px solid var(--border)">Sensors, temperature controllers & measurement</td><td style="padding:8px 12px; border-bottom:1px solid var(--border)">Autonics · Hanyoung Nux</td><td style="padding:8px 12px; border-bottom:1px solid var(--border)">PID temperature controllers, proximity/photoelectric sensors, panel meters</td><td style="padding:8px 12px; border-bottom:1px solid var(--border)"><a href="https://www.autonics.com/kr" target="_blank" style="color:var(--cyan2)">Autonics ↗</a> · <a href="https://hanyoungnux.co.kr/" target="_blank" style="color:var(--cyan2)">Hanyoung Nux ↗</a></td></tr>
+        <tr><td style="padding:8px 12px; border-bottom:1px solid var(--border)">Serial ↔ Ethernet (Moxa NPort alternative)</td><td style="padding:8px 12px; border-bottom:1px solid var(--border)">Sollae Systems · WIZnet</td><td style="padding:8px 12px; border-bottom:1px solid var(--border)">Serial device servers (CSE), WIZ750SR, W5500</td><td style="padding:8px 12px; border-bottom:1px solid var(--border)"><a href="https://www.sollae.co.kr/ko/home/" target="_blank" style="color:var(--cyan2)">Sollae ↗</a> · <a href="https://www.wiznet.io/" target="_blank" style="color:var(--cyan2)">WIZnet ↗</a></td></tr>
+        <tr><td style="padding:8px 12px; border-bottom:1px solid var(--border)">PLC & industrial control</td><td style="padding:8px 12px; border-bottom:1px solid var(--border)">LS ELECTRIC · Comfile</td><td style="padding:8px 12px; border-bottom:1px solid var(--border)">XGT/XGB PLC, CUBLOC embedded controllers</td><td style="padding:8px 12px; border-bottom:1px solid var(--border)"><a href="https://www.ls-electric.com/ko" target="_blank" style="color:var(--cyan2)">LS ELECTRIC ↗</a> · <a href="https://www.comfile.co.kr/" target="_blank" style="color:var(--cyan2)">Comfile ↗</a></td></tr>
+        <tr><td style="padding:8px 12px; border-bottom:1px solid var(--border)">Industrial IPC, panel PC & embedded</td><td style="padding:8px 12px; border-bottom:1px solid var(--border)">MX On (formerly M2I) · Comtech · Bemax · Huins · Kortek</td><td style="padding:8px 12px; border-bottom:1px solid var(--border)">Industrial box/fanless PCs, HMI touch panels, embedded boards</td><td style="padding:8px 12px; border-bottom:1px solid var(--border)"><a href="https://www.mxon.co.kr/" target="_blank" style="color:var(--cyan2)">MX On ↗</a> · <a href="https://com-tech.kr/" target="_blank" style="color:var(--cyan2)">Comtech ↗</a> · <a href="https://www.bemax.co.kr/" target="_blank" style="color:var(--cyan2)">Bemax ↗</a> · <a href="https://www.huins.com/kr/index.php" target="_blank" style="color:var(--cyan2)">Huins ↗</a> · <a href="http://www.kortek.co.kr/" target="_blank" style="color:var(--cyan2)">Kortek ↗</a></td></tr>
+        <tr><td style="padding:8px 12px; border-bottom:1px solid var(--border)">SBC & edge computers</td><td style="padding:8px 12px; border-bottom:1px solid var(--border)">Hardkernel</td><td style="padding:8px 12px; border-bottom:1px solid var(--border)">ODROID (arm64 / x86)</td><td style="padding:8px 12px; border-bottom:1px solid var(--border)"><a href="https://www.hardkernel.com/product-category/odroid-board/" target="_blank" style="color:var(--cyan2)">Hardkernel ↗</a></td></tr>
+        <tr><td style="padding:8px 12px">Vision cameras</td><td style="padding:8px 12px">Withrobot</td><td style="padding:8px 12px">oCam USB3.0 industrial camera (UVC)</td><td style="padding:8px 12px"><a href="https://withrobot.com/" target="_blank" style="color:var(--cyan2)">Withrobot ↗</a></td></tr>
+      </tbody>
+    </table>
+    </div>
+
+    <!-- Korean distributors / where to buy -->
+    <div style="margin-top:16px; font-size:15px; color:var(--text2); line-height:1.9">
+      <div style="color:var(--text3); font-family:'JetBrains Mono',monospace; letter-spacing:.5px; margin-bottom:4px">KR DISTRIBUTORS / WHERE TO BUY</div>
+      <strong>Moxa</strong>: <a href="https://www.yoisys.com/" target="_blank" style="color:var(--cyan2)">Yoisys (master distributor)</a> · <a href="https://moxa.wezon.com/" target="_blank" style="color:var(--cyan2)">Wezon</a> · <a href="https://www.moxastore.co.kr/" target="_blank" style="color:var(--cyan2)">Moxa Store</a> &nbsp;|&nbsp;
+      <strong>Advantech</strong>: <a href="https://www.advantech.com/ko-kr" target="_blank" style="color:var(--cyan2)">Advantech (Korea site)</a> · <a href="https://advantech.co.kr/" target="_blank" style="color:var(--cyan2)">Advantech Korea</a> &nbsp;|&nbsp;
+      <strong>HMS·Anybus·Red Lion</strong>: <a href="https://www.anybus.com/" target="_blank" style="color:var(--cyan2)">anybus.com</a> (Korea sales via headquarters)<br/>
+      <span style="color:var(--text3)">Parts & gateway resellers:</span> <a href="https://www.devicemart.co.kr/goods/search?searchKeyword=MGate" target="_blank" style="color:var(--cyan2)">Devicemart</a> · <a href="https://www.eleparts.co.kr/" target="_blank" style="color:var(--cyan2)">Eleparts</a> · <a href="https://www.mechasolution.com/" target="_blank" style="color:var(--cyan2)">Mechasolution</a> · <a href="https://kr.rs-online.com/web/" target="_blank" style="color:var(--cyan2)">RS Korea</a> · <a href="https://kr.mouser.com/" target="_blank" style="color:var(--cyan2)">Mouser Korea</a>
+    </div>
+    <div style="margin-top:14px; font-size:15px; color:var(--text3)">
+      Install on any node: <code>curl -fsSL https://github.com/DureClaw/homepage/releases/download/edgeclaw-v0.1.1/install.sh | sh</code>
+    </div>
+  </div>
+</section>
+
+<div class="lb-bg" id="lb" onclick="closeLB()">
+  <img class="lb-img" id="lb-img" src="" alt=""/>
+</div>
+
+<footer>
+  <div class="container">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <div class="footer-logo"><strong>DureClaw</strong></div>
+        <p class="footer-tagline">Turn every idle computer into an AI teammate — Local-First Agentic Bus</p>
+      </div>
+      <div class="footer-nav-groups">
+        <div class="footer-col">
+          <div class="footer-col-title">DureClaw</div>
+          <a href="/en/start/">Quickstart</a>
+          <a href="/en/how/">Architecture & Protocol</a>
+          <a href="/en/pricing/">Pricing & Plans</a>
+          <a href="/en/terms/">Terms of Service</a>
+          <a href="https://github.com/DureClaw/dureclaw/issues" target="_blank" rel="noopener">Issues & Templates ↗</a>
+        </div>
+        <div class="footer-col">
+          <div class="footer-col-title">Baryon Labs</div>
+          <a href="https://baryon.ai/about.html" target="_blank" rel="noopener">About Us ↗</a>
+          <a href="https://baryon.ai/service.html" target="_blank" rel="noopener">Enterprise AX Consulting ↗</a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="footer-company-info">
+        <span><strong>Baryon Labs, Inc.</strong></span>
+        <span class="sep">·</span>
+        <span>CEO: Seungwoo Hong</span>
+        <span class="sep">·</span>
+        <span>Seoul, Korea</span>
+        <span class="sep">·</span>
+        <span>Inquiries: <a href="mailto:hello@baryon.ai">hello@baryon.ai</a></span>
+      </div>
+      <div class="footer-copy">© 2026 Baryon Labs. All rights reserved.</div>
+    </div>
+  </div>
+</footer>
+
+<script src="/assets/site.js"></script>
+<script src="/assets/i18n.js"></script>
+</body>
+</html>

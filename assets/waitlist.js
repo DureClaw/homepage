@@ -8,18 +8,31 @@
   const btn = form.querySelector('button[type=submit]');
 
   const say = (msg, kind) => { status.textContent = msg; status.dataset.kind = kind || ''; };
+  // 화면에 보이는 안내만 페이지 언어로. 알림 메일 항목명은 한국어 그대로 둔다.
+  const EN = document.documentElement.lang === 'en';
+  const T = EN ? {
+    email: 'Please check your email address.',
+    agree: 'Please agree to the collection and use of personal information.',
+    sending: 'Sending…',
+    failed: 'Could not send. Please try again shortly or email admin@baryon.ai.',
+  } : {
+    email: '이메일 주소를 확인해 주세요.',
+    agree: '개인정보 수집·이용에 동의해 주세요.',
+    sending: '보내는 중…',
+    failed: '전송하지 못했습니다. 잠시 후 다시 시도하거나 admin@baryon.ai 로 메일 주세요.',
+  };
 
   form.addEventListener('submit', async (e) => {
     e.preventDefault();
     if (form.website.value) return;                     // 봇 함정
     const email = form.email.value.trim();
-    if (!form.email.checkValidity() || !email) { say('이메일 주소를 확인해 주세요.', 'error'); form.email.focus(); return; }
-    if (!form.agree.checked) { say('개인정보 수집·이용에 동의해 주세요.', 'error'); form.agree.focus(); return; }
+    if (!form.email.checkValidity() || !email) { say(T.email, 'error'); form.email.focus(); return; }
+    if (!form.agree.checked) { say(T.agree, 'error'); form.agree.focus(); return; }
 
     const v = (n) => (form.elements[n]?.value || '').trim() || '-';
     const utm = [...new URLSearchParams(location.search)].filter(([k]) => k.startsWith('utm_')).map(([k, x]) => `${k}=${x}`).join('&');
     const envs = [...form.querySelectorAll('input[name=env]:checked')].map((i) => i.value);
-    btn.disabled = true; say('보내는 중…');
+    btn.disabled = true; say(T.sending);
     const ctrl = new AbortController();
     const timer = setTimeout(() => ctrl.abort(), 20000);  // 응답이 없으면 20초 뒤 실패 처리
     try {
@@ -58,7 +71,7 @@
       try { window.posthog && posthog.capture(form.elements.kind ? 'enterprise_inquiry_submitted' : 'waitlist_submitted', { environments: envs, newsletter: form.newsletter.checked }); } catch (_) {}
       try { window.gtag && gtag('event', 'generate_lead', { event_category: 'inquiry', event_label: form.elements.kind ? 'enterprise' : 'waitlist' }); } catch (_) {}
     } catch (err) {
-      say('전송하지 못했습니다. 잠시 후 다시 시도하거나 admin@baryon.ai 로 메일 주세요.', 'error');
+      say(T.failed, 'error');
       try { window.posthog && posthog.capture('waitlist_failed', { error: String(err) }); } catch (_) {}
     } finally {
       clearTimeout(timer);

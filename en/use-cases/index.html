@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-PBVB7JSPRF"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-PBVB7JSPRF');
+</script>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Use Cases — DureClaw</title>
+<meta name="description" content="DureClaw use cases — measured cases and illustrated scenarios for organizations, developers, IoT and the field, and research and education. How to run many computers and Chrome browsers as one AI team."/>
+
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css"/>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet"/>
+
+<!-- ── SEO / canonical / icons ── -->
+<link rel="canonical" href="https://dureclaw.baryon.ai/en/use-cases/"/>
+<link rel="alternate" hreflang="ko" href="https://dureclaw.baryon.ai/use-cases/"/>
+<link rel="alternate" hreflang="en" href="https://dureclaw.baryon.ai/en/use-cases/"/>
+<link rel="alternate" hreflang="x-default" href="https://dureclaw.baryon.ai/use-cases/"/>
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1"/>
+<meta name="author" content="DureClaw · Baryon Labs"/>
+<meta name="keywords" content="DureClaw, distributed AI agents, multi-agent orchestration, Claude Code plugin, edgeclaw, webclaw, deskclaw, keyless edge, LLM as compiler, Decision Freezing, RPA, GPIO, Raspberry Pi, multi-machine AI, distributed AI agents"/>
+<meta name="theme-color" content="#0284c7"/>
+<link rel="icon" href="/favicon.svg" type="image/svg+xml"/>
+<link rel="icon" href="/favicon-256.png" sizes="256x256" type="image/png"/>
+<link rel="apple-touch-icon" href="/favicon-256.png"/>
+<link rel="sitemap" type="application/xml" href="/sitemap.xml"/>
+
+<!-- ── Open Graph ── -->
+<meta property="og:type" content="website"/>
+<meta property="og:site_name" content="DureClaw"/>
+<meta property="og:locale" content="en_US"/>
+<meta property="og:url" content="https://dureclaw.baryon.ai/en/use-cases/"/>
+<meta property="og:title" content="Use Cases — DureClaw"/>
+<meta property="og:description" content="DureClaw use cases — measured cases and illustrated scenarios for organizations, developers, IoT and the field, and research and education. How to run many computers and Chrome browsers as one AI team."/>
+<meta property="og:image" content="https://dureclaw.baryon.ai/images/uc-chrome-team.jpg"/>
+<meta property="og:image:width" content="1200"/>
+<meta property="og:image:height" content="675"/>
+<meta property="og:image:alt" content="Chrome on many computers as one work team — DureClaw in 3 steps"/>
+
+<!-- ── Twitter ── -->
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:title" content="Use Cases — DureClaw"/>
+<meta name="twitter:description" content="DureClaw use cases — measured cases and illustrated scenarios for organizations, developers, IoT and the field, and research and education. How to run many computers and Chrome browsers as one AI team."/>
+<meta name="twitter:image" content="https://dureclaw.baryon.ai/images/uc-chrome-team.jpg"/>
+
+<!-- ── AI / LLM crawlers (GEO/AEO) ── -->
+<link rel="alternate" type="text/markdown" title="llms.txt" href="/llms.txt"/>
+
+
+<link rel="stylesheet" href="/assets/site.css"/>
+<link rel="stylesheet" href="/assets/design.css"/>
+<script type="application/ld+json">
+{
+ "@context": "https://schema.org",
+ "@type": "BreadcrumbList",
+ "itemListElement": [
+  {
+   "@type": "ListItem",
+   "position": 1,
+   "name": "DureClaw",
+   "item": "https://dureclaw.baryon.ai/en/"
+  },
+  {
+   "@type": "ListItem",
+   "position": 2,
+   "name": "Use Cases",
+   "item": "https://dureclaw.baryon.ai/en/use-cases/"
+  }
+ ]
+}
+</script>
+<!-- PostHog (visitor analytics) -->
+<script>
+    !function(t,e){var o,n,p,r;e.__SV||(window.posthog && window.posthog.__loaded)||(window.posthog=e,e._i=[],e.init=function(i,s,a){function g(t,e){var o=e.split(".");2==o.length&&(t=t[o[0]],e=o[1]),t[e]=function(){t.push([e].concat(Array.prototype.slice.call(arguments,0)))}}p||((p=t.createElement("script")).type="text/javascript",p.crossOrigin="anonymous",p.async=!0,p.src=s.api_host.replace(".i.posthog.com","-assets.i.posthog.com")+"/static/array.js",p.onerror=function(){p=null},(r=t.getElementsByTagName("script")[0]).parentNode.insertBefore(p,r));var u=e;for(void 0!==a?u=e[a]=[]:a="posthog",u.people=u.people||[],Object.defineProperty(u,"toString",{configurable:!0,enumerable:!0,writable:!0,value:function(t){var e="posthog";return"posthog"!==a&&(e+="."+a),t||(e+=" (stub)"),e}}),Object.defineProperty(u.people,"toString",{configurable:!0,enumerable:!0,writable:!0,value:function(){return u.toString(1)+".people (stub)"}}),o="Zc Kc Xc Yc ih init Rh Ah Ih Eh Lh zu Ph Nh $h Uh Wh Vh Gh Qh Zh capture getExtension Fh dr Yh calculateEventProperties Kh register register_once register_for_session unregister unregister_for_session sd Th td getFeatureFlag getFeatureFlagPayload getFeatureFlagResult getAllFeatureFlags isFeatureEnabled reloadFeatureFlags updateFlags updateEarlyAccessFeatureEnrollment getEarlyAccessFeatures on onFeatureFlags onSurveysLoaded onSessionId getSurveys getActiveMatchingSurveys onActiveMatchingSurveysChanged renderSurvey displaySurvey cancelPendingSurvey canRenderSurvey canRenderSurveyAsync rd identify setPersonProperties unsetPersonProperties group resetGroups setPersonPropertiesForFlags resetPersonPropertiesForFlags setGroupPropertiesForFlags resetGroupPropertiesForFlags reset od shutdown setIdentity clearIdentity get_distinct_id getGroups get_session_id get_session_replay_url alias set_config startSessionRecording stopSessionRecording sessionRecordingStarted captureException addExceptionStep captureLog startExceptionAutocapture stopExceptionAutocapture loadToolbar get_property getSessionProperty ed Bh createPersonProfile setInternalOrTestUser nd oh sh opt_in_capturing opt_out_capturing rh has_opted_in_capturing has_opted_out_capturing get_explicit_consent_status is_capturing clear_opt_in_out_capturing qh debug Hu Os getPageViewId captureTraceFeedback captureTraceMetric wh".split(" "),n=0;n<o.length;n++)g(u,o[n]);e._i.push([i,s,a])},e.__SV=1)}(document,window.posthog||[]);
+    posthog.init('phc_zqdSWCCk6ozgZkBKc2ba3jDBhe6YKoSqCrupk9PMWjma', {
+        api_host: 'https://us.i.posthog.com',
+        defaults: '2026-05-30',
+        person_profiles: 'identified_only', // or 'always' to create profiles for anonymous users as well
+    })
+</script>
+</head>
+<body>
+<nav>
+  <div class="container">
+    <div class="nav-inner">
+      <a href="/en/" class="nav-logo">Dure<span>Claw</span></a>
+      <div class="nav-links">
+        <a href="/en/start/">Get Started</a>
+        <a href="/en/use-cases/" class="active">Use Cases</a>
+        <a href="/en/how/">How It Works</a>
+        <a href="/en/showcase/">Demo</a>
+        <a href="/en/developers/">Developers</a>
+        <a href="/en/changelog/">Changelog</a>
+        <a href="/en/pricing/">Enterprise</a>
+        <a href="/en/#waitlist">Contact</a>
+      </div>
+      <a href="https://github.com/dureclaw/dureclaw" class="nav-gh" target="_blank">GitHub ↗</a>
+    </div>
+  </div>
+</nav>
+
+<main>
+<header class="page-hero">
+  <div class="container">
+    <a href="/en/" class="crumb">← DureClaw Home</a>
+    <h1>Use Cases</h1>
+    <p>Organizations, developers, IoT and the field, research and education — how DureClaw has actually been used for each, with the evidence.</p>
+  </div>
+</header>
+
+<section class="band" id="audiences" style="padding-top:0">
+  <div class="wrap">
+    <div class="audience-grid">
+      <a class="aud" href="/en/use-cases/org/">
+        <div class="aud-art"><img width="1400" height="933" src="/images/uc-org.webp" alt="Crab robots jointly running computers in an office and on a factory floor" loading="lazy"/></div>
+        <div class="aud-body">
+          <span class="aud-k">Organizations</span>
+          <h3>AI automation on the ERP, licensed PCs and internal network you already have</h3>
+          <p class="metric-mini"><b>5/5</b>remote Windows tasks succeeded with no extra setup</p>
+          <span class="go">See the cases</span>
+        </div>
+      </a>
+      <a class="aud" href="/en/use-cases/dev/">
+        <div class="aud-art"><img width="1400" height="933" src="/images/uc-dev.webp" alt="Build cards flying from a MacBook to Windows, a Linux server and a GPU workstation" loading="lazy"/></div>
+        <div class="aud-body">
+          <span class="aud-k">Developers</span>
+          <h3>Direct Windows, Linux and GPU servers from a single Mac</h3>
+          <p class="metric-mini"><b>0.61 s</b>for 5 devices to respond at once</p>
+          <span class="go">See the cases</span>
+        </div>
+      </a>
+      <a class="aud" href="/en/use-cases/iot/">
+        <div class="aud-art"><img width="1400" height="933" src="/images/uc-iot.webp" alt="A factory floor where crab robots watch over a Raspberry Pi, sensors, a traffic light and a conveyor" loading="lazy"/></div>
+        <div class="aud-body">
+          <span class="aud-k">IoT &amp; Field</span>
+          <h3>Instant decisions at sensors, traffic lights and production lines</h3>
+          <p class="metric-mini"><b>36.7µs</b>edge decision after freezing</p>
+          <span class="go">See the cases</span>
+        </div>
+      </a>
+      <a class="aud" href="/en/use-cases/research/">
+        <div class="aud-art"><img width="1400" height="933" src="/images/uc-research.webp" alt="A lab comparing models on a GPU server, collecting assignments, and reviewing and approving playbooks" loading="lazy"/></div>
+        <div class="aud-body">
+          <span class="aud-k">Research &amp; Education</span>
+          <h3>Measurement and comparison experiments, and preparing class materials</h3>
+          <p class="metric-mini"><b>143,136×</b>max speedup in edge decisions</p>
+          <span class="go">See the cases</span>
+        </div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<section class="band tint" id="visual-cases">
+  <div class="wrap">
+    <div class="section-head"><span class="eyebrow">Use cases in pictures</span><h2 class="h2">DureClaw at a glance</h2><p class="lede">How scattered computers and browsers become one team — real uses, illustrated.</p></div>
+    <div class="uc-visuals">
+      <figure class="uc-visual">
+        <a href="/images/uc-multiplatform-build.webp" target="_blank" rel="noopener" aria-label="You work alone, your computers work as a team — view full size"><img src="/images/uc-multiplatform-build.webp" width="1600" height="1067" alt="A Windows PC at home, a Linux PC in the studio, a Raspberry Pi in the lab and a GPU workstation connected through DureClaw, handling an app build, backend tests, device tests and GPU jobs at the same time, with results gathered on one screen" loading="lazy" decoding="async"/></a>
+        <figcaption>
+          <h3>You work alone, your computers work as a team</h3>
+          <p>Even if you build an app on your own, the computers scattered across home, studio and lab move like one team. Tell Claude Code once, and DureClaw splits the work, sends it to each computer, and gathers the results in one place.</p>
+          <ol><li><b>Split</b> — Give one instruction: "Windows build, Linux backend tests, Raspberry Pi device tests, GPU model processing"</li><li><b>Run in parallel</b> — Each computer connects securely over a private network (Tailscale, etc.) and works at the same time</li><li><b>Gather results</b> — Completion marks arrive one by one on a single screen. You use the equipment you already have</li></ol>
+        </figcaption>
+      </figure>
+      <figure class="uc-visual">
+        <a href="/images/uc-ecommerce-chrome.webp" target="_blank" rel="noopener" aria-label="Chrome on many PCs as one e-commerce operations team — view full size"><img src="/images/uc-ecommerce-chrome.webp" width="1600" height="901" alt="Five PCs in the company office, at home, in a studio, at an overseas branch and in a separate space, each using Chrome at the same time for own-store product management, marketplace order checks, inventory checks, global store status and ad performance, with results gathered on the DureClaw screen" loading="lazy" decoding="async"/></a>
+        <figcaption>
+          <h3>Chrome on many PCs as one e-commerce operations team</h3>
+          <p>E-commerce operations pile up repetitive work on every channel. Install the DureClaw extension (webclaw) in Chrome on each PC, and browsers that are already signed in take on each channel's work at the same time.</p>
+          <ol><li><b>Your PCs as they are</b> — Use the PCs and signed-in Chrome you already have</li><li><b>Split by channel</b> — Own-store product management, marketplace orders and shipping, inventory checks, global store pricing and ad performance, each on its own PC</li><li><b>Results at a glance</b> — Order, inventory, product and ad results come together on one screen</li></ol>
+        </figcaption>
+      </figure>
+      <figure class="uc-visual">
+        <a href="/images/uc-chrome-team.webp" target="_blank" rel="noopener" aria-label="Chrome on many computers as one work team — in 3 steps — view full size"><img src="/images/uc-chrome-team.webp" width="1600" height="901" alt="A 3-step flow in which Chrome on a home Windows PC, an office macOS PC, a studio Linux PC and an overseas-branch Windows PC connect through the DureClaw extension and run order checks, inventory checks, product edits and inquiry checks at the same time" loading="lazy" decoding="async"/></a>
+        <figcaption>
+          <h3>Chrome on many computers as one work team — in 3 steps</h3>
+          <p>Different operating systems don't matter. Windows, macOS or Linux — anywhere with Chrome joins the same team.</p>
+          <ol><li><b>Install</b> — Install the DureClaw extension in Chrome on each computer</li><li><b>Instruct</b> — From the center, give one instruction: "check orders, check inventory, edit products, check inquiries"</li><li><b>Review</b> — See the results each Chrome ran at the same time, in one place</li></ol>
+        </figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<section class="band" id="numbers">
+  <div class="wrap">
+    <div class="section-head"><span class="eyebrow">Measured numbers</span><h2 class="h2">Only numbers we measured ourselves</h2></div>
+    <div class="metrics">
+      <div class="metric"><b>36.7<small>µs</small></b><span>Decision time after the rule the AI decided is frozen onto the device (4.4–5.3 s when asking the AI every time)</span></div>
+      <div class="metric"><b>0.61<small>s</small></b><span>For 5 very different devices to respond at once</span></div>
+      <div class="metric"><b>5/5</b><span>Remote Windows tasks that succeeded with no extra setup (SSH: 0, stopped at authentication)</span></div>
+      <div class="metric"><b>~19<small>tok/s</small></b><span>Inference speed of gemma4:31b, installed remotely without SSH</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="band" id="legend">
+  <div class="wrap">
+    <div class="section-head"><span class="eyebrow">How to read the badges</span><h2 class="h2">We don't hide the level of evidence</h2></div>
+    <div class="legend">
+      <div><span class="badge measured">Measured</span><p>Cases with figures measured and recorded in a real environment. The source report states the measurement method and its limits.</p></div>
+      <div><span class="badge real">Real case</span><p>Cases actually carried out, with screenshots and outputs on record, but without separately measured comparison figures.</p></div>
+      <div><span class="badge scenario">Example scenario</span><p>An illustration of a flow you can build with today's features. No performance figures attached.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="band">
+  <div class="wrap">
+    <div class="closing">
+      <div>
+        <h2>Start today with a single Mac</h2>
+        <p>Install the server app, then add your idle computers to the team one at a time.</p>
+      </div>
+      <div class="acts">
+        <a class="btn btn-primary" href="https://github.com/DureClaw/homepage/releases/download/v0.5.5/DureClaw-Server-mac-arm64-0.5.5.dmg" download>Download for Mac <small class="dl-ver">v0.5.5</small></a>
+        <a class="btn btn-ghost" href="/en/start/">Installation Guide</a>
+      </div>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="container">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <div class="footer-logo"><strong>DureClaw</strong></div>
+        <p class="footer-tagline">Turn every idle computer into an AI teammate — Local-First Agentic Bus</p>
+      </div>
+      <div class="footer-nav-groups">
+        <div class="footer-col">
+          <div class="footer-col-title">DureClaw</div>
+          <a href="/en/start/">Quickstart</a>
+          <a href="/en/how/">Architecture &amp; Protocol</a>
+          <a href="/en/pricing/">Pricing &amp; Plans</a>
+          <a href="/en/terms/">Terms of Service</a>
+          <a href="https://github.com/DureClaw/dureclaw/issues" target="_blank" rel="noopener">Issues &amp; Templates ↗</a>
+        </div>
+        <div class="footer-col">
+          <div class="footer-col-title">Baryon Labs</div>
+          <a href="https://baryon.ai/about.html" target="_blank" rel="noopener">About Us ↗</a>
+          <a href="https://baryon.ai/service.html" target="_blank" rel="noopener">Enterprise AX Consulting ↗</a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="footer-company-info">
+        <span><strong>Baryon Labs, Inc.</strong></span>
+        <span class="sep">·</span>
+        <span>CEO: Seungwoo Hong</span>
+        <span class="sep">·</span>
+        <span>Seoul, Korea</span>
+        <span class="sep">·</span>
+        <span>Inquiries: <a href="mailto:hello@baryon.ai">hello@baryon.ai</a></span>
+      </div>
+      <div class="footer-copy">© 2026 Baryon Labs. All rights reserved.</div>
+    </div>
+  </div>
+</footer>
+
+<script src="/assets/site.js"></script>
+<script src="/assets/i18n.js"></script>
+</body>
+</html>

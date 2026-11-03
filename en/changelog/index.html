@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-PBVB7JSPRF"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-PBVB7JSPRF');
+</script>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Changelog — DureClaw</title>
+<meta name="description" content="DureClaw changes by version — new features, improvements, and bug fixes across the server, agents, MCP, webclaw, deskclaw, and edgeclaw, listed by date."/>
+
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css"/>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet"/>
+
+<!-- ── SEO / canonical / icons ── -->
+<link rel="canonical" href="https://dureclaw.baryon.ai/en/changelog/"/>
+<link rel="alternate" hreflang="ko" href="https://dureclaw.baryon.ai/changelog/"/>
+<link rel="alternate" hreflang="en" href="https://dureclaw.baryon.ai/en/changelog/"/>
+<link rel="alternate" hreflang="x-default" href="https://dureclaw.baryon.ai/changelog/"/>
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1"/>
+<meta name="author" content="DureClaw · Baryon Labs"/>
+<meta name="keywords" content="DureClaw, distributed AI agents, multi-agent orchestration, Claude Code plugin, edgeclaw, webclaw, deskclaw, keyless edge, LLM as compiler, Decision Freezing, RPA, GPIO, Raspberry Pi, multi-machine AI"/>
+<meta name="theme-color" content="#0284c7"/>
+<link rel="icon" href="/favicon.svg" type="image/svg+xml"/>
+<link rel="icon" href="/favicon-256.png" sizes="256x256" type="image/png"/>
+<link rel="apple-touch-icon" href="/favicon-256.png"/>
+<link rel="sitemap" type="application/xml" href="/sitemap.xml"/>
+
+<!-- ── Open Graph ── -->
+<meta property="og:type" content="website"/>
+<meta property="og:site_name" content="DureClaw"/>
+<meta property="og:locale" content="en_US"/>
+<meta property="og:url" content="https://dureclaw.baryon.ai/en/changelog/"/>
+<meta property="og:title" content="Changelog — DureClaw"/>
+<meta property="og:description" content="DureClaw changes by version — new features, improvements, and bug fixes across the server, agents, MCP, webclaw, deskclaw, and edgeclaw, listed by date."/>
+<meta property="og:image" content="https://dureclaw.baryon.ai/screenshots/hero-banner.jpg"/>
+<meta property="og:image:width" content="1400"/>
+<meta property="og:image:height" content="594"/>
+<meta property="og:image:alt" content="DureClaw Cooperative — Unified AI Robotics Ecosystem"/>
+
+<!-- ── Twitter ── -->
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:title" content="Changelog — DureClaw"/>
+<meta name="twitter:description" content="DureClaw changes by version — new features, improvements, and bug fixes across the server, agents, MCP, webclaw, deskclaw, and edgeclaw, listed by date."/>
+<meta name="twitter:image" content="https://dureclaw.baryon.ai/screenshots/hero-banner.jpg"/>
+
+<!-- ── AI / LLM crawlers (GEO/AEO) ── -->
+<link rel="alternate" type="text/markdown" title="llms.txt" href="/llms.txt"/>
+
+
+<link rel="stylesheet" href="/assets/site.css"/>
+<link rel="stylesheet" href="/assets/design.css"/>
+<script type="application/ld+json">
+{
+ "@context": "https://schema.org",
+ "@type": "BreadcrumbList",
+ "itemListElement": [
+  {
+   "@type": "ListItem",
+   "position": 1,
+   "name": "DureClaw",
+   "item": "https://dureclaw.baryon.ai/en/"
+  },
+  {
+   "@type": "ListItem",
+   "position": 2,
+   "name": "Changelog",
+   "item": "https://dureclaw.baryon.ai/en/changelog/"
+  }
+ ]
+}
+</script>
+<!-- PostHog (visitor analytics) -->
+<script>
+    !function(t,e){var o,n,p,r;e.__SV||(window.posthog && window.posthog.__loaded)||(window.posthog=e,e._i=[],e.init=function(i,s,a){function g(t,e){var o=e.split(".");2==o.length&&(t=t[o[0]],e=o[1]),t[e]=function(){t.push([e].concat(Array.prototype.slice.call(arguments,0)))}}p||((p=t.createElement("script")).type="text/javascript",p.crossOrigin="anonymous",p.async=!0,p.src=s.api_host.replace(".i.posthog.com","-assets.i.posthog.com")+"/static/array.js",p.onerror=function(){p=null},(r=t.getElementsByTagName("script")[0]).parentNode.insertBefore(p,r));var u=e;for(void 0!==a?u=e[a]=[]:a="posthog",u.people=u.people||[],Object.defineProperty(u,"toString",{configurable:!0,enumerable:!0,writable:!0,value:function(t){var e="posthog";return"posthog"!==a&&(e+="."+a),t||(e+=" (stub)"),e}}),Object.defineProperty(u.people,"toString",{configurable:!0,enumerable:!0,writable:!0,value:function(){return u.toString(1)+".people (stub)"}}),o="Zc Kc Xc Yc ih init Rh Ah Ih Eh Lh zu Ph Nh $h Uh Wh Vh Gh Qh Zh capture getExtension Fh dr Yh calculateEventProperties Kh register register_once register_for_session unregister unregister_for_session sd Th td getFeatureFlag getFeatureFlagPayload getFeatureFlagResult getAllFeatureFlags isFeatureEnabled reloadFeatureFlags updateFlags updateEarlyAccessFeatureEnrollment getEarlyAccessFeatures on onFeatureFlags onSurveysLoaded onSessionId getSurveys getActiveMatchingSurveys onActiveMatchingSurveysChanged renderSurvey displaySurvey cancelPendingSurvey canRenderSurvey canRenderSurveyAsync rd identify setPersonProperties unsetPersonProperties group resetGroups setPersonPropertiesForFlags resetPersonPropertiesForFlags setGroupPropertiesForFlags resetGroupPropertiesForFlags reset od shutdown setIdentity clearIdentity get_distinct_id getGroups get_session_id get_session_replay_url alias set_config startSessionRecording stopSessionRecording sessionRecordingStarted captureException addExceptionStep captureLog startExceptionAutocapture stopExceptionAutocapture loadToolbar get_property getSessionProperty ed Bh createPersonProfile setInternalOrTestUser nd oh sh opt_in_capturing opt_out_capturing rh has_opted_in_capturing has_opted_out_capturing get_explicit_consent_status is_capturing clear_opt_in_out_capturing qh debug Hu Os getPageViewId captureTraceFeedback captureTraceMetric wh".split(" "),n=0;n<o.length;n++)g(u,o[n]);e._i.push([i,s,a])},e.__SV=1)}(document,window.posthog||[]);
+    posthog.init('phc_zqdSWCCk6ozgZkBKc2ba3jDBhe6YKoSqCrupk9PMWjma', {
+        api_host: 'https://us.i.posthog.com',
+        defaults: '2026-05-30',
+        person_profiles: 'identified_only', // or 'always' to create profiles for anonymous users as well
+    })
+</script>
+</head>
+<body>
+<nav>
+  <div class="container">
+    <div class="nav-inner">
+      <a href="/en/" class="nav-logo">Dure<span>Claw</span></a>
+      <div class="nav-links">
+        <a href="/en/start/">Get Started</a>
+        <a href="/en/use-cases/">Use Cases</a>
+        <a href="/en/how/">How It Works</a>
+        <a href="/en/showcase/">Demo</a>
+        <a href="/en/developers/">Developers</a>
+        <a href="/en/changelog/" class="active">Changelog</a>
+        <a href="/en/pricing/">Enterprise</a>
+        <a href="/en/#waitlist">Contact</a>
+      </div>
+      <a href="https://github.com/dureclaw/dureclaw" class="nav-gh" target="_blank">GitHub ↗</a>
+    </div>
+  </div>
+</nav>
+
+<header class="page-hero">
+  <div class="container">
+    <a href="/en/" class="crumb">← DureClaw Home</a>
+    <h1>Changelog</h1>
+    <p>Changes by version.</p>
+  </div>
+</header>
+
+<section class="section" id="changelog">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-num">→</span>
+      <h2 class="section-title"><em>Changelog</em></h2>
+    </div>
+    <div class="cl-grid">
+
+      <div class="cl-card">
+        <div class="cl-card-ver">v0.5.5 <span class="cl-badge">latest</span></div>
+        <div class="cl-card-date">2026-11-02</div>
+        <ul class="cl-items">
+          <li><span class="cl-tag fix">fix</span><b>Tray icon not appearing after Windows node install</b> — The tray script is now saved as UTF-8 with BOM, fixing a problem where Windows PowerShell 5.1 garbled Korean text and stopped running. Installing with <code>DureClaw-Agent-Setup</code> now shows the tray immediately, and it starts automatically at every login</li>
+          <li><span class="cl-tag fix">fix</span><b>Re-register when the server refuses</b> — If the server is reinstalled or a token is revoked and the connection is refused, the node no longer stops; it requests registration again. The tray shows a connection status dot and notifications (Windows)</li>
+          <li><span class="cl-tag feat">feat</span><b>Tray connection info and connection test</b> — Clicking the status line shows status, node, server, auth, version, private network, and config/log paths in one window. Added a "Test connection" button and an access token field to the settings window, and "Request registration again" and "Open log folder" to the menu (Windows)</li>
+          <li><span class="cl-tag fix">fix</span><b>Command approval policy</b> — Fixed ordinary commands containing <code>&amp;&amp;</code> or <code>|</code> all getting stuck waiting for approval. Shell metacharacters are now blocked only when they bypass an allow pattern; block and approval patterns still apply as before</li>
+          <li><span class="cl-tag feat">feat</span><b>Version in the installer file name</b> — Downloads now carry the version, e.g. <code>DureClaw-Agent-Setup-0.5.5.exe</code>, and the download button shows the version</li>
+        </ul>
+      </div>
+
+      <div class="cl-card">
+        <div class="cl-card-ver">v0.5.4</div>
+        <div class="cl-card-date">2026-10-27</div>
+        <ul class="cl-items">
+          <li><span class="cl-tag fix">fix</span><b>More reliable private network (Headscale/Tailscale) detection</b> — Fixed the server app hanging when it checked status while the Tailscale GUI was closed, because the status query process relaunched as the app. It now reads the private network address (<code>100.64/10</code>) directly from the interface, so connection status and peer count display correctly with Headscale and ngrok setups too (Mac &amp; Windows)</li>
+          <li><span class="cl-tag fix">fix</span><b>Tray status refresh</b> — The latest private network status is re-checked every time the menu opens. It no longer gets stuck on "Off" when background throttling (App Nap) delays the periodic check (Mac)</li>
+        </ul>
+      </div>
+
+      <div class="cl-card">
+        <div class="cl-card-ver">v0.5.3</div>
+        <div class="cl-card-date">2026-10-27</div>
+        <ul class="cl-items">
+          <li><span class="cl-tag sec">security</span><b>Enterprise task isolation and pure-AI node mode</b> — Setting <code>shell: "off"</code> in <code>~/.oah/policy.json</code> creates a dedicated node that refuses all shell execution and performs AI work only; <code>workdir_only: true</code> blocks writes outside the working directory and escapes to parent paths (<code>../</code>) at the source</li>
+          <li><span class="cl-tag sec">security</span><b>Protection for sensitive system credentials &amp; mandatory approval for shell metacharacters</b> — Blocks access to sensitive paths such as <code>.ssh</code>, <code>.aws</code>, <code>.env</code>, and the keychain; commands containing shell-chaining metacharacters like <code>;</code>, <code>&amp;&amp;</code>, <code>|</code>, <code>$()</code> must wait for admin approval</li>
+          <li><span class="cl-tag sec">security</span><b>Respects local Claude Code permission settings on worker machines</b> — The <code>--dangerously-skip-permissions</code> flag is no longer passed by default when running the backend, so local confirmation settings for risky commands stay in effect</li>
+          <li><span class="cl-tag sec">security</span><b>Minimal network binding and stronger authentication</b> — The server binds by default only to the private network IP (Headscale/Tailscale) instead of the public LAN (0.0.0.0), and a vulnerability that escalated to master privileges when the server secret was missing is closed</li>
+          <li><span class="cl-tag sec">security</span><b>No more master secret hand-off &amp; approval-based keyless nodes</b> — The master secret is no longer printed at the end of installation; worker nodes request access without a key and, once approved, connect with their own unique token</li>
+          <li><span class="cl-tag feat">feature</span><b>Version pinning and auto-update control for company machines</b> — <code>DURECLAW_AUTO_UPDATE=0</code> prevents unplanned updates, <code>DURECLAW_VERSION</code> pins a specific release tag, and MCP is linked to release tags</li>
+        </ul>
+      </div>
+
+      <div class="cl-card">
+        <div class="cl-card-ver">v0.5.2</div>
+        <div class="cl-card-date">2026-10-26</div>
+        <ul class="cl-items">
+          <li><span class="cl-tag feat">feature</span><b>Option for your own Headscale private network (VPN)</b> — Choose between the official Tailscale SaaS and the open-source Headscale control server. Run a fully self-hosted network with no external accounts or cloud services</li>
+          <li><span class="cl-tag feat">feature</span><b>Interactive network selection menu & CLI flags for the server</b> — Running <code>setup-server.sh</code> offers an interactive three-way choice (Tailscale, Headscale, or LAN only), with <code>--headscale</code> / <code>--tailscale</code> / <code>--no-vpn</code> options</li>
+          <li><span class="cl-tag feat">feature</span><b>Easy worker node joining</b> — <code>setup-agent.sh</code> accepts a Headscale join code (<code>JOIN=dcj1:...</code>) interactively, and Windows <code>setup-agent.ps1</code> gains a <code>-Join</code> parameter</li>
+          <li><span class="cl-tag feat">feature</span><b><code>oah mesh</code> unified CLI</b> — Check private network status (<code>status</code>), control the control server (<code>start</code>/<code>stop</code>), issue join codes (<code>join-code</code>), list nodes (<code>nodes</code>), and switch profiles easily (<code>switch</code>)</li>
+          <li><span class="cl-tag feat">feature</span><b>Better private network status in the Mac & Windows GUI tray</b> — Distinguishes official Tailscale from a self-hosted Headscale network in real time, in the tray menu and notifications</li>
+        </ul>
+      </div>
+
+      <div class="cl-card">
+        <div class="cl-card-ver">v0.5.1</div>
+        <div class="cl-card-date">2026-10-26</div>
+        <ul class="cl-items">
+          <li><span class="cl-tag feat">feature</span><b>Personal Edition (free)</b> (1 person, 2 machines including the server) — combined dureclaw + webclaw + deskclaw install (Mac &amp; Windows); connect the desktop hand and browser hand straight from the server app menu</li>
+          <li><span class="cl-tag feat">feature</span><b>Enterprise</b> — 3 or more machines in parallel and organization-wide use; a separate build is delivered after inquiry · <a href="/en/pricing/">Enterprise</a> · <a href="/en/terms/">Terms of Service</a></li>
+          <li><span class="cl-tag sec">security</span>Same-machine trust is now blocked against browser cross-origin requests and DNS rebinding; node tokens can no longer issue instructions or approvals, impersonate names, or take other agents' mail; constant-time comparison for secrets; plug_crypto 2.2.1</li>
+          <li><span class="cl-tag fix">fix</span>Broadcast mailbox messages are executed only by their recipient, fixed the control panel send permission error (master_required), and AI answers are marked "not actually executed"</li>
+          <li><span class="cl-tag feat">feature</span><b>Windows server installer</b> — tray app · control panel (devices, send, results, communication log, approvals, add device) · notifications · updates, no admin rights required</li>
+          <li><span class="cl-tag feat">feature</span>Control panel — send to many devices at once, messages for offline devices are held and delivered later, results on one screen, export the communication log as Markdown or CSV</li>
+          <li><span class="cl-tag feat">feature</span>Unique server name and ID (<code>server_id</code> and <code>server_name</code> in <code>/api/health</code>) — tells servers apart when there are several on the private network</li>
+          <li><span class="cl-tag fix">fix</span>A “node connected” notification appeared when the control panel screen attached (observer connections no longer notify)</li>
+          <li><span class="cl-tag fix">fix</span>The server home page (<code>/</code>) is now the user control panel — the operator dashboard is at <code>/dashboard</code></li>
+        </ul>
+      </div>
+
+      <div class="cl-card">
+        <div class="cl-card-ver">v0.5.0</div>
+        <div class="cl-card-date">2026-06-16</div>
+        <ul class="cl-items">
+          <li><span class="cl-tag feat">feature</span>5-stage learning loop — observe → synthesize → define purpose → codify knowledge → <b>learn &amp; choose</b> (a person learns, rather than just approving)</li>
+          <li><span class="cl-tag feat">feature</span>Deterministic skill crystallization — adopted outputs are frozen into a <code>SKILL.md</code> that can be re-run without re-reasoning</li>
+          <li><span class="cl-tag feat">feature</span>Coding backend switched to <b>pi</b> (<code>@earendil-works/pi-coding-agent</code>) — replaces opencode</li>
+          <li><span class="cl-tag feat">feature</span>Brain node delegation — single authentication on the master; keyless sub-nodes (including Pi Zero) delegate to the master's pi</li>
+          <li><span class="cl-tag feat">feature</span>Zero-config auto-discovery on Windows — mDNS (oah.local) + Tailscale peer scan</li>
+          <li><span class="cl-tag fix">fix</span>Fixed Windows <code>agent.ps1</code> output encoding (mojibake) + reachability diagnostics</li>
+        </ul>
+      </div>
+
+      <div class="cl-card">
+        <div class="cl-card-ver">v0.4.0</div>
+        <div class="cl-card-date">2025-05-04</div>
+        <ul class="cl-items">
+          <li><span class="cl-tag sec">security</span>Bearer token auth (OAH_SECRET) — protects all REST + WebSocket traffic</li>
+          <li><span class="cl-tag sec">security</span>Randomized Work Keys → <code>WK-&lt;8hex&gt;</code></li>
+          <li><span class="cl-tag sec">security</span>Phoenix server binds to the Tailscale IP (0.0.0.0 removed)</li>
+          <li><span class="cl-tag sec">security</span>Set the bind address explicitly with <code>OAH_BIND_IP</code></li>
+          <li><span class="cl-tag feat">feature</span>Dashboard URL hash navigation (bookmark tab/agent state)</li>
+          <li><span class="cl-tag feat">feature</span>🖥 Monitors tab — real-time GPU/RAM/ollama monitoring</li>
+        </ul>
+      </div>
+
+      <div class="cl-card">
+        <div class="cl-card-ver">v0.3.0</div>
+        <div class="cl-card-date">2025-04</div>
+        <ul class="cl-items">
+          <li><span class="cl-tag feat">feature</span><code>--version</code> flag + version metadata in presence</li>
+          <li><span class="cl-tag feat">feature</span>Automatic binary build/release via CI GitHub Releases</li>
+          <li><span class="cl-tag feat">feature</span>Mailbox polling fallback — prevents lost WebSocket task.assign messages</li>
+          <li><span class="cl-tag fix">fix</span>POST /api/task respects a custom task_id</li>
+          <li><span class="cl-tag fix">fix</span>Agent install persists PATH + rc file</li>
+        </ul>
+      </div>
+
+      <div class="cl-card">
+        <div class="cl-card-ver">v0.2.0</div>
+        <div class="cl-card-date">2025-03</div>
+        <ul class="cl-items">
+          <li><span class="cl-tag feat">feature</span>File change tracking tab — ARTIFACT events shown in real time</li>
+          <li><span class="cl-tag feat">feature</span>Agent conversation tab — event timeline</li>
+          <li><span class="cl-tag feat">feature</span>WK State editor — edit shared context directly</li>
+          <li><span class="cl-tag feat">feature</span>Tailscale private network integration — connect agents on remote machines</li>
+          <li><span class="cl-tag feat">feature</span>DETS persistent state — Work Keys survive restarts</li>
+        </ul>
+      </div>
+
+      <div class="cl-card">
+        <div class="cl-card-ver">v0.1.0</div>
+        <div class="cl-card-date">2025-02</div>
+        <ul class="cl-items">
+          <li><span class="cl-tag feat">feature</span>Task orchestration over Phoenix WebSocket channels</li>
+          <li><span class="cl-tag feat">feature</span>Remote agent execution of <code>[SHELL]</code> tasks</li>
+          <li><span class="cl-tag feat">feature</span>Work Key creation/management + agent presence tracking</li>
+          <li><span class="cl-tag feat">feature</span>REST API + basic dashboard UI</li>
+        </ul>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<div class="lb-bg" id="lb" onclick="closeLB()">
+  <img class="lb-img" id="lb-img" src="" alt=""/>
+</div>
+
+<footer>
+  <div class="container">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <div class="footer-logo"><strong>DureClaw</strong></div>
+        <p class="footer-tagline">Turn every idle computer into an AI teammate — Local-First Agentic Bus</p>
+      </div>
+      <div class="footer-nav-groups">
+        <div class="footer-col">
+          <div class="footer-col-title">DureClaw</div>
+          <a href="/en/start/">Quickstart</a>
+          <a href="/en/how/">Architecture & Protocol</a>
+          <a href="/en/pricing/">Pricing & Plans</a>
+          <a href="/en/terms/">Terms of Service</a>
+          <a href="https://github.com/DureClaw/dureclaw/issues" target="_blank" rel="noopener">Issues & Templates ↗</a>
+        </div>
+        <div class="footer-col">
+          <div class="footer-col-title">Baryon Labs</div>
+          <a href="https://baryon.ai/about.html" target="_blank" rel="noopener">About Us ↗</a>
+          <a href="https://baryon.ai/service.html" target="_blank" rel="noopener">Enterprise AX Consulting ↗</a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="footer-company-info">
+        <span><strong>Baryon Labs, Inc.</strong></span>
+        <span class="sep">·</span>
+        <span>CEO: Seungwoo Hong</span>
+        <span class="sep">·</span>
+        <span>Seoul, Korea</span>
+        <span class="sep">·</span>
+        <span>Inquiries: <a href="mailto:hello@baryon.ai">hello@baryon.ai</a></span>
+      </div>
+      <div class="footer-copy">© 2026 Baryon Labs. All rights reserved.</div>
+    </div>
+  </div>
+</footer>
+
+<script src="/assets/site.js"></script>
+<script src="/assets/i18n.js"></script>
+</body>
+</html>

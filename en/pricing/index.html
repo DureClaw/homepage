@@ -1,0 +1,564 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-PBVB7JSPRF"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-PBVB7JSPRF');
+</script>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Enterprise — DureClaw</title>
+<meta name="description" content="DureClaw Personal Edition (free) vs. Enterprise feature comparison, security governance, on-premises air-gapped deployment, and the Enterprise roadmap in detail."/>
+
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css"/>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet"/>
+
+<!-- ── SEO / canonical / icons ── -->
+<link rel="canonical" href="https://dureclaw.baryon.ai/en/pricing/"/>
+<link rel="alternate" hreflang="ko" href="https://dureclaw.baryon.ai/pricing/"/>
+<link rel="alternate" hreflang="en" href="https://dureclaw.baryon.ai/en/pricing/"/>
+<link rel="alternate" hreflang="x-default" href="https://dureclaw.baryon.ai/pricing/"/>
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1"/>
+<meta name="author" content="DureClaw · Baryon Labs"/>
+<meta name="theme-color" content="#e4572e"/>
+<link rel="icon" href="/favicon.svg" type="image/svg+xml"/>
+<link rel="icon" href="/favicon-256.png" sizes="256x256" type="image/png"/>
+<link rel="apple-touch-icon" href="/favicon-256.png"/>
+<link rel="sitemap" type="application/xml" href="/sitemap.xml"/>
+
+<!-- ── Open Graph ── -->
+<meta property="og:type" content="website"/>
+<meta property="og:site_name" content="DureClaw"/>
+<meta property="og:locale" content="en_US"/>
+<meta property="og:url" content="https://dureclaw.baryon.ai/en/pricing/"/>
+<meta property="og:title" content="Enterprise & Licensing — DureClaw"/>
+<meta property="og:description" content="DureClaw Personal Edition (free) vs. Enterprise feature comparison, security governance, on-premises air-gapped deployment, and the Enterprise roadmap in detail."/>
+<meta property="og:image" content="https://dureclaw.baryon.ai/screenshots/hero-banner.jpg"/>
+
+<link rel="stylesheet" href="/assets/site.css"/>
+<link rel="stylesheet" href="/assets/design.css"/>
+
+<style>
+/* ── High-Contrast Clean Theme for Enterprise/Pricing ── */
+.plans {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 24px;
+  margin: 16px 0 44px;
+}
+.plan {
+  background: #ffffff;
+  border: 1px solid var(--line-2, #d5ccba);
+  border-radius: var(--radius, 18px);
+  padding: clamp(26px, 3vw, 36px);
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  box-shadow: 0 4px 20px rgba(23, 22, 15, 0.04);
+  position: relative;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+.plan:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 30px rgba(23, 22, 15, 0.08);
+}
+.plan.hl {
+  border: 2px solid var(--accent, #e4572e);
+  box-shadow: 0 8px 32px rgba(228, 87, 46, 0.12);
+}
+.plan-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  align-self: flex-start;
+  font-size: 13px;
+  font-weight: 700;
+  padding: 4px 12px;
+  border-radius: 999px;
+  letter-spacing: -0.01em;
+}
+.plan-tag.free {
+  background: var(--teal-soft, #e3f4f1);
+  color: var(--teal, #0e8f80);
+}
+.plan-tag.ent {
+  background: var(--accent-soft, #fdeee8);
+  color: var(--accent-ink, #b8401c);
+}
+.plan h2 {
+  margin: 0;
+  font-size: 24px;
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  color: var(--ink, #17160f);
+}
+.plan .price {
+  font-size: 36px;
+  font-weight: 850;
+  letter-spacing: -0.04em;
+  color: var(--ink, #17160f);
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+}
+.plan .price small {
+  font-size: 15px;
+  font-weight: 500;
+  color: var(--ink-3, #857f73);
+}
+.plan ul {
+  margin: 6px 0 16px;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.plan ul li {
+  position: relative;
+  padding-left: 24px;
+  line-height: 1.65;
+  color: var(--ink-2, #47433b);
+  font-size: 15px;
+}
+.plan ul li::before {
+  content: "✓";
+  position: absolute;
+  left: 0;
+  top: 0;
+  color: var(--accent, #e4572e);
+  font-weight: 800;
+}
+.plan.free-plan ul li::before {
+  color: var(--teal, #0e8f80);
+}
+.plan .cta {
+  margin-top: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.plan .cta .btn {
+  width: 100%;
+}
+
+/* ── Feature Comparison Table ── */
+.comp-wrap {
+  margin: 36px 0 60px;
+  background: #ffffff;
+  border: 1px solid var(--line-2, #d5ccba);
+  border-radius: var(--radius, 18px);
+  box-shadow: 0 4px 24px rgba(23, 22, 15, 0.05);
+  overflow: hidden;
+}
+.comp-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 15px;
+  text-align: left;
+}
+.comp-table th, .comp-table td {
+  padding: 16px 22px;
+  vertical-align: middle;
+}
+.comp-table th {
+  background: var(--paper-2, #f4f1ea);
+  font-weight: 750;
+  font-size: 15px;
+  color: var(--ink, #17160f);
+  border-bottom: 2px solid var(--line-2, #d5ccba);
+  letter-spacing: -0.02em;
+}
+.comp-table .cat-row td {
+  background: var(--paper-3, #ece7dc);
+  font-weight: 800;
+  font-size: 13.5px;
+  letter-spacing: 0.04em;
+  color: var(--accent-ink, #b8401c);
+  text-transform: uppercase;
+  padding: 12px 22px;
+  border-top: 1px solid var(--line-2, #d5ccba);
+  border-bottom: 1px solid var(--line-2, #d5ccba);
+}
+.comp-table tbody tr {
+  border-bottom: 1px solid var(--line, #e5dfd2);
+  transition: background 0.15s;
+}
+.comp-table tbody tr:last-child {
+  border-bottom: none;
+}
+.comp-table tbody tr:hover {
+  background: #faf8f5;
+}
+.comp-table td {
+  color: var(--ink-2, #47433b);
+  line-height: 1.6;
+}
+.comp-table .feat-name {
+  font-weight: 700;
+  color: var(--ink, #17160f);
+  font-size: 15px;
+  display: block;
+  margin-bottom: 3px;
+}
+.comp-table .feat-sub {
+  font-size: 13px;
+  color: var(--ink-3, #857f73);
+  line-height: 1.5;
+  display: block;
+}
+
+/* ── Badges ── */
+.badge-state {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 4px 10px;
+  border-radius: 6px;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  white-space: nowrap;
+}
+.badge-ready {
+  background: #ecfdf5;
+  color: #047857;
+  border: 1px solid #a7f3d0;
+}
+.badge-road {
+  background: #fdf4ff;
+  color: #7e22ce;
+  border: 1px solid #f0abfc;
+}
+.badge-none {
+  background: #f1f5f9;
+  color: #64748b;
+  border: 1px solid #cbd5e1;
+}
+
+/* ── FAQ ── */
+.faq-box {
+  background: #ffffff;
+  border: 1px solid var(--line-2, #d5ccba);
+  border-radius: var(--radius, 18px);
+  padding: clamp(24px, 3.5vw, 44px);
+  margin-top: 24px;
+}
+.faq dt {
+  font-weight: 750;
+  margin-top: 24px;
+  font-size: 17px;
+  color: var(--ink, #17160f);
+  padding-left: 14px;
+  border-left: 3px solid var(--accent, #e4572e);
+  line-height: 1.4;
+}
+.faq dt:first-child {
+  margin-top: 0;
+}
+.faq dd {
+  margin: 8px 0 0 14px;
+  line-height: 1.75;
+  color: var(--ink-2, #47433b);
+  font-size: 15.5px;
+}
+</style>
+</head>
+<body>
+<nav>
+  <div class="container">
+    <div class="nav-inner">
+      <a href="/en/" class="nav-logo">Dure<span>Claw</span></a>
+      <div class="nav-links">
+        <a href="/en/start/">Get Started</a>
+        <a href="/en/use-cases/">Use Cases</a>
+        <a href="/en/how/">How It Works</a>
+        <a href="/en/showcase/">Demo</a>
+        <a href="/en/developers/">Developers</a>
+        <a href="/en/changelog/">Changelog</a>
+        <a href="/en/pricing/" class="active">Enterprise</a>
+        <a href="/en/#waitlist">Contact</a>
+      </div>
+      <a href="https://github.com/dureclaw/dureclaw" class="nav-gh" target="_blank">GitHub ↗</a>
+    </div>
+  </div>
+</nav>
+
+<header class="page-hero">
+  <div class="container">
+    <a href="/en/" class="crumb">← DureClaw Home</a>
+    <h1 style="margin-top:12px;">Enterprise & Licensing</h1>
+    <p>The Personal Edition is free (one person, up to 2 machines including the server). Large-scale parallel control of 3+ machines, air-gapped internal network security, and organizational governance are supported in Enterprise.</p>
+  </div>
+</header>
+
+<section class="section"><div class="container">
+
+<!-- Plans Grid -->
+<div class="plans">
+  <!-- Free Personal Plan -->
+  <div class="plan free-plan">
+    <span class="plan-tag free">Free forever for individuals</span>
+    <h2>Personal Edition</h2>
+    <div class="price">₩0 <small>/ free forever for up to 2 machines, including the server</small></div>
+    <ul>
+      <li>Connect <b>up to 2 machines, including the server</b>, at once (1+1, hard-enforced)</li>
+      <li>Unified installer package for <b>dureclaw + webclaw + deskclaw</b></li>
+      <li>Remote SSE MCP bridge (works out of the box with Claude Code, Cursor, Windsurf)</li>
+      <li>📱 <b>Orca mobile integration</b>: approve remote PC tasks and monitor them in real time from your smartphone</li>
+      <li>One-click installers for Mac (Apple Silicon) · Windows (x64)</li>
+      <li>Support: <a href="https://github.com/DureClaw/dureclaw/issues" target="_blank">public GitHub issue board</a></li>
+    </ul>
+    <div class="cta">
+      <a class="btn btn-primary" href="https://github.com/DureClaw/homepage/releases/download/v0.5.5/DureClaw-Server-mac-arm64-0.5.5.dmg" download>Download for Mac <small class="dl-ver">v0.5.5</small></a>
+      <a class="btn btn-ghost" href="https://github.com/DureClaw/homepage/releases/download/v0.5.5/DureClaw-Server-Setup-0.5.5.exe" download>Download for Windows <small class="dl-ver">v0.5.5</small></a>
+    </div>
+  </div>
+
+  <!-- Enterprise Plan -->
+  <div class="plan hl">
+    <span class="plan-tag ent">For companies & organizations</span>
+    <h2>Enterprise</h2>
+    <div class="price">Contact us <small>/ device count and on-premises terms by agreement</small></div>
+    <ul>
+      <li><b>3+ machines, unlimited parallel</b> — connect your entire internal device pool with no machine cap</li>
+      <li>License for a <b>self-contained private network for air-gapped sites (Headscale)</b> and an on-premises control server</li>
+      <li><b>Enterprise task isolation</b>: <code>workdir_only</code>, <code>shell: off</code> (pure AI node mode)</li>
+      <li>Identity-bound immutable audit trail and human approval gates</li>
+      <li>Version pinning (DURECLAW_AUTO_UPDATE=0), internal distribution mirror, SBOM and security audit support</li>
+      <li>Dedicated Enterprise build for your company and dedicated engineering support (SLA)</li>
+    </ul>
+    <div class="cta">
+      <a class="btn btn-accent" href="/en/enterprise/">Contact us about Enterprise →</a>
+    </div>
+  </div>
+</div>
+
+<!-- Detailed Comparison Table -->
+<div style="margin-top:64px; margin-bottom:18px;">
+  <div class="eyebrow">Detailed feature specs</div>
+  <h2 style="font-size: clamp(24px, 2.5vw, 34px); font-weight:800; letter-spacing:-0.03em; color:var(--ink); margin-top:8px;">Personal Edition vs. Enterprise feature comparison</h2>
+  <p style="color:var(--ink-2); font-size:16px; margin-top:6px;">Detailed features included with Enterprise, plus Enterprise roadmap milestones currently in research and development.</p>
+</div>
+
+<div class="comp-wrap">
+  <table class="comp-table">
+    <thead>
+      <tr>
+        <th style="width:40%;">Feature & spec</th>
+        <th style="width:26%;">Personal Edition (free)</th>
+        <th style="width:34%;">Enterprise</th>
+      </tr>
+    </thead>
+    <tbody>
+      <!-- Core infrastructure -->
+      <tr class="cat-row"><td colspan="3">1. Network & Scale</td></tr>
+      <tr>
+        <td>
+          <span class="feat-name">Concurrently connected machines</span>
+          <span class="feat-sub">Number of nodes connected at once — Mac, Windows, Linux, Edge, etc.</span>
+        </td>
+        <td>Up to 2 (1 server + 1 worker)</td>
+        <td><span class="badge-state badge-ready">Included</span> <b>3+, unlimited</b> (within contract scope)</td>
+      </tr>
+      <tr>
+        <td>
+          <span class="feat-name">Private network (VPN)</span>
+          <span class="feat-sub">Encrypted P2P network with no dependency on external SaaS</span>
+        </td>
+        <td>Tailscale SaaS shared network or local LAN</td>
+        <td><span class="badge-state badge-ready">Included</span> <b>Fully independent self-hosted on-premises Headscale network</b></td>
+      </tr>
+      <tr>
+        <td>
+          <span class="feat-name">Network bind security</span>
+          <span class="feat-sub">Blocks exposure on the shared LAN (0.0.0.0)</span>
+        </td>
+        <td><span class="badge-state badge-ready">Included</span> Private network IP and 127.0.0.1 only</td>
+        <td><span class="badge-state badge-ready">Included</span> Isolated binding to a dedicated VLAN / Headscale virtual network</td>
+      </tr>
+
+      <!-- Security & permission isolation -->
+      <tr class="cat-row"><td colspan="3">2. Security Governance & Task Isolation</td></tr>
+      <tr>
+        <td>
+          <span class="feat-name">Enforced working-directory isolation (workdir_only)</span>
+          <span class="feat-sub">Blocks parent-path escapes (../) and writes to arbitrary paths</span>
+        </td>
+        <td><span class="badge-state badge-ready">Included</span> Supported by default</td>
+        <td><span class="badge-state badge-ready">Included</span> Per-organization fixed work root with strict validation</td>
+      </tr>
+      <tr>
+        <td>
+          <span class="feat-name">Pure AI node mode (shell: off)</span>
+          <span class="feat-sub">Refuses all shell execution and accepts only AI inference/analysis</span>
+        </td>
+        <td><span class="badge-state badge-ready">Included</span> Per-node policy settings</td>
+        <td><span class="badge-state badge-ready">Included</span> Central distribution and enforcement of organization policy</td>
+      </tr>
+      <tr>
+        <td>
+          <span class="feat-name">Sensitive system credential protection</span>
+          <span class="feat-sub">Blocks access to .ssh, .aws, .env, Keychain, etc. in advance</span>
+        </td>
+        <td><span class="badge-state badge-ready">Included</span> Block-pattern matching</td>
+        <td><span class="badge-state badge-ready">Included</span> Custom block rules tailored to your security policy</td>
+      </tr>
+      <tr>
+        <td>
+          <span class="feat-name">OS kernel-level sandbox isolation</span>
+          <span class="feat-sub">Using macOS sandbox-exec and Linux Bubblewrap</span>
+        </td>
+        <td><span class="badge-state badge-none">Not available</span></td>
+        <td><span class="badge-state badge-road">Roadmap (P2)</span> Physically isolated containers for OS processes</td>
+      </tr>
+      <tr>
+        <td>
+          <span class="feat-name">Join approval gate & one-time enrollment tokens</span>
+          <span class="feat-sub">Per-device one-time enrollment (dcj1:) without exposing the master key</span>
+        </td>
+        <td><span class="badge-state badge-ready">Included</span> Manual admin approval</td>
+        <td><span class="badge-state badge-ready">Included</span> Issue expiring one-time tokens and forcibly remove devices</td>
+      </tr>
+
+      <!-- Audit & data integration -->
+      <tr class="cat-row"><td colspan="3">3. Audit Trail & Data Assets</td></tr>
+      <tr>
+        <td>
+          <span class="feat-name">Message & execution log export</span>
+          <span class="feat-sub">See who issued which command, and when</span>
+        </td>
+        <td><span class="badge-state badge-ready">Included</span> Markdown / CSV download (30 days)</td>
+        <td><span class="badge-state badge-ready">Included</span> <b>Unlimited retention</b> and advanced filtered search</td>
+      </tr>
+      <tr>
+        <td>
+          <span class="feat-name">Immutable sender identity (tamper-evident)</span>
+          <span class="feat-sub">Enforced binding of server auth token ID and private network IP</span>
+        </td>
+        <td>Basic logging</td>
+        <td><span class="badge-state badge-ready">Included</span> Tamper-proof sender evidence binding</td>
+      </tr>
+      <tr>
+        <td>
+          <span class="feat-name">SIEM / external audit log forwarding</span>
+          <span class="feat-sub">Integration with your security monitoring (Syslog, Splunk, Elastic)</span>
+        </td>
+        <td><span class="badge-state badge-none">Not available</span></td>
+        <td><span class="badge-state badge-road">Roadmap (P2)</span> Real-time Syslog and webhook streaming</td>
+      </tr>
+      <tr>
+        <td>
+          <span class="feat-name">Automatic commit/push of outputs to Git repositories</span>
+          <span class="feat-sub">Automatically publishes task result reports to your internal GitLab/GitHub</span>
+        </td>
+        <td>Manual integration via node shell workflows</td>
+        <td><span class="badge-state badge-road">Roadmap (P1)</span> Built-in backend auto-commit engine</td>
+      </tr>
+
+      <!-- Industrial OT & supply chain control -->
+      <tr class="cat-row"><td colspan="3">4. Industrial OT & Supply Chain Control</td></tr>
+      <tr>
+        <td>
+          <span class="feat-name">Version pinning & disabling auto-update</span>
+          <span class="feat-sub">Blocks unplanned patches with DURECLAW_AUTO_UPDATE=0</span>
+        </td>
+        <td><span class="badge-state badge-ready">Included</span> Environment variable control</td>
+        <td><span class="badge-state badge-ready">Included</span> Support for a <b>distribution mirror server for your air-gapped network</b></td>
+      </tr>
+      <tr>
+        <td>
+          <span class="feat-name">Queuing for offline devices (store & forward)</span>
+          <span class="feat-sub">Holds tasks during disconnects/reboots and delivers them in order</span>
+        </td>
+        <td><span class="badge-state badge-ready">Included</span> Supported</td>
+        <td><span class="badge-state badge-ready">Included</span> Batch distribution across large device pools</td>
+      </tr>
+      <tr>
+        <td>
+          <span class="feat-name">3-step safety interlock for factory equipment (Modbus/PLC)</span>
+          <span class="feat-sub">Respects hardware E-Stop: AI proposal → human approval → physical output</span>
+        </td>
+        <td>Manual approval in the control panel</td>
+        <td><span class="badge-state badge-ready">Included</span> <b>Consulting on safety-separated architecture for OT equipment</b></td>
+      </tr>
+      <tr>
+        <td>
+          <span class="feat-name">Dedicated support & SLA</span>
+          <span class="feat-sub">Adoption consulting, on-premises infrastructure integration, and a dedicated engineer</span>
+        </td>
+        <td>Community support (GitHub Issues)</td>
+        <td><span class="badge-state badge-ready">Included</span> <b>Dedicated engineer support, priority-response SLA, internal deployment technical guide</b></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- FAQ -->
+<div class="faq-box">
+  <div class="eyebrow">FAQ</div>
+  <h2 style="font-size:24px; font-weight:800; color:var(--ink); margin-top:6px; margin-bottom:20px;">Frequently asked questions</h2>
+  <dl class="faq">
+    <dt>What counts toward “free for 2 machines, including the server”?</dt>
+    <dd>The <b>number of computer (machine) identifiers</b> live on the DureClaw bus at the same time. One computer running the main server plus one working computer (2 in total) are free forever. Running several browsers (webclaw), desktops (deskclaw), or agent daemons on the same computer still counts as one machine.</dd>
+    <dt>Is it free if I use it alone for work, as long as it is 2 machines or fewer?</dt>
+    <dd>Yes. One person linking 2 or fewer PCs for their own productivity is completely free, even for commercial use. The Enterprise plan is required when you connect 3 or more machines or when multiple users share one bus.</dd>
+    <dt>When will roadmap features be available?</dt>
+    <dd>Roadmap (P1, P2) features are prioritized during Enterprise adoption discussions, with development and validation builds delivered on your required schedule. If you need a review against your internal security policy, please contact us separately.</dd>
+    <dt>Can it run on a fully air-gapped network with no internet access?</dt>
+    <dd>Yes. DureClaw Enterprise includes its own Headscale network and on-premises server, so it runs as a 100% local encrypted P2P network even on an internal network fully cut off from the internet.</dd>
+  </dl>
+</div>
+
+<p style="margin-top:36px; font-size:14.5px; color:var(--ink-3);">For full license terms, see the <a href="/en/terms/" style="color:var(--ink-2); text-decoration:underline;">Terms of Service (EULA)</a>.</p>
+</div></section>
+
+<footer>
+  <div class="container">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <div class="footer-logo"><strong>DureClaw</strong></div>
+        <p class="footer-tagline">Turn every idle computer into an AI teammate — Local-First Agentic Bus</p>
+      </div>
+      <div class="footer-nav-groups">
+        <div class="footer-col">
+          <div class="footer-col-title">DureClaw</div>
+          <a href="/en/start/">Quickstart</a>
+          <a href="/en/how/">Architecture & Protocol</a>
+          <a href="/en/pricing/">Pricing & Plans</a>
+          <a href="/en/terms/">Terms of Service</a>
+          <a href="https://github.com/DureClaw/dureclaw/issues" target="_blank" rel="noopener">Issues & Templates ↗</a>
+        </div>
+        <div class="footer-col">
+          <div class="footer-col-title">Baryon Labs</div>
+          <a href="https://baryon.ai/about.html" target="_blank" rel="noopener">About Us ↗</a>
+          <a href="https://baryon.ai/service.html" target="_blank" rel="noopener">Enterprise AX Consulting ↗</a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="footer-company-info">
+        <span><strong>Baryon Labs, Inc.</strong></span>
+        <span class="sep">·</span>
+        <span>CEO: Seungwoo Hong</span>
+        <span class="sep">·</span>
+        <span>Seoul, Korea</span>
+        <span class="sep">·</span>
+        <span>Inquiries: <a href="mailto:hello@baryon.ai">hello@baryon.ai</a></span>
+      </div>
+      <div class="footer-copy">© 2026 Baryon Labs. All rights reserved.</div>
+    </div>
+  </div>
+</footer>
+
+<script src="/assets/site.js"></script>
+<script src="/assets/i18n.js"></script>
+</body>
+</html>
