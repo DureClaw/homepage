@@ -14,13 +14,13 @@
 - **Private P2P Network (Headscale)**: Fully on-premise WireGuard mesh without third-party SaaS dependency. Air-gapped deployment ready.
 - **Remote MCP SSE Bridge**: Built-in Server-Sent Events bridge exposing edge node tools to Anthropic Model Context Protocol clients.
 - **Unlimited Browser Automation via MCP**: Any MCP-capable agent (Claude Code, Claude Desktop, Cursor, Codex, OpenCode, Orca Mobile) can drive the logged-in Chrome through webclaw — no per-run, tab, or site quota.
-- **One-Minute webclaw + MCP Setup**: macOS and Windows installers with a 4-step wizard: https://dureclaw.baryon.ai/webclaw/
+- **One-Minute webclaw + MCP Setup**: macOS and Windows installers with a 4-step wizard: https://dureclaw.baryon.ai/webclaw-web-automation/
 - **3-Stage Industrial Safety Interlock**: [Level 1: AI proposal] → [Level 2: Orca mobile 2FA approval] → [Level 3: Edge HW watchdog / safety relay].
 - **Tamper-Evident Audit Trail**: Single-use enrollment tokens (`dcj1:...`) with immutable cryptographic signatures.
 
 ## Native & Ecosystem Nodes
 - [edgeclaw](https://dureclaw.baryon.ai/showcase/): Static Go single binary (No-CGo). Runs on any OS/CPU (Win, Mac, Linux, Pi Zero armv6, RISC-V). Direct GPIO, LED, buzzer, relay control.
-- [webclaw](https://dureclaw.baryon.ai/webclaw/): Chrome MV3 browser node. Lends authenticated real browser sessions to the fleet for search, scraping, and form automation.
+- [webclaw](https://dureclaw.baryon.ai/webclaw-web-automation/): Chrome MV3 browser node. Lends authenticated real browser sessions to the fleet for search, scraping, and form automation.
 - [deskclaw](https://dureclaw.baryon.ai/showcase/): Desktop GUI node (Win/macOS). Screen perception + mouse/keyboard RPA. Record once, replay deterministically without LLMs.
 - [zeroclaw](https://github.com/DureClaw/zeroclaw): High-speed, memory-safe autonomous agent in Rust.
 - [nullclaw](https://github.com/DureClaw/nullclaw): Micro-footprint agent in Zig with zero libc dependency.
@@ -29,7 +29,7 @@
 
 ## Documentation Index
 - [Getting Started / Install Guide](https://dureclaw.baryon.ai/start/): One-line setup, joining nodes, first fix-agent task.
-- [webclaw + MCP Setup (macOS/Windows)](https://dureclaw.baryon.ai/webclaw/): Connect the bundled Chrome extension and register MCP for every agent.
+- [webclaw + MCP Setup (macOS/Windows)](https://dureclaw.baryon.ai/webclaw-web-automation/): Connect the bundled Chrome extension and register MCP for every agent.
 - [Architecture & Methodology](https://dureclaw.baryon.ai/how/): Phoenix Channel 5-tuple JSON protocol, security boundaries, Decision Freezing mechanics.
 - [Technical Whitepaper (PDF)](https://dureclaw.baryon.ai/how/): Complete academic & industrial whitepaper (KO / EN).
 - [Interactive Showcase & Demos](https://dureclaw.baryon.ai/showcase/): Real recorded demonstrations of deskclaw RPA, multiplatform builds, and GPIO lights.

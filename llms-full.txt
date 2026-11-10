@@ -45,7 +45,7 @@ DureClaw introduces "Decision Freezing":
    - Language: TypeScript / Chrome Extension Manifest V3.
    - Targets: Google Chrome, Chromium browsers.
    - Features: Lends real authenticated browser sessions to the fleet. Capable of DOM parsing, headless/headed scraping, bypassing anti-bot measures, and internal intranet portal form filling.
-   - MCP: Any MCP-capable agent can drive webclaw with no per-run, tab, or site quota. Setup: https://dureclaw.baryon.ai/webclaw/
+   - MCP: Any MCP-capable agent can drive webclaw with no per-run, tab, or site quota. Setup: https://dureclaw.baryon.ai/webclaw-web-automation/
 3. deskclaw:
    - Language: Go / C / Native Windows UI Automation & macOS Accessibility.
    - Targets: Windows 10/11, macOS.

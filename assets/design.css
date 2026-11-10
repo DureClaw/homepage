@@ -685,3 +685,58 @@ main + .lb-bg + footer, main ~ footer { margin-top: 0; }
 .edge-points { margin: 4px 0 0; padding-left: 18px; font-size: 13.5px; color: var(--ink-3); line-height: 1.6; }
 .edge-points li { margin-bottom: 2px; }
 
+
+/* ── webclaw + MCP home banner ───────────────────────────────────────── */
+.wc-banner {
+  display: grid; grid-template-columns: minmax(0, 1.5fr) minmax(0, .7fr);
+  gap: clamp(22px, 3.4vw, 48px); align-items: center;
+  margin-top: clamp(28px, 4vw, 46px);
+  padding: clamp(26px, 3.6vw, 44px) clamp(24px, 3.4vw, 48px);
+  border-radius: calc(var(--radius) + 6px);
+  background:
+    radial-gradient(70% 120% at 86% 8%, rgba(228,87,46,.36), transparent 60%),
+    radial-gradient(circle at 1px 1px, rgba(255,255,255,.10) 1px, transparent 1.2px) 0 0 / 22px 22px,
+    var(--night);
+  color: #f4efe4; text-decoration: none; position: relative; overflow: hidden;
+  border: 1px solid #3a352c;
+  box-shadow: 0 28px 60px -36px rgba(23,22,15,.7);
+  transition: transform .2s, box-shadow .2s, border-color .2s;
+}
+.wc-banner:hover { transform: translateY(-2px); border-color: var(--accent); box-shadow: 0 34px 70px -38px rgba(23,22,15,.8); }
+.wc-banner-kicker {
+  display: inline-flex; align-items: center; gap: 8px;
+  padding: 5px 11px 5px 6px; border-radius: 999px;
+  background: rgba(255,255,255,.07); border: 1px solid rgba(255,255,255,.16);
+  color: #ded7c8; font-size: 13px; font-weight: 600; letter-spacing: .01em;
+}
+.wc-banner-kicker b { background: var(--accent); color: #fff; border-radius: 999px; padding: 2px 8px; font-size: 11.5px; letter-spacing: .06em; }
+.wc-banner h2 { margin: 15px 0 11px; font-size: clamp(28px, 3.5vw, 48px); line-height: 1.16; letter-spacing: -.04em; font-weight: 800; color: #fff; }
+.wc-banner h2 em { font-style: normal; color: #ff9474; }
+.wc-banner p { font-size: clamp(15px, .35vw + 14px, 17px); line-height: 1.7; color: #c9c2b4; max-width: 44em; }
+.wc-banner-side {
+  display: grid; gap: 10px; align-content: center;
+  border-left: 1px solid rgba(255,255,255,.14);
+  padding-left: clamp(18px, 2.6vw, 34px);
+}
+.wc-banner-os { font-family: var(--font-mono); font-size: 11.5px; font-weight: 600; letter-spacing: .12em; text-transform: uppercase; color: #a9a294; }
+.wc-banner-cta {
+  display: inline-flex; align-items: center; justify-content: center;
+  background: var(--accent); color: #fff; border-radius: 999px;
+  padding: 13px 20px; font-weight: 700; font-size: 15.5px; white-space: nowrap;
+  transition: background .18s;
+}
+.wc-banner:hover .wc-banner-cta { background: var(--accent-ink); }
+.wc-banner small { color: #9b9486; font-size: 13px; line-height: 1.5; }
+@media (max-width: 860px) {
+  .wc-banner { grid-template-columns: 1fr; }
+  .wc-banner-side {
+    border-left: 0; border-top: 1px solid rgba(255,255,255,.14);
+    padding-left: 0; padding-top: 18px;
+    grid-template-columns: 1fr auto; align-items: center;
+  }
+  .wc-banner small { grid-column: 1 / -1; }
+}
+@media (max-width: 520px) {
+  .wc-banner-side { grid-template-columns: 1fr; }
+  .wc-banner-cta { width: 100%; }
+}
