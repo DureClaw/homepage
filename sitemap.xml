@@ -46,6 +46,12 @@
     <image:image><image:loc>https://dureclaw.baryon.ai/images/uc-webclaw-ui.webp</image:loc></image:image>
   </url>
   <url>
+    <loc>https://dureclaw.baryon.ai/webclaw-privacy/</loc>
+    <lastmod>2026-11-10</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
+  </url>
+  <url>
     <loc>https://dureclaw.baryon.ai/use-cases/</loc>
     <lastmod>2026-10-28</lastmod>
     <changefreq>weekly</changefreq>
@@ -153,6 +159,12 @@
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
     <image:image><image:loc>https://dureclaw.baryon.ai/images/uc-webclaw-ui.webp</image:loc></image:image>
+  </url>
+  <url>
+    <loc>https://dureclaw.baryon.ai/en/webclaw-privacy/</loc>
+    <lastmod>2026-11-10</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
   </url>
   <url>
     <loc>https://dureclaw.baryon.ai/en/use-cases/</loc>

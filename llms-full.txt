@@ -1,5 +1,5 @@
 # DureClaw Complete Technical Specification (llms-full.txt)
-Version: v0.5.5 | Last Updated: 2026-11-10 | Canonical URL: https://dureclaw.baryon.ai/llms-full.txt
+Version: v0.5.8 | Last Updated: 2026-11-10 | Canonical URL: https://dureclaw.baryon.ai/llms-full.txt
 Author: Baryon Labs (https://baryon.ai) | Contact: hello@baryon.ai
 
 ================================================================================

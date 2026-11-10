@@ -5,7 +5,7 @@
 
 - **Website**: https://dureclaw.baryon.ai/
 - **Install One-Liner**: `bash <(curl -fsSL https://dureclaw.baryon.ai/install)`
-- **Current Version**: v0.5.7 (DureClaw Core & Plugins)
+- **Current Version**: v0.5.8 (DureClaw Core & Plugins)
 - **License**: Core plugin MIT, Server Personal Edition Free (up to 2 connected nodes)
 
 ## Core Capabilities & Benchmarks

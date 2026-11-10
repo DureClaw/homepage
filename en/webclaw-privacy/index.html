@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>webclaw Privacy Policy — DureClaw</title>
+<meta name="description" content="Privacy policy for the webclaw Chrome extension. Page content is processed only in your browser and your local DureClaw server; nothing is sent to Baryon Labs servers."/>
+<link rel="canonical" href="https://dureclaw.baryon.ai/en/webclaw-privacy/"/>
+<link rel="alternate" hreflang="ko" href="https://dureclaw.baryon.ai/webclaw-privacy/"/>
+<link rel="alternate" hreflang="en" href="https://dureclaw.baryon.ai/en/webclaw-privacy/"/>
+<link rel="alternate" hreflang="x-default" href="https://dureclaw.baryon.ai/webclaw-privacy/"/>
+<meta name="robots" content="index, follow"/>
+<meta name="theme-color" content="#e4572e"/>
+<link rel="icon" href="/favicon.svg" type="image/svg+xml"/>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css"/>
+<link rel="stylesheet" href="/assets/site.css"/>
+<link rel="stylesheet" href="/assets/design.css"/>
+<style>
+  .privacy { max-width: 780px; margin: 0 auto; padding: 0 var(--gutter) clamp(48px, 7vw, 96px); }
+  .privacy h2 { margin: 34px 0 10px; font-size: 20px; letter-spacing: -.02em; }
+  .privacy p, .privacy li { color: var(--ink-2); font-size: 16px; line-height: 1.8; }
+  .privacy ul { padding-left: 1.2em; display: grid; gap: 6px; }
+  .privacy .meta { color: var(--ink-3); font-size: 14.5px; }
+  .privacy code { font-size: .9em; }
+</style>
+</head>
+<body>
+<nav>
+  <div class="container">
+    <div class="nav-inner">
+      <a href="/en/" class="nav-logo">Dure<span>Claw</span></a>
+      <div class="nav-links">
+        <a href="/en/start/">Get Started</a>
+        <a href="/en/webclaw-web-automation/">webclaw + MCP</a>
+        <a href="/en/use-cases/">Use Cases</a>
+        <a href="/en/how/">How It Works</a>
+        <a href="/en/developers/">Developers</a>
+        <a href="/en/pricing/">Enterprise</a>
+      </div>
+      <a href="https://github.com/dureclaw/dureclaw" class="nav-gh" target="_blank">GitHub ↗</a>
+    </div>
+  </div>
+</nav>
+
+<header class="page-hero">
+  <div class="container">
+    <a href="/en/" class="crumb">← DureClaw home</a>
+    <h1>webclaw Privacy Policy</h1>
+    <p>How the <b>webclaw — DureClaw browser node</b> Chrome extension accesses and processes data.</p>
+    <p class="meta">Effective: 2026-11-10 · Contact: <a href="mailto:hello@baryon.ai">hello@baryon.ai</a></p>
+  </div>
+</header>
+
+<main class="privacy">
+  <h2>1. One-line summary</h2>
+  <p>webclaw performs the web tasks you ask for <b>inside your browser</b>. Page content goes only to your local DureClaw server (default <code>127.0.0.1:4000</code>) and the AI agent you choose. It is <b>not collected or sent to Baryon Labs servers.</b></p>
+
+  <h2>2. Data we access</h2>
+  <ul>
+    <li><b>Page content</b> — DOM, text, and screenshots of the tab you target, only while a task runs.</li>
+    <li><b>Tab information</b> — title, URL, and tab group, used to find and group task tabs.</li>
+    <li><b>Actions</b> — form input, clicks, and downloads you request. Input values are not written to logs.</li>
+    <li><b>Local configuration</b> — server address, Work Key, server secret, and node name, stored only in <code>chrome.storage.local</code>.</li>
+    <li><b>Task history</b> — recent task and chat history in the side panel, which you can clear.</li>
+  </ul>
+
+  <h2>3. How we use it</h2>
+  <p>Only to perform the browser automation you requested. We do not use it for advertising, profiling, data sales, or credit decisions.</p>
+
+  <h2>4. Where data goes</h2>
+  <ul>
+    <li><b>Your local DureClaw server</b> — on your computer or a private network you configure (Tailscale/Headscale).</li>
+    <li><b>The AI agent you choose</b> — Claude Code, Claude Desktop, Cursor, Codex, OpenCode, etc. Their own policies apply to their processing.</li>
+    <li><b>Baryon Labs servers</b> — no data is sent. The extension contains no analytics or advertising SDK.</li>
+  </ul>
+
+  <h2>5. Retention and deletion</h2>
+  <p>Settings and task history live in your Chrome profile. Removing the extension or clearing <code>chrome.storage.local</code> deletes them. Server task history can be deleted from the server data folder.</p>
+
+  <h2>6. Permissions and why</h2>
+  <ul>
+    <li><code>tabs</code>, <code>tabGroups</code> — find target tabs and group task tabs.</li>
+    <li><code>scripting</code>, <code>&lt;all_urls&gt;</code> — read, click, and type on arbitrary sites you choose.</li>
+    <li><code>debugger</code> — Chrome DevTools Protocol for reliable clicks and screenshots on background tabs.</li>
+    <li><code>downloads</code> — save files and screenshots you request.</li>
+    <li><code>sidePanel</code> — the per-tab task chat UI.</li>
+    <li><code>storage</code> — local settings and task history.</li>
+    <li><code>offscreen</code> — keep the DureClaw bus connection alive under MV3.</li>
+  </ul>
+
+  <h2>7. Security</h2>
+  <p>The server secret is stored in <code>chrome.storage.local</code> and never displayed. webclaw honors your blocked-site and approval policies, and can require approval for irreversible actions such as payments, deletions, or submissions.</p>
+
+  <h2>8. Children</h2>
+  <p>This extension is not directed to children under 14.</p>
+
+  <h2>9. Changes</h2>
+  <p>We post changes on this page with a new effective date and mention material changes in extension release notes.</p>
+
+  <h2>10. Contact</h2>
+  <p>Baryon Labs · <a href="mailto:hello@baryon.ai">hello@baryon.ai</a> · <a href="https://dureclaw.baryon.ai/">dureclaw.baryon.ai</a></p>
+</main>
+
+<footer>
+  <div class="container">
+    <div class="footer-bottom">
+      <div class="footer-company-info">
+        <span><strong>Baryon Labs, Inc.</strong></span>
+        <span class="sep">·</span>
+        <span>Seoul, Korea</span>
+        <span class="sep">·</span>
+        <span>Inquiries: <a href="mailto:hello@baryon.ai">hello@baryon.ai</a></span>
+      </div>
+      <div class="footer-copy">© 2026 Baryon Labs. All rights reserved.</div>
+    </div>
+  </div>
+</footer>
+<script src="/assets/site.js"></script>
+</body>
+</html>
