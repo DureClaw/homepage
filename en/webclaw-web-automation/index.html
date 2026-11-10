@@ -72,10 +72,10 @@
  "name": "Install webclaw + MCP on macOS and Windows",
  "description": "Connect the webclaw Chrome extension bundled with the DureClaw server app, then install the MCP server so any AI agent can automate the browser.",
  "totalTime": "PT5M",
- "tool": [{"@type":"HowToTool","name":"Chrome or Edge"},{"@type":"HowToTool","name":"DureClaw server app"},{"@type":"HowToTool","name":"DureClaw MCP"}],
+ "tool": [{"@type":"HowToTool","name":"DureClaw Browser (Chromium)"},{"@type":"HowToTool","name":"DureClaw server app"},{"@type":"HowToTool","name":"DureClaw MCP"}],
  "step": [
   {"@type":"HowToStep","name":"Install the server app","text":"Install the dmg on macOS or Setup.exe on Windows. The webclaw extension is bundled."},
-  {"@type":"HowToStep","name":"Connect webclaw","text":"The installer prepares the extension folder and config.local.json. Turn on developer mode in chrome://extensions and load the unpacked extension."},
+  {"@type":"HowToStep","name":"Connect webclaw","text":"DureClaw Browser prepares the extension and config.local.json automatically. If you use your own Chrome, turn on developer mode in chrome://extensions and load the unpacked extension."},
   {"@type":"HowToStep","name":"Restart your agent tool","text":"MCP is included in the installer and registered as dureclaw with every installed agent tool. Fully quit and restart the tool."},
   {"@type":"HowToStep","name":"One example prompt","text":"‘Use webclaw to open https://www.naver.com and show me a screenshot.’ calls browser_screenshot and returns the image in the chat."}
  ]
@@ -127,9 +127,9 @@
 <header class="wz-hero">
   <div class="wrap wz-hero-grid">
     <div>
-      <span class="wz-badge"><b>webclaw 0.11.5</b> MCP standard · macOS + Windows</span>
+      <span class="wz-badge"><b>2nd gen</b> DureClaw Browser · webclaw 0.11.5 · MCP</span>
       <h1>Give every agent<br/><em>browser automation</em>.<br/>Without limits.</h1>
-      <p class="wz-sub">Your own logged-in Chrome, unchanged. <strong>Any MCP-capable agent</strong> can read pages, click, type, and download. No limits on runs, tabs, or sites.</p>
+      <p class="wz-sub"><strong>Chromium, webclaw, and MCP in one installer.</strong> DureClaw Browser lets <strong>any MCP-capable agent</strong> read pages, click, type, and download — no separate Chrome extension install required. No limits on runs, tabs, or sites.</p>
 
       <div class="wz-os" role="group" aria-label="Operating system">
         <button type="button" data-os="mac" aria-pressed="true"><img src="/assets/apple.svg" alt=""/>macOS</button>
@@ -137,16 +137,17 @@
       </div>
 
       <div class="wz-actions">
-        <a class="btn btn-accent os-mac inline" href="https://github.com/DureClaw/homepage/releases/download/v0.5.7/DureClaw-Server-mac-arm64-0.5.7.dmg" download>Start on Mac <small class="dl-ver">v0.5.7</small></a>
-        <a class="btn btn-accent os-win inline" href="https://github.com/DureClaw/homepage/releases/download/v0.5.7/DureClaw-Server-Setup-0.5.7.exe" download>Start on Windows <small class="dl-ver">v0.5.7</small></a>
-        <a class="btn btn-ghost" href="#step1">5-minute setup</a>
+        <a class="btn btn-accent inline" href="https://github.com/DureClaw/homepage/releases/download/browser-v0.1.0/DureClaw-Browser-mac-arm64-0.5.8.dmg" download>DureClaw Browser <small class="dl-ver">macOS .dmg</small></a>
+        <a class="btn btn-accent inline" href="https://github.com/DureClaw/homepage/releases/download/browser-v0.1.0/DureClaw-Browser-Setup.exe" download>DureClaw Browser <small class="dl-ver">Windows .exe</small></a>
+        <a class="btn btn-ghost" href="#step2">Connect agents</a>
       </div>
+      <p class="note" style="margin-top:10px">The DureClaw Server app provides the bus. If you already run a server, install the browser only.</p>
 
       <div class="wz-proof">
-        <span>webclaw bundled with the app</span>
-        <span>One-click MCP registration</span>
-        <span>Keeps your login session</span>
-        <span>Free personal edition</span>
+        <span>No separate Chrome extension</span>
+        <span>MCP auto-registered for every agent</span>
+        <span>macOS dedicated profile · Windows Chrome import</span>
+        <span>No run limits</span>
       </div>
 
       <div class="wz-one-liner">
@@ -163,6 +164,40 @@
   </div>
 </header>
 
+<!-- 2ND GEN BROWSER -->
+<section class="band" id="browser" style="padding-top:clamp(30px,4vw,54px)">
+  <div class="wz-wrap">
+    <div class="section-head">
+      <span class="eyebrow">2nd gen · standalone browser</span>
+      <h2 class="h2">No extension setup. The browser is the <span class="serif">hand</span>.</h2>
+      <p class="lede">Chromium, webclaw, and MCP in one installer. macOS uses a dedicated profile and leaves your Chrome untouched; Windows can import your existing Chrome logins. Every MCP agent then drives this browser without limits.</p>
+    </div>
+    <div class="install-grid">
+      <div class="i-card primary">
+        <div class="i-step">macOS · APPLE SILICON</div>
+        <div class="i-title"><span class="ico">🍎</span>DureClaw Browser.dmg</div>
+        <p class="i-desc">Chromium, webclaw, and MCP are bundled in the app. It starts with a <b>dedicated profile</b>, so your Chrome logins stay untouched — sign in once to the sites you need.</p>
+        <a class="btn btn-accent inline" href="https://github.com/DureClaw/homepage/releases/download/browser-v0.1.0/DureClaw-Browser-mac-arm64-0.5.8.dmg" download>Download for macOS <small class="dl-ver">.dmg</small></a>
+        <p class="note">Unsigned build: first launch via <b>right-click → Open</b>.</p>
+      </div>
+      <div class="i-card primary">
+        <div class="i-step">WINDOWS · X64</div>
+        <div class="i-title"><span class="ico">🪟</span>DureClaw Browser Setup.exe</div>
+        <p class="i-desc">On first launch it offers to import your <b>existing Chrome profile</b> (cookies, logins, local storage). If Chrome 137+ App-Bound Encryption prevents the session from carrying over, sign in once in the new browser.</p>
+        <a class="btn btn-accent inline" href="https://github.com/DureClaw/homepage/releases/download/browser-v0.1.0/DureClaw-Browser-Setup.exe" download>Download for Windows <small class="dl-ver">.exe</small></a>
+        <p class="note">The installer can register MCP with every installed agent.</p>
+      </div>
+      <div class="i-card">
+        <div class="i-step">PREFER YOUR OWN CHROME?</div>
+        <div class="i-title"><span class="ico">🧩</span>Server app + extension</div>
+        <p class="i-desc">The DureClaw Server app also bundles webclaw. Loading the extension directly into Chrome, Edge, or Whale is still fully supported.</p>
+        <a class="btn btn-ghost" href="/en/start/">Server app setup →</a>
+      </div>
+    </div>
+    <div class="wz-callout teal" style="margin-top:18px"><b>Verified</b> — macOS Apple Silicon: bus connection + MCP screenshot. Windows 11 LTSC VM: silent install, Chromium extension load, and Chrome profile import all pass.</div>
+  </div>
+</section>
+
 <!-- WIZARD -->
 <section class="band" id="install">
   <div class="wz-wrap">
@@ -170,6 +205,7 @@
       <span class="eyebrow">Setup wizard</span>
       <h2 class="h2">Four steps. <span class="serif">That's it.</span></h2>
       <p class="lede">From installing the server app to your first automation. Check <b>Done</b> as you go — progress is saved. Pick your OS and only the relevant steps stay visible.</p>
+      <div class="wz-callout teal"><b>Already installed DureClaw Browser?</b> The extension and MCP registration are automatic. Jump to <b>step 2 (connect agents)</b> below.</div>
     </div>
 
     <div class="wz-toolbar">
