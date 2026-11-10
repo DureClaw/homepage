@@ -56,7 +56,7 @@ except ImportError:
 # ─── 설정 ─────────────────────────────────────────────────────────────────────
 
 # 루트 VERSION 파일과 같은 값 (릴리스 때 함께 올린다)
-VERSION = "0.5.6"
+VERSION = "0.5.7"
 
 HOSTNAME = socket.gethostname().split(".")[0]
 
