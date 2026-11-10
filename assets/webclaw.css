@@ -190,3 +190,7 @@ html:not([data-os]) .os-mac, html:not([data-os]) .os-win { display: none; }
   .nav-inner { height: auto; }
   .wz-step { scroll-margin-top: 136px; }
 }
+
+/* 이슈 #26 문제 해결 표 — 좁은 화면에서는 가로 스크롤 */
+#troubleshooting .table-wrap { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+#troubleshooting table { min-width: 720px; }

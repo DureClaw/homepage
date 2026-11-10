@@ -5,7 +5,7 @@
 
 - **Website**: https://dureclaw.baryon.ai/
 - **Install One-Liner**: `bash <(curl -fsSL https://dureclaw.baryon.ai/install)`
-- **Current Version**: v0.5.6 (DureClaw Core & Plugins)
+- **Current Version**: v0.5.7 (DureClaw Core & Plugins)
 - **License**: Core plugin MIT, Server Personal Edition Free (up to 2 connected nodes)
 
 ## Core Capabilities & Benchmarks
@@ -13,7 +13,7 @@
 - **Decision Freezing (LLM as Compiler)**: First run approved by human, subsequent runs compiled to deterministic rules — 0 LLM calls, 2µs execution (up to 143,136x acceleration measured on Raspberry Pi GPIO).
 - **Private P2P Network (Headscale)**: Fully on-premise WireGuard mesh without third-party SaaS dependency. Air-gapped deployment ready.
 - **Remote MCP SSE Bridge**: Built-in Server-Sent Events bridge exposing edge node tools to Anthropic Model Context Protocol clients.
-- **Unlimited Browser Automation via MCP**: Any MCP-capable agent (Claude Code, Claude Desktop, Cursor, Codex, OpenCode, Orca Mobile) can drive the logged-in Chrome through webclaw — no per-run, tab, or site quota.
+- **Unlimited Browser Automation via MCP**: Any MCP-capable agent (Claude Code, Claude Desktop, Cursor, Codex, OpenCode, Orca Mobile) can drive the logged-in Chrome through webclaw — no per-run, tab, or site quota. The `dureclaw` MCP server is included in the installer and auto-registers with installed agent tools. One prompt — "Use webclaw to open https://www.naver.com and show me a screenshot" — opens the page and returns the image via `browser_screenshot`; `browser_run` executes multi-line markers and waits for the result.
 - **One-Minute webclaw + MCP Setup**: macOS and Windows installers with a 4-step wizard: https://dureclaw.baryon.ai/webclaw-web-automation/
 - **3-Stage Industrial Safety Interlock**: [Level 1: AI proposal] → [Level 2: Orca mobile 2FA approval] → [Level 3: Edge HW watchdog / safety relay].
 - **Tamper-Evident Audit Trail**: Single-use enrollment tokens (`dcj1:...`) with immutable cryptographic signatures.
