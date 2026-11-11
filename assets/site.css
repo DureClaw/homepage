@@ -40,7 +40,8 @@ nav {
   -webkit-backdrop-filter: blur(12px);
 }
 .nav-inner { display: flex; align-items: center; justify-content: space-between; height: 52px; }
-.nav-logo { font-family: var(--font-sans); font-weight: 800; font-size: 15px; color: var(--white); letter-spacing: -0.5px; text-decoration: none; }
+.nav-logo { font-family: var(--font-sans); font-weight: 800; font-size: 15px; color: var(--white); letter-spacing: -0.5px; text-decoration: none; display: inline-flex; align-items: center; gap: 7px; }
+.nav-mascot { width: 26px; height: 26px; border-radius: 8px; object-fit: cover; display: block; flex: none; }
 .nav-logo span { color: var(--cyan); }
 .nav-links { display: flex; gap: 28px; }
 .nav-links a { color: var(--text2); font-size: 15px; text-decoration: none; letter-spacing: 1px; transition: color 0.2s; }
