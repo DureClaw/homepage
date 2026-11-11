@@ -23,8 +23,8 @@
 </script>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>webclaw + MCP — Unlimited browser automation for every agent | DureClaw</title>
-<meta name="description" content="Install webclaw (Chrome extension) and MCP on macOS or Windows in five minutes. Claude Code, Claude Desktop, Cursor, Codex, OpenCode, Orca Mobile — any MCP-capable agent can automate your logged-in browser with no per-run limits."/>
+<title>DureClaw Browser — Install once. Every agent uses your browser. | DureClaw</title>
+<meta name="description" content="DureClaw Browser: Chromium, webclaw, and MCP in one installer. Install, restart the agent you already use, and ask in one sentence. No per-run limits."/>
 
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
@@ -69,15 +69,14 @@
 {
  "@context": "https://schema.org",
  "@type": "HowTo",
- "name": "Install webclaw + MCP on macOS and Windows",
- "description": "Connect the webclaw Chrome extension bundled with the DureClaw server app, then install the MCP server so any AI agent can automate the browser.",
- "totalTime": "PT5M",
- "tool": [{"@type":"HowToTool","name":"DureClaw Browser (Chromium)"},{"@type":"HowToTool","name":"DureClaw server app"},{"@type":"HowToTool","name":"DureClaw MCP"}],
+ "name": "DureClaw Browser — Install once",
+ "description": "Install Chromium, webclaw, and MCP in one browser, restart your agent, and ask in one sentence.",
+ "totalTime": "PT3M",
+ "tool": [{"@type":"HowToTool","name":"DureClaw Browser (Chromium)"},{"@type":"HowToTool","name":"DureClaw server app"},{"@type":"HowToTool","name":"MCP agent"}],
  "step": [
-  {"@type":"HowToStep","name":"Install the server app","text":"Install the dmg on macOS or Setup.exe on Windows. The webclaw extension is bundled."},
-  {"@type":"HowToStep","name":"Connect webclaw","text":"DureClaw Browser prepares the extension and config.local.json automatically. If you use your own Chrome, turn on developer mode in chrome://extensions and load the unpacked extension."},
-  {"@type":"HowToStep","name":"Restart your agent tool","text":"MCP is included in the installer and registered as dureclaw with every installed agent tool. Fully quit and restart the tool."},
-  {"@type":"HowToStep","name":"One example prompt","text":"‘Use webclaw to open https://www.naver.com and show me a screenshot.’ calls browser_screenshot and returns the image in the chat."}
+  {"@type":"HowToStep","name":"Install DureClaw Browser","text":"Run the dmg on macOS or Setup.exe on Windows. Chromium, webclaw, and MCP are installed together."},
+  {"@type":"HowToStep","name":"Restart your agent","text":"Fully quit and reopen Claude Code, Cursor, Codex, or another MCP agent. dureclaw MCP is registered automatically."},
+  {"@type":"HowToStep","name":"Ask in one sentence","text":"‘Use webclaw to open https://www.naver.com and show me a screenshot.’ opens the page and returns the image."}
  ]
 }
 </script>
@@ -127,437 +126,99 @@
 <header class="wz-hero">
   <div class="wrap wz-hero-grid">
     <div>
-      <span class="wz-badge"><b>2nd gen</b> DureClaw Browser · webclaw 0.11.5 · MCP</span>
-      <h1>Give every agent<br/><em>browser automation</em>.<br/>Without limits.</h1>
-      <p class="wz-sub"><strong>Chromium, webclaw, and MCP in one installer.</strong> DureClaw Browser lets <strong>any MCP-capable agent</strong> read pages, click, type, and download — no separate Chrome extension install required. No limits on runs, tabs, or sites.</p>
-
-      <div class="wz-os" role="group" aria-label="Operating system">
-        <button type="button" data-os="mac" aria-pressed="true"><img src="/assets/apple.svg" alt=""/>macOS</button>
-        <button type="button" data-os="win" aria-pressed="false"><img src="/assets/windows.svg" alt=""/>Windows</button>
-      </div>
+      <span class="wz-badge"><b>2nd gen</b> Standalone browser · webclaw 0.11.5</span>
+      <h1>Install once.<br/><em>Every agent</em><br/>uses your browser.</h1>
+      <p class="wz-sub">Chromium, webclaw, and MCP in one installer. No separate Chrome extension setup — the agents you already use can read, click, type, and download.</p>
 
       <div class="wz-actions">
-        <a class="btn btn-accent inline" href="https://github.com/DureClaw/homepage/releases/download/browser-v0.1.0/DureClaw-Browser-mac-arm64-0.5.8.dmg" download>DureClaw Browser <small class="dl-ver">macOS .dmg</small></a>
-        <a class="btn btn-accent inline" href="https://github.com/DureClaw/homepage/releases/download/browser-v0.1.0/DureClaw-Browser-Setup.exe" download>DureClaw Browser <small class="dl-ver">Windows .exe</small></a>
-        <a class="btn btn-ghost" href="#step2">Connect agents</a>
+        <a class="btn btn-accent inline" href="https://github.com/DureClaw/homepage/releases/download/browser-v0.1.0/DureClaw-Browser-mac-arm64-0.5.8.dmg" download>Download for macOS <small class="dl-ver">.dmg</small></a>
+        <a class="btn btn-accent inline" href="https://github.com/DureClaw/homepage/releases/download/browser-v0.1.0/DureClaw-Browser-Setup.exe" download>Download for Windows <small class="dl-ver">.exe</small></a>
       </div>
-      <p class="note" style="margin-top:10px">The DureClaw Server app provides the bus. If you already run a server, install the browser only.</p>
+      <p class="note">Unsigned build: on macOS <b>right-click → Open</b>; on Windows <b>More info → Run anyway</b>.</p>
 
       <div class="wz-proof">
-        <span>No separate Chrome extension</span>
-        <span>MCP auto-registered for every agent</span>
-        <span>macOS dedicated profile · Windows Chrome import</span>
+        <span>No Chrome extension install</span>
+        <span>MCP auto-registration</span>
         <span>No run limits</span>
-      </div>
-
-      <div class="wz-one-liner">
-        <span class="wz-one-kicker">MCP install in one line</span>
-        <div class="wz-cmd"><code>Install DureClaw MCP and register it as dureclaw. On Windows run "%LOCALAPPDATA%\Programs\DureClaw Server\bundle\mcp\setup-mcp.bat"; on macOS run "/Applications/DureClaw.app/Contents/Resources/bundle/mcp/setup-mcp.sh --phoenix ws://localhost:4000", then confirm dureclaw is registered.</code><button class="copy-btn" data-copy='Install DureClaw MCP and register it as dureclaw. On Windows run "%LOCALAPPDATA%\Programs\DureClaw Server\bundle\mcp\setup-mcp.bat"; on macOS run "/Applications/DureClaw.app/Contents/Resources/bundle/mcp/setup-mcp.sh --phoenix ws://localhost:4000", then confirm dureclaw is registered.'>Copy</button></div>
-        <p class="note">If the server app is already installed, paste this line into your agent. To run it directly in a terminal, see <a href="#step3">step 3</a>.</p>
       </div>
     </div>
 
     <figure class="wz-shot">
-      <img src="/images/uc-webclaw-ui.webp" width="1200" height="750" alt="webclaw in the Chrome side panel reading, extracting, and automating page elements" loading="eager"/>
-      <figcaption><b>webclaw</b> — talk to the current tab from Chrome's side panel and hand it page reads, clicks, typing, and downloads.</figcaption>
+      <img src="/images/uc-webclaw-ui.webp" width="1200" height="750" alt="webclaw reading, clicking, typing, and downloading in the browser" loading="eager"/>
+      <figcaption><b>webclaw</b> — the browser hand your agents use for reading, clicking, typing, downloads, and screenshots.</figcaption>
     </figure>
   </div>
 </header>
 
-<!-- 2ND GEN BROWSER -->
-<section class="band" id="browser" style="padding-top:clamp(30px,4vw,54px)">
+<!-- 3 STEPS -->
+<section class="band" id="how">
   <div class="wz-wrap">
     <div class="section-head">
-      <span class="eyebrow">2nd gen · standalone browser</span>
-      <h2 class="h2">No extension setup. The browser is the <span class="serif">hand</span>.</h2>
-      <p class="lede">Chromium, webclaw, and MCP in one installer. macOS uses a dedicated profile and leaves your Chrome untouched; Windows can import your existing Chrome logins. Every MCP agent then drives this browser without limits.</p>
+      <span class="eyebrow">Install & use</span>
+      <h2 class="h2">Just <span class="serif">three steps</span></h2>
+      <p class="lede">Install, restart the agent you already use, then ask in one sentence.</p>
     </div>
+
     <div class="install-grid">
       <div class="i-card primary">
-        <div class="i-step">macOS · APPLE SILICON</div>
-        <div class="i-title"><span class="ico">🍎</span>DureClaw Browser.dmg</div>
-        <p class="i-desc">Chromium, webclaw, and MCP are bundled in the app. It starts with a <b>dedicated profile</b>, so your Chrome logins stay untouched — sign in once to the sites you need.</p>
-        <a class="btn btn-accent inline" href="https://github.com/DureClaw/homepage/releases/download/browser-v0.1.0/DureClaw-Browser-mac-arm64-0.5.8.dmg" download>Download for macOS <small class="dl-ver">.dmg</small></a>
-        <p class="note">Unsigned build: first launch via <b>right-click → Open</b>.</p>
+        <div class="i-step">1 · Install</div>
+        <div class="i-title"><span class="ico">⬇</span>Download and run</div>
+        <p class="i-desc">Open the dmg on macOS or run Setup.exe on Windows. Chromium, webclaw, and MCP are installed together.</p>
       </div>
       <div class="i-card primary">
-        <div class="i-step">WINDOWS · X64</div>
-        <div class="i-title"><span class="ico">🪟</span>DureClaw Browser Setup.exe</div>
-        <p class="i-desc">On first launch it offers to import your <b>existing Chrome profile</b> (cookies, logins, local storage). If Chrome 137+ App-Bound Encryption prevents the session from carrying over, sign in once in the new browser.</p>
-        <a class="btn btn-accent inline" href="https://github.com/DureClaw/homepage/releases/download/browser-v0.1.0/DureClaw-Browser-Setup.exe" download>Download for Windows <small class="dl-ver">.exe</small></a>
-        <p class="note">The installer can register MCP with every installed agent. This is an unsigned build: if SmartScreen appears, choose <b>More info → Run anyway</b>.</p>
+        <div class="i-step">2 · Restart your agent</div>
+        <div class="i-title"><span class="ico">↻</span>Quit and reopen</div>
+        <p class="i-desc">Fully quit and reopen Claude Code, Claude Desktop, Cursor, Codex, OpenCode, Gemini, VS Code, or Windsurf. The <code>dureclaw</code> MCP is registered automatically.</p>
       </div>
-      <div class="i-card">
-        <div class="i-step">PREFER YOUR OWN CHROME?</div>
-        <div class="i-title"><span class="ico">🧩</span>Server app + extension</div>
-        <p class="i-desc">The DureClaw Server app also bundles webclaw. Loading the extension directly into Chrome, Edge, or Whale is still fully supported.</p>
-        <a class="btn btn-ghost" href="/en/start/">Server app setup →</a>
+      <div class="i-card primary">
+        <div class="i-step">3 · Just ask</div>
+        <div class="i-title"><span class="ico">💬</span>One sentence</div>
+        <p class="i-desc"><code>Use webclaw to open Naver and take a screenshot.</code><br/>Reading, clicking, typing, and downloads are handled for you.</p>
       </div>
     </div>
-    <div class="wz-callout teal" style="margin-top:18px"><b>Verified</b> — macOS Apple Silicon: bus connection + MCP screenshot. Windows 11 LTSC VM: silent install, Chromium extension load, and Chrome profile import all pass.</div>
   </div>
 </section>
 
-<!-- WIZARD -->
-<section class="band" id="install">
+<!-- WHAT -->
+<section class="band" id="what">
   <div class="wz-wrap">
     <div class="section-head">
-      <span class="eyebrow">Setup wizard</span>
-      <h2 class="h2">Four steps. <span class="serif">That's it.</span></h2>
-      <p class="lede">From installing the server app to your first automation. Check <b>Done</b> as you go — progress is saved. Pick your OS and only the relevant steps stay visible.</p>
-      <div class="wz-callout teal"><b>Already installed DureClaw Browser?</b> The extension and MCP registration are automatic. Jump to <b>step 2 (connect agents)</b> below.</div>
+      <span class="eyebrow">What gets installed</span>
+      <h2 class="h2">Everything you need in <span class="serif">one browser</span></h2>
     </div>
 
-    <div class="wz-toolbar">
-      <div class="wz-os" role="group" aria-label="Operating system">
-        <button type="button" data-os="mac" aria-pressed="true"><img src="/assets/apple.svg" alt=""/>macOS</button>
-        <button type="button" data-os="win" aria-pressed="false"><img src="/assets/windows.svg" alt=""/>Windows</button>
-      </div>
-      <div class="wz-meter" aria-hidden="true"><i id="wz-bar"></i></div>
-      <span class="wz-count" id="wz-count">0 / 4 done</span>
+    <div class="wz-grid2">
+      <div class="wz-mini"><b>Chromium</b><span>Chrome for Testing based. No Chrome Web Store review required.</span></div>
+      <div class="wz-mini"><b>webclaw 0.11.5</b><span>The browser hand for reading, clicking, typing, downloads, and screenshots.</span></div>
+      <div class="wz-mini"><b>DureClaw MCP</b><span>Registered automatically with Claude Code, Cursor, Codex, and every MCP agent.</span></div>
+      <div class="wz-mini"><b>Dedicated profile</b><span>macOS stays separate from your Chrome; Windows can import your existing Chrome logins.</span></div>
     </div>
 
-    <!-- STEP 1 -->
-    <article class="wz-step" id="step1" data-step="1">
-      <div class="wz-num">1</div>
-      <div>
-        <div class="wz-head">
-          <h2>One installer, done <small>MCP and the webclaw extension are included</small></h2>
-          <label class="wz-check"><input type="checkbox" data-check="1"/> Done</label>
-        </div>
-        <div class="wz-body">
-          <p>Install the server app on the computer that will lead the team. It also installs the <b>MCP server and webclaw extension</b>, and on Windows registers <code>dureclaw</code> MCP with the agent tools it finds.</p>
-
-          <div class="wz-dl os-mac">
-            <a href="https://github.com/DureClaw/homepage/releases/download/v0.5.7/DureClaw-Server-mac-arm64-0.5.7.dmg" download>
-              <span>macOS server app <span class="sub">Apple Silicon · M1–M4 · .dmg</span></span><span class="go">↓</span>
-            </a>
-          </div>
-          <div class="wz-dl os-win">
-            <a href="https://github.com/DureClaw/homepage/releases/download/v0.5.7/DureClaw-Server-Setup-0.5.7.exe" download>
-              <span>Windows server app <span class="sub">Windows 10/11 · x64 · .exe</span></span><span class="go">↓</span>
-            </a>
-          </div>
-
-          <div class="os-mac">
-            <ol>
-              <li>Open the dmg and drag <b>DureClaw</b> into <b>Applications</b>.</li>
-              <li>On first launch, if macOS says “unidentified developer”, right-click → <b>Open</b>.</li>
-              <li>When the DureClaw icon appears in the menu bar, the server is running. Check <code>http://localhost:4000</code>.</li>
-            </ol>
-          </div>
-          <div class="os-win">
-            <ol>
-              <li>Run <b>DureClaw-Server-Setup.exe</b>. No administrator rights are required.</li>
-              <li>If SmartScreen appears, click <b>More info → Run anyway</b>.</li>
-              <li>When the tray icon appears, the server is running. Check <code>http://localhost:4000</code>.</li>
-            </ol>
-          </div>
-
-          <div class="wz-callout"><b>Already have a server?</b> — On worker PCs, install the node only. <a href="/en/start/">Windows node setup →</a></div>
-        </div>
-      </div>
-    </article>
-
-    <!-- STEP 2 -->
-    <article class="wz-step" id="step2" data-step="2">
-      <div class="wz-num">2</div>
-      <div>
-        <div class="wz-head">
-          <h2>Connect webclaw to Chrome <small>Use the browser you're already logged into</small></h2>
-          <label class="wz-check"><input type="checkbox" data-check="2"/> Done</label>
-        </div>
-        <div class="wz-body">
-          <p>The Windows installer prepares the extension folder and server settings (<code>config.local.json</code>) and opens Chrome's extensions page. On macOS, click <b>Connect browser hands (webclaw)…</b> in the menu once. Chrome, Edge, Whale, and other Chromium browsers work the same way.</p>
-
-          <div class="os-mac">
-            <ol>
-              <li>Click the <b>DureClaw</b> menu bar icon → <b>Connect browser hands (webclaw)…</b></li>
-              <li>In Chrome, open <code>chrome://extensions</code> and turn on <b>Developer mode</b>.</li>
-              <li>Click <b>Load unpacked</b> and choose the folder that opened: <code>~/Library/Application Support/DureClaw/webclaw-extension</code>.</li>
-              <li>Pin the webclaw icon in the toolbar and click it to open the <b>side panel</b>.</li>
-            </ol>
-          </div>
-          <div class="os-win">
-            <ol>
-              <li>The installer already prepared the folder and settings. If Chrome did not open, click the <b>DureClaw</b> tray icon → <b>Connect browser hands (webclaw)…</b></li>
-              <li>In Chrome, open <code>chrome://extensions</code> (Edge: <code>edge://extensions</code>) and turn on <b>Developer mode</b>.</li>
-              <li>Click <b>Load unpacked</b> and choose the folder that opened: <code>%LOCALAPPDATA%\DureClaw\webclaw-extension</code>.</li>
-              <li>Pin the webclaw icon in the toolbar and click it to open the <b>side panel</b>.</li>
-            </ol>
-          </div>
-
-          <div class="wz-callout teal"><b>Check</b> — In the control panel at <code>http://localhost:4000</code>, <code>webclaw@MyPC</code> should appear in the device list. The side panel should also say “connected”.</div>
-
-          <details class="wz-details">
-            <summary>Install the extension by itself (advanced)</summary>
-            <div class="wz-details-body">
-              <p class="note">Skip the app-prepared folder and fill in the config yourself. This also works when connecting to a server on another machine.</p>
-              <div class="wz-dl">
-                <a href="https://github.com/DureClaw/homepage/releases/latest/download/webclaw-extension.zip" download>
-                  <span>webclaw extension zip <span class="sub">Chrome MV3 · about 85 KB · v0.11.5</span></span><span class="go">↓</span>
-                </a>
-              </div>
-              <ol>
-                <li>Unzip and find the inner <code>webclaw-extension</code> folder.</li>
-                <li>Copy <code>config.local.json.example</code> to <code>config.local.json</code> and fill in the values below.</li>
-                <li><code>chrome://extensions</code> → Developer mode → <b>Load unpacked</b> → select the <code>webclaw-extension</code> folder.</li>
-              </ol>
-              <div class="wz-cmd"><code>{
-  "bus": "100.x.x.x:4000",
-  "secret": "server secret",
-  "workKey": "WK-...",
-  "name": "webclaw@my-browser",
-  "role": "executor",
-  "caps": ["browser", "fetch", "dom", "agent", "webclaw"]
-}</code><button class="copy-btn" data-copy='{
-  "bus": "100.x.x.x:4000",
-  "secret": "server secret",
-  "workKey": "WK-...",
-  "name": "webclaw@my-browser",
-  "role": "executor",
-  "caps": ["browser", "fetch", "dom", "agent", "webclaw"]
-}'>Copy</button></div>
-              <p class="note">Get the server address from <b>Copy node connection address</b> in the app, the secret from <code>server.secret</code>, and the Work Key from the control panel. Never share a file containing the secret.</p>
-            </div>
-          </details>
-        </div>
-      </div>
-    </article>
-
-    <!-- STEP 3 -->
-    <article class="wz-step" id="step3" data-step="3">
-      <div class="wz-num">3</div>
-      <div>
-        <div class="wz-head">
-          <h2>Restart your agent tool <small>MCP is already installed and registered</small></h2>
-          <label class="wz-check"><input type="checkbox" data-check="3"/> Done</label>
-        </div>
-        <div class="wz-body">
-          <p>The Windows installer registers the <b>dureclaw</b> MCP server with every agent tool it finds. Fully quit and restart the tool you already use, and the MCP tools load at session start.</p>
-
-          <div class="os-win">
-            <ol>
-              <li>Follow the installer's finish screen: <b>restart your agent tool</b>.</li>
-              <li>Run <code>claude mcp list</code> in a terminal and confirm <code>dureclaw</code> appears.</li>
-              <li>Fully quit and reopen Claude Desktop, Cursor, Codex, OpenCode, VS Code, or Windsurf.</li>
-            </ol>
-            <div class="wz-cmd"><code><span class="k">powershell</span> -NoProfile -ExecutionPolicy Bypass -File "$env:LOCALAPPDATA\Programs\DureClaw Server\bundle\mcp\setup-mcp.ps1" -NoPause</code><button class="copy-btn" data-copy='powershell -NoProfile -ExecutionPolicy Bypass -File "$env:LOCALAPPDATA\Programs\DureClaw Server\bundle\mcp\setup-mcp.ps1" -NoPause'>Copy</button></div>
-            <p class="note">If MCP was already registered automatically, you don't need to run this. Use it only to re-register.</p>
-            <div class="wz-callout teal"><b>Installed at</b> — <code>%LOCALAPPDATA%\DureClaw\mcp\dureclaw-mcp.exe</code> · registered as <code>dureclaw</code> · settings are filled in automatically.</div>
-          </div>
-
-          <div class="os-mac">
-            <ol>
-              <li>Menu bar <b>DureClaw</b> → <b>Copy Claude Code connection command</b>, then paste it into Terminal.</li>
-              <li>Or run the MCP setup script bundled in the app.</li>
-              <li>Run <code>claude mcp list</code> and confirm <code>dureclaw</code> appears.</li>
-            </ol>
-            <div class="wz-cmd"><code><span class="k">bash</span> "/Applications/DureClaw.app/Contents/Resources/bundle/mcp/setup-mcp.sh" --phoenix ws://localhost:4000</code><button class="copy-btn" data-copy='bash "/Applications/DureClaw.app/Contents/Resources/bundle/mcp/setup-mcp.sh" --phoenix ws://localhost:4000'>Copy</button></div>
-          </div>
-
-          <details class="wz-details">
-            <summary>Install MCP separately (advanced)</summary>
-            <div class="wz-details-body">
-              <p class="note">Only needed if you installed the server another way or want to update MCP by itself. A normal install does not need this.</p>
-              <div class="wz-dl">
-                <a href="https://github.com/DureClaw/homepage/releases/latest/download/DureClaw-MCP-mac-arm64.zip" download class="os-mac"><span>macOS MCP bundle <span class="sub">Apple Silicon · binary + setup wizard</span></span><span class="go">↓</span></a>
-                <a href="https://github.com/DureClaw/homepage/releases/latest/download/DureClaw-MCP-Windows.zip" download class="os-win"><span>Windows MCP bundle <span class="sub">x64 · binary + setup wizard</span></span><span class="go">↓</span></a>
-              </div>
-              <p class="note">macOS: <code>cd ~/Downloads/DureClaw-MCP-mac &amp;&amp; ./setup-mcp.sh</code> · Windows: double-click <code>setup-mcp.bat</code>.</p>
-            </div>
-          </details>
-
-          <div class="wz-callout"><b>The tool prefix is now unified</b> — tools are exposed as <code>mcp__dureclaw__*</code>. Older docs use <code>mcp__oah__*</code> for the same tools.</div>
-        </div>
-      </div>
-    </article>
-
-    <!-- STEP 4 -->
-    <article class="wz-step" id="step4" data-step="4">
-      <div class="wz-num">4</div>
-      <div>
-        <div class="wz-head">
-          <h2>One example prompt <small>open → screenshot → image in the chat</small></h2>
-          <label class="wz-check"><input type="checkbox" data-check="4"/> Done</label>
-        </div>
-        <div class="wz-body">
-          <p>Paste this sentence into your agent <b>as-is</b>. It calls <code>browser_screenshot</code>, opens Naver, captures the page, and shows the image directly in the conversation.</p>
-
-          <div class="wz-cmd"><code>Use webclaw to open https://www.naver.com and show me a screenshot.</code><button class="copy-btn" data-copy="Use webclaw to open https://www.naver.com and show me a screenshot.">Copy</button></div>
-
-          <div class="wz-grid2">
-            <div class="wz-mini"><b>“List the tabs I have open right now.”</b><span>Reads titles, URLs, and the active tab.</span></div>
-            <div class="wz-mini"><b>“On the site I'm logged into, table today's 10 newest posts.”</b><span>Reads inside that browser without exporting cookies.</span></div>
-            <div class="wz-mini"><b>“Fill this application and stop before submitting.”</b><span>Typing is automatic; a human approves the submit.</span></div>
-            <div class="wz-mini"><b>“Open five tabs and compare only the prices.”</b><span>Handles many tabs and sites in one task.</span></div>
-          </div>
-
-          <details class="wz-details">
-            <summary>Call the tools directly</summary>
-            <div class="wz-details-body">
-              <div class="wz-cmd"><code><span class="k">mcp__dureclaw__browser_screenshot</span>(url: <span style="color:#ffb59a">"https://www.naver.com"</span>)
-<span class="k">mcp__dureclaw__browser_run</span>(instructions: <span style="color:#ffb59a">"[OPEN] https://www.naver.com\n[OUTLINE] 20"</span>)</code><button class="copy-btn" data-copy='mcp__dureclaw__browser_screenshot(url: "https://www.naver.com")
-mcp__dureclaw__browser_run(instructions: "[OPEN] https://www.naver.com
-[OUTLINE] 20")'>Copy</button></div>
-              <p class="note">Omit <code>to</code> and the most recent connected webclaw node is selected automatically. <code>send_task</code> also accepts the <code>to: "webclaw"</code> alias.</p>
-            </div>
-          </details>
-
-          <div class="wz-callout teal"><b>Done checklist</b> — ① webclaw node in the control panel ② dureclaw in <code>claude mcp list</code> ③ the prompt above shows an image in the chat. All three means you're finished.</div>
-        </div>
-      </div>
-    </article>
-
-<!-- WHY UNLIMITED -->
-<section class="band tint" id="why">
-  <div class="wrap">
-    <div class="section-head">
-      <span class="eyebrow">Why unlimited</span>
-      <h2 class="h2">It runs inside the browser, <span class="serif">so there is no quota</span></h2>
-      <p class="lede">You are not renting a cloud browser. The Chrome already running on your machine is the execution environment.</p>
-    </div>
-    <div class="why-grid">
-      <div class="why-card">
-        <span class="n">01</span>
-        <h3>No limits on runs, tabs, or sites</h3>
-        <p>No quota or per-call billing for MCP tool calls, tabs, or visited sites. <b>More work does not mean a bigger bill.</b></p>
-      </div>
-      <div class="why-card">
-        <span class="n">02</span>
-        <h3>Every agent shares the same hands</h3>
-        <p>Claude Code, Claude Desktop, Cursor, Codex, OpenCode, Orca Mobile — <b>anything that speaks MCP</b> can send work to webclaw.</p>
-      </div>
-      <div class="why-card">
-        <span class="n">03</span>
-        <h3>Your login session, no CORS wall</h3>
-        <p>Accounts and cookies never leave the browser. Fetch, DOM, clicks, typing, and downloads run inside it, so <b>internal systems work too</b>.</p>
-      </div>
-      <div class="why-card">
-        <span class="n">04</span>
-        <h3>Many PCs, many Chromes, in parallel</h3>
-        <p>Each computer's webclaw joins the bus. One instruction can move <b>multiple PCs and tabs at once</b>.</p>
-      </div>
-    </div>
-    <div class="wz-claim">
-      <p><b>To be precise</b> — automation itself is unmetered. The free personal edition covers <b>up to two machines including the server</b>. Three or more parallel machines and organization use are enterprise. Machine count and browser automation volume are separate things. <a class="text-link" href="/en/pricing/">Compare plans →</a></p>
-    </div>
-  </div>
-</section>
-
-<!-- AGENTS -->
-<section class="band" id="agents">
-  <div class="wrap">
-    <div class="section-head">
-      <span class="eyebrow">Every agent + MCP</span>
-      <h2 class="h2">Keep the agent you <span class="serif">already use</span></h2>
-      <p class="lede">No new AI to learn. One MCP config and the agent you already talk to treats your browser as its hands.</p>
-    </div>
-    <div class="agent-chips">
-      <span>Claude Code</span><span>Claude Desktop</span><span>Cursor</span><span>Codex CLI</span><span>OpenCode</span><span>Orca Mobile</span><span>Any MCP client</span><span>Your own orchestrator</span>
-    </div>
-    <div class="wz-grid2" style="margin-top:18px">
-      <div class="wz-mini"><b>stdio (local)</b><span>Claude Code, Cursor, and Codex on this PC launch <code>dureclaw-mcp</code> directly. The setup wizard registers it.</span></div>
-      <div class="wz-mini"><b>SSE (remote)</b><span>For phones and other PCs, run <code>start-remote-mcp</code> to expose <code>:4001/sse</code>. Orca Mobile uses this path.</span></div>
-    </div>
-  </div>
-</section>
-
-<!-- SAFETY -->
-<section class="band tint" id="safety">
-  <div class="wrap">
-    <div class="section-head">
-      <span class="eyebrow">Guardrails</span>
-      <h2 class="h2">Automate fast. <span class="serif">Humans decide.</span></h2>
-    </div>
-    <div class="why-grid">
-      <div class="why-card"><h3>Approval mode</h3><p>Payments, deletions, and sends can require a button press before they execute.</p></div>
-      <div class="why-card"><h3>Blocked sites</h3><p>Block domains by policy, or use an allowlist for sensitive environments.</p></div>
-      <div class="why-card"><h3>Passwords stay out of logs</h3><p>Input masking and log cleanup keep secrets out of the conversation record.</p></div>
-      <div class="why-card"><h3>On your machine</h3><p>Browser sessions are never copied out. The server runs locally or on your private Tailscale/Headscale network.</p></div>
-    </div>
+    <div class="wz-callout teal" style="margin-top:18px"><b>A server is required</b> — the browser is the hand; <a href="/en/start/">DureClaw Server</a> is the bus. Run the server app on the same PC, then open the browser.</div>
   </div>
 </section>
 
 <!-- FAQ -->
 <section class="band" id="faq">
-  <div class="wrap">
+  <div class="wz-wrap">
     <div class="section-head">
-      <span class="eyebrow">FAQ</span>
-      <h2 class="h2">Before you <span class="serif">install</span></h2>
+      <span class="eyebrow">Short FAQ</span>
+      <h2 class="h2">Three things to <span class="serif">know</span></h2>
     </div>
+
     <div class="faq">
       <details>
-        <summary>Isn't webclaw on the Chrome Web Store?</summary>
-        <div class="a"><p>webclaw currently ships inside the server app and is loaded as an <b>unpacked extension</b>. That keeps you on the latest build without waiting for store review. It works in Chrome, Edge, Whale, and other Chromium browsers.</p></div>
+        <summary>How do logins work?</summary>
+        <p>macOS starts with a <b>dedicated profile</b>, separate from your Chrome. Sign in once to the sites you need. Windows can import your <b>existing Chrome profile</b>; if Chrome 137+ App-Bound Encryption prevents the session from carrying over, sign in once in the new browser.</p>
       </details>
       <details>
-        <summary>Do I need Bun or Node on Windows?</summary>
-        <div class="a"><p>No. The <b>server installer includes <code>dureclaw-mcp.exe</code></b>, so it installs and registers without Bun or Node. The separate MCP zip is an advanced path for updating MCP without the installer.</p></div>
+        <summary>Can I keep using my own Chrome?</summary>
+        <p>Yes. You can still load the webclaw extension bundled with the DureClaw Server app into Chrome, Edge, or Whale. <a href="/en/start/">Server app setup →</a></p>
       </details>
       <details>
-        <summary>Does an Intel Mac work?</summary>
-        <div class="a"><p>The server app dmg is for Apple Silicon (M1–M4). On Intel Macs, use the terminal install (<code>bash &lt;(curl -fsSL https://dureclaw.baryon.ai/install)</code>) and the one-line MCP install (<code>bash &lt;(curl -fsSL https://dureclaw.baryon.ai/mcp)</code>, requires Bun).</p></div>
+        <summary>Why does a signing warning appear?</summary>
+        <p>This build is unsigned. On macOS choose <b>right-click → Open</b>; on Windows choose <b>More info → Run anyway</b> in SmartScreen.</p>
       </details>
-      <details>
-        <summary>Can I use just the Claude Code plugin without MCP?</summary>
-        <div class="a"><p>Yes. The DureClaw Claude Code plugin handles local work and multi-machine orchestration. To connect <b>other agents</b> (Cursor, Codex, Orca Mobile, and so on) to the browser, use the MCP server the installer registers automatically.</p></div>
-      </details>
-      <details>
-        <summary>Can one instruction drive Chrome on several computers?</summary>
-        <div class="a"><p>Connect webclaw on each computer and you'll see nodes like <code>webclaw@PC-A</code> and <code>webclaw@PC-B</code>. Send tasks to each and they run <b>in parallel</b>. The free personal edition covers up to two machines including the server.</p></div>
-      </details>
-      <details>
-        <summary>How are secrets and tokens handled?</summary>
-        <div class="a"><p>The server-issued secret stays in the server app's data folder, and the MCP setup wizard reads it automatically. It is never printed to the screen. The generated <code>mcp.json</code> contains the secret, so don't share it.</p></div>
-      </details>
-    </div>
-  </div>
-</section>
-
-<!-- TROUBLESHOOTING -->
-<section class="band tint" id="troubleshooting">
-  <div class="wrap">
-    <div class="section-head">
-      <span class="eyebrow">Troubleshooting</span>
-      <h2 class="h2">The 11 real blockers from issue #26</h2>
-      <p class="lede">Each symptom was removed at the source so one install and one prompt are enough.</p>
-    </div>
-    <div class="table-wrap">
-      <table class="wz-table">
-        <thead><tr><th>#</th><th>Symptom</th><th>Cause</th><th>Fix in this release</th></tr></thead>
-        <tbody>
-          <tr><td>1</td><td>Agent says “no webclaw MCP tools”</td><td>MCP was not registered</td><td>Installer registers <code>dureclaw</code> with every installed tool</td></tr>
-          <tr><td>2</td><td><code>dureclaw-mcp.exe</code> missing</td><td>MCP was a separate zip</td><td>Server installer includes <code>bundle\mcp\</code></td></tr>
-          <tr><td>3</td><td>Agent refuses to edit its own config</td><td><code>claude mcp add</code> blocked</td><td>The installer registers it, not the agent</td></tr>
-          <tr><td>4</td><td>Tool names differ from docs</td><td><code>oah</code> and <code>dureclaw</code> mixed</td><td>One name: <code>dureclaw</code> · docs use <code>mcp__dureclaw__*</code></td></tr>
-          <tr><td>5</td><td>Registered but tools not visible</td><td>MCP loads at session start</td><td>Finish screen says restart the agent tool</td></tr>
-          <tr><td>6</td><td>Extension setup takes many steps</td><td>Not on the Web Store</td><td>Installer prepares folder/settings and opens Chrome extensions (developer mode → folder)</td></tr>
-          <tr><td>7</td><td><code>Service worker registration failed</code> / <code>relay.js</code> load error</td><td><code>relay.js</code> missing from the package</td><td>Stage script checks manifest/importScripts refs and fails the release if missing; <code>relay.js</code> included</td></tr>
-          <tr><td>8</td><td>Stuck at “waiting for bus”</td><td>Empty <code>config.local.json</code></td><td>Installer fills <code>bus·secret·workKey·name</code> automatically</td></tr>
-          <tr><td>9</td><td>Node name is unpredictable (<code>webclaw@PC-1ste</code>)</td><td><code>send_task.to</code> needs the exact name</td><td><code>to: "webclaw"</code> alias routes to the most recent webclaw node</td></tr>
-          <tr><td>10</td><td>Results are async</td><td><code>send_task</code> only dispatches</td><td><code>browser_run</code> waits for <code>task.result</code> and returns the full output</td></tr>
-          <tr><td>11</td><td>Screenshot never reaches the chat</td><td><code>[SHOT]</code> only saves a file</td><td><code>browser_screenshot</code> returns MCP <code>image</code> content</td></tr>
-        </tbody>
-      </table>
-    </div>
-    <p class="install-alt" style="margin-top:16px">Still stuck? Add the symptom and logs to <a href="https://github.com/DureClaw/dureclaw-core/issues/26" target="_blank" rel="noopener">issue #26</a>.</p>
-  </div>
-</section>
-
-<!-- FINAL CTA -->
-<section class="band">
-  <div class="wrap">
-    <div class="wz-final">
-      <div>
-        <h2>Browser automation is now <span class="serif">the default</span></h2>
-        <p>Install the server app, connect webclaw, and register MCP. Five minutes later, the agent you already use is driving your Chrome.</p>
-      </div>
-      <div class="wz-actions" style="margin:0">
-        <a class="btn os-mac inline" href="https://github.com/DureClaw/homepage/releases/download/v0.5.7/DureClaw-Server-mac-arm64-0.5.7.dmg" download>Download for Mac <small class="dl-ver">v0.5.7</small></a>
-        <a class="btn os-win inline" href="https://github.com/DureClaw/homepage/releases/download/v0.5.7/DureClaw-Server-Setup-0.5.7.exe" download>Download for Windows <small class="dl-ver">v0.5.7</small></a>
-        <a class="btn btn-ghost" href="/en/start/" style="color:#efe9dd;border-color:#4a463d">Full install guide</a>
-      </div>
     </div>
   </div>
 </section>
@@ -610,82 +271,6 @@ mcp__dureclaw__browser_run(instructions: "[OPEN] https://www.naver.com
 
 <script src="/assets/site.js"></script>
 <script src="/assets/i18n.js"></script>
-<script>
-(function () {
-  const root = document.documentElement;
-  const buttons = document.querySelectorAll('.wz-os button[data-os]');
-  const KEY_OS = 'dureclaw.webclaw.os';
-  const KEY_STEP = 'dureclaw.webclaw.step.';
 
-  function setOS(os, save) {
-    root.dataset.os = os;
-    buttons.forEach(b => b.setAttribute('aria-pressed', String(b.dataset.os === os)));
-    if (save) { try { localStorage.setItem(KEY_OS, os); } catch (e) {} }
-  }
-
-  let initial = '';
-  try { initial = localStorage.getItem(KEY_OS) || ''; } catch (e) {}
-  if (!initial) {
-    const ua = navigator.userAgent || '';
-    initial = /Windows|Win32|Win64/i.test(ua) ? 'win' : 'mac';
-  }
-  setOS(initial, false);
-  buttons.forEach(b => b.addEventListener('click', () => setOS(b.dataset.os, true)));
-
-  document.querySelectorAll('.copy-btn[data-copy]').forEach(btn => {
-    btn.addEventListener('click', () => {
-      const text = btn.getAttribute('data-copy');
-      const done = () => {
-        const old = btn.textContent;
-        btn.textContent = '✓ Copied';
-        btn.classList.add('copied');
-        setTimeout(() => { btn.textContent = old; btn.classList.remove('copied'); }, 1800);
-      };
-      if (navigator.clipboard && navigator.clipboard.writeText) {
-        navigator.clipboard.writeText(text).then(done).catch(() => fallback(text, done));
-      } else { fallback(text, done); }
-    });
-  });
-
-  function fallback(text, done) {
-    const ta = document.createElement('textarea');
-    ta.value = text; ta.style.position = 'fixed'; ta.style.opacity = '0';
-    document.body.appendChild(ta); ta.select();
-    try { document.execCommand('copy'); done(); } catch (e) {}
-    document.body.removeChild(ta);
-  }
-
-  const checks = Array.from(document.querySelectorAll('input[data-check]'));
-  const bar = document.getElementById('wz-bar');
-  const count = document.getElementById('wz-count');
-  function refresh() {
-    let done = 0;
-    checks.forEach(c => {
-      const step = c.closest('.wz-step');
-      if (c.checked) { done++; step.classList.add('is-done'); }
-      else { step.classList.remove('is-done'); }
-    });
-    bar.style.width = (done / checks.length * 100) + '%';
-    count.textContent = done + ' / ' + checks.length + ' done';
-  }
-  checks.forEach(c => {
-    const id = c.dataset.check;
-    try { c.checked = localStorage.getItem(KEY_STEP + id) === '1'; } catch (e) {}
-    c.addEventListener('change', () => {
-      try { localStorage.setItem(KEY_STEP + id, c.checked ? '1' : '0'); } catch (e) {}
-      refresh();
-    });
-  });
-  refresh();
-
-  document.querySelectorAll('.wz-step').forEach(s => {
-    s.addEventListener('click', e => {
-      if (e.target.closest('a, button, input, summary')) return;
-      document.querySelectorAll('.wz-step.is-active').forEach(x => x.classList.remove('is-active'));
-      s.classList.add('is-active');
-    });
-  });
-})();
-</script>
 </body>
 </html>

@@ -23,8 +23,8 @@
 </script>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>DureClaw Browser 2세대 — Chromium + webclaw + MCP 설치 (macOS·Windows) | DureClaw</title>
-<meta name="description" content="2세대 DureClaw Browser: Chromium · webclaw · MCP를 한 번에 설치. Chrome 확장을 따로 깔지 않아도 Claude Code·Claude Desktop·Cursor·Codex·OpenCode·Orca 모바일 등 MCP를 지원하는 모든 에이전트가 로그인된 브라우저를 횟수 제한 없이 자동화합니다. macOS 전용 프로필 · Windows Chrome 로그인 가져오기."/>
+<title>DureClaw Browser — 설치하면 끝. 모든 에이전트가 내 브라우저를 씁니다. | DureClaw</title>
+<meta name="description" content="DureClaw Browser: Chromium · webclaw · MCP를 한 번에 설치. 설치 후 쓰던 에이전트를 재시작하면 Claude Code·Cursor·Codex 등 모든 MCP 에이전트가 내 브라우저를 무제한으로 자동화합니다."/>
 
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
@@ -48,8 +48,8 @@
 <meta property="og:site_name" content="DureClaw"/>
 <meta property="og:locale" content="ko_KR"/>
 <meta property="og:url" content="https://dureclaw.baryon.ai/webclaw-web-automation/"/>
-<meta property="og:title" content="DureClaw Browser 2세대 — 모든 에이전트에게 브라우저 자동화를, 무제한으로"/>
-<meta property="og:description" content="Chromium · webclaw · MCP를 한 번에. Chrome 확장 없이 모든 MCP 에이전트가 로그인된 브라우저를 무제한으로 자동화합니다. macOS 전용 프로필 · Windows 로그인 가져오기."/>
+<meta property="og:title" content="DureClaw Browser — 설치하면 끝. 모든 에이전트가 내 브라우저를 씁니다."/>
+<meta property="og:description" content="Chromium · webclaw · MCP를 한 번에 설치. 쓰던 에이전트를 재시작하고 한 문장으로 시키면 끝. 실행 횟수 제한 없음."/>
 <meta property="og:image" content="https://dureclaw.baryon.ai/images/uc-webclaw-ui.jpg"/>
 <meta property="og:image:width" content="1200"/>
 <meta property="og:image:height" content="750"/>
@@ -68,15 +68,14 @@
 {
  "@context": "https://schema.org",
  "@type": "HowTo",
- "name": "DureClaw Browser 2세대 — Chromium + webclaw + MCP 설치 (macOS·Windows)",
- "description": "Chromium·webclaw·MCP를 한 설치본으로 묶은 DureClaw Browser로, 모든 MCP 에이전트가 로그인된 브라우저를 무제한으로 자동화하도록 설정합니다.",
- "totalTime": "PT5M",
- "tool": [{"@type":"HowToTool","name":"DureClaw Browser (Chromium)"},{"@type":"HowToTool","name":"DureClaw 서버 앱"},{"@type":"HowToTool","name":"DureClaw MCP"}],
+ "name": "DureClaw Browser — 설치하면 끝",
+ "description": "Chromium·webclaw·MCP를 한 번에 설치하고, 쓰던 에이전트를 재시작한 뒤 한 문장으로 브라우저 자동화를 시작합니다.",
+ "totalTime": "PT3M",
+ "tool": [{"@type":"HowToTool","name":"DureClaw Browser (Chromium)"},{"@type":"HowToTool","name":"DureClaw 서버 앱"},{"@type":"HowToTool","name":"MCP 에이전트"}],
  "step": [
-  {"@type":"HowToStep","name":"DureClaw Browser 설치","text":"Mac은 DureClaw Browser dmg, Windows는 DureClaw Browser Setup.exe를 설치합니다. Chromium·webclaw·MCP가 함께 설치됩니다."},
-  {"@type":"HowToStep","name":"webclaw 연결","text":"DureClaw Browser를 설치하면 확장과 config.local.json이 자동으로 준비됩니다. 기존 Chrome을 쓴다면 chrome://extensions에서 개발자 모드를 켜고 압축해제된 확장을 로드합니다."},
-  {"@type":"HowToStep","name":"에이전트 도구 새로 시작","text":"MCP는 설치 프로그램에 포함되어 설치된 모든 에이전트 도구에 dureclaw로 자동 등록됩니다. 쓰던 도구를 완전히 종료했다가 다시 시작합니다."},
-  {"@type":"HowToStep","name":"예시 프롬프트","text":"‘webclaw로 https://www.naver.com 을 열고 스크린샷을 찍어서 보여줘’ 한 문장으로 browser_screenshot이 이미지를 대화에 반환합니다."}
+  {"@type":"HowToStep","name":"DureClaw Browser 설치","text":"macOS는 dmg, Windows는 Setup.exe를 실행합니다. Chromium·webclaw·MCP가 함께 설치됩니다."},
+  {"@type":"HowToStep","name":"에이전트 재시작","text":"쓰던 Claude Code·Cursor·Codex 등의 도구를 완전히 종료했다가 다시 시작하면 dureclaw MCP가 자동으로 잡힙니다."},
+  {"@type":"HowToStep","name":"한 문장으로 시키기","text":"‘webclaw로 https://www.naver.com 열고 스크린샷 보여줘’라고 하면 페이지를 열고 이미지를 반환합니다."}
  ]
 }
 </script>
@@ -86,7 +85,7 @@
  "@type": "BreadcrumbList",
  "itemListElement": [
   {"@type":"ListItem","position":1,"name":"DureClaw","item":"https://dureclaw.baryon.ai/"},
-  {"@type":"ListItem","position":2,"name":"webclaw + MCP 설치","item":"https://dureclaw.baryon.ai/webclaw-web-automation/"}
+  {"@type":"ListItem","position":2,"name":"DureClaw Browser 설치","item":"https://dureclaw.baryon.ai/webclaw-web-automation/"}
  ]
 }
 </script>
@@ -127,437 +126,99 @@
 <header class="wz-hero">
   <div class="wrap wz-hero-grid">
     <div>
-      <span class="wz-badge"><b>2세대</b> DureClaw Browser · webclaw 0.11.5 · MCP</span>
-      <h1>모든 에이전트에게<br/><em>브라우저 자동화</em>를.<br/>무제한으로.</h1>
-      <p class="wz-sub"><strong>Chromium · webclaw · MCP를 한 번에 설치</strong>하는 DureClaw Browser. Chrome에 확장을 따로 깔지 않아도 <strong>MCP를 지원하는 모든 에이전트</strong>가 페이지를 읽고, 클릭하고, 입력하고, 내려받습니다. 실행 횟수·탭 수·사이트 수 제한은 없습니다.</p>
-
-      <div class="wz-os" role="group" aria-label="운영체제 선택">
-        <button type="button" data-os="mac" aria-pressed="true"><img src="/assets/apple.svg" alt=""/>macOS</button>
-        <button type="button" data-os="win" aria-pressed="false"><img src="/assets/windows.svg" alt=""/>Windows</button>
-      </div>
+      <span class="wz-badge"><b>2세대</b> 설치형 브라우저 · webclaw 0.11.5</span>
+      <h1>설치하면 끝.<br/><em>모든 에이전트</em>가<br/>내 브라우저를 씁니다.</h1>
+      <p class="wz-sub">Chromium · webclaw · MCP를 한 번에 설치합니다. Chrome 확장을 따로 깔 필요 없이, 쓰던 에이전트가 페이지를 읽고 클릭하고 입력합니다.</p>
 
       <div class="wz-actions">
-        <a class="btn btn-accent inline" href="https://github.com/DureClaw/homepage/releases/download/browser-v0.1.0/DureClaw-Browser-mac-arm64-0.5.8.dmg" download>DureClaw Browser <small class="dl-ver">macOS .dmg</small></a>
-        <a class="btn btn-accent inline" href="https://github.com/DureClaw/homepage/releases/download/browser-v0.1.0/DureClaw-Browser-Setup.exe" download>DureClaw Browser <small class="dl-ver">Windows .exe</small></a>
-        <a class="btn btn-ghost" href="#step2">에이전트 연결</a>
+        <a class="btn btn-accent inline" href="https://github.com/DureClaw/homepage/releases/download/browser-v0.1.0/DureClaw-Browser-mac-arm64-0.5.8.dmg" download>macOS용 다운로드 <small class="dl-ver">.dmg</small></a>
+        <a class="btn btn-accent inline" href="https://github.com/DureClaw/homepage/releases/download/browser-v0.1.0/DureClaw-Browser-Setup.exe" download>Windows용 다운로드 <small class="dl-ver">.exe</small></a>
       </div>
-      <p class="note" style="margin-top:10px">서버(버스)는 <a href="/start/">DureClaw Server 앱</a>이 필요합니다. 이미 서버가 있다면 브라우저만 설치하세요.</p>
+      <p class="note">서명 전 빌드입니다. macOS는 <b>우클릭 → 열기</b>, Windows는 <b>추가 정보 → 실행</b>.</p>
 
       <div class="wz-proof">
-        <span>Chrome 확장 별도 설치 없음</span>
-        <span>MCP 모든 에이전트 자동 등록</span>
-        <span>macOS 전용 프로필 · Windows 로그인 가져오기</span>
+        <span>Chrome 확장 설치 불필요</span>
+        <span>MCP 자동 등록</span>
         <span>실행 횟수 제한 없음</span>
-      </div>
-
-      <div class="wz-one-liner">
-        <span class="wz-one-kicker">MCP 설치 1줄</span>
-        <div class="wz-cmd"><code>DureClaw MCP를 설치해서 dureclaw로 등록해줘. Windows는 "%LOCALAPPDATA%\Programs\DureClaw Server\bundle\mcp\setup-mcp.bat", macOS는 "/Applications/DureClaw.app/Contents/Resources/bundle/mcp/setup-mcp.sh --phoenix ws://localhost:4000" 를 실행하고 dureclaw 등록을 확인해줘.</code><button class="copy-btn" data-copy='DureClaw MCP를 설치해서 dureclaw로 등록해줘. Windows는 "%LOCALAPPDATA%\Programs\DureClaw Server\bundle\mcp\setup-mcp.bat", macOS는 "/Applications/DureClaw.app/Contents/Resources/bundle/mcp/setup-mcp.sh --phoenix ws://localhost:4000" 를 실행하고 dureclaw 등록을 확인해줘.'>복사</button></div>
-        <p class="note">이미 서버 앱을 설치했다면 이 한 줄을 에이전트에게 붙여 넣으세요. 터미널에서 직접 실행하려면 <a href="#step3">3단계</a>를 보세요.</p>
       </div>
     </div>
 
     <figure class="wz-shot">
-      <img src="/images/uc-webclaw-ui.webp" width="1200" height="750" alt="Chrome 사이드 패널에서 webclaw가 페이지 요소를 탐색·추출·자동화하는 화면" loading="eager"/>
-      <figcaption><b>webclaw</b> — Chrome 사이드 패널에서 지금 탭에 대해 대화하고, 페이지 읽기·클릭·입력·다운로드를 맡깁니다.</figcaption>
+      <img src="/images/uc-webclaw-ui.webp" width="1200" height="750" alt="webclaw가 브라우저에서 페이지를 읽고 클릭·입력·다운로드하는 화면" loading="eager"/>
+      <figcaption><b>webclaw</b> — 에이전트가 쓰는 브라우저 손. 읽기·클릭·입력·다운로드·스크린샷을 맡습니다.</figcaption>
     </figure>
   </div>
 </header>
 
-<!-- 2ND GEN BROWSER -->
-<section class="band" id="browser" style="padding-top:clamp(30px,4vw,54px)">
+<!-- 3 STEPS -->
+<section class="band" id="how">
   <div class="wz-wrap">
     <div class="section-head">
-      <span class="eyebrow">2세대 · 설치형 브라우저</span>
-      <h2 class="h2">Chrome 확장 없이, 브라우저가 곧 <span class="serif">손</span></h2>
-      <p class="lede">Chromium · webclaw · MCP를 설치 프로그램 하나로. macOS는 기존 Chrome을 건드리지 않는 전용 프로필을 쓰고, Windows는 쓰던 Chrome 로그인을 가져옵니다. 설치 후에는 모든 MCP 에이전트가 이 브라우저를 무제한으로 자동화합니다.</p>
+      <span class="eyebrow">설치와 사용</span>
+      <h2 class="h2">딱 <span class="serif">세 단계</span>면 됩니다</h2>
+      <p class="lede">설치하고, 쓰던 에이전트를 한 번 껐다 켜고, 한 문장으로 시키면 끝입니다.</p>
     </div>
+
     <div class="install-grid">
       <div class="i-card primary">
-        <div class="i-step">macOS · APPLE SILICON</div>
-        <div class="i-title"><span class="ico">🍎</span>DureClaw Browser.dmg</div>
-        <p class="i-desc">Chromium · webclaw · MCP가 앱 번들에 들어 있습니다. <b>전용 프로필</b>로 시작해 기존 Chrome 로그인은 그대로 두고, 처음 한 번만 쓰는 사이트에 로그인하면 됩니다.</p>
-        <a class="btn btn-accent inline" href="https://github.com/DureClaw/homepage/releases/download/browser-v0.1.0/DureClaw-Browser-mac-arm64-0.5.8.dmg" download>macOS용 다운로드 <small class="dl-ver">.dmg</small></a>
-        <p class="note">서명 전 앱이라 첫 실행은 <b>우클릭 → 열기</b>.</p>
+        <div class="i-step">1 · 설치</div>
+        <div class="i-title"><span class="ico">⬇</span>다운로드 후 실행</div>
+        <p class="i-desc">macOS는 dmg를 열어 Applications로 옮기고, Windows는 Setup.exe를 실행하세요. Chromium · webclaw · MCP가 함께 설치됩니다.</p>
       </div>
       <div class="i-card primary">
-        <div class="i-step">WINDOWS · X64</div>
-        <div class="i-title"><span class="ico">🪟</span>DureClaw Browser Setup.exe</div>
-        <p class="i-desc">첫 실행 때 <b>기존 Chrome 프로필</b>(쿠키·로그인·Local Storage)을 가져올지 물어봅니다. Chrome 137+ App-Bound Encryption으로 로그인이 유지되지 않으면 한 번만 다시 로그인하세요.</p>
-        <a class="btn btn-accent inline" href="https://github.com/DureClaw/homepage/releases/download/browser-v0.1.0/DureClaw-Browser-Setup.exe" download>Windows용 다운로드 <small class="dl-ver">.exe</small></a>
-        <p class="note">설치 마법사에서 MCP를 모든 에이전트에 자동 등록합니다. 서명 전 빌드라 SmartScreen 경고가 뜨면 <b>추가 정보 → 실행</b>.</p>
+        <div class="i-step">2 · 에이전트 재시작</div>
+        <div class="i-title"><span class="ico">↻</span>쓰던 도구를 껐다 켜기</div>
+        <p class="i-desc">Claude Code · Claude Desktop · Cursor · Codex · OpenCode · Gemini · VS Code · Windsurf를 완전히 종료했다가 다시 시작하면 <code>dureclaw</code> MCP가 자동으로 잡힙니다.</p>
       </div>
-      <div class="i-card">
-        <div class="i-step">이미 Chrome을 쓴다면</div>
-        <div class="i-title"><span class="ico">🧩</span>서버 앱 + 확장</div>
-        <p class="i-desc">DureClaw Server 앱에도 webclaw가 포함되어 있습니다. Chrome·Edge·Whale에 확장을 직접 로드하는 기존 방식도 그대로 지원합니다.</p>
-        <a class="btn btn-ghost" href="/start/">서버 앱 설치 가이드 →</a>
+      <div class="i-card primary">
+        <div class="i-step">3 · 그냥 시키기</div>
+        <div class="i-title"><span class="ico">💬</span>한 문장으로</div>
+        <p class="i-desc"><code>webclaw로 네이버 열고 스크린샷 보여줘</code><br/>읽기·클릭·입력·다운로드까지 에이전트가 알아서 합니다.</p>
       </div>
     </div>
-    <div class="wz-callout teal" style="margin-top:18px"><b>2세대 검증 완료</b> — macOS Apple Silicon에서 버스 접속 + MCP 스크린샷, Windows 11 LTSC 실기 VM에서 무인 설치 · Chromium 확장 로드 · Chrome 프로필 가져오기까지 통과했습니다.</div>
   </div>
 </section>
 
-<!-- WIZARD -->
-<section class="band" id="install">
+<!-- WHAT -->
+<section class="band" id="what">
   <div class="wz-wrap">
     <div class="section-head">
-      <span class="eyebrow">설치 마법사</span>
-      <h2 class="h2">4단계면 <span class="serif">끝</span>납니다</h2>
-      <p class="lede">서버 앱 설치부터 첫 자동화까지. 각 단계의 <b>완료</b>를 체크하면 진행률이 저장됩니다. 운영체제를 고르면 해당 단계만 보입니다.</p>
-      <div class="wz-callout teal"><b>DureClaw Browser를 설치했다면</b> — 확장 로드와 MCP 등록이 자동입니다. 아래 <b>2단계(에이전트 연결)</b>부터 보세요.</div>
+      <span class="eyebrow">무엇이 설치되나요?</span>
+      <h2 class="h2">브라우저 하나에 <span class="serif">필요한 것 전부</span></h2>
     </div>
 
-    <div class="wz-toolbar">
-      <div class="wz-os" role="group" aria-label="운영체제 선택">
-        <button type="button" data-os="mac" aria-pressed="true"><img src="/assets/apple.svg" alt=""/>macOS</button>
-        <button type="button" data-os="win" aria-pressed="false"><img src="/assets/windows.svg" alt=""/>Windows</button>
-      </div>
-      <div class="wz-meter" aria-hidden="true"><i id="wz-bar"></i></div>
-      <span class="wz-count" id="wz-count">0 / 4 완료</span>
+    <div class="wz-grid2">
+      <div class="wz-mini"><b>Chromium</b><span>Chrome for Testing 기반. Chrome 웹스토어 심사 없이 바로 사용합니다.</span></div>
+      <div class="wz-mini"><b>webclaw 0.11.5</b><span>페이지 읽기·클릭·입력·다운로드·스크린샷을 담당하는 브라우저 손.</span></div>
+      <div class="wz-mini"><b>DureClaw MCP</b><span>Claude Code·Cursor·Codex 등 모든 MCP 에이전트에 자동 등록됩니다.</span></div>
+      <div class="wz-mini"><b>전용 프로필</b><span>macOS는 기존 Chrome과 분리하고, Windows는 쓰던 Chrome 로그인을 가져옵니다.</span></div>
     </div>
 
-    <!-- STEP 1 -->
-    <article class="wz-step" id="step1" data-step="1">
-      <div class="wz-num">1</div>
-      <div>
-        <div class="wz-head">
-          <h2>설치 프로그램 하나로 끝 <small>MCP·webclaw 확장이 함께 설치됩니다</small></h2>
-          <label class="wz-check"><input type="checkbox" data-check="1"/> 완료</label>
-        </div>
-        <div class="wz-body">
-          <p>팀을 지휘할 컴퓨터 한 대에 서버 앱을 설치하세요. <b>MCP 서버와 webclaw 확장이 함께 설치</b>되고, Windows에서는 설치 마지막에 쓰고 있는 에이전트 도구에 <code>dureclaw</code> MCP가 자동 등록됩니다.</p>
-
-          <div class="wz-dl os-mac">
-            <a href="https://github.com/DureClaw/homepage/releases/download/v0.5.7/DureClaw-Server-mac-arm64-0.5.7.dmg" download>
-              <span>macOS 서버 앱 <span class="sub">Apple Silicon · M1~M4 · .dmg</span></span><span class="go">↓</span>
-            </a>
-          </div>
-          <div class="wz-dl os-win">
-            <a href="https://github.com/DureClaw/homepage/releases/download/v0.5.7/DureClaw-Server-Setup-0.5.7.exe" download>
-              <span>Windows 서버 앱 <span class="sub">Windows 10/11 · x64 · .exe</span></span><span class="go">↓</span>
-            </a>
-          </div>
-
-          <div class="os-mac">
-            <ol>
-              <li>dmg를 열고 <b>DureClaw</b>를 <b>응용 프로그램</b> 폴더로 끌어 놓습니다.</li>
-              <li>처음 실행할 때 “확인되지 않은 개발자” 경고가 뜨면 <b>우클릭 → 열기</b>를 누릅니다.</li>
-              <li>메뉴 막대에 DureClaw 아이콘이 생기면 서버가 켜진 것입니다. <code>http://localhost:4000</code> 제어판에서 연결 상태를 확인하세요.</li>
-            </ol>
-          </div>
-          <div class="os-win">
-            <ol>
-              <li><b>DureClaw-Server-Setup.exe</b>를 실행합니다. 관리자 권한은 필요 없습니다.</li>
-              <li>SmartScreen 경고가 뜨면 <b>추가 정보 → 실행</b>을 누릅니다.</li>
-              <li>작업 표시줄 트레이에 아이콘이 생기면 서버가 켜진 것입니다. <code>http://localhost:4000</code> 제어판에서 연결 상태를 확인하세요.</li>
-            </ol>
-          </div>
-
-          <div class="wz-callout"><b>이미 서버가 있다면</b> — 작업용 PC에는 노드만 설치하면 됩니다. <a href="/start/">Windows 노드 설치 안내 →</a></div>
-        </div>
-      </div>
-    </article>
-
-    <!-- STEP 2 -->
-    <article class="wz-step" id="step2" data-step="2">
-      <div class="wz-num">2</div>
-      <div>
-        <div class="wz-head">
-          <h2>Chrome에 webclaw 연결 <small>이미 로그인된 브라우저를 그대로 씁니다</small></h2>
-          <label class="wz-check"><input type="checkbox" data-check="2"/> 완료</label>
-        </div>
-        <div class="wz-body">
-          <p>Windows 설치 프로그램이 확장 폴더와 서버 설정(<code>config.local.json</code>)을 자동으로 준비하고 Chrome 확장 페이지를 열어 줍니다. Mac은 서버 앱 메뉴에서 <b>브라우저 손(webclaw) 연결…</b>을 한 번 누르면 됩니다. Chrome·Edge·Whale 등 Chromium 브라우저에서 똑같이 됩니다.</p>
-
-          <div class="os-mac">
-            <ol>
-              <li>메뉴 막대의 <b>DureClaw</b> 아이콘 → <b>브라우저 손(webclaw) 연결…</b>을 누릅니다.</li>
-              <li>열린 Chrome에서 <code>chrome://extensions</code> 로 이동해 <b>개발자 모드</b>를 켭니다.</li>
-              <li><b>압축해제된 확장 프로그램을 로드합니다</b> → 열린 폴더 <code>~/Library/Application Support/DureClaw/webclaw-extension</code> 를 선택합니다.</li>
-              <li>툴바의 webclaw 아이콘을 고정하고, 아이콘을 눌러 <b>사이드 패널</b>을 엽니다.</li>
-            </ol>
-          </div>
-          <div class="os-win">
-            <ol>
-              <li>설치 마법사가 이미 확장 폴더와 설정을 준비했습니다. 열린 Chrome이 없다면 트레이의 <b>DureClaw</b> → <b>브라우저 손(webclaw) 연결…</b>을 누릅니다.</li>
-              <li>열린 Chrome에서 <code>chrome://extensions</code> (Edge는 <code>edge://extensions</code>)로 이동해 <b>개발자 모드</b>를 켭니다.</li>
-              <li><b>압축해제된 확장 프로그램을 로드합니다</b> → 열린 폴더 <code>%LOCALAPPDATA%\DureClaw\webclaw-extension</code> 를 선택합니다.</li>
-              <li>툴바의 webclaw 아이콘을 고정하고, 아이콘을 눌러 <b>사이드 패널</b>을 엽니다.</li>
-            </ol>
-          </div>
-
-          <div class="wz-callout teal"><b>확인</b> — 서버 제어판 <code>http://localhost:4000</code>의 기기 목록에 <code>webclaw@내PC</code>가 보이면 연결된 것입니다. 사이드 패널에서 “연결됨” 상태도 확인할 수 있습니다.</div>
-
-          <details class="wz-details">
-            <summary>앱 메뉴 없이 확장만 따로 설치하려면 (고급)</summary>
-            <div class="wz-details-body">
-              <p class="note">서버 앱이 준비한 폴더를 쓰는 대신, 확장 zip을 직접 받아 설정 파일을 채우는 방법입니다. 다른 PC의 서버에 붙일 때도 쓸 수 있습니다.</p>
-              <div class="wz-dl">
-                <a href="https://github.com/DureClaw/homepage/releases/latest/download/webclaw-extension.zip" download>
-                  <span>webclaw 확장 zip <span class="sub">Chrome MV3 · 약 85KB · v0.11.5</span></span><span class="go">↓</span>
-                </a>
-              </div>
-              <ol>
-                <li>zip을 풀고 안쪽의 <code>webclaw-extension</code> 폴더를 확인합니다.</li>
-                <li><code>config.local.json.example</code>을 <code>config.local.json</code>으로 복사한 뒤 아래 값을 채웁니다.</li>
-                <li><code>chrome://extensions</code> → 개발자 모드 → <b>압축해제된 확장 프로그램을 로드</b> → <code>webclaw-extension</code> 폴더 선택.</li>
-              </ol>
-              <div class="wz-cmd"><code>{
-  "bus": "100.x.x.x:4000",
-  "secret": "서버 비밀값",
-  "workKey": "WK-...",
-  "name": "webclaw@my-browser",
-  "role": "executor",
-  "caps": ["browser", "fetch", "dom", "agent", "webclaw"]
-}</code><button class="copy-btn" data-copy='{
-  "bus": "100.x.x.x:4000",
-  "secret": "서버 비밀값",
-  "workKey": "WK-...",
-  "name": "webclaw@my-browser",
-  "role": "executor",
-  "caps": ["browser", "fetch", "dom", "agent", "webclaw"]
-}'>복사</button></div>
-              <p class="note">서버 주소는 서버 앱의 <b>노드 연결 주소 복사</b>, 비밀값은 <code>server.secret</code>, Work Key는 제어판에서 확인합니다. 비밀값이 들어 있는 파일은 공유하지 마세요.</p>
-            </div>
-          </details>
-        </div>
-      </div>
-    </article>
-
-    <!-- STEP 3 -->
-    <article class="wz-step" id="step3" data-step="3">
-      <div class="wz-num">3</div>
-      <div>
-        <div class="wz-head">
-          <h2>에이전트 도구 새로 시작 <small>MCP는 이미 설치·등록되어 있습니다</small></h2>
-          <label class="wz-check"><input type="checkbox" data-check="3"/> 완료</label>
-        </div>
-        <div class="wz-body">
-          <p>Windows 설치 프로그램이 <b>dureclaw</b> MCP를 설치된 에이전트 도구에 자동 등록합니다. 설치 완료 화면의 안내대로 <b>쓰던 도구를 완전히 종료했다가 다시 시작</b>하면 MCP 도구가 로드됩니다.</p>
-
-          <div class="os-win">
-            <ol>
-              <li>설치 완료 화면에서 <b>“에이전트 도구를 새로 시작하세요”</b> 안내를 확인합니다.</li>
-              <li>터미널에서 <code>claude mcp list</code>를 실행해 <code>dureclaw</code>가 보이는지 확인합니다.</li>
-              <li>Claude Desktop·Cursor·Codex·OpenCode·VS Code·Windsurf는 앱을 완전히 종료한 뒤 다시 실행합니다.</li>
-            </ol>
-            <div class="wz-cmd"><code><span class="k">powershell</span> -NoProfile -ExecutionPolicy Bypass -File "$env:LOCALAPPDATA\Programs\DureClaw Server\bundle\mcp\setup-mcp.ps1" -NoPause</code><button class="copy-btn" data-copy='powershell -NoProfile -ExecutionPolicy Bypass -File "$env:LOCALAPPDATA\Programs\DureClaw Server\bundle\mcp\setup-mcp.ps1" -NoPause'>복사</button></div>
-            <p class="note">이미 자동 등록되었다면 실행하지 않아도 됩니다. 재등록이 필요할 때만 실행하세요.</p>
-            <div class="wz-callout teal"><b>설치 위치</b> — <code>%LOCALAPPDATA%\DureClaw\mcp\dureclaw-mcp.exe</code> · 등록 이름 <code>dureclaw</code> · 설정은 설치 프로그램이 자동으로 채웁니다.</div>
-          </div>
-
-          <div class="os-mac">
-            <ol>
-              <li>메뉴 막대의 <b>DureClaw</b> → <b>Claude Code 연결 명령 복사</b>를 누르고 터미널에 붙여 넣습니다.</li>
-              <li>또는 앱에 포함된 MCP 설치 스크립트를 실행합니다.</li>
-              <li><code>claude mcp list</code>로 <code>dureclaw</code>가 보이는지 확인합니다.</li>
-            </ol>
-            <div class="wz-cmd"><code><span class="k">bash</span> "/Applications/DureClaw.app/Contents/Resources/bundle/mcp/setup-mcp.sh" --phoenix ws://localhost:4000</code><button class="copy-btn" data-copy='bash "/Applications/DureClaw.app/Contents/Resources/bundle/mcp/setup-mcp.sh" --phoenix ws://localhost:4000'>복사</button></div>
-          </div>
-
-          <details class="wz-details">
-            <summary>설치 프로그램 없이 MCP만 따로 설치하려면 (고급)</summary>
-            <div class="wz-details-body">
-              <p class="note">서버 앱을 다른 방식으로 설치했거나, MCP만 업데이트하려는 경우에만 사용하세요. 일반 설치에는 필요 없습니다.</p>
-              <div class="wz-dl">
-                <a href="https://github.com/DureClaw/homepage/releases/latest/download/DureClaw-MCP-mac-arm64.zip" download class="os-mac"><span>macOS MCP 번들 <span class="sub">Apple Silicon · 실행 파일 + 설치 마법사</span></span><span class="go">↓</span></a>
-                <a href="https://github.com/DureClaw/homepage/releases/latest/download/DureClaw-MCP-Windows.zip" download class="os-win"><span>Windows MCP 번들 <span class="sub">x64 · 실행 파일 + 설치 마법사</span></span><span class="go">↓</span></a>
-              </div>
-              <p class="note">Mac: <code>cd ~/Downloads/DureClaw-MCP-mac &amp;&amp; ./setup-mcp.sh</code> · Windows: <code>setup-mcp.bat</code> 더블클릭. 설치 프로그램이 이미 등록했다면 실행할 필요가 없습니다.</p>
-            </div>
-          </details>
-
-          <div class="wz-callout"><b>도구 이름이 통일되었습니다</b> — 이제 <code>mcp__dureclaw__*</code>입니다. 예전 문서의 <code>mcp__oah__*</code>는 같은 도구를 가리킵니다.</div>
-        </div>
-      </div>
-    </article>
-
-    <!-- STEP 4 -->
-    <article class="wz-step" id="step4" data-step="4">
-      <div class="wz-num">4</div>
-      <div>
-        <div class="wz-head">
-          <h2>예시 프롬프트 하나로 끝 <small>열기 → 스크린샷 → 대화에 이미지 표시</small></h2>
-          <label class="wz-check"><input type="checkbox" data-check="4"/> 완료</label>
-        </div>
-        <div class="wz-body">
-          <p>에이전트에게 아래 문장을 <b>그대로</b> 붙여 넣으세요. 에이전트가 <code>browser_screenshot</code>으로 네이버를 열고 스크린샷을 찍어, 결과 이미지를 대화 안에 바로 보여줍니다.</p>
-
-          <div class="wz-cmd"><code>webclaw로 https://www.naver.com 을 열고 스크린샷을 찍어서 보여줘</code><button class="copy-btn" data-copy="webclaw로 https://www.naver.com 을 열고 스크린샷을 찍어서 보여줘">복사</button></div>
-
-          <div class="wz-grid2">
-            <div class="wz-mini"><b>“지금 열려 있는 탭 목록을 알려줘”</b><span>탭 제목·URL·활성 상태를 읽습니다.</span></div>
-            <div class="wz-mini"><b>“로그인된 사이트에서 오늘 새 글 10개만 표로 정리해줘”</b><span>세션 쿠키를 넘기지 않고, 그 브라우저 안에서 읽습니다.</span></div>
-            <div class="wz-mini"><b>“이 신청서를 채우고 제출 직전에 멈춰줘”</b><span>입력은 자동, 제출은 사람이 승인합니다.</span></div>
-            <div class="wz-mini"><b>“탭 5개를 열어 각 페이지 가격만 뽑아 비교해줘”</b><span>여러 탭·여러 사이트를 한 번에 처리합니다.</span></div>
-          </div>
-
-          <details class="wz-details">
-            <summary>도구를 직접 호출하는 방법</summary>
-            <div class="wz-details-body">
-              <div class="wz-cmd"><code><span class="k">mcp__dureclaw__browser_screenshot</span>(url: <span style="color:#ffb59a">"https://www.naver.com"</span>)
-<span class="k">mcp__dureclaw__browser_run</span>(instructions: <span style="color:#ffb59a">"[OPEN] https://www.naver.com\n[OUTLINE] 20"</span>)</code><button class="copy-btn" data-copy='mcp__dureclaw__browser_screenshot(url: "https://www.naver.com")
-mcp__dureclaw__browser_run(instructions: "[OPEN] https://www.naver.com
-[OUTLINE] 20")'>복사</button></div>
-              <p class="note">to를 생략하면 연결된 webclaw 노드 중 가장 최근 노드로 자동 라우팅됩니다. <code>send_task</code>도 <code>to: "webclaw"</code> 별칭을 지원합니다.</p>
-            </div>
-          </details>
-
-          <div class="wz-callout teal"><b>설치 완료 체크리스트</b> — ① 제어판에 webclaw 노드 ② <code>claude mcp list</code>에 dureclaw ③ 위 프롬프트 한 번 → 스크린샷이 대화에 표시. 세 가지가 모두 되면 끝입니다.</div>
-        </div>
-      </div>
-    </article>
-
-<!-- WHY UNLIMITED -->
-<section class="band tint" id="why">
-  <div class="wrap">
-    <div class="section-head">
-      <span class="eyebrow">왜 무제한인가</span>
-      <h2 class="h2">브라우저 안에서 실행하니까, <span class="serif">한도가 없습니다</span></h2>
-      <p class="lede">클라우드 브라우저를 빌려 쓰는 방식이 아닙니다. 이미 켜져 있는 내 Chrome이 곧 실행 환경입니다.</p>
-    </div>
-    <div class="why-grid">
-      <div class="why-card">
-        <span class="n">01</span>
-        <h3>실행 횟수·탭·사이트 제한 없음</h3>
-        <p>MCP 도구 호출, 탭 수, 방문 사이트 수에 쿼터나 건당 과금이 없습니다. <b>업무량이 늘어도 비용이 늘지 않습니다.</b></p>
-      </div>
-      <div class="why-card">
-        <span class="n">02</span>
-        <h3>모든 에이전트가 같은 손을 씁니다</h3>
-        <p>Claude Code, Claude Desktop, Cursor, Codex, OpenCode, Orca 모바일… <b>MCP 표준만 지원하면</b> 어떤 에이전트든 webclaw에 작업을 보냅니다.</p>
-      </div>
-      <div class="why-card">
-        <span class="n">03</span>
-        <h3>로그인 세션 그대로, CORS 없이</h3>
-        <p>계정·쿠키를 밖으로 넘기지 않습니다. 브라우저 안에서 fetch·DOM·클릭·입력·다운로드를 실행하므로 <b>사내 시스템도 그대로</b> 다룹니다.</p>
-      </div>
-      <div class="why-card">
-        <span class="n">04</span>
-        <h3>여러 PC의 Chrome을 동시에</h3>
-        <p>각 컴퓨터의 webclaw가 버스에 붙습니다. 한 번의 지시로 <b>여러 PC·여러 탭을 병렬로</b> 움직입니다.</p>
-      </div>
-    </div>
-    <div class="wz-claim">
-      <p><b>정확히 말하면</b> — 자동화 실행 자체에는 횟수 제한이 없습니다. 개인판은 <b>서버 포함 2대까지</b> 무료이고, 3대 이상 동시 병렬·조직 사용은 엔터프라이즈입니다. 대수 제한과 브라우저 자동화 횟수는 별개입니다. <a class="text-link" href="/pricing/">플랜 비교 →</a></p>
-    </div>
-  </div>
-</section>
-
-<!-- AGENTS -->
-<section class="band" id="agents">
-  <div class="wrap">
-    <div class="section-head">
-      <span class="eyebrow">모든 에이전트 + MCP</span>
-      <h2 class="h2">지금 쓰는 에이전트를 <span class="serif">그대로</span> 연결하세요</h2>
-      <p class="lede">새 AI를 배울 필요 없습니다. MCP 설정 한 줄이면, 쓰던 에이전트가 내 브라우저를 손처럼 씁니다.</p>
-    </div>
-    <div class="agent-chips">
-      <span>Claude Code</span><span>Claude Desktop</span><span>Cursor</span><span>Codex CLI</span><span>OpenCode</span><span>Orca 모바일</span><span>MCP 표준 클라이언트</span><span>사내 오케스트레이터</span>
-    </div>
-    <div class="wz-grid2" style="margin-top:18px">
-      <div class="wz-mini"><b>stdio (로컬)</b><span>이 PC의 Claude Code·Cursor·Codex가 <code>dureclaw-mcp</code>를 직접 실행합니다. 설치 마법사가 자동 등록합니다.</span></div>
-      <div class="wz-mini"><b>SSE (원격)</b><span>스마트폰·다른 PC에서 접속할 때는 <code>start-remote-mcp</code>로 <code>:4001/sse</code>를 엽니다. Orca 모바일이 이 경로를 씁니다.</span></div>
-    </div>
-  </div>
-</section>
-
-<!-- SAFETY -->
-<section class="band tint" id="safety">
-  <div class="wrap">
-    <div class="section-head">
-      <span class="eyebrow">안전장치</span>
-      <h2 class="h2">자동화는 빠르게, <span class="serif">결정은 사람이</span></h2>
-    </div>
-    <div class="why-grid">
-      <div class="why-card"><h3>승인 모드</h3><p>결제·삭제·전송처럼 되돌리기 어려운 동작은 실행 전에 버튼으로 확인합니다.</p></div>
-      <div class="why-card"><h3>금지 사이트</h3><p>사내 정책에 따라 사이트·도메인을 막을 수 있습니다. 허용 목록도 지원합니다.</p></div>
-      <div class="why-card"><h3>비밀번호는 기록에 남기지 않음</h3><p>입력값 마스킹과 로그 정리로 민감 정보가 대화 기록에 남지 않게 합니다.</p></div>
-      <div class="why-card"><h3>내 컴퓨터 안에서</h3><p>브라우저 세션은 밖으로 복사되지 않습니다. 서버는 로컬·사설망(Tailscale/Headscale)에서 동작합니다.</p></div>
-    </div>
+    <div class="wz-callout teal" style="margin-top:18px"><b>서버가 필요합니다</b> — 브라우저는 손, <a href="/start/">DureClaw Server</a>가 버스입니다. 같은 PC에서 서버 앱을 실행한 뒤 브라우저를 열어 주세요.</div>
   </div>
 </section>
 
 <!-- FAQ -->
 <section class="band" id="faq">
-  <div class="wrap">
+  <div class="wz-wrap">
     <div class="section-head">
-      <span class="eyebrow">FAQ</span>
-      <h2 class="h2">설치 전에 <span class="serif">많이 묻는 것</span></h2>
+      <span class="eyebrow">짧은 FAQ</span>
+      <h2 class="h2">설치 전에 <span class="serif">딱 세 가지</span></h2>
     </div>
+
     <div class="faq">
       <details>
-        <summary>Chrome 웹스토어에서 설치할 수 없나요?</summary>
-        <div class="a"><p>스토어 심사를 기다리지 않아도 됩니다. <b>2세대 DureClaw Browser</b>는 Chromium·webclaw·MCP를 한 설치본으로 묶어 스토어 없이 바로 씁니다. 기존 Chrome을 그대로 쓰고 싶다면 서버 앱에 포함된 최신 확장을 <b>압축해제된 확장 프로그램</b>으로 로드하는 방식도 있습니다. Chrome 웹스토어 제출본은 심사 중이며, 승인되면 같은 페이지에 안내합니다.</p></div>
+        <summary>로그인은 어떻게 하나요?</summary>
+        <p>macOS는 기존 Chrome과 분리된 <b>전용 프로필</b>로 시작합니다. 처음 한 번만 쓰는 사이트에 로그인하면 그 세션을 webclaw가 사용합니다. Windows는 첫 실행 때 <b>기존 Chrome 프로필</b>을 가져올 수 있고, Chrome 137+ App-Bound Encryption으로 로그인이 유지되지 않으면 한 번만 다시 로그인하면 됩니다.</p>
       </details>
       <details>
-        <summary>Windows에 Bun이나 Node를 따로 설치해야 하나요?</summary>
-        <div class="a"><p>아니요. <b>DureClaw Browser 설치본과 서버 설치 프로그램 모두 <code>dureclaw-mcp.exe</code>를 포함</b>합니다. Bun·Node 없이 바로 설치·등록됩니다. 별도 MCP zip은 설치 프로그램 없이 MCP만 업데이트할 때만 쓰는 고급 경로입니다.</p></div>
+        <summary>이미 쓰는 Chrome을 그대로 쓰고 싶어요.</summary>
+        <p>DureClaw Server 앱에 포함된 webclaw 확장을 Chrome·Edge·Whale에 직접 로드하는 방식도 그대로 지원합니다. <a href="/start/">서버 앱 설치 가이드 →</a></p>
       </details>
       <details>
-        <summary>Intel Mac도 되나요?</summary>
-        <div class="a"><p>서버 앱은 Apple Silicon(M1~M4)용 dmg를 제공합니다. Intel Mac은 터미널 설치(<code>bash &lt;(curl -fsSL https://dureclaw.baryon.ai/install)</code>)와 MCP 한 줄 설치(<code>bash &lt;(curl -fsSL https://dureclaw.baryon.ai/mcp)</code>, Bun 필요)를 사용하세요.</p></div>
+        <summary>서명 경고가 뜹니다.</summary>
+        <p>현재 빌드는 서명 전입니다. macOS는 앱을 <b>우클릭 → 열기</b>, Windows는 SmartScreen에서 <b>추가 정보 → 실행</b>을 선택하세요.</p>
       </details>
-      <details>
-        <summary>MCP 없이 Claude Code 플러그인만 써도 되나요?</summary>
-        <div class="a"><p>네. DureClaw Claude Code 플러그인만으로도 로컬 작업과 멀티머신 오케스트레이션을 쓸 수 있습니다. 다만 <b>다른 에이전트</b>(Cursor·Codex·Orca 모바일 등)까지 브라우저에 연결하려면 서버 설치 프로그램이 자동 등록하는 MCP가 필요합니다.</p></div>
-      </details>
-      <details>
-        <summary>여러 컴퓨터의 Chrome을 한 번에 움직일 수 있나요?</summary>
-        <div class="a"><p>각 컴퓨터에 webclaw를 연결하면 <code>webclaw@PC-A</code>, <code>webclaw@PC-B</code>처럼 노드가 보입니다. 에이전트가 각 노드에 작업을 보내면 <b>동시에</b> 실행됩니다. 개인판은 서버 포함 2대까지 무료입니다.</p></div>
-      </details>
-      <details>
-        <summary>비밀값·토큰은 어떻게 관리되나요?</summary>
-        <div class="a"><p>서버가 발급한 비밀값은 서버 앱의 데이터 폴더에만 있고, MCP 설치 마법사가 자동으로 읽어 등록합니다. 화면에 출력하지 않으며, <code>mcp.json</code>에는 비밀값이 들어 있으니 공유하지 마세요.</p></div>
-      </details>
-    </div>
-  </div>
-</section>
-
-<!-- TROUBLESHOOTING -->
-<section class="band tint" id="troubleshooting">
-  <div class="wrap">
-    <div class="section-head">
-      <span class="eyebrow">문제 해결</span>
-      <h2 class="h2">이슈 #26에서 실제로 막혔던 11가지</h2>
-      <p class="lede">설치 한 번 + 프롬프트 한 번으로 끝내기 위해, 증상별로 원인을 없앴습니다.</p>
-    </div>
-    <div class="table-wrap">
-      <table class="wz-table">
-        <thead><tr><th>#</th><th>증상</th><th>원인</th><th>이번 릴리스의 해결</th></tr></thead>
-        <tbody>
-          <tr><td>1</td><td>에이전트가 “webclaw MCP 도구가 없다”고 함</td><td>MCP가 등록되지 않음</td><td>설치 프로그램이 설치된 도구에 <code>dureclaw</code>로 자동 등록</td></tr>
-          <tr><td>2</td><td><code>dureclaw-mcp.exe</code>가 없음</td><td>MCP가 별도 zip이었음</td><td>서버 설치본 <code>bundle\mcp\</code>에 실행 파일 포함</td></tr>
-          <tr><td>3</td><td>에이전트가 자기 설정 수정을 거부</td><td>에이전트가 <code>claude mcp add</code>를 차단</td><td>설치 프로그램이 대신 등록 (에이전트 아님)</td></tr>
-          <tr><td>4</td><td>문서와 실제 도구 이름이 다름</td><td><code>oah</code> / <code>dureclaw</code> 혼용</td><td><code>dureclaw</code> 하나로 통일 · 문서는 <code>mcp__dureclaw__*</code></td></tr>
-          <tr><td>5</td><td>등록했는데 도구가 안 보임</td><td>MCP는 세션 시작 시 로드</td><td>완료 화면에서 “에이전트 도구를 새로 시작” 안내</td></tr>
-          <tr><td>6</td><td>확장 설치가 여러 단계</td><td>Web Store에 없음</td><td>설치 프로그램이 폴더·설정 준비 + Chrome 확장 페이지 열기 (개발자 모드 → 폴더 선택)</td></tr>
-          <tr><td>7</td><td><code>Service worker registration failed</code> / <code>relay.js</code> 로드 실패</td><td>패키징 목록에서 <code>relay.js</code> 누락</td><td>stage 스크립트가 manifest·importScripts 참조를 검사하고, <code>relay.js</code> 포함 실패 시 릴리스 중단</td></tr>
-          <tr><td>8</td><td>“버스 대기중”에서 멈춤</td><td><code>config.local.json</code>이 비어 있음</td><td>설치 프로그램이 <code>bus·secret·workKey·name</code>을 자동으로 채움</td></tr>
-          <tr><td>9</td><td>노드 이름이 <code>webclaw@PC-1ste</code>처럼 예측 불가</td><td><code>send_task.to</code>에 정확한 이름 필요</td><td><code>to: "webclaw"</code> 별칭 → 가장 최근 webclaw 노드로 자동 라우팅</td></tr>
-          <tr><td>10</td><td>결과가 비동기라 한 번에 안 끝남</td><td><code>send_task</code>는 전송만 함</td><td><code>browser_run</code>이 <code>task.result</code>를 기다려 결과 전체를 반환</td></tr>
-          <tr><td>11</td><td>스크린샷이 대화에 안 옴</td><td><code>[SHOT]</code>은 파일만 저장</td><td><code>browser_screenshot</code>이 MCP <code>image</code> content로 바로 반환</td></tr>
-        </tbody>
-      </table>
-    </div>
-    <p class="install-alt" style="margin-top:16px">그래도 막히면 <a href="https://github.com/DureClaw/dureclaw-core/issues/26" target="_blank" rel="noopener">이슈 #26</a>에 증상과 로그를 남겨 주세요.</p>
-  </div>
-</section>
-
-<!-- FINAL CTA -->
-<section class="band">
-  <div class="wrap">
-    <div class="wz-final">
-      <div>
-        <h2>브라우저 자동화, 이제 <span class="serif">에이전트의 기본</span>입니다</h2>
-        <p>서버 앱을 설치하고 webclaw와 MCP를 연결하세요. 5분 뒤에는 쓰던 에이전트가 내 Chrome을 직접 움직입니다.</p>
-      </div>
-      <div class="wz-actions" style="margin:0">
-        <a class="btn os-mac inline" href="https://github.com/DureClaw/homepage/releases/download/v0.5.7/DureClaw-Server-mac-arm64-0.5.7.dmg" download>Mac용 다운로드 <small class="dl-ver">v0.5.7</small></a>
-        <a class="btn os-win inline" href="https://github.com/DureClaw/homepage/releases/download/v0.5.7/DureClaw-Server-Setup-0.5.7.exe" download>Windows용 다운로드 <small class="dl-ver">v0.5.7</small></a>
-        <a class="btn btn-ghost" href="/start/" style="color:#efe9dd;border-color:#4a463d">전체 설치 가이드</a>
-      </div>
     </div>
   </div>
 </section>
@@ -610,85 +271,6 @@ mcp__dureclaw__browser_run(instructions: "[OPEN] https://www.naver.com
 
 <script src="/assets/site.js"></script>
 <script src="/assets/i18n.js"></script>
-<script>
-(function () {
-  const root = document.documentElement;
-  const buttons = document.querySelectorAll('.wz-os button[data-os]');
-  const KEY_OS = 'dureclaw.webclaw.os';
-  const KEY_STEP = 'dureclaw.webclaw.step.';
 
-  function setOS(os, save) {
-    root.dataset.os = os;
-    buttons.forEach(b => b.setAttribute('aria-pressed', String(b.dataset.os === os)));
-    if (save) { try { localStorage.setItem(KEY_OS, os); } catch (e) {} }
-  }
-
-  let initial = '';
-  try { initial = localStorage.getItem(KEY_OS) || ''; } catch (e) {}
-  if (!initial) {
-    const ua = navigator.userAgent || '';
-    initial = /Windows|Win32|Win64/i.test(ua) ? 'win' : 'mac';
-  }
-  setOS(initial, false);
-  buttons.forEach(b => b.addEventListener('click', () => setOS(b.dataset.os, true)));
-
-  // copy buttons (data-copy)
-  document.querySelectorAll('.copy-btn[data-copy]').forEach(btn => {
-    btn.addEventListener('click', () => {
-      const text = btn.getAttribute('data-copy');
-      const done = () => {
-        const old = btn.textContent;
-        btn.textContent = '✓ 복사됨';
-        btn.classList.add('copied');
-        setTimeout(() => { btn.textContent = old; btn.classList.remove('copied'); }, 1800);
-      };
-      if (navigator.clipboard && navigator.clipboard.writeText) {
-        navigator.clipboard.writeText(text).then(done).catch(() => fallback(text, done));
-      } else { fallback(text, done); }
-    });
-  });
-
-  function fallback(text, done) {
-    const ta = document.createElement('textarea');
-    ta.value = text; ta.style.position = 'fixed'; ta.style.opacity = '0';
-    document.body.appendChild(ta); ta.select();
-    try { document.execCommand('copy'); done(); } catch (e) {}
-    document.body.removeChild(ta);
-  }
-
-  // progress
-  const checks = Array.from(document.querySelectorAll('input[data-check]'));
-  const bar = document.getElementById('wz-bar');
-  const count = document.getElementById('wz-count');
-  function refresh() {
-    let done = 0;
-    checks.forEach(c => {
-      const step = c.closest('.wz-step');
-      if (c.checked) { done++; step.classList.add('is-done'); }
-      else { step.classList.remove('is-done'); }
-    });
-    bar.style.width = (done / checks.length * 100) + '%';
-    count.textContent = done + ' / ' + checks.length + ' 완료';
-  }
-  checks.forEach(c => {
-    const id = c.dataset.check;
-    try { c.checked = localStorage.getItem(KEY_STEP + id) === '1'; } catch (e) {}
-    c.addEventListener('change', () => {
-      try { localStorage.setItem(KEY_STEP + id, c.checked ? '1' : '0'); } catch (e) {}
-      refresh();
-    });
-  });
-  refresh();
-
-  // highlight current step on click/anchor
-  document.querySelectorAll('.wz-step').forEach(s => {
-    s.addEventListener('click', e => {
-      if (e.target.closest('a, button, input, summary')) return;
-      document.querySelectorAll('.wz-step.is-active').forEach(x => x.classList.remove('is-active'));
-      s.classList.add('is-active');
-    });
-  });
-})();
-</script>
 </body>
 </html>
